@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/screens/initial/initial.dart';
 
+import '../../../bottom_nav/bottom_nav.dart';
 import '../../../design/app_colors.dart';
 import '../components/custom_text_fild.dart';
 
@@ -24,8 +24,15 @@ class _CreateIdState extends State<CreateId> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: SafeArea(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          )),
+          child: Center(
               child: Form(
                   key: _formKey,
                   child: Padding(
@@ -101,7 +108,7 @@ class _CreateIdState extends State<CreateId> {
                               if (idController.text.isNotEmpty) {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
-                                        const InitialScreen()));
+                                        const BottomNavAll()));
                                 // _onLoginButtonPressed();
                               } else {}
                             },
@@ -131,7 +138,9 @@ class _CreateIdState extends State<CreateId> {
                         ],
                       ),
                     ),
-                  )))),
+                  ))),
+        ),
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'src/bottom_nav/bottom_nav.dart';
 import 'src/screens/auth/auth.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AuthScreen(),
+      home: const BottomNavAll(),
     );
   }
 }
