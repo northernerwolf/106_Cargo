@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'src/bottom_nav/bottom_nav.dart';
-import 'src/screens/auth/auth.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const BottomNavAll(),
+      // home: const SpalshScreen(),
     );
   }
 }

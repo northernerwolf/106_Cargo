@@ -13,15 +13,27 @@ class AuthScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,
           )),
+          child: Center(
+              child: Image.asset(
+            'assets/images/logo.png',
+            height: MediaQuery.of(context).size.height / 2 - 90,
+            width: MediaQuery.of(context).size.width / 2,
+          )
+              // CustomIcon(
+              //     title: 'assets/icons/logo106.svg',
+              //     height: MediaQuery.of(context).size.height / 3 - 90,
+              //     width: MediaQuery.of(context).size.width / 3 - 90,
+              //     color: Colors.transparent),
+              ),
         ),
       ),
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/background.png'),
           fit: BoxFit.cover,

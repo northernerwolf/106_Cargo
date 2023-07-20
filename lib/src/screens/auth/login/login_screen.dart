@@ -43,11 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
+              color: Colors.white,
               image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
-            fit: BoxFit.cover,
-          )),
+                image: AssetImage('assets/images/background.png'),
+                fit: BoxFit.cover,
+              )),
           child: Center(
             child: Form(
               key: _formKey,
