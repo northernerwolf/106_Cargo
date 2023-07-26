@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../design/app_colors.dart';
-import '../components/custom_text_fild.dart';
 import '../id/create_id.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -89,11 +88,64 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15, top: 20),
-                            child: CustomTextFild(
-                                hint: 'Ulanyjy adyňyz',
-                                controller: phoneController)),
+                          padding: const EdgeInsets.only(
+                              left: 15, right: 15, top: 20),
+                          child: Container(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: AppColors.textFildColor,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 8),
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 10, right: 10, top: 6, bottom: 6),
+                                    child: Text(
+                                      '+993',
+                                      style: TextStyle(
+                                          color: AppColors.authTextColor,
+                                          fontSize: 18,
+                                          fontFamily: 'Montserrat',
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    color: AppColors.authTextColor,
+                                    height: 20,
+                                    width: 1,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 1.8,
+                                    child: TextFormField(
+                                      controller: phoneController,
+                                      maxLines: 1,
+                                      keyboardType: TextInputType.phone,
+                                      decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        disabledBorder: InputBorder.none,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         Padding(
                             padding:
                                 const EdgeInsets.only(left: 20.0, top: 5.0),

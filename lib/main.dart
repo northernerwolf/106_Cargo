@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'src/bottom_nav/bottom_nav.dart';
+import 'package:kargo_app/src/bottom_nav/bottom_nav_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BottomNavAll(),
+      home: const BottomNavScreen(),
       // home: const SpalshScreen(),
     );
   }

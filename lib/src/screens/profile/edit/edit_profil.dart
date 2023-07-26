@@ -271,7 +271,7 @@ class _EditProfilState extends State<EditProfil> {
                               borderRadius: BorderRadius.circular(20)),
                           child: const Center(
                             child: Text(
-                              'Ulgama gir',
+                              'Ýatda sakla',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
