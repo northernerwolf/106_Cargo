@@ -188,7 +188,7 @@ class CartMain extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          left: 10, top: 8, bottom: 8, right: 10),
+                          left: 12, top: 10, bottom: 10, right: 12),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -239,7 +239,7 @@ class CartMain extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
