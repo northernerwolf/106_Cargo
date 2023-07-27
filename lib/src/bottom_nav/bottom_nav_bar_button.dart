@@ -33,9 +33,9 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
     // const Icon(CupertinoIcons.cube_box,
     //     size: 26, color: AppColors.disableColor),
     CustomIcon(
-        title: 'assets/icons/box.svg',
-        height: 20.8,
-        width: 20.77,
+        title: 'assets/icons/box_new.svg',
+        height: 26,
+        width: 26,
         color: AppColors.disableColor),
     CustomIcon(
         title: 'assets/icons/compass.svg',
@@ -58,9 +58,9 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
   List iconsBold = [
     // const Icon(CupertinoIcons.cube_box, size: 26, color: AppColors.mainColor),
     CustomIcon(
-        title: 'assets/icons/box.svg',
-        height: 20.8,
-        width: 20.77,
+        title: 'assets/icons/box_new.svg',
+        height: 26,
+        width: 26,
         color: AppColors.mainColor),
     CustomIcon(
         title: 'assets/icons/compass.svg',
@@ -144,7 +144,7 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
                                 ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
+                    padding: const EdgeInsets.only(bottom: 10),
                     child: Text(
                       title[widget.index],
                       textAlign: TextAlign.center,
@@ -152,7 +152,9 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
                           color: widget.index == widget.selectedIndex
                               ? AppColors.mainColor
                               : AppColors.disableColor,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: widget.index == widget.selectedIndex
+                              ? FontWeight.w600
+                              : FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           fontFamily: 'Rubik',
                           fontSize: 12),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/design/custom_icon.dart';
 
 import '../../../design/app_colors.dart';
 import '../../auth/components/custom_text_fild.dart';
@@ -16,6 +17,7 @@ class _EditProfilState extends State<EditProfil> {
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController phoneNumberntroller = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController idController = TextEditingController();
   final TextEditingController passwordConfirmController =
       TextEditingController();
 
@@ -50,25 +52,41 @@ class _EditProfilState extends State<EditProfil> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        toolbarHeight: 70,
-        iconTheme: const IconThemeData(color: AppColors.profilColor, size: 30),
-        // automaticallyImplyLeading: false,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueGrey.withOpacity(0.1),
+                spreadRadius: 3,
+                blurRadius: 8,
+                offset: const Offset(0, 3),
+              ),
+            ],
           ),
-        ),
-        centerTitle: true,
-        title: const Text(
-          'Profil',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 24,
-              fontFamily: 'Roboto',
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.w700),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            toolbarHeight: 70,
+            elevation: 0,
+            centerTitle: true,
+            iconTheme:
+                const IconThemeData(color: AppColors.profilColor, size: 30),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(15),
+              ),
+            ),
+            title: const Text(
+              'Profil',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
         ),
       ),
       body: SafeArea(
@@ -81,7 +99,7 @@ class _EditProfilState extends State<EditProfil> {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.blueGrey.withOpacity(0.1),
@@ -96,23 +114,9 @@ class _EditProfilState extends State<EditProfil> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 30),
-                      child: Center(
-                        child: Text(
-                          'Akkaunt döret',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ),
                     Padding(
                         padding:
-                            const EdgeInsets.only(left: 15, right: 15, top: 20),
+                            const EdgeInsets.only(left: 15, right: 15, top: 30),
                         child: CustomTextFild(
                             hint: 'Ady', controller: nameController)),
                     Padding(
@@ -165,7 +169,7 @@ class _EditProfilState extends State<EditProfil> {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           color: AppColors.textFildColor,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                         child: Row(
                           children: [
@@ -220,8 +224,103 @@ class _EditProfilState extends State<EditProfil> {
                         child: Text(errorText4,
                             style: TextStyle(
                                 fontSize: 12.0, color: Colors.red[700]))),
-                    const SizedBox(
-                      height: 10.0,
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 22,
+                        right: 10,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'ID',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontFamily: 'Roboto',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  showDalog();
+                                },
+                                icon: const Icon(
+                                  Icons.info_rounded,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Container(
+                              height: 25,
+                              width: 25,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.mainColor),
+                              child: const Center(
+                                  child: Icon(
+                                Icons.add,
+                                size: 20,
+                                color: Colors.white,
+                              )),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: AppColors.textFildColor,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Center(
+                            child: TextFormField(
+                              controller: idController,
+                              maxLines: 1,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  hintText: 'ID',
+                                  suffixIcon: InkWell(
+                                    onTap: () {
+                                      showDalogdDelet();
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: CustomIcon(
+                                          title: 'assets/icons/x.svg',
+                                          height: 0,
+                                          width: 0,
+                                          color: AppColors.authTextColor),
+                                    ),
+                                  ),
+                                  hintStyle: const TextStyle(
+                                      color: AppColors.authTextColor,
+                                      fontSize: 18,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400)),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     InkWell(
                       onTap: () {
@@ -264,7 +363,7 @@ class _EditProfilState extends State<EditProfil> {
                         padding: const EdgeInsets.only(
                             top: 40, right: 20, left: 20, bottom: 30),
                         child: Container(
-                          height: 65,
+                          height: 55,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               color: AppColors.mainColor,
@@ -290,6 +389,124 @@ class _EditProfilState extends State<EditProfil> {
           ),
         ),
       ),
+    );
+  }
+
+  Future showDalog() async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Text(
+                'ID',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontFamily: 'Roboto',
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w700),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  'Harydy  yzarlamak üçin ID kod girizmeli. Bir ulanyjynyň birnäçe ID kody bolup biler',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Roboto',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future showDalogdDelet() async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Text(
+                  'Siz D45 ID koduny pozmak isleýärsiňizmi?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Roboto',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width / 3 - 20,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blue[100]),
+                      child: const Center(
+                        child: Text(
+                          'Hawa',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: AppColors.mainColor,
+                              fontSize: 16,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width / 3 - 20,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColors.mainColor),
+                      child: const Center(
+                        child: Text(
+                          'Ýok',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

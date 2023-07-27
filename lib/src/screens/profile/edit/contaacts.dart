@@ -10,35 +10,51 @@ class Contacts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        toolbarHeight: 70,
-        iconTheme: const IconThemeData(color: AppColors.profilColor, size: 30),
-        // automaticallyImplyLeading: false,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueGrey.withOpacity(0.1),
+                spreadRadius: 3,
+                blurRadius: 8,
+                offset: const Offset(0, 3),
+              ),
+            ],
           ),
-        ),
-        centerTitle: true,
-        title: const Text(
-          'Biz barada',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 24,
-              fontFamily: 'Roboto',
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.w700),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            toolbarHeight: 70,
+            elevation: 0,
+            centerTitle: true,
+            iconTheme:
+                const IconThemeData(color: AppColors.profilColor, size: 30),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(15),
+              ),
+            ),
+            title: const Text(
+              'Biz barada',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
         ),
       ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15, top: 25),
         child: Container(
-          height: MediaQuery.of(context).size.height / 2,
+          height: MediaQuery.of(context).size.height / 2 - 40,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
                 color: Colors.blueGrey.withOpacity(0.2),
@@ -49,7 +65,7 @@ class Contacts extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 20, top: 40),
+            padding: const EdgeInsets.only(left: 20, top: 30),
             child: Column(
               children: [
                 Row(
@@ -122,7 +138,7 @@ class Contacts extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 30),
+                  padding: const EdgeInsets.only(top: 30, bottom: 20),
                   child: Container(
                     color: AppColors.profilColor.withOpacity(0.1),
                     width: double.infinity,
@@ -151,7 +167,7 @@ class Contacts extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, bottom: 30),
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
                   child: Container(
                     color: AppColors.profilColor.withOpacity(0.1),
                     width: double.infinity,

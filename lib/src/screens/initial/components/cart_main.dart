@@ -137,7 +137,9 @@ class CartMain extends StatelessWidget {
                     height: 35,
                     width: 35,
                     decoration: const BoxDecoration(
-                        color: AppColors.searchColor, shape: BoxShape.circle),
+                      color: AppColors.searchColor,
+                      shape: BoxShape.circle,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: CustomIcon(

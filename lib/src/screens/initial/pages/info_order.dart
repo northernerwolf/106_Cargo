@@ -301,7 +301,7 @@ class _InfoOrederState extends State<InfoOreder> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.blueGrey.withOpacity(0.1),
@@ -315,89 +315,81 @@ class _InfoOrederState extends State<InfoOreder> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                      padding: const EdgeInsets.all(15),
-                      color: Colors.white,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: list.length,
-                          itemBuilder: (con, ind) {
-                            return ind != 0
-                                ? Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                        Row(children: [
-                                          Column(
-                                            children: List.generate(
-                                              3,
-                                              (ii) => Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10,
-                                                          right: 10,
-                                                          top: 5,
-                                                          bottom: 5),
-                                                  child: Container(
-                                                    height: 3,
-                                                    width: 2,
-                                                    color: Colors.grey,
-                                                  )),
-                                            ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: list.length,
+                        itemBuilder: (con, ind) {
+                          return ind != 0
+                              ? Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                      Row(children: [
+                                        Column(
+                                          children: List.generate(
+                                            3,
+                                            (ii) => Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10,
+                                                    right: 10,
+                                                    top: 5,
+                                                    bottom: 5),
+                                                child: Container(
+                                                  height: 3,
+                                                  width: 2,
+                                                  color: Colors.grey,
+                                                )),
                                           ),
-                                          Expanded(
-                                              child: Container(
-                                            color: Colors.grey.withAlpha(60),
-                                            height: 0.5,
-                                            padding: const EdgeInsets.only(
-                                              left: 10,
-                                              right: 20,
-                                            ),
-                                          ))
-                                        ]),
-                                        Row(children: [
-                                          Icon(Icons.location_on,
-                                              color: list[ind].color),
-                                          Text(list[ind].address,
-                                              style: TextStyle(
-                                                  color: list[ind].color))
-                                        ])
+                                        ),
+                                        Expanded(
+                                            child: Container(
+                                          color: Colors.grey.withAlpha(60),
+                                          height: 0.5,
+                                          padding: const EdgeInsets.only(
+                                            left: 10,
+                                            right: 20,
+                                          ),
+                                        ))
+                                      ]),
+                                      Row(children: [
+                                        Icon(Icons.location_on,
+                                            color: list[ind].color),
+                                        Text(list[ind].address,
+                                            style: TextStyle(
+                                                color: list[ind].color))
                                       ])
-                                : Row(children: [
-                                    Icon(Icons.location_on,
-                                        color: list[ind].color),
-                                    Text(list[ind].address,
-                                        style:
-                                            TextStyle(color: list[ind].color))
-                                  ]);
-                          })),
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(top: 16),
-                        height: 25,
-                        width: 25,
-                        decoration: const BoxDecoration(
-                          color: AppColors.mainColor,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      // const Dash(
-                      //     direction: Axis.vertical,
-                      //     length: 130,
-                      //     dashLength: 5,
-                      //     dashColor: Colors.grey),
-                      Container(
-                        height: 25,
-                        width: 25,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            border: Border.all(width: 2, color: Colors.red)),
-                        child: Container(
-                          height: 20,
-                        ),
-                      ),
-                    ],
-                  ),
+                                    ])
+                              : Row(children: [
+                                  Icon(Icons.location_on,
+                                      color: list[ind].color),
+                                  Text(list[ind].address,
+                                      style: TextStyle(color: list[ind].color))
+                                ]);
+                        }),
+                  )
+                  //       decoration: const BoxDecoration(
+                  //         color: AppColors.mainColor,
+                  //         shape: BoxShape.circle,
+                  //       ),
+                  //     ),
+                  //     // const Dash(
+                  //     //     direction: Axis.vertical,
+                  //     //     length: 130,
+                  //     //     dashLength: 5,
+                  //     //     dashColor: Colors.grey),
+                  //     Container(
+                  //       height: 25,
+                  //       width: 25,
+                  //       decoration: BoxDecoration(
+                  //           shape: BoxShape.rectangle,
+                  //           border: Border.all(width: 2, color: Colors.red)),
+                  //       child: Container(
+                  //         height: 20,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kargo_app/src/screens/initial/notifications/notifications.dart';
+import 'package:kargo_app/src/screens/initial/pages/search_screen.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
@@ -56,12 +58,12 @@ class _InitialScreenState extends State<InitialScreen> {
                         const EdgeInsets.only(top: 15, right: 10, bottom: 10),
                     child: InkWell(
                       onTap: () {
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //     builder: (context) => const SearchScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const SearchScreen()));
                       },
                       child: Container(
                         height: 50,
-                        width: MediaQuery.of(context).size.width - 100,
+                        width: MediaQuery.of(context).size.width - 110,
                         decoration: BoxDecoration(
                             color: AppColors.searchColor,
                             borderRadius: BorderRadius.circular(15)),
@@ -82,7 +84,7 @@ class _InitialScreenState extends State<InitialScreen> {
                             const Padding(
                               padding: EdgeInsets.only(left: 22),
                               child: Text(
-                                'Искать товары',
+                                'Gözleg',
                                 style: TextStyle(
                                     color: AppColors.profilColor,
                                     fontSize: 14,
@@ -96,11 +98,17 @@ class _InitialScreenState extends State<InitialScreen> {
                       ),
                     ),
                   ),
-                  const Badge(
-                    child: Icon(
-                      CupertinoIcons.bell,
-                      color: Colors.black,
-                      size: 25,
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Notifications()));
+                    },
+                    icon: const Badge(
+                      child: Icon(
+                        CupertinoIcons.bell,
+                        color: Colors.black,
+                        size: 25,
+                      ),
                     ),
                   )
                 ],
@@ -120,7 +128,7 @@ class _InitialScreenState extends State<InitialScreen> {
                   width: MediaQuery.of(context).size.width,
                   height: 115,
                   child: Image.asset(
-                    'assets/images/banner.png',
+                    'assets/images/anmation.gif',
                     fit: BoxFit.fill,
                   )),
             ),
