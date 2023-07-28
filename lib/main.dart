@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/bottom_nav/bottom_nav_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'src/screens/language/language.dart';
+import 'src/screens/welcome/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,6 +10,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  Future<bool> _getOnboardingStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('onboarding_completed') ?? false;
+  }
+
+  Future<void> _setOnboardingStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('onboarding_completed', true);
+  }
 
   // This widget is the root of your application.
   @override
@@ -17,8 +30,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BottomNavScreen(),
-      // home: const SpalshScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => FutureBuilder<bool>(
+              future: _getOnboardingStatus(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Container(); // Placeholder widget while checking the status
+                } else if (!snapshot.data!) {
+                  _setOnboardingStatus();
+                  return const LanguageScreen();
+                } else {
+                  return const SpalshScreen();
+                }
+              },
+            ), // Replace with your main content screen widget
+      },
     );
   }
 }

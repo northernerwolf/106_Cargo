@@ -4,6 +4,7 @@ import '../screens/about/about_us.dart';
 import '../screens/explore/explore.dart';
 import '../screens/initial/initial.dart';
 import '../screens/profile/profile.dart';
+import '../screens/profile/proofile_logout.dart';
 import 'bottom_nav_bar_button.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -23,6 +24,14 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   }
 
   List page = [
+    const InitialScreen(),
+    const ExploreScreen(),
+    const AboutUs(),
+    const ProfileLogOut()
+    // const ProfileScreen(),
+  ];
+
+  List page2 = [
     const InitialScreen(),
     const ExploreScreen(),
     const AboutUs(),

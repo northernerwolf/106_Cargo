@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kargo_app/src/design/app_colors.dart';
 import 'package:kargo_app/src/design/custom_icon.dart';
 
-import 'package:kargo_app/src/screens/auth/auth.dart';
-
+import '../../bottom_nav/bottom_nav_screen.dart';
 import 'welcome_page_items.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -35,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                       TextButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const AuthScreen()));
+                                builder: (context) => const BottomNavScreen()));
                           },
                           child: const Text(
                             'Geç',
@@ -125,7 +124,7 @@ class WelcomePage extends StatelessWidget {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const AuthScreen()));
+                                                const BottomNavScreen()));
                                   }
                                 },
                                 child: Container(

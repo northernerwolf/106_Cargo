@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/screens/initial/pages/invoice.dart';
 
 import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
+import 'order_image_view.dart';
 
 class InfoOreder extends StatefulWidget {
   const InfoOreder({super.key});
@@ -24,25 +26,41 @@ class _InfoOrederState extends State<InfoOreder> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        toolbarHeight: 70,
-        iconTheme: const IconThemeData(color: AppColors.profilColor, size: 30),
-        // automaticallyImplyLeading: false,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueGrey.withOpacity(0.1),
+                spreadRadius: 3,
+                blurRadius: 8,
+                offset: const Offset(0, 3),
+              ),
+            ],
           ),
-        ),
-        centerTitle: true,
-        title: const Text(
-          'Sargyt maglumaty',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 24,
-              fontFamily: 'Roboto',
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.w700),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            toolbarHeight: 70,
+            elevation: 0,
+            centerTitle: true,
+            iconTheme:
+                const IconThemeData(color: AppColors.profilColor, size: 30),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(15),
+              ),
+            ),
+            title: const Text(
+              'Sargyt maglumaty',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
         ),
       ),
       body: SafeArea(
@@ -211,11 +229,101 @@ class _InfoOrederState extends State<InfoOreder> {
                     Padding(
                       padding:
                           const EdgeInsets.only(left: 15, right: 15, top: 10),
-                      child: Image.asset(
-                        'assets/images/urumchy.png',
-                        height: 55,
-                        width: MediaQuery.of(context).size.width - 70,
-                        fit: BoxFit.fill,
+                      child: SizedBox(
+                        height: 60,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: 6,
+                                scrollDirection: Axis.horizontal,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (con, index) {
+                                  return Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Visibility(
+                                          visible: index == 0 ? false : true,
+                                          child: Row(children: [
+                                            Row(
+                                              children: List.generate(
+                                                1,
+                                                (ii) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 5,
+                                                            right: 5,
+                                                            top: 5,
+                                                            bottom: 5),
+                                                    child: Container(
+                                                      height: 3,
+                                                      width: 30,
+                                                      color: index < 2
+                                                          ? AppColors.mainColor
+                                                          : Colors.grey,
+                                                    )),
+                                              ),
+                                            ),
+                                          ]),
+                                        ),
+                                        index != 1
+                                            ? Container(
+                                                height: 18,
+                                                width: 18,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: index < 2
+                                                        ? AppColors.mainColor
+                                                        : Colors.grey),
+                                              )
+                                            : Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  Center(
+                                                    child: Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: AppColors
+                                                              .mainColor
+                                                              .withOpacity(
+                                                                  0.1)),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: 32,
+                                                    width: 32,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: AppColors
+                                                                .mainColor),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              4.0),
+                                                      child: CustomIcon(
+                                                        title: index == 0
+                                                            ? 'assets/icons/home.svg'
+                                                            : index == 5
+                                                                ? 'assets/icons/check_circle.svg'
+                                                                : 'assets/icons/truck_delivery.svg',
+                                                        height: 10,
+                                                        width: 10,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                      ]);
+                                }),
+                          ],
+                        ),
                       ),
                     ),
                     Padding(
@@ -314,7 +422,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                           (ii) => Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 8,
-                                                  right: 10,
+                                                  right: 5,
                                                   top: 3,
                                                   bottom: 5),
                                               child: Container(
@@ -386,18 +494,6 @@ class _InfoOrederState extends State<InfoOreder> {
                                     )
                                   ])
                                 ]);
-                            // : Row(children: [
-                            //     Container(
-                            //       height: 10,
-                            //       width: 10,
-                            //       decoration: const BoxDecoration(
-                            //           shape: BoxShape.circle,
-                            //           color: AppColors.mainColor),
-                            //     ),
-                            //     const Text('Fuck',
-                            //         style: TextStyle(
-                            //             color: AppColors.profilColor))
-                            //   ]);
                           }),
                     )
                     //       decoration: const BoxDecoration(
@@ -429,16 +525,101 @@ class _InfoOrederState extends State<InfoOreder> {
           ],
         ),
       )),
+      bottomNavigationBar: Container(
+        height: 80,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blueGrey.withOpacity(0.1),
+              spreadRadius: 3,
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Invoice()));
+                  },
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width / 2 - 25,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColors.mainColor.withOpacity(0.1)),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomIcon(
+                            title: 'assets/icons/image.svg',
+                            height: 22,
+                            width: 22,
+                            color: AppColors.mainColor,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 5),
+                            child: Text(
+                              'Harydyň suraty',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: AppColors.mainColor,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const OrderImageView()));
+                  },
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width / 2 - 25,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColors.mainColor),
+                    child: const Center(
+                      child: Text(
+                        'Hasap-faktura',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontFamily: 'Roboto',
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ]),
+      ),
     );
   }
-}
-
-class Model {
-  final String address;
-  // final double lat;
-  // final double long;
-  final Color color;
-  //Other fields if needed....
-  Model(this.address, this.color);
-  //initialise other fields so on....
 }

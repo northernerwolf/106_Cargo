@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../language/language.dart';
-import 'welcome_page.dart';
+import '../../bottom_nav/bottom_nav_screen.dart';
 
 class SpalshScreen extends StatefulWidget {
   const SpalshScreen({super.key});
@@ -21,7 +20,7 @@ class _SpalshScreenState extends State<SpalshScreen>
 
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const LanguageScreen(),
+        builder: (_) => const BottomNavScreen(),
       ));
     });
   }
@@ -39,7 +38,7 @@ class _SpalshScreenState extends State<SpalshScreen>
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(100.0),
         child: Center(
           child: Image.asset('assets/images/logo.png'),
         ),
