@@ -3,31 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../design/constants.dart';
-import '../model/orders_model.dart';
+import '../model/me_model.dart';
 
-class OrdersProvider with ChangeNotifier {
+class GetMeProvider with ChangeNotifier {
   bool isLoading = false;
-  List<TripModel> orders = [];
+  UserData? getMe;
 
   static Dio dio = Dio();
 
-  Future<void> getOrders() async {
+  Future<void> getMeResponse() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
-    orders = [];
     final headers = {
-      'Authorization': 'Bearer 2|TKCjFAa5PPccNRBonzTWah3OBSPrPOp6zrwAczXa',
+      'Authorization': 'Bearer $val',
     };
 
     try {
-      var response = await dio.get("${Constants.baseUrl}/cargo/list",
+      var response = await dio.get("${Constants.baseUrl}/auth/me",
           options: Options(headers: headers));
       isLoading = true;
       print(response.data);
       if (response.statusCode == 200) {
-        orders = List<TripModel>.from(response.data['data'].map((e) {
-          return TripModel.fromJson(e);
-        }));
+        getMe = UserData.fromJson(response.data['data']);
 
         isLoading = false;
         notifyListeners();

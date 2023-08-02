@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/screens/auth/register/repository_register.dart';
 
 import '../../../design/app_colors.dart';
 import '../components/custom_text_fild.dart';
-import '../id/create_id.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -127,23 +127,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 10.0,
                         ),
-                        Padding(
-                            padding: const EdgeInsets.only(
-                              left: 15,
-                              right: 15,
-                            ),
-                            child: CustomTextFild(
-                                hint: 'Ulanyjy ady',
-                                controller: userNameController)),
-                        Padding(
-                            padding:
-                                const EdgeInsets.only(left: 20.0, top: 5.0),
-                            child: Text(errorText3,
-                                style: TextStyle(
-                                    fontSize: 12.0, color: Colors.red[700]))),
-                        const SizedBox(
-                          height: 10.0,
-                        ),
+                        // Padding(
+                        //     padding: const EdgeInsets.only(
+                        //       left: 15,
+                        //       right: 15,
+                        //     ),
+                        //     child: CustomTextFild(
+                        //         hint: 'Ulanyjy ady',
+                        //         controller: userNameController)),
+                        // Padding(
+                        //     padding:
+                        //         const EdgeInsets.only(left: 20.0, top: 5.0),
+                        //     child: Text(errorText3,
+                        //         style: TextStyle(
+                        //             fontSize: 12.0, color: Colors.red[700]))),
+                        // const SizedBox(
+                        //   height: 10.0,
+                        // ),
                         Padding(
                           padding: const EdgeInsets.only(
                             left: 15,
@@ -355,9 +355,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             }
                             if (passwordController.text.isNotEmpty &&
                                 phoneNumberntroller.text.isNotEmpty) {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //     builder: (context) => const CreateId()));
-                              // _onLoginButtonPressed();
+                              RegisterRepository().register(
+                                context,
+                                nameController.text,
+                                lastNameController.text,
+                                phoneNumberntroller.text,
+                                passwordController.text,
+                                passwordConfirmController.text,
+                              );
                             } else {}
                           },
                           child: Padding(

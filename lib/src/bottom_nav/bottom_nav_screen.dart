@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/about/about_us.dart';
 import '../screens/explore/explore.dart';
@@ -21,6 +22,23 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   @override
   void dispose() {
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkUser();
+  }
+
+  int changer = 0;
+
+  Future<void> checkUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? val = preferences.getString('token');
+
+    if (val != null) {
+      changer = 1;
+    }
   }
 
   List page = [
@@ -111,7 +129,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         // index: selectedIndex,
         children: [
           Center(
-            child: page[selectedIndex],
+            child: changer == 1 ? page2[selectedIndex] : page[selectedIndex],
           ),
         ],
       ),

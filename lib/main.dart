@@ -3,6 +3,7 @@ import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'src/screens/auth/providers/me_provider.dart';
 import 'src/screens/initial/providers/orders_byid_provider.dart';
 import 'src/screens/language/language.dart';
 import 'src/screens/welcome/splash_screen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => OrdersProvider()),
         ChangeNotifierProvider(create: (_) => OrdersByIdProvider()),
+        ChangeNotifierProvider(create: (_) => GetMeProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

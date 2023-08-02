@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/screens/auth/providers/me_provider.dart';
 import 'package:kargo_app/src/screens/profile/edit/contaacts.dart';
 import 'package:kargo_app/src/screens/profile/edit/lanuage_chnage.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
+import '../auth/login/repository_login.dart';
 import 'edit/edit_profil.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -15,7 +19,18 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
+
+  fetchData() async {
+    await Provider.of<GetMeProvider>(context, listen: false).getMeResponse();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final meInfo = Provider.of<GetMeProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -82,17 +97,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const Text(
-                        'Batyr00',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      // const Text(
+                      //   'Batyr00',
+                      //   style: TextStyle(
+                      //       color: Colors.black,
+                      //       fontSize: 18,
+                      //       fontFamily: 'Roboto',
+                      //       fontStyle: FontStyle.normal,
+                      //       fontWeight: FontWeight.w600),
+                      // ),
                       IconButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -106,11 +121,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       )
                     ],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 5),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
                     child: Text(
-                      'Batyr Ataşew',
-                      style: TextStyle(
+                      '${meInfo.getMe!.firstName}  ${meInfo.getMe!.lastName}',
+                      style: const TextStyle(
                           color: AppColors.profilColor,
                           fontSize: 16,
                           fontFamily: 'Roboto',
@@ -118,11 +133,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 5),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
                     child: Text(
-                      '+993 63 44 45 23',
-                      style: TextStyle(
+                      '+993 ${meInfo.getMe!.phone}',
+                      style: const TextStyle(
                           color: AppColors.profilColor,
                           fontSize: 16,
                           fontFamily: 'Roboto',
@@ -354,41 +369,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 40,
-                      width: MediaQuery.of(context).size.width / 3 - 20,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blue[100]),
-                      child: const Center(
-                        child: Text(
-                          'Hawa',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: AppColors.mainColor,
-                              fontSize: 16,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w400),
+                    InkWell(
+                      onTap: () async {
+                        SharedPreferences preferences =
+                            await SharedPreferences.getInstance();
+                        String? val = preferences.getString('token');
+                        LogOutRepository().logOut(context, val!);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: MediaQuery.of(context).size.width / 3 - 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blue[100]),
+                        child: const Center(
+                          child: Text(
+                            'Hawa',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: AppColors.mainColor,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      height: 40,
-                      width: MediaQuery.of(context).size.width / 3 - 20,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.mainColor),
-                      child: const Center(
-                        child: Text(
-                          'Ýok',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w400),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: MediaQuery.of(context).size.width / 3 - 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColors.mainColor),
+                        child: const Center(
+                          child: Text(
+                            'Ýok',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
                       ),
                     ),

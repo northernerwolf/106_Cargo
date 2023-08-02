@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../design/constants.dart';
 import '../model/orders_model.dart';
@@ -11,6 +12,8 @@ class OrdersByIdProvider with ChangeNotifier {
   static Dio dio = Dio();
 
   Future<void> getOrdersById(int id) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? val = preferences.getString('token');
     final headers = {
       'Authorization': 'Bearer 2|TKCjFAa5PPccNRBonzTWah3OBSPrPOp6zrwAczXa',
     };
