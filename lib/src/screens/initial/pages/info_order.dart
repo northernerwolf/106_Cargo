@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/screens/initial/pages/invoice.dart';
+import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
+import '../providers/orders_byid_provider.dart';
 import 'order_image_view.dart';
 
 class InfoOreder extends StatefulWidget {
-  const InfoOreder({super.key});
+  final int id;
+  const InfoOreder({required this.id, super.key});
 
   @override
   State<InfoOreder> createState() => _InfoOrederState();
@@ -15,15 +18,24 @@ class InfoOreder extends StatefulWidget {
 class _InfoOrederState extends State<InfoOreder> {
   @override
   void initState() {
+    fetchData();
     super.initState();
+  }
+
+  fetchData() async {
+    await Provider.of<OrdersByIdProvider>(context, listen: false)
+        .getOrdersById(widget.id);
   }
 
   void addNew() {
     setState(() {});
   }
 
+  int? t;
+
   @override
   Widget build(BuildContext context) {
+    final orderById = Provider.of<OrdersByIdProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -93,8 +105,8 @@ class _InfoOrederState extends State<InfoOreder> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
-                            children: const [
-                              Text(
+                            children: [
+                              const Text(
                                 'ID: ',
                                 style: TextStyle(
                                     color: Colors.black,
@@ -104,8 +116,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                     fontWeight: FontWeight.w400),
                               ),
                               Text(
-                                'BBB',
-                                style: TextStyle(
+                                orderById.ordersById!.ticketCode,
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Roboto',
@@ -130,9 +142,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                     fontStyle: FontStyle.normal,
                                     fontWeight: FontWeight.w400),
                               ),
-                              const Text(
-                                '3',
-                                style: TextStyle(
+                              Text(
+                                orderById.ordersById!.summarySeats.toString(),
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Roboto',
@@ -170,10 +182,10 @@ class _InfoOrederState extends State<InfoOreder> {
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
-                                '01.08.2023',
-                                style: TextStyle(
+                                orderById.ordersById!.date,
+                                style: const TextStyle(
                                     color: AppColors.authTextColor,
                                     fontSize: 14,
                                     fontFamily: 'Roboto',
@@ -181,8 +193,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                     fontWeight: FontWeight.w400),
                               ),
                               Text(
-                                'Urumçy',
-                                style: TextStyle(
+                                orderById.ordersById!.pointFrom,
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Roboto',
@@ -208,13 +220,13 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                           ),
                           Column(
-                            children: const [
-                              SizedBox(
+                            children: [
+                              const SizedBox(
                                 height: 22,
                               ),
                               Text(
-                                'Aşgabat',
-                                style: TextStyle(
+                                orderById.ordersById!.pointTo,
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontFamily: 'Roboto',
@@ -236,10 +248,15 @@ class _InfoOrederState extends State<InfoOreder> {
                           children: [
                             ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: 6,
+                                itemCount: orderById.ordersById!.points!.length,
                                 scrollDirection: Axis.horizontal,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (con, index) {
+                                  if (orderById.ordersById!.points![index]
+                                          .isCurrent !=
+                                      0) {
+                                    t = index;
+                                  }
                                   return Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -259,7 +276,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                     child: Container(
                                                       height: 3,
                                                       width: 30,
-                                                      color: index < 2
+                                                      color: index == t!
                                                           ? AppColors.mainColor
                                                           : Colors.grey,
                                                     )),
@@ -267,13 +284,13 @@ class _InfoOrederState extends State<InfoOreder> {
                                             ),
                                           ]),
                                         ),
-                                        index != 1
+                                        index != t
                                             ? Container(
                                                 height: 18,
                                                 width: 18,
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
-                                                    color: index < 2
+                                                    color: index < t!
                                                         ? AppColors.mainColor
                                                         : Colors.grey),
                                               )
@@ -307,9 +324,13 @@ class _InfoOrederState extends State<InfoOreder> {
                                                           const EdgeInsets.all(
                                                               4.0),
                                                       child: CustomIcon(
-                                                        title: index == 0
+                                                        title: t == 0
                                                             ? 'assets/icons/home.svg'
-                                                            : index == 5
+                                                            : t ==
+                                                                    orderById
+                                                                        .ordersById!
+                                                                        .points!
+                                                                        .last
                                                                 ? 'assets/icons/check_circle.svg'
                                                                 : 'assets/icons/truck_delivery.svg',
                                                         height: 10,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../design/app_colors.dart';
-import '../id/create_id.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -288,8 +287,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             if (passwordController.text.isNotEmpty &&
                                 phoneController.text.isNotEmpty) {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const CreateId()));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => const CreateId()));
                               // _onLoginButtonPressed();
                             } else {}
                           },

@@ -52,7 +52,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,
@@ -355,8 +355,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             }
                             if (passwordController.text.isNotEmpty &&
                                 phoneNumberntroller.text.isNotEmpty) {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const CreateId()));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => const CreateId()));
                               // _onLoginButtonPressed();
                             } else {}
                           },

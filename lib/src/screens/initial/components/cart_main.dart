@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
+import '../model/orders_model.dart';
 import '../pages/info_order.dart';
 
-class CartMain extends StatelessWidget {
-  const CartMain({super.key});
+class CartMain extends StatefulWidget {
+  final TripModel model;
 
+  const CartMain({required this.model, super.key});
+
+  @override
+  State<CartMain> createState() => _CartMainState();
+}
+
+class _CartMainState extends State<CartMain> {
+  int? t;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,8 +45,8 @@ class CartMain extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         'ID: ',
                         style: TextStyle(
                             color: Colors.black,
@@ -47,8 +56,8 @@ class CartMain extends StatelessWidget {
                             fontWeight: FontWeight.w400),
                       ),
                       Text(
-                        'BBB',
-                        style: TextStyle(
+                        widget.model.ticketCode,
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontFamily: 'Roboto',
@@ -73,9 +82,9 @@ class CartMain extends StatelessWidget {
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w400),
                       ),
-                      const Text(
-                        '3',
-                        style: TextStyle(
+                      Text(
+                        widget.model.summarySeats.toString(),
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontFamily: 'Roboto',
@@ -91,6 +100,9 @@ class CartMain extends StatelessWidget {
                           height: 20,
                           width: 20,
                           color: AppColors.authTextColor),
+                      const SizedBox(
+                        width: 3,
+                      ),
                       const Text(
                         'GPS',
                         style: TextStyle(
@@ -112,10 +124,10 @@ class CartMain extends StatelessWidget {
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
-                        '01.08.2023',
-                        style: TextStyle(
+                        widget.model.date,
+                        style: const TextStyle(
                             color: AppColors.authTextColor,
                             fontSize: 14,
                             fontFamily: 'Roboto',
@@ -123,8 +135,8 @@ class CartMain extends StatelessWidget {
                             fontWeight: FontWeight.w400),
                       ),
                       Text(
-                        'Urumçy',
-                        style: TextStyle(
+                        widget.model.pointFrom,
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontFamily: 'Roboto',
@@ -150,13 +162,13 @@ class CartMain extends StatelessWidget {
                     ),
                   ),
                   Column(
-                    children: const [
-                      SizedBox(
+                    children: [
+                      const SizedBox(
                         height: 22,
                       ),
                       Text(
-                        'Aşgabat',
-                        style: TextStyle(
+                        widget.model.pointTo,
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontFamily: 'Roboto',
@@ -169,12 +181,104 @@ class CartMain extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-              child: Image.asset(
-                'assets/images/road_steper.png',
-                height: 55,
-                width: MediaQuery.of(context).size.width - 70,
-                fit: BoxFit.fill,
+              padding: const EdgeInsets.only(
+                  left: 10, right: 10, top: 10, bottom: 5),
+              child: SizedBox(
+                height: 60,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    widget.model.points != null
+                        ? ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: widget.model.points!.length,
+                            scrollDirection: Axis.horizontal,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (con, index) {
+                              if (widget.model.points![index].isCurrent != 0) {
+                                t = index;
+                              }
+                              return Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Visibility(
+                                      visible: index == 0 ? false : true,
+                                      child: Row(children: [
+                                        Row(
+                                          children: List.generate(
+                                            1,
+                                            (ii) => Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 5,
+                                                    right: 5,
+                                                    top: 5,
+                                                    bottom: 5),
+                                                child: Container(
+                                                  height: 3,
+                                                  width: 30,
+                                                  color: index == t!
+                                                      ? AppColors.mainColor
+                                                      : Colors.grey,
+                                                )),
+                                          ),
+                                        ),
+                                      ]),
+                                    ),
+                                    index != t
+                                        ? Container(
+                                            height: 18,
+                                            width: 18,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: index < t!
+                                                    ? AppColors.mainColor
+                                                    : Colors.grey),
+                                          )
+                                        : Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              Center(
+                                                child: Container(
+                                                  height: 50,
+                                                  width: 50,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: AppColors.mainColor
+                                                          .withOpacity(0.1)),
+                                                ),
+                                              ),
+                                              Container(
+                                                height: 32,
+                                                width: 32,
+                                                decoration: const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: AppColors.mainColor),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: CustomIcon(
+                                                    title: t == 0
+                                                        ? 'assets/icons/home.svg'
+                                                        : t ==
+                                                                widget
+                                                                    .model
+                                                                    .points!
+                                                                    .last
+                                                            ? 'assets/icons/check_circle.svg'
+                                                            : 'assets/icons/truck_delivery.svg',
+                                                    height: 10,
+                                                    width: 10,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          )
+                                  ]);
+                            })
+                        : const Text('Fucking'),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -216,7 +320,9 @@ class CartMain extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const InfoOreder()));
+                          builder: (context) => InfoOreder(
+                                id: widget.model.id,
+                              )));
                     },
                     child: Container(
                       decoration: BoxDecoration(

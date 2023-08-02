@@ -6,6 +6,10 @@ class SharedPrefKeys {
   static const String appLanguage = 'AppLanguage';
 }
 
+class Constants {
+  static const baseUrl = "http://216.250.11.150/api";
+}
+
 class AppConstants {
   static const Locale defaultLocale = Locale('tk');
   static const List<Locale> supportedLocales = [

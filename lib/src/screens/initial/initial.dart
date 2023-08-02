@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kargo_app/src/screens/initial/notifications/notifications.dart';
 import 'package:kargo_app/src/screens/initial/pages/search_screen.dart';
+import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
@@ -17,7 +19,18 @@ class InitialScreen extends StatefulWidget {
 
 class _InitialScreenState extends State<InitialScreen> {
   @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
+
+  fetchData() async {
+    await Provider.of<OrdersProvider>(context, listen: false).getOrders();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final order = Provider.of<OrdersProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -49,13 +62,16 @@ class _InitialScreenState extends State<InitialScreen> {
               ),
             ),
             title: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(0.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: 15, right: 10, bottom: 10),
+                    padding: const EdgeInsets.only(
+                      top: 15,
+                      right: 10,
+                      bottom: 10,
+                    ),
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -63,7 +79,7 @@ class _InitialScreenState extends State<InitialScreen> {
                       },
                       child: Container(
                         height: 50,
-                        width: MediaQuery.of(context).size.width - 110,
+                        width: MediaQuery.of(context).size.width - 90,
                         decoration: BoxDecoration(
                             color: AppColors.searchColor,
                             borderRadius: BorderRadius.circular(15)),
@@ -82,7 +98,7 @@ class _InitialScreenState extends State<InitialScreen> {
                             //     width: MediaQuery.of(context).size.width - 120,
                             //     child: TextFormField()),
                             const Padding(
-                              padding: EdgeInsets.only(left: 22),
+                              padding: EdgeInsets.only(left: 10),
                               child: Text(
                                 'Gözleg',
                                 style: TextStyle(
@@ -148,10 +164,13 @@ class _InitialScreenState extends State<InitialScreen> {
                 padding: const EdgeInsets.all(10),
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 5,
+                itemCount: order.orders.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return const Padding(
-                      padding: EdgeInsets.all(10.0), child: CartMain());
+                  return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: CartMain(
+                        model: order.orders[index],
+                      ));
                 }),
           ],
         ),
