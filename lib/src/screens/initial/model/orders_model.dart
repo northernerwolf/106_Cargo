@@ -29,14 +29,14 @@ class TripModel {
           pointsJson.map((pointJson) => Point.fromJson(pointJson)).toList();
     }
     return TripModel(
-      id: json['id'],
-      date: json['date'],
-      pointFrom: json['point_from'],
-      pointTo: json['point_to'],
+      id: json['id'] ?? '',
+      date: json['date'] ?? '',
+      pointFrom: json['point_from'] ?? '',
+      pointTo: json['point_to'] ?? '',
       trackCode: json['track_code'] ?? '',
-      summarySeats: json['summary_seats'],
-      ticketCode: json['ticket_code'],
-      location: json['location'],
+      summarySeats: json['summary_seats'] ?? '',
+      ticketCode: json['ticket_code'] ?? '',
+      location: json['location'] ?? '',
       points: points,
     );
   }
@@ -45,16 +45,19 @@ class TripModel {
 class Point {
   final String point;
   final int isCurrent;
+  final String date;
 
   Point({
     required this.point,
     required this.isCurrent,
+    required this.date,
   });
 
   factory Point.fromJson(Map<String, dynamic> json) {
     return Point(
-      point: json['point'],
-      isCurrent: json['is_current'],
+      point: json['point'] ?? '',
+      isCurrent: json['is_current'] ?? '',
+      date: json['date'] ?? '',
     );
   }
 }

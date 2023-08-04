@@ -1,4 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:kargo_app/firebase_options.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,7 +11,13 @@ import 'src/screens/initial/providers/orders_byid_provider.dart';
 import 'src/screens/language/language.dart';
 import 'src/screens/welcome/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  String? token = await FirebaseMessaging.instance.getToken();
+  debugPrint(token);
   runApp(const MyApp());
 }
 

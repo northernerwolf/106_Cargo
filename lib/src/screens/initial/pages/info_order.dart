@@ -392,7 +392,7 @@ class _InfoOrederState extends State<InfoOreder> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.only(left: 15, top: 20, bottom: 20),
+              padding: EdgeInsets.only(left: 15, top: 30, bottom: 0),
               child: Text(
                 'Harydy yzarlamak',
                 style: TextStyle(
@@ -405,7 +405,7 @@ class _InfoOrederState extends State<InfoOreder> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 15, right: 15, top: 30, bottom: 20),
+                  left: 15, right: 15, top: 15, bottom: 20),
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -428,9 +428,14 @@ class _InfoOrederState extends State<InfoOreder> {
                       padding: const EdgeInsets.all(15.0),
                       child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: 6,
+                          itemCount: orderById.ordersById!.points!.length,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (con, index) {
+                            if (orderById
+                                    .ordersById!.points![index].isCurrent !=
+                                0) {
+                              t = index;
+                            }
                             return Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -449,7 +454,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                               child: Container(
                                                 height: 6,
                                                 width: 3,
-                                                color: index < 3
+                                                color: index == t
                                                     ? AppColors.mainColor
                                                     : Colors.grey,
                                               )),
@@ -463,7 +468,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                       width: 20,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: index < 3
+                                          color: index < t! + 1
                                               ? AppColors.mainColor
                                               : Colors.grey),
                                     ),
@@ -473,9 +478,11 @@ class _InfoOrederState extends State<InfoOreder> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          const Text(
-                                            '03.08.2023',
-                                            style: TextStyle(
+                                          Text(
+                                            orderById.ordersById!.points![index]
+                                                    .date ??
+                                                '',
+                                            style: const TextStyle(
                                                 color: AppColors.authTextColor,
                                                 fontSize: 14,
                                                 fontFamily: 'Montserrat',
@@ -493,12 +500,13 @@ class _InfoOrederState extends State<InfoOreder> {
                                                 width: 24,
                                                 color: AppColors.authTextColor,
                                               ),
-                                              const Padding(
-                                                padding:
-                                                    EdgeInsets.only(left: 5),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 5),
                                                 child: Text(
-                                                  'Hytaý Urumçy ammar',
-                                                  style: TextStyle(
+                                                  orderById.ordersById!
+                                                      .points![index].point,
+                                                  style: const TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 16,
                                                       fontFamily: 'Montserrat',
