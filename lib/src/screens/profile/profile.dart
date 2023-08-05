@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
-import '../auth/login/repository_login.dart';
 import 'edit/edit_profil.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -74,103 +73,83 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Container(
-            height: MediaQuery.of(context).size.height - 230,
-            width: MediaQuery.of(context).size.width - 30,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.blueGrey.withOpacity(0.2),
-                  spreadRadius: 6,
-                  blurRadius: 10,
-                  offset: const Offset(1, 3),
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 15, top: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      // const Text(
-                      //   'Batyr00',
-                      //   style: TextStyle(
-                      //       color: Colors.black,
-                      //       fontSize: 18,
-                      //       fontFamily: 'Roboto',
-                      //       fontStyle: FontStyle.normal,
-                      //       fontWeight: FontWeight.w600),
-                      // ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const EditProfil()));
-                        },
-                        icon: CustomIcon(
-                            title: 'assets/icons/edit.svg',
-                            height: 22,
-                            width: 22,
-                            color: AppColors.profilColor),
-                      )
-                    ],
+            padding: const EdgeInsets.only(top: 10),
+            child: Container(
+              height: MediaQuery.of(context).size.height - 230,
+              width: MediaQuery.of(context).size.width - 30,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blueGrey.withOpacity(0.2),
+                    spreadRadius: 6,
+                    blurRadius: 10,
+                    offset: const Offset(1, 3),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      '${meInfo.getMe!.firstName}  ${meInfo.getMe!.lastName}',
-                      style: const TextStyle(
-                          color: AppColors.profilColor,
-                          fontSize: 16,
-                          fontFamily: 'Roboto',
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 15, top: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // const Text(
+                        //   'Batyr00',
+                        //   style: TextStyle(
+                        //       color: Colors.black,
+                        //       fontSize: 18,
+                        //       fontFamily: 'Roboto',
+                        //       fontStyle: FontStyle.normal,
+                        //       fontWeight: FontWeight.w600),
+                        // ),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const EditProfil()));
+                          },
+                          icon: CustomIcon(
+                              title: 'assets/icons/edit.svg',
+                              height: 22,
+                              width: 22,
+                              color: AppColors.profilColor),
+                        )
+                      ],
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      '+993 ${meInfo.getMe!.phone}',
-                      style: const TextStyle(
-                          color: AppColors.profilColor,
-                          fontSize: 16,
-                          fontFamily: 'Roboto',
-                          fontStyle: FontStyle.normal,
-                          fontWeight: FontWeight.w600),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text(
+                        '${meInfo.getMe?.firstName}  ${meInfo.getMe?.lastName}',
+                        style: const TextStyle(
+                            color: AppColors.profilColor,
+                            fontSize: 16,
+                            fontFamily: 'Roboto',
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'ID: ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          'D45',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 50),
-                          child: Text(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text(
+                        '+993 ${meInfo.getMe?.phone}',
+                        style: const TextStyle(
+                            color: AppColors.profilColor,
+                            fontSize: 16,
+                            fontFamily: 'Roboto',
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: const [
+                          Text(
                             'ID: ',
                             style: TextStyle(
                                 color: Colors.black,
@@ -179,163 +158,182 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w600),
                           ),
-                        ),
-                        Text(
-                          'D45',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 40, bottom: 15, right: 10),
-                    child: Container(
-                      color: AppColors.profilColor.withOpacity(0.1),
-                      width: double.infinity,
-                      height: 1.5,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const LanguageChange()));
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            CustomIcon(
-                                title: 'assets/icons/globe.svg',
-                                height: 24,
-                                width: 24,
-                                color: AppColors.profilColor),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Dil ',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontFamily: 'Roboto',
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w600),
-                              ),
+                          Text(
+                            'D45',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 50),
+                            child: Text(
+                              'ID: ',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w600),
                             ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: CustomIcon(
-                              title: 'assets/icons/chevron_right.svg',
-                              height: 24,
-                              width: 24,
-                              color: AppColors.profilColor),
-                        ),
-                      ],
+                          ),
+                          Text(
+                            'D45',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 15, bottom: 15, right: 10),
-                    child: Container(
-                      color: AppColors.profilColor.withOpacity(0.1),
-                      width: double.infinity,
-                      height: 1.5,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Contacts()));
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            CustomIcon(
-                                title: 'assets/icons/mail.svg',
-                                height: 24,
-                                width: 24,
-                                color: AppColors.profilColor),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Habarlaşmak ',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontFamily: 'Roboto',
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: CustomIcon(
-                              title: 'assets/icons/chevron_right.svg',
-                              height: 24,
-                              width: 24,
-                              color: AppColors.profilColor),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      showDalogdExit();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 40, right: 20, left: 20, bottom: 30),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 40, bottom: 15, right: 10),
                       child: Container(
-                        height: 55,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: AppColors.mainColor,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        color: AppColors.profilColor.withOpacity(0.1),
+                        width: double.infinity,
+                        height: 1.5,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const LanguageChange()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
                               CustomIcon(
-                                  title: 'assets/icons/log_out.svg',
+                                  title: 'assets/icons/globe.svg',
                                   height: 24,
                                   width: 24,
-                                  color: Colors.white),
+                                  color: AppColors.profilColor),
                               const Padding(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
-                                  'Ulgamdan çyk',
+                                  'Dil ',
                                   style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
                                       fontStyle: FontStyle.normal,
-                                      fontWeight: FontWeight.w700),
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ],
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: CustomIcon(
+                                title: 'assets/icons/chevron_right.svg',
+                                height: 24,
+                                width: 24,
+                                color: AppColors.profilColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(top: 15, bottom: 15, right: 10),
+                      child: Container(
+                        color: AppColors.profilColor.withOpacity(0.1),
+                        width: double.infinity,
+                        height: 1.5,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Contacts()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              CustomIcon(
+                                  title: 'assets/icons/mail.svg',
+                                  height: 24,
+                                  width: 24,
+                                  color: AppColors.profilColor),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  'Habarlaşmak ',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: CustomIcon(
+                                title: 'assets/icons/chevron_right.svg',
+                                height: 24,
+                                width: 24,
+                                color: AppColors.profilColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    InkWell(
+                      onTap: () {
+                        showDalogdExit();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 40, right: 20, left: 20, bottom: 30),
+                        child: Container(
+                          height: 55,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: AppColors.mainColor,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CustomIcon(
+                                    title: 'assets/icons/log_out.svg',
+                                    height: 24,
+                                    width: 24,
+                                    color: Colors.white),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    'Ulgamdan çyk',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontFamily: 'Roboto',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ),
-        ),
+            )),
       )),
     );
   }
@@ -374,7 +372,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SharedPreferences preferences =
                             await SharedPreferences.getInstance();
                         String? val = preferences.getString('token');
-                        LogOutRepository().logOut(context, val!);
+                        print(val);
+                        // LogOutRepository().logOut(context, val!);
                       },
                       child: Container(
                         height: 40,

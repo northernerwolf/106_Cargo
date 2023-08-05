@@ -31,6 +31,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<OrdersProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -160,6 +161,7 @@ class _InitialScreenState extends State<InitialScreen> {
             //         fontWeight: FontWeight.w700),
             //   ),
             // ),
+
             ListView.builder(
                 padding: const EdgeInsets.all(10),
                 shrinkWrap: true,
@@ -171,7 +173,10 @@ class _InitialScreenState extends State<InitialScreen> {
                       child: CartMain(
                         model: order.orders[index],
                       ));
-                }),
+                })
+            // : SpinKitFadingFour(
+            //     size: 60,
+            //   ),
           ],
         ),
       )),

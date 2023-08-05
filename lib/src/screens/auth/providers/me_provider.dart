@@ -24,7 +24,9 @@ class GetMeProvider with ChangeNotifier {
       isLoading = true;
       print(response.data);
       if (response.statusCode == 200) {
-        getMe = UserData.fromJson(response.data['data']);
+        if (response.data != null) {
+          getMe = UserData.fromJson(response.data['data']);
+        }
 
         isLoading = false;
         notifyListeners();

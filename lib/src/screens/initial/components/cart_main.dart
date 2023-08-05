@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
 import '../model/orders_model.dart';
 import '../pages/info_order.dart';
+import '../providers/orders_provider.dart';
 
 class CartMain extends StatefulWidget {
   final TripModel model;
@@ -15,9 +18,12 @@ class CartMain extends StatefulWidget {
 }
 
 class _CartMainState extends State<CartMain> {
-  int? t;
+  int t = 0;
+
   @override
   Widget build(BuildContext context) {
+    final pointss = Provider.of<OrdersProvider>(context);
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -184,109 +190,122 @@ class _CartMainState extends State<CartMain> {
               padding: const EdgeInsets.only(
                   left: 10, right: 10, top: 10, bottom: 5),
               child: SizedBox(
-                height: 60,
-                child: widget.model.points != null
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ListView.builder(
+                  height: 60,
+                  width: MediaQuery.of(context).size.width - 80,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Center(
+                          child: ListView.builder(
                               shrinkWrap: true,
-                              itemCount: widget.model.points!.length,
+                              itemCount: widget.model.points?.length,
                               scrollDirection: Axis.horizontal,
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (con, index) {
-                                if (widget.model.points![index].isCurrent !=
+                                if (widget.model.points?[index].isCurrent !=
                                     0) {
                                   t = index;
                                 }
-                                return Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Visibility(
-                                        visible: index == 0 ? false : true,
-                                        child: Row(children: [
-                                          Row(
-                                            children: List.generate(
-                                              1,
-                                              (ii) => Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 5,
-                                                          right: 5,
-                                                          top: 5,
-                                                          bottom: 5),
-                                                  child: Container(
-                                                    height: 3,
-                                                    width: 30,
-                                                    color: index == t!
-                                                        ? AppColors.mainColor
-                                                        : Colors.grey,
-                                                  )),
+
+                                if (widget.model.points != null) {
+                                  return Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Visibility(
+                                          visible: index == 0 ? false : true,
+                                          child: Row(children: [
+                                            Row(
+                                              children: List.generate(
+                                                1,
+                                                (ii) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 3,
+                                                            right: 3,
+                                                            top: 7,
+                                                            bottom: 5),
+                                                    child: Container(
+                                                      height: 2.5,
+                                                      width: 35,
+                                                      color: index <= t
+                                                          ? AppColors.mainColor
+                                                          : Colors.grey,
+                                                    )),
+                                              ),
                                             ),
-                                          ),
-                                        ]),
-                                      ),
-                                      index != t
-                                          ? Container(
-                                              height: 18,
-                                              width: 18,
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: index < t!
-                                                      ? AppColors.mainColor
-                                                      : Colors.grey),
-                                            )
-                                          : Stack(
-                                              alignment: Alignment.center,
-                                              children: [
-                                                Center(
-                                                  child: Container(
-                                                    height: 50,
-                                                    width: 50,
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        color: AppColors
-                                                            .mainColor
-                                                            .withOpacity(0.1)),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 32,
-                                                  width: 32,
-                                                  decoration:
-                                                      const BoxDecoration(
+                                          ]),
+                                        ),
+                                        index != t
+                                            ? Container(
+                                                height: 18,
+                                                width: 18,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: index < t
+                                                        ? AppColors.mainColor
+                                                        : Colors.grey),
+                                              )
+                                            : Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  Center(
+                                                    child: Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      decoration: BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                           color: AppColors
-                                                              .mainColor),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            4.0),
-                                                    child: CustomIcon(
-                                                      title: t == 0
-                                                          ? 'assets/icons/home.svg'
-                                                          : t ==
-                                                                  widget
-                                                                      .model
-                                                                      .points!
-                                                                      .last
-                                                              ? 'assets/icons/check_circle.svg'
-                                                              : 'assets/icons/truck_delivery.svg',
-                                                      height: 10,
-                                                      width: 10,
-                                                      color: Colors.white,
+                                                              .mainColor
+                                                              .withOpacity(
+                                                                  0.1)),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
-                                            )
-                                    ]);
-                              })
-                        ],
+                                                  Container(
+                                                    height: 32,
+                                                    width: 32,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: AppColors
+                                                                .mainColor),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              4.0),
+                                                      child: CustomIcon(
+                                                        title: t == 0
+                                                            ? 'assets/icons/home.svg'
+                                                            : t ==
+                                                                    widget
+                                                                        .model
+                                                                        .points!
+                                                                        .last
+                                                                ? 'assets/icons/check_circle.svg'
+                                                                : 'assets/icons/truck_delivery.svg',
+                                                        height: 10,
+                                                        width: 10,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                      ]);
+                                } else {
+                                  return SpinKitFadingFour(
+                                    size: 30,
+                                  );
+                                }
+                              }),
+                        ),
                       )
-                    : const Text('Fucking'),
-              ),
+                    ],
+                  )
+                  // : const Text('Fucking'),
+                  ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, top: 10),

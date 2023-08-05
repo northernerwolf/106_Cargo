@@ -8,6 +8,7 @@ import '../model/orders_model.dart';
 class OrdersProvider with ChangeNotifier {
   bool isLoading = false;
   List<TripModel> orders = [];
+  List<TripModel> pointsget = [];
 
   static Dio dio = Dio();
 
@@ -15,8 +16,9 @@ class OrdersProvider with ChangeNotifier {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
     orders = [];
+    pointsget = [];
     final headers = {
-      'Authorization': 'Bearer 2|TKCjFAa5PPccNRBonzTWah3OBSPrPOp6zrwAczXa',
+      'Authorization': 'Bearer $val',
     };
 
     try {
@@ -25,16 +27,27 @@ class OrdersProvider with ChangeNotifier {
       isLoading = true;
       print(response.data);
       if (response.statusCode == 200) {
-        orders = List<TripModel>.from(response.data['data'].map((e) {
-          return TripModel.fromJson(e);
-        }));
+        if (response.data != null) {
+          orders = List<TripModel>.from(response.data['data'].map((e) {
+            return TripModel.fromJson(e);
+          }));
 
-        isLoading = false;
-        notifyListeners();
+          for (var item in orders) {
+            if (item.points != null) {
+              pointsget.add(item);
+            }
+          }
+          // pointsget = List<Point>.from(response.data['data']['points'].map((e) {
+          //   return Point.fromJson(e);
+          // }));
+          isLoading = false;
+          notifyListeners();
+        }
+
         return;
       }
     } on DioError catch (e) {
-      isLoading = false;
+      isLoading = true;
       print('fuckkkkk');
       print(e.error);
       if (e.response != null) print("Error= ${e.response!.realUri}");

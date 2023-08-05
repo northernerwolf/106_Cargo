@@ -1,4 +1,4 @@
-class TripModel {
+class TripDataIdModel {
   final int id;
   final String date;
   final String pointFrom;
@@ -7,9 +7,9 @@ class TripModel {
   final int summarySeats;
   final String ticketCode;
   final String location;
-  final List<Point>? points;
+  final List<PointSS> points;
 
-  TripModel({
+  TripDataIdModel({
     required this.id,
     required this.date,
     required this.pointFrom,
@@ -18,17 +18,15 @@ class TripModel {
     required this.summarySeats,
     required this.ticketCode,
     required this.location,
-    this.points,
+    required this.points,
   });
 
-  factory TripModel.fromJson(Map<String, dynamic> json) {
-    final List<dynamic>? pointsJson = json['points'];
-    List<Point>? points;
-    if (pointsJson != null) {
-      points =
-          pointsJson.map((pointJson) => Point.fromJson(pointJson)).toList();
-    }
-    return TripModel(
+  factory TripDataIdModel.fromJson(Map<String, dynamic> json) {
+    final List<dynamic> pointsList = json['points'];
+    final List<PointSS> points =
+        pointsList.map((pointsList) => PointSS.fromJson(pointsList)).toList();
+
+    return TripDataIdModel(
       id: json['id'] ?? 0,
       date: json['date'] ?? '',
       pointFrom: json['point_from'] ?? '',
@@ -37,24 +35,24 @@ class TripModel {
       summarySeats: json['summary_seats'] ?? 0,
       ticketCode: json['ticket_code'] ?? '',
       location: json['location'] ?? '',
-      points: points != null ? points : [],
+      points: points,
     );
   }
 }
 
-class Point {
+class PointSS {
   final String point;
   final int isCurrent;
   final String date;
 
-  Point({
+  PointSS({
     required this.point,
     required this.isCurrent,
     required this.date,
   });
 
-  factory Point.fromJson(Map<String, dynamic> json) {
-    return Point(
+  factory PointSS.fromJson(Map<String, dynamic> json) {
+    return PointSS(
       point: json['point'] ?? '',
       isCurrent: json['is_current'] ?? 0,
       date: json['date'] ?? '',

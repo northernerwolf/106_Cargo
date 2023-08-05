@@ -23,7 +23,7 @@ class _InfoOrederState extends State<InfoOreder> {
   }
 
   fetchData() async {
-    await Provider.of<OrdersByIdProvider>(context, listen: false)
+    await Provider.of<GetOrderByIdProvider>(context, listen: false)
         .getOrdersById(widget.id);
   }
 
@@ -31,11 +31,11 @@ class _InfoOrederState extends State<InfoOreder> {
     setState(() {});
   }
 
-  int? t;
+  int t = 0;
 
   @override
   Widget build(BuildContext context) {
-    final orderById = Provider.of<OrdersByIdProvider>(context);
+    final orderById = Provider.of<GetOrderByIdProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -242,110 +242,122 @@ class _InfoOrederState extends State<InfoOreder> {
                       padding:
                           const EdgeInsets.only(left: 15, right: 15, top: 10),
                       child: SizedBox(
-                        height: 60,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: orderById.ordersById!.points!.length,
-                                scrollDirection: Axis.horizontal,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (con, index) {
-                                  if (orderById.ordersById!.points![index]
-                                          .isCurrent !=
-                                      0) {
-                                    t = index;
-                                  }
-                                  return Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Visibility(
-                                          visible: index == 0 ? false : true,
-                                          child: Row(children: [
-                                            Row(
-                                              children: List.generate(
-                                                1,
-                                                (ii) => Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 5,
-                                                            right: 5,
-                                                            top: 5,
-                                                            bottom: 5),
-                                                    child: Container(
-                                                      height: 3,
-                                                      width: 30,
-                                                      color: index == t!
-                                                          ? AppColors.mainColor
-                                                          : Colors.grey,
-                                                    )),
+                          height: 60,
+                          width: MediaQuery.of(context).size.width - 80,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Center(
+                                  child: ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount:
+                                          orderById.ordersById!.points.length,
+                                      scrollDirection: Axis.horizontal,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemBuilder: (con, index) {
+                                        if (orderById.ordersById!.points[index]
+                                                .isCurrent !=
+                                            0) {
+                                          t = index;
+                                        }
+                                        return Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Visibility(
+                                                visible:
+                                                    index == 0 ? false : true,
+                                                child: Row(children: [
+                                                  Row(
+                                                    children: List.generate(
+                                                      1,
+                                                      (ii) => Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 5,
+                                                                  right: 5,
+                                                                  top: 5,
+                                                                  bottom: 5),
+                                                          child: Container(
+                                                            height: 3,
+                                                            width: 30,
+                                                            color: index <= t
+                                                                ? AppColors
+                                                                    .mainColor
+                                                                : Colors.grey,
+                                                          )),
+                                                    ),
+                                                  ),
+                                                ]),
                                               ),
-                                            ),
-                                          ]),
-                                        ),
-                                        index != t
-                                            ? Container(
-                                                height: 18,
-                                                width: 18,
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: index < t!
-                                                        ? AppColors.mainColor
-                                                        : Colors.grey),
-                                              )
-                                            : Stack(
-                                                alignment: Alignment.center,
-                                                children: [
-                                                  Center(
-                                                    child: Container(
-                                                      height: 50,
-                                                      width: 50,
+                                              index != t
+                                                  ? Container(
+                                                      height: 18,
+                                                      width: 18,
                                                       decoration: BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
-                                                          color: AppColors
-                                                              .mainColor
-                                                              .withOpacity(
-                                                                  0.1)),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: 32,
-                                                    width: 32,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            color: AppColors
-                                                                .mainColor),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              4.0),
-                                                      child: CustomIcon(
-                                                        title: t == 0
-                                                            ? 'assets/icons/home.svg'
-                                                            : t ==
-                                                                    orderById
-                                                                        .ordersById!
-                                                                        .points!
-                                                                        .last
-                                                                ? 'assets/icons/check_circle.svg'
-                                                                : 'assets/icons/truck_delivery.svg',
-                                                        height: 10,
-                                                        width: 10,
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                      ]);
-                                }),
-                          ],
-                        ),
-                      ),
+                                                          color: index < t
+                                                              ? AppColors
+                                                                  .mainColor
+                                                              : Colors.grey),
+                                                    )
+                                                  : Stack(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      children: [
+                                                        Center(
+                                                          child: Container(
+                                                            height: 50,
+                                                            width: 50,
+                                                            decoration: BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                color: AppColors
+                                                                    .mainColor
+                                                                    .withOpacity(
+                                                                        0.1)),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          height: 32,
+                                                          width: 32,
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color: AppColors
+                                                                      .mainColor),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(4.0),
+                                                            child: CustomIcon(
+                                                              title: t == 0
+                                                                  ? 'assets/icons/home.svg'
+                                                                  : t ==
+                                                                          orderById
+                                                                              .ordersById!
+                                                                              .points
+                                                                              .last
+                                                                      ? 'assets/icons/check_circle.svg'
+                                                                      : 'assets/icons/truck_delivery.svg',
+                                                              height: 10,
+                                                              width: 10,
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                            ]);
+                                      }),
+                                ),
+                              ),
+                            ],
+                          )),
                     ),
                     Padding(
                       padding:
@@ -426,104 +438,112 @@ class _InfoOrederState extends State<InfoOreder> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: orderById.ordersById!.points!.length,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (con, index) {
-                            if (orderById
-                                    .ordersById!.points![index].isCurrent !=
-                                0) {
-                              t = index;
-                            }
-                            return Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Visibility(
-                                    visible: index == 0 ? false : true,
-                                    child: Row(children: [
-                                      Column(
-                                        children: List.generate(
-                                          5,
-                                          (ii) => Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8,
-                                                  right: 5,
-                                                  top: 3,
-                                                  bottom: 5),
-                                              child: Container(
-                                                height: 6,
-                                                width: 3,
-                                                color: index == t
-                                                    ? AppColors.mainColor
-                                                    : Colors.grey,
-                                              )),
-                                        ),
-                                      ),
-                                    ]),
-                                  ),
-                                  Row(children: [
-                                    Container(
-                                      height: 20,
-                                      width: 20,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: index < t! + 1
-                                              ? AppColors.mainColor
-                                              : Colors.grey),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            orderById.ordersById!.points![index]
-                                                    .date ??
-                                                '',
-                                            style: const TextStyle(
-                                                color: AppColors.authTextColor,
-                                                fontSize: 14,
-                                                fontFamily: 'Montserrat',
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              CustomIcon(
-                                                title:
-                                                    'assets/icons/truck_delivery.svg',
-                                                height: 24,
-                                                width: 24,
-                                                color: AppColors.authTextColor,
-                                              ),
-                                              Padding(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height - 350,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: orderById.ordersById!.points.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (con, index) {
+                              if (orderById
+                                      .ordersById!.points[index].isCurrent !=
+                                  0) {
+                                t = index;
+                              }
+                              return Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Visibility(
+                                      visible: index == 0 ? false : true,
+                                      child: Row(children: [
+                                        Column(
+                                          children: List.generate(
+                                            5,
+                                            (ii) => Padding(
                                                 padding: const EdgeInsets.only(
-                                                    left: 5),
-                                                child: Text(
-                                                  orderById.ordersById!
-                                                      .points![index].point,
-                                                  style: const TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16,
-                                                      fontFamily: 'Montserrat',
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        ],
+                                                    left: 8,
+                                                    right: 5,
+                                                    top: 0,
+                                                    bottom: 5),
+                                                child: Container(
+                                                  height: 6,
+                                                  width: 3,
+                                                  color: index <= t
+                                                      ? AppColors.mainColor
+                                                      : Colors.grey,
+                                                )),
+                                          ),
+                                        ),
+                                      ]),
+                                    ),
+                                    Row(children: [
+                                      Container(
+                                        height: 20,
+                                        width: 20,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: index < t + 1
+                                                ? AppColors.mainColor
+                                                : Colors.grey),
                                       ),
-                                    )
-                                  ])
-                                ]);
-                          }),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              orderById.ordersById!
+                                                  .points[index].date
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                  color:
+                                                      AppColors.authTextColor,
+                                                  fontSize: 14,
+                                                  fontFamily: 'Montserrat',
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                CustomIcon(
+                                                  title:
+                                                      'assets/icons/truck_delivery.svg',
+                                                  height: 24,
+                                                  width: 24,
+                                                  color:
+                                                      AppColors.authTextColor,
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 5),
+                                                  child: Text(
+                                                    orderById.ordersById!
+                                                        .points[index].point,
+                                                    style: const TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 16,
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ])
+                                  ]);
+                            }),
+                      ),
                     )
                     //       decoration: const BoxDecoration(
                     //         color: AppColors.mainColor,

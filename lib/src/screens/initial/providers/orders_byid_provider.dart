@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../design/constants.dart';
+import '../model/order_by_id_model.dart';
 import '../model/orders_model.dart';
 
-class OrdersByIdProvider with ChangeNotifier {
+class GetOrderByIdProvider with ChangeNotifier {
   bool isLoading = false;
-  TripModel? ordersById;
+  TripDataIdModel? ordersById;
 
   static Dio dio = Dio();
 
@@ -15,7 +16,7 @@ class OrdersByIdProvider with ChangeNotifier {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
     final headers = {
-      'Authorization': 'Bearer 2|TKCjFAa5PPccNRBonzTWah3OBSPrPOp6zrwAczXa',
+      'Authorization': 'Bearer $val',
     };
 
     try {
@@ -24,7 +25,10 @@ class OrdersByIdProvider with ChangeNotifier {
       isLoading = true;
       print(response.data);
       if (response.statusCode == 200) {
-        ordersById = TripModel.fromJson(response.data['data']);
+        if (response.data != null) {
+          ordersById = TripDataIdModel.fromJson(response.data['data']);
+        }
+
         isLoading = false;
         notifyListeners();
         return;
