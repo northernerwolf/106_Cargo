@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/core/l10n.dart';
 
+import '../../application/settings_singleton.dart';
 import '../../design/app_colors.dart';
 import '../welcome/welcome_page.dart';
 
@@ -44,11 +46,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
               ),
               child: Column(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 30),
                     child: Center(
                       child: Text(
-                        'Dil saýlaň',
+                        'app_title'.trs,
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 25,
@@ -60,62 +62,72 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10, top: 30),
-                    child: Row(
-                      children: [
-                        Radio(
-                          value: 1,
-                          groupValue: _value,
-                          onChanged: (value) {
-                            setState(() {
-                              _value = value!;
-                            });
-                          },
-                        ),
-                        Image.asset('assets/images/turkman.png'),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text(
-                            'Türkmen',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w400),
+                    child: InkWell(
+                      onTap: () async {
+                        await SettingsSingleton().changeLocale('tk');
+                      },
+                      child: Row(
+                        children: [
+                          Radio(
+                            value: 1,
+                            groupValue: _value,
+                            onChanged: (value) {
+                              setState(() {
+                                _value = value!;
+                              });
+                            },
                           ),
-                        )
-                      ],
+                          Image.asset('assets/images/turkman.png'),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Türkmen',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10, top: 10),
-                    child: Row(
-                      children: [
-                        Radio(
-                          value: 2,
-                          groupValue: _value,
-                          onChanged: (value) {
-                            setState(() {
-                              _value = value!;
-                            });
-                          },
-                        ),
-                        Image.asset('assets/images/russian.png'),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Text(
-                            'Русский',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w400),
+                    child: InkWell(
+                      onTap: () async {
+                        await SettingsSingleton().changeLocale('ru');
+                      },
+                      child: Row(
+                        children: [
+                          Radio(
+                            value: 2,
+                            groupValue: _value,
+                            onChanged: (value) {
+                              setState(() {
+                                _value = value!;
+                              });
+                            },
                           ),
-                        )
-                      ],
+                          Image.asset('assets/images/russian.png'),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Русский',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   InkWell(

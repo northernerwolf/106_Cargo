@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/core/l10n.dart';
 
+import '../../../application/settings_singleton.dart';
 import '../../../design/app_colors.dart';
 
 class LanguageChange extends StatefulWidget {
@@ -72,11 +74,12 @@ class _LanguageChangeState extends State<LanguageChange> {
             ),
             child: Column(
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 30),
                   child: Center(
                     child: Text(
-                      'Dil saýlaň',
+                      // 'Dil saýlaň',
+                      'app_title'.trs,
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -88,75 +91,91 @@ class _LanguageChangeState extends State<LanguageChange> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10, top: 30),
-                  child: Row(
-                    children: [
-                      Radio(
-                        value: 1,
-                        groupValue: _value,
-                        onChanged: (value) {
-                          setState(() {
-                            _value = value!;
-                          });
-                        },
-                      ),
-                      Image.asset('assets/images/turkman.png'),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text(
-                          'Türkmen',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w400),
+                  child: InkWell(
+                    onTap: () async {
+                      setState(() async {
+                        await SettingsSingleton().changeLocale('tk');
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        Radio(
+                          value: 1,
+                          groupValue: _value,
+                          onChanged: (value) {
+                            setState(() {
+                              _value = value!;
+                            });
+                          },
                         ),
-                      )
-                    ],
+                        Image.asset('assets/images/turkman.png'),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Text(
+                            'Türkmen',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 10, top: 10),
-                  child: Row(
-                    children: [
-                      Radio(
-                        value: 2,
-                        groupValue: _value,
-                        onChanged: (value) {
-                          setState(() {
-                            _value = value!;
-                          });
-                        },
-                      ),
-                      Image.asset('assets/images/russian.png'),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text(
-                          'Русский',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w400),
+                  child: InkWell(
+                    onTap: () async {
+                      setState(() async {
+                        await SettingsSingleton().changeLocale('ru');
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        Radio(
+                          value: 2,
+                          groupValue: _value,
+                          onChanged: (value) {
+                            setState(() {
+                              _value = value!;
+                            });
+                          },
                         ),
-                      )
-                    ],
+                        Row(
+                          children: [
+                            Image.asset('assets/images/russian.png'),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                'Русский',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontFamily: 'Roboto',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    //   builder: (_) => WelcomePage(),
-                    // ));
+                  onTap: () async {
+                    Navigator.of(context).pop();
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(
                         top: 40, right: 20, left: 20, bottom: 30),
                     child: Container(
-                      height: 55,
+                      height: 50,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: AppColors.mainColor,
@@ -183,3 +202,82 @@ class _LanguageChangeState extends State<LanguageChange> {
     );
   }
 }
+
+
+//  PopupMenuItem<String>(
+//           value: 'assets/images/turkmenistan.png',
+//           onTap: () async {
+            // await SettingsSingleton().changeLocale('tk');
+            // setState(() {});
+//           },
+//           child: Row(
+//             children: [
+//               Image.asset(
+//                 'assets/images/turkmenistan.png',
+//                 width: 40.0,
+//               ),
+//               const Padding(
+//                 padding: EdgeInsets.only(left: 10),
+//                 child: Text(
+//                   'Türkmen',
+//                   style: TextStyle(
+//                       color: Colors.black,
+//                       fontSize: 14,
+//                       fontFamily: 'Rubik',
+//                       fontStyle: FontStyle.normal,
+//                       fontWeight: FontWeight.w700),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//         PopupMenuItem<String>(
+//           value: 'assets/images/russia.png',
+//           onTap: () async {
+//             await SettingsSingleton().changeLocale('ru');
+//             setState(() {});
+//           },
+//           child: Row(
+//             children: [
+//               Image.asset('assets/images/russia.png', width: 40.0),
+//               const Padding(
+//                 padding: EdgeInsets.only(left: 10),
+//                 child: Text(
+//                   'Руский',
+//                   style: TextStyle(
+//                       color: Colors.black,
+//                       fontSize: 14,
+//                       fontFamily: 'Rubik',
+//                       fontStyle: FontStyle.normal,
+//                       fontWeight: FontWeight.w700),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//         PopupMenuItem<String>(
+//           value: 'assets/images/united-kingdom.png',
+//           onTap: () async {
+//             await SettingsSingleton().changeLocale(
+//               'en',
+//             );
+//             setState(() {});
+//           },
+//           child: Row(
+//             children: [
+//               Image.asset('assets/images/united-kingdom.png', width: 40.0),
+//               const Padding(
+//                 padding: EdgeInsets.only(left: 10),
+//                 child: Text(
+//                   'English',
+//                   style: TextStyle(
+//                       color: Colors.black,
+//                       fontSize: 14,
+//                       fontFamily: 'Rubik',
+//                       fontStyle: FontStyle.normal,
+//                       fontWeight: FontWeight.w700),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),

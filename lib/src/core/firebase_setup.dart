@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/core/send_token.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // try {
@@ -35,7 +36,10 @@ class FirebaseSetup {
         setupInteractedMessage(context);
       }
     }
-    // String? token = await firebaseMessaging.getToken();
+    String? token = await firebaseMessaging.getToken();
+
+    SendFcmTokenRepository().sendToken(token!);
+
     // var state = a.AuthBloc.instance.state;
     // bool date = SingletonSharedPreference.checkTokenTime();
     // if (state is a.VerifiedState && token != null && date) {
@@ -118,29 +122,31 @@ class FirebaseSetup {
         //     InitEvent(),
         //   );
         // }
-        // if (context.mounted) {
-        //   customSnackbar(
-        //     context,
-        //     GestureDetector(
-        //       onTap: () {
-        //         // Navigator.pushNamed(
-        //         //   context,
-        //         //   FirebaseScreen.routeName,
-        //         //   arguments: NotificationModel.fromMap(message.toCustomMap()),
-        //         // );
-        //         Navigator.of(context).pushNamed(NotificationScreen.routeName);
-        //       },
-        //       child: Card(
-        //         color: Colors.grey.shade500,
-        //         child: ListTile(
-        //           title: Text(message.notification?.title ?? ''),
-        //           subtitle: Text(message.notification?.body ?? ''),
-        //         ),
-        //       ),
-        //     ),
-        //     duration: const Duration(seconds: 5),
-        //   );
-        // }
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            duration: const Duration(seconds: 5),
+            content: GestureDetector(
+              onTap: () {
+                // Navigator.pushNamed(
+                //   context,
+                //   FirebaseScreen.routeName,
+                //   arguments: NotificationModel.fromMap(message.toCustomMap()),
+                // );
+                // Navigator.of(context).pushNamed(NotificationScreen.routeName);
+              },
+              child: Card(
+                color: Colors.grey.shade500,
+                child: ListTile(
+                  title: Text(message.notification?.title ?? ''),
+                  subtitle: Text(message.notification?.body ?? ''),
+                ),
+              ),
+            ),
+          )
+
+              // duration: const Duration(seconds: 5),
+              );
+        }
       }
     }).onError((e) {
       // print('MerdanDev error was catched $e');

@@ -278,11 +278,7 @@ class _CartMainState extends State<CartMain> {
                                                       child: CustomIcon(
                                                         title: t == 0
                                                             ? 'assets/icons/home.svg'
-                                                            : t ==
-                                                                    widget
-                                                                        .model
-                                                                        .points!
-                                                                        .last
+                                                            : t == 4
                                                                 ? 'assets/icons/check_circle.svg'
                                                                 : 'assets/icons/truck_delivery.svg',
                                                         height: 10,
@@ -330,8 +326,8 @@ class _CartMainState extends State<CartMain> {
                           const SizedBox(
                             width: 5,
                           ),
-                          const Text(
-                            'Urumçy',
+                          Text(
+                            widget.model.pointTo,
                             style: TextStyle(
                                 color: AppColors.mainColor,
                                 fontSize: 14,

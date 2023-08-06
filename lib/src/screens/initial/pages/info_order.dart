@@ -336,11 +336,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                             child: CustomIcon(
                                                               title: t == 0
                                                                   ? 'assets/icons/home.svg'
-                                                                  : t ==
-                                                                          orderById
-                                                                              .ordersById!
-                                                                              .points
-                                                                              .last
+                                                                  : t == 4
                                                                       ? 'assets/icons/check_circle.svg'
                                                                       : 'assets/icons/truck_delivery.svg',
                                                               height: 10,
@@ -383,8 +379,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                  const Text(
-                                    'Urumçy',
+                                  Text(
+                                    orderById.ordersById!.pointTo,
                                     style: TextStyle(
                                         color: AppColors.mainColor,
                                         fontSize: 14,
