@@ -33,6 +33,7 @@ class _SpalshScreenState extends State<SpalshScreen>
     final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
     String? token = await firebaseMessaging.getToken();
     print(token);
+    print('ebofboqufboqfboqbfqofbu');
 
     SendFcmTokenRepository().sendToken(token!);
   }
@@ -48,11 +49,27 @@ class _SpalshScreenState extends State<SpalshScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   systemOverlayStyle: const SystemUiOverlayStyle(
+      //     statusBarColor: Colors.white,
+      //     statusBarIconBrightness: Brightness.dark,
+      //     statusBarBrightness: Brightness.light,
+      //   ),
+      //   automaticallyImplyLeading: false,
+      // ),
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(100.0),
-        child: Center(
-          child: Image.asset('assets/images/logo.png'),
+      body: Container(
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            image: DecorationImage(
+              image: AssetImage('assets/images/background.png'),
+              fit: BoxFit.cover,
+            )),
+        child: Padding(
+          padding: const EdgeInsets.all(100.0),
+          child: Center(
+            child: Image.asset('assets/images/logo.png'),
+          ),
         ),
       ),
     );

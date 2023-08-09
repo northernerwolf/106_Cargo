@@ -6,6 +6,7 @@ class TripModel {
   final String trackCode;
   final int summarySeats;
   final String ticketCode;
+  // final List<String> images;
   final String location;
   final List<Point>? points;
 
@@ -18,6 +19,7 @@ class TripModel {
     required this.summarySeats,
     required this.ticketCode,
     required this.location,
+    // required this.images,
     this.points,
   });
 
@@ -35,9 +37,10 @@ class TripModel {
       pointTo: json['point_to'] ?? '',
       trackCode: json['track_code'] ?? '',
       summarySeats: json['summary_seats'] ?? 0,
+      // images: List<String>.from(json['images']),
       ticketCode: json['ticket_code'] ?? '',
       location: json['location'] ?? '',
-      points: points != null ? points : [],
+      points: points ?? [],
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kargo_app/src/core/l10n.dart';
@@ -8,7 +7,6 @@ import 'package:kargo_app/src/screens/initial/pages/search_screen.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/firebase_setup.dart';
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
 import 'components/cart_main.dart';
@@ -40,8 +38,8 @@ class _InitialScreenState extends State<InitialScreen> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         backgroundColor: Colors.transparent,
         shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        duration: const Duration(seconds: 5),
-        padding: EdgeInsets.all(10),
+        duration: const Duration(seconds: 3),
+        padding: const EdgeInsets.all(10),
         elevation: 0,
         content: GestureDetector(
             onTap: () {
@@ -86,19 +84,19 @@ class _InitialScreenState extends State<InitialScreen> {
                         children: [
                           Text(
                             event.notification?.title ?? '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
                                 fontFamily: 'Rubik',
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w600),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Text(
                             event.notification?.body ?? '',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 14,
                                 fontFamily: 'Rubik',
@@ -124,6 +122,9 @@ class _InitialScreenState extends State<InitialScreen> {
     });
   }
 
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
+
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<OrdersProvider>(context);
@@ -131,7 +132,7 @@ class _InitialScreenState extends State<InitialScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70),
+        preferredSize: const Size.fromHeight(55),
         child: Container(
           decoration: BoxDecoration(
             boxShadow: [
@@ -151,7 +152,7 @@ class _InitialScreenState extends State<InitialScreen> {
               statusBarBrightness: Brightness.light,
             ),
             backgroundColor: Colors.white,
-            toolbarHeight: 70,
+            toolbarHeight: 50,
             automaticallyImplyLeading: false,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
@@ -159,14 +160,14 @@ class _InitialScreenState extends State<InitialScreen> {
               ),
             ),
             title: Padding(
-              padding: const EdgeInsets.all(0.0),
+              padding: const EdgeInsets.only(top: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 15,
-                      right: 10,
+                      right: 0,
                       bottom: 10,
                     ),
                     child: InkWell(
@@ -175,11 +176,11 @@ class _InitialScreenState extends State<InitialScreen> {
                             builder: (context) => const SearchScreen()));
                       },
                       child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width - 90,
+                        height: 40,
+                        width: MediaQuery.of(context).size.width - 32,
                         decoration: BoxDecoration(
                             color: AppColors.searchColor,
-                            borderRadius: BorderRadius.circular(15)),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Row(
                           children: [
                             Padding(
@@ -195,10 +196,10 @@ class _InitialScreenState extends State<InitialScreen> {
                             //     width: MediaQuery.of(context).size.width - 120,
                             //     child: TextFormField()),
                             Padding(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.only(left: 10),
                               child: Text(
                                 'search'.trs,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: AppColors.profilColor,
                                     fontSize: 14,
                                     fontFamily: 'Rubik',
@@ -211,71 +212,82 @@ class _InitialScreenState extends State<InitialScreen> {
                       ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Notifications()));
-                    },
-                    icon: const Badge(
-                      child: Icon(
-                        CupertinoIcons.bell,
-                        color: Colors.black,
-                        size: 25,
-                      ),
-                    ),
-                  )
+                  // IconButton(
+                  //   onPressed: () {
+                  //     Navigator.of(context).push(MaterialPageRoute(
+                  //         builder: (context) => const Notifications()));
+                  //   },
+                  //   icon: const Badge(
+                  //     child: Icon(
+                  //       CupertinoIcons.bell,
+                  //       color: Colors.black,
+                  //       size: 25,
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ),
           ),
         ),
       ),
-      body: SafeArea(
-          child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 115,
-                  child: Image.asset(
-                    'assets/images/anmation.gif',
-                    fit: BoxFit.fill,
-                  )),
-            ),
-            // const Padding(
-            //   padding: EdgeInsets.only(left: 30, top: 20),
-            //   child: Text(
-            //     'Aktiw sargytlar',
-            //     style: TextStyle(
-            //         color: Colors.black,
-            //         fontSize: 22,
-            //         fontFamily: 'Roboto',
-            //         fontStyle: FontStyle.normal,
-            //         fontWeight: FontWeight.w700),
-            //   ),
-            // ),
+      body: RefreshIndicator(
+        key: _refreshIndicatorKey,
+        color: Colors.amber,
+        backgroundColor: Colors.blue,
+        strokeWidth: 4.0,
+        onRefresh: _refreshLocal,
+        child: SafeArea(
+            child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 0, right: 0),
+                child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 100,
+                    child: Image.asset(
+                      'assets/images/anmation.gif',
+                      fit: BoxFit.fill,
+                    )),
+              ),
+              // const Padding(
+              //   padding: EdgeInsets.only(left: 30, top: 20),
+              //   child: Text(
+              //     'Aktiw sargytlar',
+              //     style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 22,
+              //         fontFamily: 'Roboto',
+              //         fontStyle: FontStyle.normal,
+              //         fontWeight: FontWeight.w700),
+              //   ),
+              // ),
 
-            ListView.builder(
-                padding: const EdgeInsets.all(10),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: order.orders.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: CartMain(
-                        model: order.orders[index],
-                      ));
-                })
-            // : SpinKitFadingFour(
-            //     size: 60,
-            //   ),
-          ],
-        ),
-      )),
+              ListView.builder(
+                  padding: const EdgeInsets.only(top: 0, left: 0, right: 0),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: order.orders.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: CartMain(
+                          model: order.orders[index],
+                        ));
+                  })
+              // : SpinKitFadingFour(
+              //     size: 60,
+              //   ),
+            ],
+          ),
+        )),
+      ),
     );
+  }
+
+  Future<void> _refreshLocal() async {
+    print('refresss');
   }
 }

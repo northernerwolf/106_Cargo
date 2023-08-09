@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
+import '../auth/login/repository_login.dart';
 import 'edit/edit_profil.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -372,8 +373,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SharedPreferences preferences =
                             await SharedPreferences.getInstance();
                         String? val = preferences.getString('token');
+                        preferences.remove('token');
                         print(val);
-                        // LogOutRepository().logOut(context, val!);
+                        LogOutRepository().logOut(context, val!);
                       },
                       child: Container(
                         height: 40,

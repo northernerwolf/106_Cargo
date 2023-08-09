@@ -4,12 +4,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../design/constants.dart';
 import '../model/order_by_id_model.dart';
-import '../model/orders_model.dart';
 
 class GetOrderByIdProvider with ChangeNotifier {
   bool isLoading = false;
   TripDataIdModel? ordersById;
 
+  int loc = 0;
+  @override
+  notifyListeners();
   static Dio dio = Dio();
 
   Future<void> getOrdersById(int id) async {

@@ -27,7 +27,8 @@ class _CartMainState extends State<CartMain> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.borderColor, width: 1),
         boxShadow: [
           BoxShadow(
             color: Colors.blueGrey.withOpacity(0.1),
@@ -37,16 +38,13 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: 250,
+      height: 220,
       child: Padding(
-        padding: const EdgeInsets.only(
-          left: 5,
-          right: 5,
-        ),
+        padding: const EdgeInsets.only(),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 25),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -65,10 +63,10 @@ class _CartMainState extends State<CartMain> {
                         widget.model.ticketCode,
                         style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 14,
                             fontFamily: 'Roboto',
                             fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w400),
                       ),
                     ],
                   ),
@@ -124,62 +122,88 @@ class _CartMainState extends State<CartMain> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+              child: Stack(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        widget.model.date,
-                        style: const TextStyle(
-                            color: AppColors.authTextColor,
-                            fontSize: 14,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400),
+                      Stack(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.model.date,
+                                style: const TextStyle(
+                                    color: AppColors.authTextColor,
+                                    fontSize: 14,
+                                    fontFamily: 'Roboto',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              SizedBox(
+                                width: 150,
+                                child: Text(
+                                  widget.model.pointFrom,
+                                  maxLines: 2,
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 160),
+                                child: Center(
+                                  child: Container(
+                                    height: 35,
+                                    width: 35,
+                                    decoration: const BoxDecoration(
+                                      color: AppColors.searchColor,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: CustomIcon(
+                                          title: 'assets/icons/arrow_right.svg',
+                                          height: 20,
+                                          width: 20,
+                                          color: AppColors.authTextColor),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Text(
-                        widget.model.pointFrom,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 35,
-                    width: 35,
-                    decoration: const BoxDecoration(
-                      color: AppColors.searchColor,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: CustomIcon(
-                          title: 'assets/icons/arrow_right.svg',
-                          height: 20,
-                          width: 20,
-                          color: AppColors.authTextColor),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 22,
-                      ),
-                      Text(
-                        widget.model.pointTo,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600),
+                      Column(
+                        children: [
+                          const SizedBox(
+                            height: 22,
+                          ),
+                          SizedBox(
+                            width: 100,
+                            child: Text(
+                              widget.model.pointTo,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -187,11 +211,11 @@ class _CartMainState extends State<CartMain> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 10, right: 10, top: 10, bottom: 5),
+              padding:
+                  const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
               child: SizedBox(
                   height: 60,
-                  width: MediaQuery.of(context).size.width - 80,
+                  width: MediaQuery.of(context).size.width - 60,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -227,7 +251,7 @@ class _CartMainState extends State<CartMain> {
                                                             bottom: 5),
                                                     child: Container(
                                                       height: 2.5,
-                                                      width: 35,
+                                                      width: 42,
                                                       color: index <= t
                                                           ? AppColors.mainColor
                                                           : Colors.grey,
@@ -238,8 +262,8 @@ class _CartMainState extends State<CartMain> {
                                         ),
                                         index != t
                                             ? Container(
-                                                height: 18,
-                                                width: 18,
+                                                height: 12,
+                                                width: 12,
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: index < t
@@ -251,8 +275,8 @@ class _CartMainState extends State<CartMain> {
                                                 children: [
                                                   Center(
                                                     child: Container(
-                                                      height: 50,
-                                                      width: 50,
+                                                      height: 40,
+                                                      width: 40,
                                                       decoration: BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
@@ -263,8 +287,8 @@ class _CartMainState extends State<CartMain> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: 32,
-                                                    width: 32,
+                                                    height: 28,
+                                                    width: 28,
                                                     decoration:
                                                         const BoxDecoration(
                                                             shape:
@@ -278,7 +302,7 @@ class _CartMainState extends State<CartMain> {
                                                       child: CustomIcon(
                                                         title: t == 0
                                                             ? 'assets/icons/home.svg'
-                                                            : t == 4
+                                                            : t == 5
                                                                 ? 'assets/icons/check_circle.svg'
                                                                 : 'assets/icons/truck_delivery.svg',
                                                         height: 10,
@@ -304,7 +328,7 @@ class _CartMainState extends State<CartMain> {
                   ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -327,8 +351,8 @@ class _CartMainState extends State<CartMain> {
                             width: 5,
                           ),
                           Text(
-                            widget.model.pointTo,
-                            style: TextStyle(
+                            widget.model.location,
+                            style: const TextStyle(
                                 color: AppColors.mainColor,
                                 fontSize: 14,
                                 fontFamily: 'Roboto',

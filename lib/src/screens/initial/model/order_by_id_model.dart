@@ -5,6 +5,7 @@ class TripDataIdModel {
   final String pointTo;
   final String trackCode;
   final int summarySeats;
+  final List<String> images;
   final String ticketCode;
   final String location;
   final List<PointSS> points;
@@ -19,6 +20,7 @@ class TripDataIdModel {
     required this.ticketCode,
     required this.location,
     required this.points,
+    required this.images,
   });
 
   factory TripDataIdModel.fromJson(Map<String, dynamic> json) {
@@ -30,9 +32,10 @@ class TripDataIdModel {
       id: json['id'] ?? 0,
       date: json['date'] ?? '',
       pointFrom: json['point_from'] ?? '',
-      pointTo: json['point_to'] ?? '',
+      pointTo: json['point_to'],
       trackCode: json['track_code'] ?? '',
       summarySeats: json['summary_seats'] ?? 0,
+      images: List<String>.from(json['images']),
       ticketCode: json['ticket_code'] ?? '',
       location: json['location'] ?? '',
       points: points,
