@@ -275,7 +275,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                             0) {
                                           orderById.loc = index;
                                         }
-                                        // setState(() {
+                                        // setState(() { 
                                         //   orderById.loc;
                                         // });
                                         return Row(
