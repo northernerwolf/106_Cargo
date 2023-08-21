@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/core/l10n.dart';
 
 class AboutUs extends StatefulWidget {
   const AboutUs({super.key});
@@ -35,9 +36,9 @@ class _AboutUsState extends State<AboutUs> {
                 bottom: Radius.circular(15),
               ),
             ),
-            title: const Center(
+            title: Center(
               child: Text(
-                'Biz barada',
+                'about'.trs,
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,

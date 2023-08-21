@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/application/settings_singleton.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/auth/providers/me_provider.dart';
 import 'package:kargo_app/src/screens/profile/edit/contaacts.dart';
@@ -57,10 +58,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 bottom: Radius.circular(15),
               ),
             ),
-            title:  Center(
+            title: Center(
               child: Text(
                 'profile'.trs,
-                style:const TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontFamily: 'Roboto',
@@ -217,11 +218,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 24,
                                   width: 24,
                                   color: AppColors.profilColor),
-                               Padding(
+                              Padding(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
                                   'laguage'.trs,
-                                  style:const TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
@@ -266,11 +267,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 24,
                                   width: 24,
                                   color: AppColors.profilColor),
-                               Padding(
+                              Padding(
                                 padding: EdgeInsets.only(left: 10),
                                 child: Text(
                                   'contacty'.trs,
-                                  style:const TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
@@ -351,12 +352,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Padding(
+              Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
                   'log_out_info'.trs,
                   textAlign: TextAlign.center,
-                  style:const TextStyle(
+                  style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontFamily: 'Roboto',
@@ -369,35 +370,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(
-                      onTap: () async {
-                        SharedPreferences preferences =
-                            await SharedPreferences.getInstance();
-                        String? val = preferences.getString('token');
-                        preferences.remove('token');
-                        print(val);
-                        LogOutRepository().logOut(context, val!);
-                      },
-                      child: Container(
-                        height: 40,
-                        width: MediaQuery.of(context).size.width / 3 - 20,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue[100]),
-                        child:  Center(
-                          child: Text(
-                            'yes'.trs,
-                            textAlign: TextAlign.center,
-                            style:const TextStyle(
-                                color: AppColors.mainColor,
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w400),
+                    Consumer<SettingsSingleton>(builder: (_, settings, __) {
+                      return InkWell(
+                        onTap: () async {
+                          SharedPreferences preferences =
+                              await SharedPreferences.getInstance();
+                          String? val = preferences.getString('token');
+                          preferences.remove('token');
+                          print(val);
+                          settings.logout();
+                          LogOutRepository().logOut(context, val!);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: MediaQuery.of(context).size.width / 3 - 20,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.blue[100]),
+                          child: Center(
+                            child: Text(
+                              'yes'.trs,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: AppColors.mainColor,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
@@ -408,11 +412,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: AppColors.mainColor),
-                        child:  Center(
+                        child: Center(
                           child: Text(
                             'no'.trs,
                             textAlign: TextAlign.center,
-                            style:const TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontFamily: 'Roboto',

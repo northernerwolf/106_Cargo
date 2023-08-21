@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:provider/provider.dart';
@@ -42,6 +44,43 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueGrey.withOpacity(0.1),
+                spreadRadius: 3,
+                blurRadius: 8,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            toolbarHeight: 70,
+            elevation: 0,
+            centerTitle: true,
+            iconTheme:
+                const IconThemeData(color: AppColors.profilColor, size: 30),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(15),
+              ),
+            ),
+            title: Text(
+              'login'.trs,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
@@ -296,6 +335,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                 //     builder: (context) => const CreateId()));
                                 // _onLoginButtonPressed();
                               } else {}
+
+                              // if (login.errorMessage != null) {
+                              //   var snackBar = SnackBar(
+                              //       content: Text(
+                              //     login.errorMessage ?? "",
+                              //     style: TextStyle(color: Colors.white),
+                              //   ));
+                              //   ScaffoldMessenger.of(context)
+                              //       .showSnackBar(snackBar);
+
+                              //   print(login.errorMessage);
+                              // }
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(

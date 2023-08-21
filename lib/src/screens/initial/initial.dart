@@ -1,14 +1,19 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kargo_app/src/application/settings_singleton.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/initial/notifications/notifications.dart';
 import 'package:kargo_app/src/screens/initial/pages/search_screen.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
+import '../auth/login/login_screen.dart';
+import '../auth/register/register_screen.dart';
 import 'components/cart_main.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -229,8 +234,7 @@ class _InitialScreenState extends State<InitialScreen> {
         ),
       ),
       body: RefreshIndicator(
-        color: Colors.white,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         strokeWidth: 4.0,
         onRefresh: () async {
           fetchData();
@@ -250,18 +254,97 @@ class _InitialScreenState extends State<InitialScreen> {
                       fit: BoxFit.fill,
                     )),
               ),
-              ListView.builder(
-                  padding: const EdgeInsets.only(top: 0, left: 0, right: 0),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: order.orders.length,
-                  itemBuilder: (BuildContext context, int index) {
+              Consumer<SettingsSingleton>(builder: (_, settings, __) {
+                settings.checkAuthStatus();
+                if (settings.isAuthenticated == true) {
+                  if (order.orders.isNotEmpty) {
+                    return ListView.builder(
+                        padding:
+                            const EdgeInsets.only(top: 0, left: 0, right: 0),
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: order.orders.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: CartMain(
+                                model: order.orders[index],
+                              ));
+                        });
+                  } else {
                     return Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: CartMain(
-                          model: order.orders[index],
-                        ));
-                  })
+                      padding: const EdgeInsets.only(top: 100),
+                      child: Center(
+                          child: Lottie.asset(
+                        'assets/icons/no_data.json',
+                        width: MediaQuery.of(context).size.width - 100,
+                        height: 230,
+                        fit: BoxFit.fill,
+                      )),
+                    );
+                  }
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 200),
+                    child: Center(
+                        child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                              left: 40, right: 40, top: 20, bottom: 20),
+                          child: Text(
+                            'create_account_info'.trs,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: AppColors.profilColor,
+                                fontSize: 14,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const LoginScreen()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'login'.trs,
+                              style: const TextStyle(
+                                  color: AppColors.mainColor,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const RegisterScreen()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 8, bottom: 8, right: 8),
+                            child: Text(
+                              'create_account'.trs,
+                              style: const TextStyle(
+                                  color: AppColors.mainColor,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
+                  );
+                }
+              })
             ],
           ),
         )),

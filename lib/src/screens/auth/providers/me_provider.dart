@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../application/settings_singleton.dart';
 import '../../../design/constants.dart';
 import '../model/me_model.dart';
 
@@ -20,7 +21,14 @@ class GetMeProvider with ChangeNotifier {
 
     try {
       var response = await dio.get("${Constants.baseUrl}/auth/me",
-          options: Options(headers: headers));
+          options: Options(
+            headers: headers
+              ..addAll(
+                {
+                  'Accept-Language': SettingsSingleton().locale.languageCode,
+                },
+              ),
+          ));
       isLoading = true;
       print(response.data);
       if (response.statusCode == 200) {

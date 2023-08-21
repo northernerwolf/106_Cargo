@@ -51,6 +51,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueGrey.withOpacity(0.1),
+                spreadRadius: 3,
+                blurRadius: 8,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            toolbarHeight: 70,
+            elevation: 0,
+            centerTitle: true,
+            iconTheme:
+                const IconThemeData(color: AppColors.profilColor, size: 30),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(15),
+              ),
+            ),
+            title: Text(
+              'create_account'.trs,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
@@ -83,12 +120,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                         Padding(
+                        Padding(
                           padding: EdgeInsets.only(top: 30),
                           child: Center(
                             child: Text(
                               'create_account'.trs,
-                              style:const TextStyle(
+                              style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 25,
                                   fontFamily: 'Roboto',
@@ -237,7 +274,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       enabledBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
                                       disabledBorder: InputBorder.none,
-                                      hintText: 'key_word',
+                                      hintText: 'key_word'.trs,
                                       hintStyle: const TextStyle(
                                           color: AppColors.authTextColor,
                                           fontSize: 18,
@@ -324,7 +361,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     fontSize: 12.0, color: Colors.red[700]))),
                         InkWell(
                           onTap: () {
-                            
                             if (lastNameController.text.isEmpty) {
                               setState(() {
                                 errorText2 = 'last_name_error'.trs;
@@ -374,7 +410,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               decoration: BoxDecoration(
                                   color: AppColors.mainColor,
                                   borderRadius: BorderRadius.circular(20)),
-                              child:  Center(
+                              child: Center(
                                 child: Text(
                                   'log_in'.trs,
                                   style: const TextStyle(

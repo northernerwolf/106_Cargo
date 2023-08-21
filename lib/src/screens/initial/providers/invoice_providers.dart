@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../application/settings_singleton.dart';
 import '../../../design/constants.dart';
 import '../model/invoice_model.dart';
 import '../model/orders_model.dart';
@@ -22,7 +23,14 @@ class InvoiceProvider with ChangeNotifier {
 
     try {
       var response = await dio.get("${Constants.baseUrl}/cargo/invoice/$id",
-          options: Options(headers: headers));
+          options: Options(
+            headers: headers
+              ..addAll(
+                {
+                  'Accept-Language': SettingsSingleton().locale.languageCode,
+                },
+              ),
+          ));
       isLoading = true;
       print(response.data);
       if (response.statusCode == 200) {

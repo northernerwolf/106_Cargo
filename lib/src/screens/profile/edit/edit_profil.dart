@@ -226,107 +226,106 @@ class _EditProfilState extends State<EditProfil> {
                         child: Text(errorText4,
                             style: TextStyle(
                                 fontSize: 12.0, color: Colors.red[700]))),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 22,
-                        right: 10,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'ID',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontFamily: 'Roboto',
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  showDalog();
-                                },
-                                icon: const Icon(
-                                  Icons.info_rounded,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Container(
-                              height: 25,
-                              width: 25,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.mainColor),
-                              child: const Center(
-                                  child: Icon(
-                                Icons.add,
-                                size: 20,
-                                color: Colors.white,
-                              )),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Container(
-                        height: 60,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                          color: AppColors.textFildColor,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Center(
-                            child: TextFormField(
-                              controller: idController,
-                              maxLines: 1,
-                              keyboardType: TextInputType.text,
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  hintText: 'ID',
-                                  suffixIcon: InkWell(
-                                    onTap: () {
-                                      showDalogdDelet();
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: CustomIcon(
-                                          title: 'assets/icons/x.svg',
-                                          height: 0,
-                                          width: 0,
-                                          color: AppColors.authTextColor),
-                                    ),
-                                  ),
-                                  hintStyle: const TextStyle(
-                                      color: AppColors.authTextColor,
-                                      fontSize: 18,
-                                      fontFamily: 'Roboto',
-                                      fontStyle: FontStyle.normal,
-                                      fontWeight: FontWeight.w400)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(
+                    //     left: 22,
+                    //     right: 10,
+                    //   ),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Row(
+                    //         mainAxisAlignment: MainAxisAlignment.start,
+                    //         crossAxisAlignment: CrossAxisAlignment.center,
+                    //         children: [
+                    //           const Text(
+                    //             'ID',
+                    //             style: TextStyle(
+                    //                 color: Colors.black,
+                    //                 fontSize: 16,
+                    //                 fontFamily: 'Roboto',
+                    //                 fontStyle: FontStyle.normal,
+                    //                 fontWeight: FontWeight.w400),
+                    //           ),
+                    //           IconButton(
+                    //             onPressed: () {
+                    //               showDalog();
+                    //             },
+                    //             icon: const Icon(
+                    //               Icons.info_rounded,
+                    //               color: Colors.grey,
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //       IconButton(
+                    //         onPressed: () {},
+                    //         icon: Container(
+                    //           height: 25,
+                    //           width: 25,
+                    //           decoration: const BoxDecoration(
+                    //               shape: BoxShape.circle,
+                    //               color: AppColors.mainColor),
+                    //           child: const Center(
+                    //               child: Icon(
+                    //             Icons.add,
+                    //             size: 20,
+                    //             color: Colors.white,
+                    //           )),
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 15, right: 15),
+                    //   child: Container(
+                    //     height: 60,
+                    //     width: MediaQuery.of(context).size.width,
+                    //     decoration: BoxDecoration(
+                    //       color: AppColors.textFildColor,
+                    //       borderRadius: BorderRadius.circular(15),
+                    //     ),
+                    //     child: Padding(
+                    //       padding: const EdgeInsets.only(left: 20),
+                    //       child: Center(
+                    //         child: TextFormField(
+                    //           controller: idController,
+                    //           maxLines: 1,
+                    //           keyboardType: TextInputType.text,
+                    //           decoration: InputDecoration(
+                    //               border: InputBorder.none,
+                    //               focusedBorder: InputBorder.none,
+                    //               enabledBorder: InputBorder.none,
+                    //               errorBorder: InputBorder.none,
+                    //               disabledBorder: InputBorder.none,
+                    //               hintText: 'ID',
+                    //               suffixIcon: InkWell(
+                    //                 onTap: () {
+                    //                   showDalogdDelet();
+                    //                 },
+                    //                 child: Padding(
+                    //                   padding: const EdgeInsets.all(10.0),
+                    //                   child: CustomIcon(
+                    //                       title: 'assets/icons/x.svg',
+                    //                       height: 0,
+                    //                       width: 0,
+                    //                       color: AppColors.authTextColor),
+                    //                 ),
+                    //               ),
+                    //               hintStyle: const TextStyle(
+                    //                   color: AppColors.authTextColor,
+                    //                   fontSize: 18,
+                    //                   fontFamily: 'Roboto',
+                    //                   fontStyle: FontStyle.normal,
+                    //                   fontWeight: FontWeight.w400)),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     InkWell(
                       onTap: () {
-                        
                         if (lastNameController.text.isEmpty) {
                           setState(() {
                             errorText2 = 'Last name is empty.';

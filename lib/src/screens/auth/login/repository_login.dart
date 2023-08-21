@@ -12,6 +12,14 @@ class LoginRepository with ChangeNotifier {
   String? tokens;
   bool isLoading = true;
   static Dio dio = Dio();
+  String? errorMessage;
+
+  // String get errorMessages => errorMessage;
+
+  // void setErrorMessage(String message) {
+  //   errorMessage = message;
+  //   notifyListeners();
+  // }
 
   Future<void> login(
       BuildContext context, String phone, String password) async {
@@ -45,7 +53,17 @@ class LoginRepository with ChangeNotifier {
       print('fuckkkkk');
       print(e.response!.statusCode);
       if (e.response != null) print("Error= ${e.response!.realUri}");
-      if (e.response != null) print(e.response!.data);
+      if (e.response != null) {
+        var snackBar = SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              e.response!.data['message'],
+              style: TextStyle(color: Colors.white),
+            ));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        notifyListeners();
+      }
+
       notifyListeners();
     }
     return;

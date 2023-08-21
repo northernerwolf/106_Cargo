@@ -13,8 +13,7 @@ class TicketsRepository {
   bool isLoading = false;
   static Dio dio = Dio();
 
-  Future<void> tickedId(
-      BuildContext context, String phone, String password, int id) async {
+  Future<void> tickedId(BuildContext context, int id) async {
     try {
       var response = await dio.post(
         "${Constants.baseUrl}/cargo/add/ticket/$id",
@@ -27,10 +26,7 @@ class TicketsRepository {
       print(response.data);
       if (response.statusCode == 200) {
         isLoading = false;
-        SharedPreferences preferences = await SharedPreferences.getInstance();
 
-        tokens = response.data!['data']['token'];
-        await preferences.setString('token', tokens!);
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => const BottomNavScreen()));
 
@@ -46,4 +42,3 @@ class TicketsRepository {
     return;
   }
 }
-
