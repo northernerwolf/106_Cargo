@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/custom_icon.dart';
+import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
 import '../../auth/components/custom_text_fild.dart';
+import '../../auth/model/me_model.dart';
+import '../../auth/providers/me_provider.dart';
+import '../../initial/repository/change_profil_info_repository.dart';
 
 class EditProfil extends StatefulWidget {
-  const EditProfil({super.key});
+  UserData model;
+  EditProfil({required this.model, super.key});
 
   @override
   State<EditProfil> createState() => _EditProfilState();
 }
 
 class _EditProfilState extends State<EditProfil> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController userNameController = TextEditingController();
-  final TextEditingController phoneNumberntroller = TextEditingController();
+  late final TextEditingController nameController;
+  late final TextEditingController lastNameController;
+  // late final TextEditingController userNameController;
+  late final TextEditingController phoneNumberntroller;
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController idController = TextEditingController();
   final TextEditingController passwordConfirmController =
       TextEditingController();
 
-  // ignore: unused_field
-  final bool _isHidden = true;
-  // ignore: unused_field
-  final bool _isHidden2 = true;
+  bool _isHidden = true;
+  bool _isHidden2 = true;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   void validateAndSave() {
     final FormState? form = _formKey.currentState;
@@ -42,6 +47,10 @@ class _EditProfilState extends State<EditProfil> {
   @override
   void initState() {
     super.initState();
+    nameController = TextEditingController(text: widget.model.firstName);
+    lastNameController = TextEditingController(text: widget.model.lastName);
+    phoneNumberntroller = TextEditingController(text: widget.model.phone);
+
     // fetchData();
   }
 
@@ -52,6 +61,8 @@ class _EditProfilState extends State<EditProfil> {
 
   @override
   Widget build(BuildContext context) {
+    final meInfo = Provider.of<GetMeProvider>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -79,9 +90,9 @@ class _EditProfilState extends State<EditProfil> {
                 bottom: Radius.circular(15),
               ),
             ),
-            title: const Text(
-              'Profil',
-              style: TextStyle(
+            title: Text(
+              'profile'.trs,
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontFamily: 'Roboto',
@@ -145,14 +156,14 @@ class _EditProfilState extends State<EditProfil> {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    Padding(
-                        padding: const EdgeInsets.only(
-                          left: 15,
-                          right: 15,
-                        ),
-                        child: CustomTextFild(
-                            hint: 'Ulanyjy ady',
-                            controller: userNameController)),
+                    // Padding(
+                    //     padding: const EdgeInsets.only(
+                    //       left: 15,
+                    //       right: 15,
+                    //     ),
+                    //     child: CustomTextFild(
+                    //         hint: 'Ulanyjy ady',
+                    //         controller: userNameController)),
                     Padding(
                         padding: const EdgeInsets.only(left: 20.0, top: 5.0),
                         child: Text(errorText3,
@@ -224,6 +235,113 @@ class _EditProfilState extends State<EditProfil> {
                     Padding(
                         padding: const EdgeInsets.only(left: 20.0, top: 5.0),
                         child: Text(errorText4,
+                            style: TextStyle(
+                                fontSize: 12.0, color: Colors.red[700]))),
+
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: AppColors.textFildColor,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Center(
+                            child: TextFormField(
+                              controller: passwordController,
+                              maxLines: 1,
+                              obscureText: _isHidden,
+                              keyboardType: TextInputType.visiblePassword,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  hintText: 'key_word'.trs,
+                                  hintStyle: const TextStyle(
+                                      color: AppColors.authTextColor,
+                                      fontSize: 18,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _isHidden = !_isHidden;
+                                      });
+                                    },
+                                    child: _isHidden
+                                        ? const Icon(Icons.visibility_outlined)
+                                        : const Icon(
+                                            Icons.visibility_off_outlined),
+                                  )),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 20.0, top: 5.0),
+                        child: Text(errorText5,
+                            style: TextStyle(
+                                fontSize: 12.0, color: Colors.red[700]))),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: AppColors.textFildColor,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Center(
+                            child: TextFormField(
+                              controller: passwordConfirmController,
+                              maxLines: 1,
+                              obscureText: _isHidden2,
+                              keyboardType: TextInputType.visiblePassword,
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
+                                  hintText: 'confirm_password'.trs,
+                                  hintStyle: const TextStyle(
+                                      color: AppColors.authTextColor,
+                                      fontSize: 18,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _isHidden2 = !_isHidden2;
+                                      });
+                                    },
+                                    child: _isHidden2
+                                        ? const Icon(Icons.visibility_outlined)
+                                        : const Icon(
+                                            Icons.visibility_off_outlined),
+                                  )),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 20.0, top: 5.0),
+                        child: Text(errorText6,
                             style: TextStyle(
                                 fontSize: 12.0, color: Colors.red[700]))),
                     // Padding(
@@ -331,47 +449,54 @@ class _EditProfilState extends State<EditProfil> {
                             errorText2 = 'Last name is empty.';
                           });
                         }
-                        if (userNameController.text.isEmpty) {
-                          setState(() {
-                            errorText3 = 'User name is empty.';
-                          });
-                        }
+                        // if (userNameController.text.isEmpty) {
+                        //   setState(() {
+                        //     errorText3 = 'User name is empty.';
+                        //   });
+                        // }
                         if (phoneNumberntroller.text.isEmpty) {
                           setState(() {
                             errorText4 = 'Phone number is empty.';
                           });
                         }
-                        if (phoneNumberntroller.text.isEmpty) {
-                          setState(() {
-                            errorText5 = 'Password is empty.';
-                          });
-                        }
-                        if (passwordConfirmController.text.isEmpty) {
-                          setState(() {
-                            errorText6 = 'Password confirmation is empty.';
-                          });
-                        }
+                        // if (phoneNumberntroller.text.isEmpty) {
+                        //   setState(() {
+                        //     errorText5 = 'Password is empty.';
+                        //   });
+                        // }
+                        // if (passwordConfirmController.text.isEmpty) {
+                        //   setState(() {
+                        //     errorText6 = 'Password confirmation is empty.';
+                        //   });
+                        // }
                         if (nameController.text.isEmpty) {
                           errorText = 'Name is empty.';
                         }
-                        if (passwordController.text.isNotEmpty &&
+                        if (nameController.text.isNotEmpty &&
                             phoneNumberntroller.text.isNotEmpty) {
-                          // _onLoginButtonPressed();
+                          ChangePInfoRepositorys().saveInfo(
+                              context,
+                              widget.model.id,
+                              nameController.text,
+                              lastNameController.text,
+                              phoneNumberntroller.text,
+                              passwordController.text,
+                              passwordConfirmController.text);
                         } else {}
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(
                             top: 40, right: 20, left: 20, bottom: 30),
                         child: Container(
-                          height: 55,
+                          height: 50,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               color: AppColors.mainColor,
                               borderRadius: BorderRadius.circular(20)),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              'Ýatda sakla',
-                              style: TextStyle(
+                              'save'.trs,
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontFamily: 'Roboto',

@@ -113,7 +113,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         IconButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const EditProfil()));
+                                builder: (context) => EditProfil(
+                                      model: meInfo.getMe!,
+                                    )));
                           },
                           icon: CustomIcon(
                               title: 'assets/icons/edit.svg',
@@ -301,7 +303,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: const EdgeInsets.only(
                             top: 40, right: 20, left: 20, bottom: 30),
                         child: Container(
-                          height: 55,
+                          height: 50,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               color: AppColors.mainColor,
@@ -315,11 +317,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     height: 24,
                                     width: 24,
                                     color: Colors.white),
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsets.only(left: 10),
                                   child: Text(
-                                    'Ulgamdan çyk',
-                                    style: TextStyle(
+                                    'log_out'.trs,
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
                                         fontFamily: 'Roboto',

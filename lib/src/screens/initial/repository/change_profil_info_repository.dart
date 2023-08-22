@@ -8,25 +8,41 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../bottom_nav/bottom_nav_screen.dart';
 import '../../../design/constants.dart';
 
-class TicketsRepository {
-  String? tokens;
+class ChangePInfoRepositorys {
   bool isLoading = false;
   static Dio dio = Dio();
 
-  Future<void> tickedId(BuildContext context, int id) async {
+  Future<void> saveInfo(
+    BuildContext context,
+    int id,
+    String firstName,
+    String lastName,
+    String phone,
+    String password,
+    String passwordConfirmation,
+  ) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
 
     final headers = {
       'Authorization': 'Bearer $val',
-      'Content-Type': 'application/json',
+      'Accept': 'application/json',
     };
+
     try {
-      var response = await dio.post(
-        "${Constants.baseUrl}/cargo/add/ticket/$id",
-        // data: jsonEncode({"phone": phone, "password": password}),
+      var response = await dio.put(
+        "${Constants.baseUrl}/auth/update",
+        data: jsonEncode({
+          "id": id,
+          "first_name": firstName,
+          "last_name": lastName,
+          "phone": phone,
+          "password": password,
+          "password_confirmation": passwordConfirmation
+        }),
         options: Options(headers: headers),
       );
+
       isLoading = true;
       print(response.data);
       if (response.statusCode == 200) {
@@ -42,7 +58,16 @@ class TicketsRepository {
       print('fuckkkkk');
       print(e.error);
       if (e.response != null) print("Error= ${e.response!.realUri}");
-      if (e.response != null) print(e.response!.data);
+      if (e.response != null) {
+        print(e.response!.data);
+        var snackBar = SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              e.response!.data['message'],
+              style: TextStyle(color: Colors.white),
+            ));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
     }
     return;
   }

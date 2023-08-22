@@ -231,10 +231,10 @@ class _LanguageChangeState extends State<LanguageChange> {
                       decoration: BoxDecoration(
                           color: AppColors.mainColor,
                           borderRadius: BorderRadius.circular(15)),
-                      child: const Center(
+                      child: Center(
                         child: Text(
-                          'Ýatda sakla',
-                          style: TextStyle(
+                          'save'.trs,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontFamily: 'Roboto',

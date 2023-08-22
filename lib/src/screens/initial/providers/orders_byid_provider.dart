@@ -15,7 +15,7 @@ class GetOrderByIdProvider with ChangeNotifier {
   Future<void> getOrdersById(int id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
-    print(val);
+
     final headers = {
       'Authorization': 'Bearer $val',
     };

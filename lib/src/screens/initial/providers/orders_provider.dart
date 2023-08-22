@@ -16,6 +16,7 @@ class OrdersProvider with ChangeNotifier {
   Future<void> getOrders() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
+    print(val);
     orders = [];
     pointsget = [];
     final headers = {

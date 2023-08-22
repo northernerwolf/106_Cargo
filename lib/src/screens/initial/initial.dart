@@ -274,13 +274,23 @@ class _InitialScreenState extends State<InitialScreen> {
                   } else {
                     return Padding(
                       padding: const EdgeInsets.only(top: 100),
-                      child: Center(
-                          child: Lottie.asset(
-                        'assets/icons/no_data.json',
-                        width: MediaQuery.of(context).size.width - 100,
-                        height: 230,
-                        fit: BoxFit.fill,
-                      )),
+                      child: Column(
+                        children: [
+                          Center(
+                              child: Lottie.asset(
+                            'assets/icons/no_data.json',
+                            width: MediaQuery.of(context).size.width - 130,
+                            height: 200,
+                            fit: BoxFit.fill,
+                          )),
+                          TextButton(
+                              onPressed: () async {
+                                fetchData();
+                                setState(() {});
+                              },
+                              child: Text('Maglumady täzele'))
+                        ],
+                      ),
                     );
                   }
                 } else {

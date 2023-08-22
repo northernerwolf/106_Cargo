@@ -40,7 +40,7 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
                 bottom: Radius.circular(15),
               ),
             ),
-            title:  Center(
+            title: Center(
               child: Text(
                 'profile'.trs,
                 style: const TextStyle(
@@ -62,10 +62,10 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
           SizedBox(
             height: MediaQuery.of(context).size.height / 6,
           ),
-           Center(
+          Center(
             child: Text(
               'my_office'.trs,
-              style:const TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontFamily: 'Roboto',
@@ -73,12 +73,12 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
                   fontWeight: FontWeight.w700),
             ),
           ),
-           Padding(
+          Padding(
             padding: EdgeInsets.only(left: 40, right: 40, top: 20),
             child: Text(
               'create_account_info'.trs,
               textAlign: TextAlign.center,
-              style:const TextStyle(
+              style: const TextStyle(
                   color: AppColors.profilColor,
                   fontSize: 16,
                   fontFamily: 'Roboto',
@@ -97,15 +97,15 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
             child: Padding(
               padding: const EdgeInsets.only(top: 40, right: 20, left: 20),
               child: Container(
-                height: 55,
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     color: AppColors.mainColor,
                     borderRadius: BorderRadius.circular(15)),
-                child:  Center(
+                child: Center(
                   child: Text(
                     'login'.trs,
-                    style:const TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontFamily: 'Roboto',
@@ -124,16 +124,16 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
             child: Padding(
               padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
               child: Container(
-                height: 55,
+                height: 50,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     border: Border.all(color: AppColors.borderColor),
                     color: AppColors.authRegisterColor,
                     borderRadius: BorderRadius.circular(15)),
-                child:  Center(
+                child: Center(
                   child: Text(
                     'create_account'.trs,
-                    style:const TextStyle(
+                    style: const TextStyle(
                         color: AppColors.mainColor,
                         fontSize: 16,
                         fontFamily: 'Roboto',
