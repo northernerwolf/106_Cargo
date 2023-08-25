@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,7 +25,6 @@ class InitialScreen extends StatefulWidget {
 class _InitialScreenState extends State<InitialScreen> {
   @override
   void initState() {
-    fetchData();
     showNotfi();
     super.initState();
   }
@@ -114,23 +112,13 @@ class _InitialScreenState extends State<InitialScreen> {
                   ],
                 ),
               ),
-            )
-            //  Card(
-            //   // color: Colors.grey.shade500,
-            //   child: ListTile(
-            //     title: Text(event.notification?.title ?? ''),
-            //     subtitle: Text(event.notification?.body ?? ''),
-            //   ),
-            // ),
-            ),
+            )),
       ));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final order = Provider.of<OrdersProvider>(context);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -193,10 +181,6 @@ class _InitialScreenState extends State<InitialScreen> {
                                   width: 20,
                                   color: AppColors.profilColor),
                             ),
-                            // SizedBox(
-                            //     height: 40,
-                            //     width: MediaQuery.of(context).size.width - 120,
-                            //     child: TextFormField()),
                             Padding(
                               padding: const EdgeInsets.only(left: 10),
                               child: Text(
@@ -214,19 +198,6 @@ class _InitialScreenState extends State<InitialScreen> {
                       ),
                     ),
                   ),
-                  // IconButton(
-                  //   onPressed: () {
-                  //     Navigator.of(context).push(MaterialPageRoute(
-                  //         builder: (context) => const Notifications()));
-                  //   },
-                  //   icon: const Badge(
-                  //     child: Icon(
-                  //       CupertinoIcons.bell,
-                  //       color: Colors.black,
-                  //       size: 25,
-                  //     ),
-                  //   ),
-                  // )
                 ],
               ),
             ),
@@ -257,42 +228,51 @@ class _InitialScreenState extends State<InitialScreen> {
               Consumer<SettingsSingleton>(builder: (_, settings, __) {
                 settings.checkAuthStatus();
                 if (settings.isAuthenticated == true) {
-                  if (order.orders.isNotEmpty) {
-                    return ListView.builder(
-                        padding:
-                            const EdgeInsets.only(top: 0, left: 0, right: 0),
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: order.orders.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: CartMain(
-                                model: order.orders[index],
-                              ));
-                        });
-                  } else {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 100),
-                      child: Column(
-                        children: [
-                          Center(
-                              child: Lottie.asset(
-                            'assets/icons/no_data.json',
-                            width: MediaQuery.of(context).size.width - 130,
-                            height: 200,
-                            fit: BoxFit.fill,
-                          )),
-                          TextButton(
-                              onPressed: () async {
-                                fetchData();
-                                setState(() {});
-                              },
-                              child: Text('Maglumady täzele'))
-                        ],
-                      ),
-                    );
-                  }
+                  return Consumer<OrdersProvider>(builder: (_, order, __) {
+                    if (order.isLoading == true) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 100),
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    } else {
+                      if (order.orders.isNotEmpty) {
+                        return ListView.builder(
+                            padding: const EdgeInsets.only(
+                                top: 0, left: 0, right: 0),
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: order.orders.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: CartMain(
+                                    model: order.orders[index],
+                                  ));
+                            });
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 100),
+                          child: Column(
+                            children: [
+                              Center(
+                                  child: Lottie.asset(
+                                'assets/icons/no_data.json',
+                                width: MediaQuery.of(context).size.width - 130,
+                                height: 200,
+                                fit: BoxFit.fill,
+                              )),
+                              TextButton(
+                                  onPressed: () async {
+                                    fetchData();
+                                    setState(() {});
+                                  },
+                                  child: Text('change_data'.trs))
+                            ],
+                          ),
+                        );
+                      }
+                    }
+                  });
                 } else {
                   return Padding(
                     padding: const EdgeInsets.only(top: 200),

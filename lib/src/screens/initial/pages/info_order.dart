@@ -279,7 +279,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                   height: 22,
                                 ),
                                 SizedBox(
-                                  width: 60,
+                                  width: 80,
                                   child: Builder(builder: (context) {
                                     final pointsTo = orderById.ordersById;
                                     if (pointsTo != null) {

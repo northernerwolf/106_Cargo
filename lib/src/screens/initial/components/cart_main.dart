@@ -199,7 +199,7 @@ class _CartMainState extends State<CartMain> {
                             height: 22,
                           ),
                           SizedBox(
-                            width: 60,
+                            width: 80,
                             child: Text(
                               widget.model.pointTo,
                               overflow: TextOverflow.ellipsis,

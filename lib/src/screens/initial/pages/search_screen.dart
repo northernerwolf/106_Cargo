@@ -51,13 +51,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     int t = 0;
-    // if (searchResult?.points != null) {
-    //   for (var i = 0; i < searchResult.points.length; i++) {
-    //     if (searchResult?.points[i].isCurrent != 0) {
-    //       t = i;
-    //     }
-    //   }
-    // }
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(55),
@@ -92,6 +86,7 @@ class _SearchScreenState extends State<SearchScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 15,
@@ -622,7 +617,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text(
-                    'Sargyda goşmalymy?',
+                    'add_order_permision'.trs,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.black,
@@ -721,7 +716,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text(
-                    'Sargydy sebede goşmak üçin ulgama gir ýa-da akkaunt döred!',
+                    'add_order_alart'.trs,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.red,

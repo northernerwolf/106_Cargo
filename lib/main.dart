@@ -14,6 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'src/screens/auth/login/repository_login.dart';
 import 'src/screens/auth/providers/me_provider.dart';
 import 'src/screens/initial/providers/orders_byid_provider.dart';
+import 'src/screens/initial/repository/search_repository.dart';
 import 'src/screens/language/language.dart';
 import 'src/screens/welcome/splash_screen.dart';
 
@@ -36,6 +37,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => GetOrderByIdProvider()),
       ChangeNotifierProvider(create: (_) => GetMeProvider()),
       ChangeNotifierProvider(create: (_) => InvoiceProvider()),
+      // ChangeNotifierProvider(create: (_) => SearchRepository()),
     ],
     child: const MyApp(),
   ));

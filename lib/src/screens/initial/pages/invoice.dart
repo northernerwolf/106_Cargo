@@ -929,7 +929,7 @@ class _InvoiceState extends State<Invoice> {
                     ),
                   ),
                 )
-              : CircularProgressIndicator()),
+              : Center(child: CircularProgressIndicator())),
     );
   }
 }

@@ -1,14 +1,14 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '16.0'
+platform :ios, '11.0'
 
-target 'testing_gowtham' do
+# target 'testing_gowtham' do
 
-  use_frameworks!
+  # use_frameworks!
   
   
-  pod 'Firebase/Core'
-  pod 'Firebase/Firestore'
-  end
+  # pod 'Firebase/Core'
+  # pod 'Firebase/Firestore'
+  # end
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'

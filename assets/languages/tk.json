@@ -39,5 +39,9 @@
     "yes": "Hawa",
     "no": "Ýok",
     "location": "Türkmenistan, Aşgabat şäheri, \n Berkarar söwda merkezi",
-    "save": "Ýatda sakla"
+    "save": "Ýatda sakla",
+    "add_order_alart": "Sargydy sebede goşmak üçin ulgama gir ýa-da akkaunt döred!",
+    "add_order_permision": "Sargyda goşmalymy?",
+    "add_order": "Sargyda goş",
+    "change_data": "Maglumady täzele"
 }

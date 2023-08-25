@@ -19,7 +19,12 @@ class _SpalshScreenState extends State<SpalshScreen>
   void initState() {
     super.initState();
     FirebaseSetup();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    // SystemChrome.setEnabledSystemUIMode(
+    //   SystemUiMode.immersive,
+    // );
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+    ));
 
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -40,35 +45,32 @@ class _SpalshScreenState extends State<SpalshScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+    ));
+
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+    //     overlays: SystemUiOverlay.values);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   systemOverlayStyle: const SystemUiOverlayStyle(
-      //     statusBarColor: Colors.white,
-      //     statusBarIconBrightness: Brightness.dark,
-      //     statusBarBrightness: Brightness.light,
-      //   ),
-      //   automaticallyImplyLeading: false,
-      // ),
       backgroundColor: Colors.white,
-      body: Container(
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            image: DecorationImage(
-              image: AssetImage('assets/images/background.png'),
-              fit: BoxFit.cover,
-            )),
-        child: Padding(
-          padding: const EdgeInsets.all(100.0),
-          child: Center(
-            child: Image.asset('assets/images/logo.png'),
+      body: Center(
+        child: Container(
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              image: DecorationImage(
+                image: AssetImage('assets/images/background.png'),
+                fit: BoxFit.cover,
+              )),
+          child: Padding(
+            padding: const EdgeInsets.all(100.0),
+            child: Center(
+              child: Image.asset('assets/images/logo.png'),
+            ),
           ),
         ),
       ),

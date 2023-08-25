@@ -8,12 +8,15 @@ import '../model/orders_model.dart';
 
 class OrdersProvider with ChangeNotifier {
   bool isLoading = false;
+  bool waiting = false;
   List<TripModel> orders = [];
   List<TripModel> pointsget = [];
 
   static Dio dio = Dio();
 
   Future<void> getOrders() async {
+    isLoading = true;
+    notifyListeners();
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
     print(val);
@@ -21,8 +24,6 @@ class OrdersProvider with ChangeNotifier {
     pointsget = [];
     final headers = {
       'Authorization': 'Bearer $val',
-
-      //  '': '$',
     };
 
     try {
@@ -37,14 +38,14 @@ class OrdersProvider with ChangeNotifier {
             ),
         ),
       );
-      isLoading = true;
+
       print(response.data);
       if (response.statusCode == 200) {
         if (response.data != null) {
           orders = List<TripModel>.from(response.data['data'].map((e) {
             return TripModel.fromJson(e);
           }));
-
+          isLoading = false;
           for (var item in orders) {
             if (item.points != null) {
               pointsget.add(item);
@@ -60,7 +61,7 @@ class OrdersProvider with ChangeNotifier {
         return;
       }
     } on DioError catch (e) {
-      isLoading = true;
+      isLoading = false;
       print('fuckkkkk');
       print(e.error);
       if (e.response != null) print("Error= ${e.response!.realUri}");

@@ -59,11 +59,11 @@ class AuthScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                 Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Text(
                     'welcome'.trs,
-                    style:const TextStyle(
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 25,
                         fontFamily: 'Roboto',
@@ -71,12 +71,12 @@ class AuthScreen extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                   ),
                 ),
-                 Padding(
+                Padding(
                   padding: EdgeInsets.only(top: 20, left: 20, right: 20),
                   child: Text(
                     'welcome_text'.trs,
                     textAlign: TextAlign.center,
-                    style:const TextStyle(
+                    style: const TextStyle(
                         color: AppColors.authTextColor,
                         fontSize: 18,
                         fontFamily: 'Roboto',
@@ -98,10 +98,10 @@ class AuthScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: AppColors.mainColor,
                           borderRadius: BorderRadius.circular(20)),
-                      child:  Center(
+                      child: Center(
                         child: Text(
                           'log_in'.trs,
-                          style:const TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontFamily: 'Roboto',
@@ -127,10 +127,10 @@ class AuthScreen extends StatelessWidget {
                           border: Border.all(color: AppColors.borderColor),
                           color: AppColors.authRegisterColor,
                           borderRadius: BorderRadius.circular(20)),
-                      child:  Center(
+                      child: Center(
                         child: Text(
                           'create_account'.trs,
-                          style:const TextStyle(
+                          style: const TextStyle(
                               color: AppColors.mainColor,
                               fontSize: 16,
                               fontFamily: 'Roboto',
