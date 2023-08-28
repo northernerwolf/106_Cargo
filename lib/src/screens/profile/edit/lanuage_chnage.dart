@@ -217,6 +217,69 @@ class _LanguageChangeState extends State<LanguageChange> {
                         ),
                       );
                     }),
+                Selector<SettingsSingleton, String>(
+                    selector: (_, settings) => settings.locale.languageCode,
+                    builder: (_, locale, __) {
+                      return InkWell(
+                        onTap: () async {
+                          setState(() {});
+                          await SettingsSingleton().changeLocale('en');
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20, top: 10),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 20,
+                                width: 20,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: locale == 'en'
+                                            ? AppColors.mainColor
+                                            : Colors.grey,
+                                        width: 1.5),
+                                    shape: BoxShape.circle),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: Container(
+                                    height: 10,
+                                    width: 10,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: locale == 'en'
+                                                ? AppColors.mainColor
+                                                : Colors.grey,
+                                            width: 1.5),
+                                        color: locale == 'en'
+                                            ? AppColors.mainColor
+                                            : Colors.white,
+                                        shape: BoxShape.circle),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Image.asset(
+                                    'assets/images/united-kingdom.png'),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Text(
+                                  'English',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 18,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
                 InkWell(
                   onTap: () async {
                     Navigator.of(context).pop();

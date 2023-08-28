@@ -18,12 +18,8 @@ class SettingsSingleton extends ChangeNotifier {
   Future<void> changeLocale(String selectedLanguage) async {
     if (selectedLanguage != locale.languageCode) {
       locale = Locale(selectedLanguage);
-
       await SingletonSharedPreference.setLangCode(selectedLanguage);
       notifyListeners();
-      // Future.delayed(const Duration(milliseconds: 15), () {
-      //   notifyListeners();
-      // });
     }
   }
 
@@ -44,7 +40,6 @@ class SettingsSingleton extends ChangeNotifier {
   }
 
   Future<void> login(String token) async {
-    // token = (await ApiTokenBox.getToken())!;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
     _isAuthenticated = true;

@@ -54,7 +54,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         'app_title'.trs,
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 25,
+                            fontSize: 22,
                             fontFamily: 'Roboto',
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.w700),
@@ -66,11 +66,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       builder: (_, locale, __) {
                         return InkWell(
                           onTap: () async {
-                            setState(() {});
                             await SettingsSingleton().changeLocale('tk');
+                            setState(() {});
                           },
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 40),
+                            padding: const EdgeInsets.only(left: 20, top: 30),
                             child: Row(
                               children: [
                                 Container(
@@ -129,8 +129,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       builder: (_, locale, __) {
                         return InkWell(
                           onTap: () async {
-                            setState(() {});
                             await SettingsSingleton().changeLocale('ru');
+                            setState(() {});
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20, top: 10),
@@ -187,6 +187,77 @@ class _LanguageScreenState extends State<LanguageScreen> {
                           ),
                         );
                       }),
+                  Selector<SettingsSingleton, String>(
+                      selector: (_, settings) => settings.locale.languageCode,
+                      builder: (_, locale, __) {
+                        return Consumer<SettingsSingleton>(
+                            builder: (_, settingss, __) {
+                          return InkWell(
+                            onTap: () async {
+                              await settingss.changeLocale('en');
+
+                              // setState(() {});
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 20, top: 10),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    height: 20,
+                                    width: 20,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: locale == 'en'
+                                                ? AppColors.mainColor
+                                                : Colors.grey,
+                                            width: 1.5),
+                                        shape: BoxShape.circle),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Container(
+                                        height: 10,
+                                        width: 10,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: locale == 'en'
+                                                    ? AppColors.mainColor
+                                                    : Colors.grey,
+                                                width: 1.5),
+                                            color: locale == 'en'
+                                                ? AppColors.mainColor
+                                                : Colors.white,
+                                            shape: BoxShape.circle),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: SizedBox(
+                                      height: 30,
+                                      width: 30,
+                                      child: Image.asset(
+                                          'assets/images/united-kingdom.png'),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      'English',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                          fontFamily: 'Roboto',
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                      }),
                   InkWell(
                     onTap: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -197,15 +268,15 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       padding: const EdgeInsets.only(
                           top: 40, right: 20, left: 20, bottom: 30),
                       child: Container(
-                        height: 55,
+                        height: 45,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             color: AppColors.mainColor,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: const Center(
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Center(
                           child: Text(
-                            'Dowam et',
-                            style: TextStyle(
+                            'next_to'.trs,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontFamily: 'Roboto',

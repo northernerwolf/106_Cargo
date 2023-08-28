@@ -2,10 +2,11 @@
     package="com.example.kargo_app">
 
      <uses-permission android:name="android.permission.INTERNET"/>
+     <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
    <application
-        android:label="106cargo"
+        android:label="106Cargo"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

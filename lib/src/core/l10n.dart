@@ -11,9 +11,8 @@ import 'package:intl/date_symbol_data_custom.dart' as date_symbol_data_custom;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../application/settings_singleton.dart';
-import '../design/constants.dart';
+import 'package:kargo_app/src/application/settings_singleton.dart';
+import 'package:kargo_app/src/design/constants.dart';
 
 const _tkDatePatterns = {
   'd': 'd',
@@ -539,7 +538,7 @@ class TmCupertinoLocalizations extends GlobalCupertinoLocalizations {
 
   @override
   String get datePickerMinuteSemanticsLabelOther => r'$minute minut';
-  
+
   @override
   // TODO: implement noSpellCheckReplacementsLabel
   String get noSpellCheckReplacementsLabel => throw UnimplementedError();
@@ -945,23 +944,23 @@ class TmMaterialLocalizations extends GlobalMaterialLocalizations {
 
   @override
   String get unspecifiedDateRange => 'Sene aralygy';
-  
+
   @override
   // TODO: implement bottomSheetLabel
   String get bottomSheetLabel => throw UnimplementedError();
-  
+
   @override
   // TODO: implement currentDateLabel
   String get currentDateLabel => throw UnimplementedError();
-  
+
   @override
   // TODO: implement keyboardKeyShift
   String get keyboardKeyShift => throw UnimplementedError();
-  
+
   @override
   // TODO: implement scrimLabel
   String get scrimLabel => throw UnimplementedError();
-  
+
   @override
   // TODO: implement scrimOnTapHintRaw
   String get scrimOnTapHintRaw => throw UnimplementedError();

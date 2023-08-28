@@ -26,6 +26,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   void initState() {
     showNotfi();
+    fetchData();
     super.initState();
   }
 

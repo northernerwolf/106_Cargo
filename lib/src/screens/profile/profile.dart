@@ -150,52 +150,78 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'ID: ',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Text(
-                            'D45',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 50),
-                            child: Text(
-                              'ID: ',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontFamily: 'Roboto',
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.w600),
+                        padding: const EdgeInsets.only(top: 15),
+                        child: SizedBox(
+                          height: 60,
+                          child: GridView.builder(
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            padding: const EdgeInsets.only(
+                                left: 0, right: 20, top: 0),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              // crossAxisSpacing: 12,
+
+                              mainAxisExtent: 20,
                             ),
+                            itemCount: meInfo.getMe?.tickets.length,
+                            itemBuilder: (context, index) {
+                              return Row(
+                                children: [
+                                  Text(
+                                    'ID: ',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontFamily: 'Roboto',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Text(
+                                    meInfo.getMe?.tickets[index].code
+                                            .toString() ??
+                                        "",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontFamily: 'Roboto',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              );
+                            },
                           ),
-                          Text(
-                            'D45',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ),
+                        )
+                        //  Row(
+                        //   mainAxisAlignment: MainAxisAlignment.start,
+                        //   children: const [
+
+                        //     Padding(
+                        //       padding: EdgeInsets.only(left: 50),
+                        //       child: Text(
+                        //         'ID: ',
+                        //         style: TextStyle(
+                        //             color: Colors.black,
+                        //             fontSize: 16,
+                        //             fontFamily: 'Roboto',
+                        //             fontStyle: FontStyle.normal,
+                        //             fontWeight: FontWeight.w600),
+                        //       ),
+                        //     ),
+                        //     Text(
+                        //       'D45',
+                        //       style: TextStyle(
+                        //           color: Colors.black,
+                        //           fontSize: 16,
+                        //           fontFamily: 'Roboto',
+                        //           fontStyle: FontStyle.normal,
+                        //           fontWeight: FontWeight.w600),
+                        //     ),
+                        //   ],
+                        // ),
+                        ),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 40, bottom: 15, right: 10),

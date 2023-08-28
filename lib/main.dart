@@ -10,22 +10,23 @@ import 'package:kargo_app/src/screens/initial/providers/invoice_providers.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'src/screens/auth/login/repository_login.dart';
 import 'src/screens/auth/providers/me_provider.dart';
 import 'src/screens/initial/providers/orders_byid_provider.dart';
-import 'src/screens/initial/repository/search_repository.dart';
 import 'src/screens/language/language.dart';
 import 'src/screens/welcome/splash_screen.dart';
 
+int? initScreen;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  var pref = await SharedPreferences.getInstance();
+  initScreen = pref.getInt("initScreen");
+  await pref.setInt("initScreen", 1);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // String? token = await FirebaseMessaging.instance.getToken();
-  // debugPrint(token);
-  var pref = await SharedPreferences.getInstance();
+
   SingletonSharedPreference(pref);
   runApp(MultiProvider(
     providers: [
@@ -46,17 +47,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  Future<bool> _getOnboardingStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('onboarding_completed') ?? false;
-  }
-
-  Future<void> _setOnboardingStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('onboarding_completed', true);
-  }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Consumer<SettingsSingleton>(builder: (_, settings, __) {
@@ -65,21 +55,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/',
+        initialRoute: initScreen == 0 || initScreen == null ? "first" : "/",
         routes: {
-          '/': (context) => FutureBuilder<bool>(
-                future: _getOnboardingStatus(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Container(); // Placeholder widget while checking the status
-                  } else if (!snapshot.data!) {
-                    _setOnboardingStatus();
-                    return const LanguageScreen();
-                  } else {
-                    return const SpalshScreen();
-                  }
-                },
-              ), // Replace with your main content screen widget
+          '/': (context) => const SpalshScreen(),
+          "first": (context) => const LanguageScreen(),
         },
         supportedLocales: AppConstants.supportedLocales,
         locale: settings.locale,
