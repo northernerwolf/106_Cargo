@@ -36,9 +36,9 @@ class Contacts extends StatelessWidget {
                 bottom: Radius.circular(15),
               ),
             ),
-            title:  Text(
+            title: Text(
               'about'.trs,
-              style:const TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontFamily: 'Roboto',
@@ -182,11 +182,11 @@ class Contacts extends StatelessWidget {
                         height: 24,
                         width: 24,
                         color: AppColors.profilColor),
-                     Padding(
-                      padding: EdgeInsets.only(left: 10),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
                       child: Text(
                         'location'.trs,
-                        style:const TextStyle(
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontFamily: 'Roboto',

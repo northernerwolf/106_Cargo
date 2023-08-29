@@ -8,6 +8,7 @@ class CustamRadioListTile<T> extends StatelessWidget {
   final ValueChanged<T?> onChanged;
 
   const CustamRadioListTile({
+    super.key,
     required this.value,
     required this.groupValue,
     required this.onChanged,
@@ -22,11 +23,11 @@ class CustamRadioListTile<T> extends StatelessWidget {
       onTap: () => onChanged(value),
       child: Container(
         height: 56,
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
             _customRadioButton,
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             if (title != null) title,
           ],
         ),
@@ -37,7 +38,7 @@ class CustamRadioListTile<T> extends StatelessWidget {
   Widget get _customRadioButton {
     final isSelected = value == groupValue;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: isSelected ? Colors.blue : null,
         borderRadius: BorderRadius.circular(4),

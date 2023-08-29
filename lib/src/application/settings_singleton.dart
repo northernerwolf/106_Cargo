@@ -30,7 +30,6 @@ class SettingsSingleton extends ChangeNotifier {
   Future<void> checkAuthStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-
     _isAuthenticated = validateToken(token!);
     notifyListeners();
   }

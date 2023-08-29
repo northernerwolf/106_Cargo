@@ -1,7 +1,7 @@
 import 'package:kargo_app/src/core/l10n.dart';
 
 class Items {
-   static  List<Map<String, String>> WelcomeData = [
+  static List<Map<String, String>> WelcomeData = [
     {
       'title': 'online_trecking'.trs,
       'text': 'welcome_text'.trs,

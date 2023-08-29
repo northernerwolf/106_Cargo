@@ -14,8 +14,6 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-  int _value = 1;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,11 +46,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 30),
+                    padding: const EdgeInsets.only(top: 30),
                     child: Center(
                       child: Text(
                         'app_title'.trs,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 22,
                             fontFamily: 'Roboto',

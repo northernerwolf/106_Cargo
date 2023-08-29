@@ -14,13 +14,6 @@ class LoginRepository with ChangeNotifier {
   static Dio dio = Dio();
   String? errorMessage;
 
-  // String get errorMessages => errorMessage;
-
-  // void setErrorMessage(String message) {
-  //   errorMessage = message;
-  //   notifyListeners();
-  // }
-
   Future<void> login(
       BuildContext context, String phone, String password) async {
     try {
@@ -33,7 +26,6 @@ class LoginRepository with ChangeNotifier {
       );
       isLoading = false;
       notifyListeners();
-      print(response.data);
 
       if (response.statusCode == 200) {
         isLoading = true;
@@ -45,20 +37,17 @@ class LoginRepository with ChangeNotifier {
             MaterialPageRoute(builder: (context) => const BottomNavScreen()));
         notifyListeners();
         return;
-      } else {
-        print(response.statusCode);
-      }
+      } else {}
+      // ignore: deprecated_member_use
     } on DioError catch (e) {
       isLoading = true;
-      print('fuckkkkk');
-      print(e.response!.statusCode);
-      if (e.response != null) print("Error= ${e.response!.realUri}");
+
       if (e.response != null) {
         var snackBar = SnackBar(
             backgroundColor: Colors.red,
             content: Text(
               e.response!.data['message'],
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
         notifyListeners();
@@ -85,7 +74,7 @@ class LogOutRepository {
       var response = await dio.post("${Constants.baseUrl}/auth/logout",
           options: Options(headers: headers));
       isLoading = true;
-      print(response.data);
+
       if (response.statusCode == 200) {
         isLoading = false;
         SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -95,11 +84,10 @@ class LogOutRepository {
 
         return;
       }
+      // ignore: deprecated_member_use
     } on DioError catch (e) {
       isLoading = false;
-      print('fuckkkkk');
-      print(e.error);
-      if (e.response != null) print("Error= ${e.response!.realUri}");
+
       if (e.response != null) print(e.response!.data);
     }
     return;

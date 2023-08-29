@@ -27,7 +27,7 @@ class _CreateIdState extends State<CreateId> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,

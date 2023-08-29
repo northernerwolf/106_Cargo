@@ -169,7 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             itemBuilder: (context, index) {
                               return Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     'ID: ',
                                     style: TextStyle(
                                         color: Colors.black,
@@ -182,7 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     meInfo.getMe?.tickets[index].code
                                             .toString() ??
                                         "",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 16,
                                         fontFamily: 'Roboto',
@@ -247,7 +247,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   width: 24,
                                   color: AppColors.profilColor),
                               Padding(
-                                padding: EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: Text(
                                   'laguage'.trs,
                                   style: const TextStyle(
@@ -296,7 +296,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   width: 24,
                                   color: AppColors.profilColor),
                               Padding(
-                                padding: EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: Text(
                                   'contacty'.trs,
                                   style: const TextStyle(
@@ -344,7 +344,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     width: 24,
                                     color: Colors.white),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 10),
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Text(
                                     'log_out'.trs,
                                     style: const TextStyle(
@@ -381,7 +381,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   'log_out_info'.trs,
                   textAlign: TextAlign.center,
@@ -405,7 +405,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               await SharedPreferences.getInstance();
                           String? val = preferences.getString('token');
                           preferences.remove('token');
-                          print(val);
+
                           settings.logout();
                           LogOutRepository().logOut(context, val!);
                         },

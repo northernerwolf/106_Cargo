@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             title: Text(
               'login'.trs,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontFamily: 'Roboto',
@@ -115,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 30),
+                          padding: const EdgeInsets.only(top: 30),
                           child: Center(
                             child: Text(
                               'login'.trs,
@@ -265,7 +263,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.all(10.0),
+                                            padding: const EdgeInsets.all(10.0),
                                             child: Text(
                                               'admestrator_call'.trs,
                                               textAlign: TextAlign.center,
@@ -368,7 +366,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               fontStyle: FontStyle.normal,
                                               fontWeight: FontWeight.w700),
                                         )
-                                      : CircularProgressIndicator(
+                                      : const CircularProgressIndicator(
                                           color: Colors.white,
                                         ),
                                 ),

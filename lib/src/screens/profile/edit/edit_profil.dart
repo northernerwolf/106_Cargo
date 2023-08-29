@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/l10n.dart';
-import 'package:kargo_app/src/design/custom_icon.dart';
-import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
 import '../../auth/components/custom_text_fild.dart';
 import '../../auth/model/me_model.dart';
-import '../../auth/providers/me_provider.dart';
+
 import '../../initial/repository/change_profil_info_repository.dart';
 
 class EditProfil extends StatefulWidget {
@@ -61,8 +59,6 @@ class _EditProfilState extends State<EditProfil> {
 
   @override
   Widget build(BuildContext context) {
-    final meInfo = Provider.of<GetMeProvider>(context);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(

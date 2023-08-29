@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../application/settings_singleton.dart';
 import '../../../design/constants.dart';
 import '../model/invoice_model.dart';
-import '../model/orders_model.dart';
 
 class InvoiceProvider with ChangeNotifier {
   bool isLoading = false;
@@ -32,7 +31,6 @@ class InvoiceProvider with ChangeNotifier {
               ),
           ));
       isLoading = true;
-      print(response.data);
       if (response.statusCode == 200) {
         if (response.data != null) {
           invoice = Shipment.fromJson(response.data['data']);
@@ -45,9 +43,7 @@ class InvoiceProvider with ChangeNotifier {
       }
     } on DioError catch (e) {
       isLoading = true;
-      print('fuckkkkk');
-      print(e.error);
-      if (e.response != null) print("Error= ${e.response!.realUri}");
+
       if (e.response != null) print(e.response!.data);
 
       notifyListeners();

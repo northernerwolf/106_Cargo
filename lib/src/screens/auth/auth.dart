@@ -60,7 +60,7 @@ class AuthScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Text(
                     'welcome'.trs,
                     style: const TextStyle(
@@ -72,7 +72,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
                   child: Text(
                     'welcome_text'.trs,
                     textAlign: TextAlign.center,

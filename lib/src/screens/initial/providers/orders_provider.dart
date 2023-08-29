@@ -19,7 +19,7 @@ class OrdersProvider with ChangeNotifier {
     notifyListeners();
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
-    print(val);
+
     orders = [];
     pointsget = [];
     final headers = {
@@ -62,9 +62,7 @@ class OrdersProvider with ChangeNotifier {
       }
     } on DioError catch (e) {
       isLoading = false;
-      print('fuckkkkk');
-      print(e.error);
-      if (e.response != null) print("Error= ${e.response!.realUri}");
+
       if (e.response != null) print(e.response!.data);
 
       notifyListeners();

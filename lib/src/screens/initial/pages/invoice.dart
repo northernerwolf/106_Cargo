@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:provider/provider.dart';
 import 'package:zoom_widget/zoom_widget.dart';
@@ -104,7 +104,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "Asmanay Cargo 106",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 36,
                                         fontFamily: 'Roboto',
@@ -131,7 +131,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "HYTAÝ ADRES",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -145,7 +145,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "AŞGABAT Tel: +99361000066 Batyr Tel: +99365677767 Döwran Tel: +99362338637 Berdi",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -169,113 +169,121 @@ class _InvoiceState extends State<Invoice> {
                             5: FlexColumnWidth(1.5),
                           },
                           children: [
-                            TableRow(decoration: BoxDecoration(), children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Sene",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final datee = invoice.invoice;
-                                    if (datee != null) {
-                                      return Text(
-                                        datee.date.toString(),
-                                        style: const TextStyle(
+                            TableRow(
+                                decoration: const BoxDecoration(),
+                                children: [
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Sene",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('');
-                                    }
-                                  }),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Kabul ediji",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final nameC = invoice.invoice;
-                                    if (nameC != null) {
-                                      return Text(
-                                        nameC.customersName,
-                                        style: const TextStyle(
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final datee = invoice.invoice;
+                                        if (datee != null) {
+                                          return Text(
+                                            datee.date.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Kabul ediji",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('');
-                                    }
-                                  }),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Jemi kub",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final cubs = invoice.invoice;
-                                    if (cubs != null) {
-                                      return Text(
-                                        cubs.summaryCube,
-                                        style: const TextStyle(
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final nameC = invoice.invoice;
+                                        if (nameC != null) {
+                                          return Text(
+                                            nameC.customersName,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Jemi kub",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('Null');
-                                    }
-                                  }),
-                                ),
-                              ),
-                            ]),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final cubs = invoice.invoice;
+                                        if (cubs != null) {
+                                          return Text(
+                                            cubs.summaryCube,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('Null');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                ]),
                           ],
                         ),
                         Table(
@@ -290,113 +298,121 @@ class _InvoiceState extends State<Invoice> {
                             5: FlexColumnWidth(1.5),
                           },
                           children: [
-                            TableRow(decoration: BoxDecoration(), children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Getirijiniň telefon belgisi",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final phone = invoice.invoice;
-                                    if (phone != null) {
-                                      return Text(
-                                        phone.providerPhone,
-                                        style: const TextStyle(
+                            TableRow(
+                                decoration: const BoxDecoration(),
+                                children: [
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Getirijiniň telefon belgisi",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('Null');
-                                    }
-                                  }),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Kabul edijiniň telefon belgisi",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final phoneC = invoice.invoice;
-                                    if (phoneC != null) {
-                                      return Text(
-                                        phoneC.customersPhone,
-                                        style: const TextStyle(
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final phone = invoice.invoice;
+                                        if (phone != null) {
+                                          return Text(
+                                            phone.providerPhone,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('Null');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Kabul edijiniň telefon belgisi",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('');
-                                    }
-                                  }),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Jemi kg",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final kg = invoice.invoice;
-                                    if (kg != null) {
-                                      return Text(
-                                        kg.summaryKg,
-                                        style: const TextStyle(
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final phoneC = invoice.invoice;
+                                        if (phoneC != null) {
+                                          return Text(
+                                            phoneC.customersPhone,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Jemi kg",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('');
-                                    }
-                                  }),
-                                ),
-                              ),
-                            ]),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final kg = invoice.invoice;
+                                        if (kg != null) {
+                                          return Text(
+                                            kg.summaryKg,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                ]),
                           ],
                         ),
                         Table(
@@ -411,113 +427,121 @@ class _InvoiceState extends State<Invoice> {
                             5: FlexColumnWidth(1.5),
                           },
                           children: [
-                            TableRow(decoration: BoxDecoration(), children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Ugran ýeri",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final pointF = invoice.invoice;
-                                    if (pointF != null) {
-                                      return Text(
-                                        pointF.pointFrom,
-                                        style: const TextStyle(
+                            TableRow(
+                                decoration: const BoxDecoration(),
+                                children: [
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Ugran ýeri",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('');
-                                    }
-                                  }),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Gelmeli ýeri",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final pointT = invoice.invoice;
-                                    if (pointT != null) {
-                                      return Text(
-                                        pointT.pointTo,
-                                        style: const TextStyle(
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final pointF = invoice.invoice;
+                                        if (pointF != null) {
+                                          return Text(
+                                            pointF.pointFrom,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Gelmeli ýeri",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('');
-                                    }
-                                  }),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Text(
-                                    "Jemi baha",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 24,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final costS = invoice.invoice;
-                                    if (costS != null) {
-                                      return Text(
-                                        costS.summaryPrice.toString(),
-                                        style: const TextStyle(
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final pointT = invoice.invoice;
+                                        if (pointT != null) {
+                                          return Text(
+                                            pointT.pointTo,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Text(
+                                        "Jemi baha",
+                                        style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w700),
-                                      );
-                                    } else {
-                                      return Text('');
-                                    }
-                                  }),
-                                ),
-                              ),
-                            ]),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final costS = invoice.invoice;
+                                        if (costS != null) {
+                                          return Text(
+                                            costS.summaryPrice.toString(),
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          );
+                                        } else {
+                                          return const Text('');
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                ]),
                           ],
                         ),
                         Table(
@@ -539,7 +563,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "Gap görnüşi",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -553,7 +577,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "Ölçegi",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -567,7 +591,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "Ýer sany",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -581,7 +605,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "Kub",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -595,7 +619,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "KG",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -609,7 +633,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "Harydyň ady",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -623,7 +647,7 @@ class _InvoiceState extends State<Invoice> {
                                 child: Center(
                                   child: Text(
                                     "Bahasy",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 24,
                                         fontFamily: 'Roboto',
@@ -656,10 +680,10 @@ class _InvoiceState extends State<Invoice> {
                                 },
                                 children: [
                                   TableRow(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Builder(builder: (context) {
@@ -678,13 +702,13 @@ class _InvoiceState extends State<Invoice> {
                                                           FontWeight.w700),
                                                 );
                                               } else {
-                                                return Text('');
+                                                return const Text('');
                                               }
                                             }),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Builder(builder: (context) {
@@ -704,13 +728,13 @@ class _InvoiceState extends State<Invoice> {
                                                           FontWeight.w700),
                                                 );
                                               } else {
-                                                return Text('');
+                                                return const Text('');
                                               }
                                             }),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Builder(builder: (context) {
@@ -730,13 +754,13 @@ class _InvoiceState extends State<Invoice> {
                                                           FontWeight.w700),
                                                 );
                                               } else {
-                                                return Text('');
+                                                return const Text('');
                                               }
                                             }),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Builder(builder: (context) {
@@ -756,13 +780,13 @@ class _InvoiceState extends State<Invoice> {
                                                           FontWeight.w700),
                                                 );
                                               } else {
-                                                return Text('');
+                                                return const Text('');
                                               }
                                             }),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Builder(builder: (context) {
@@ -782,13 +806,13 @@ class _InvoiceState extends State<Invoice> {
                                                           FontWeight.w700),
                                                 );
                                               } else {
-                                                return Text('');
+                                                return const Text('');
                                               }
                                             }),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Text(
@@ -805,7 +829,7 @@ class _InvoiceState extends State<Invoice> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Text(
@@ -822,7 +846,7 @@ class _InvoiceState extends State<Invoice> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Text(
@@ -839,7 +863,7 @@ class _InvoiceState extends State<Invoice> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Text(
@@ -870,10 +894,10 @@ class _InvoiceState extends State<Invoice> {
                                 },
                                 children: [
                                   TableRow(
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Text(
@@ -889,13 +913,13 @@ class _InvoiceState extends State<Invoice> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
+                                        const Padding(
                                           padding: EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Text(
                                               "",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 24,
                                                   fontFamily: 'Roboto',
@@ -905,7 +929,7 @@ class _InvoiceState extends State<Invoice> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 20, bottom: 20),
                                           child: Center(
                                             child: Text(
@@ -929,7 +953,7 @@ class _InvoiceState extends State<Invoice> {
                     ),
                   ),
                 )
-              : Center(child: CircularProgressIndicator())),
+              : const Center(child: CircularProgressIndicator())),
     );
   }
 }

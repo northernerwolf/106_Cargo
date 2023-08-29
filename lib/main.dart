@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kargo_app/firebase_options.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
+import 'package:kargo_app/src/core/firebase_setup.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/constants.dart';
 import 'package:kargo_app/src/screens/initial/providers/invoice_providers.dart';
@@ -22,6 +23,7 @@ void main() async {
 
   var pref = await SharedPreferences.getInstance();
   initScreen = pref.getInt("initScreen");
+
   await pref.setInt("initScreen", 1);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -53,8 +55,8 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            // primarySwatch: Colors.blue,
+            ),
         initialRoute: initScreen == 0 || initScreen == null ? "first" : "/",
         routes: {
           '/': (context) => const SpalshScreen(),

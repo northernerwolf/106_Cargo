@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/initial/model/search_model.dart';
 import 'package:photo_view/photo_view_gallery.dart';
-import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
-import '../providers/orders_byid_provider.dart';
-import 'invoice.dart';
-import 'order_image_view.dart';
 
 import 'package:photo_view/photo_view.dart';
 
@@ -130,7 +126,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                         fontWeight: FontWeight.w400),
                                   );
                                 } else {
-                                  return Text("Null");
+                                  return const Text("Null");
                                 }
                               }),
                             ],
@@ -165,7 +161,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                   );
                                 }
                                 {
-                                  return Text('NULL');
+                                  return const Text('NULL');
                                 }
                               }),
                             ],
@@ -215,7 +211,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                             fontWeight: FontWeight.w400),
                                       );
                                     } else {
-                                      return Text('Null');
+                                      return const Text('Null');
                                     }
                                   }),
                                   Builder(builder: (context) {
@@ -231,7 +227,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                             fontWeight: FontWeight.w600),
                                       );
                                     } else {
-                                      return Text('Null');
+                                      return const Text('Null');
                                     }
                                   }),
                                 ],
@@ -278,7 +274,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                           fontWeight: FontWeight.w600),
                                     );
                                   } else {
-                                    return Text('Null');
+                                    return const Text('Null');
                                   }
                                 }),
                               ),
@@ -405,7 +401,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                                 ]);
                                           });
                                     } else {
-                                      return CircularProgressIndicator();
+                                      return const CircularProgressIndicator();
                                     }
                                   }),
                                 ),
@@ -450,7 +446,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                             fontWeight: FontWeight.w600),
                                       );
                                     } else {
-                                      return Text('Null');
+                                      return const Text('Null');
                                     }
                                   }),
                                 ],
@@ -525,7 +521,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                             );
                                           } else {
                                             return PhotoViewGalleryPageOptions(
-                                              imageProvider: NetworkImage(''),
+                                              imageProvider:
+                                                  const NetworkImage(''),
                                               minScale: PhotoViewComputedScale
                                                       .contained *
                                                   0.8,
@@ -581,7 +578,7 @@ class _SearchInfoState extends State<SearchInfo> {
                         },
                       );
                     } else {
-                      return Text('Null');
+                      return const Text('Null');
                     }
                   }),
                 ),
@@ -609,7 +606,8 @@ class _SearchInfoState extends State<SearchInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 15, top: 10, bottom: 0),
+                      padding:
+                          const EdgeInsets.only(left: 15, top: 10, bottom: 0),
                       child: Text(
                         'track_order'.trs,
                         style: const TextStyle(
@@ -766,7 +764,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                   );
                                 });
                           } else {
-                            return Center(child: CircularProgressIndicator());
+                            return const Center(
+                                child: CircularProgressIndicator());
                           }
                         }),
                       ),

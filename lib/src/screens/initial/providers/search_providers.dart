@@ -34,7 +34,7 @@ class SearchProvider with ChangeNotifier {
                   ),
               ));
       isLoading = true;
-      print(response.data);
+
       if (response.statusCode == 200) {
         if (response.data != null) {
           orders = List<TripModel>.from(response.data['data'].map((e) {
@@ -52,9 +52,7 @@ class SearchProvider with ChangeNotifier {
       }
     } on DioError catch (e) {
       isLoading = true;
-      print('fuckkkkk');
-      print(e.error);
-      if (e.response != null) print("Error= ${e.response!.realUri}");
+
       if (e.response != null) print(e.response!.data);
 
       notifyListeners();

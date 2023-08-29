@@ -78,7 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             title: Text(
               'create_account'.trs,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontFamily: 'Roboto',
@@ -121,7 +121,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 30),
+                          padding: const EdgeInsets.only(top: 30),
                           child: Center(
                             child: Text(
                               'create_account'.trs,

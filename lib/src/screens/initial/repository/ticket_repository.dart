@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +26,7 @@ class TicketsRepository {
         options: Options(headers: headers),
       );
       isLoading = true;
-      print(response.data);
+
       if (response.statusCode == 200) {
         isLoading = false;
 
@@ -39,9 +37,7 @@ class TicketsRepository {
       }
     } on DioError catch (e) {
       isLoading = false;
-      print('fuckkkkk');
-      print(e.error);
-      if (e.response != null) print("Error= ${e.response!.realUri}");
+
       if (e.response != null) print(e.response!.data);
     }
     return;

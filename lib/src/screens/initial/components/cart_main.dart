@@ -386,7 +386,7 @@ class _CartMainState extends State<CartMain> {
                           color: AppColors.mainColor,
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             left: 10, right: 10, bottom: 10, top: 10),
                         child: Text(
                           'more_info'.trs,

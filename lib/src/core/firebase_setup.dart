@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/send_token.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print(message.toString());
   // try {
   // if (message.notification != null) {
   //   if (Platform.isAndroid) {
@@ -149,7 +150,7 @@ class FirebaseSetup {
         }
       }
     }).onError((e) {
-      // print('MerdanDev error was catched $e');
+      print('MerdanDev error was catched $e');
     });
   }
 

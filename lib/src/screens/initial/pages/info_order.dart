@@ -7,7 +7,6 @@ import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
 import '../providers/orders_byid_provider.dart';
 import 'invoice.dart';
-import 'order_image_view.dart';
 
 import 'package:photo_view/photo_view.dart';
 
@@ -146,7 +145,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                           fontWeight: FontWeight.w400),
                                     );
                                   } else {
-                                    return Text("Null");
+                                    return const Text("Null");
                                   }
                                 }),
                               ],
@@ -181,7 +180,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                     );
                                   }
                                   {
-                                    return Text('NULL');
+                                    return const Text('NULL');
                                   }
                                 }),
                               ],
@@ -231,7 +230,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                               fontWeight: FontWeight.w400),
                                         );
                                       } else {
-                                        return Text('Null');
+                                        return const Text('Null');
                                       }
                                     }),
                                     Builder(builder: (context) {
@@ -247,7 +246,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                               fontWeight: FontWeight.w600),
                                         );
                                       } else {
-                                        return Text('Null');
+                                        return const Text('Null');
                                       }
                                     }),
                                   ],
@@ -294,7 +293,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                             fontWeight: FontWeight.w600),
                                       );
                                     } else {
-                                      return Text('Null');
+                                      return const Text('Null');
                                     }
                                   }),
                                 ),
@@ -428,7 +427,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                   ]);
                                             });
                                       } else {
-                                        return CircularProgressIndicator();
+                                        return const CircularProgressIndicator();
                                       }
                                     }),
                                   ),
@@ -473,7 +472,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                               fontWeight: FontWeight.w600),
                                         );
                                       } else {
-                                        return Text('Null');
+                                        return const Text('Null');
                                       }
                                     }),
                                   ],
@@ -592,7 +591,7 @@ class _InfoOrederState extends State<InfoOreder> {
                           },
                         );
                       } else {
-                        return Text('Null');
+                        return const Text('Null');
                       }
                     }),
                   ),
@@ -620,7 +619,8 @@ class _InfoOrederState extends State<InfoOreder> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 15, top: 10, bottom: 0),
+                        padding:
+                            const EdgeInsets.only(left: 15, top: 10, bottom: 0),
                         child: Text(
                           'track_order'.trs,
                           style: const TextStyle(
@@ -781,7 +781,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                     );
                                   });
                             } else {
-                              return Center(child: CircularProgressIndicator());
+                              return const Center(
+                                  child: CircularProgressIndicator());
                             }
                           }),
                         ),

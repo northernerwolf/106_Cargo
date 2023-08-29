@@ -42,14 +42,11 @@ class _SearchScreenState extends State<SearchScreen> {
       setState(() {
         isLoading = false;
         searchResult = results;
-        print(searchResult);
       });
     } catch (error) {
       setState(() {
         isLoading = false;
       });
-
-      print('Error: $error');
     }
   }
 
@@ -126,7 +123,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   maxLines: 1,
                                   decoration: InputDecoration(
                                     hintText: 'search'.trs,
-                                    hintStyle: TextStyle(fontSize: 15),
+                                    hintStyle: const TextStyle(fontSize: 15),
                                     border: InputBorder.none,
                                     focusedBorder: InputBorder.none,
                                     enabledBorder: InputBorder.none,
@@ -150,7 +147,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ? Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
                 child: isLoading == true
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -564,7 +561,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         child: Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               left: 10,
                                               right: 10,
                                               bottom: 10,
@@ -596,7 +593,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         child: Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               left: 10,
                                               right: 10,
                                               bottom: 10,
@@ -645,7 +642,7 @@ class _SearchScreenState extends State<SearchScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(
                     'add_order_permision'.trs,
                     textAlign: TextAlign.center,
@@ -736,7 +733,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Center(
+                const Center(
                   child: Icon(
                     Icons.info_sharp,
                     size: 30,
@@ -744,7 +741,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Text(
                     'add_order_alart'.trs,
                     textAlign: TextAlign.center,

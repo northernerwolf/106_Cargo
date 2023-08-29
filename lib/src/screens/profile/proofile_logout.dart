@@ -74,7 +74,7 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 40, right: 40, top: 20),
+            padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
             child: Text(
               'create_account_info'.trs,
               textAlign: TextAlign.center,

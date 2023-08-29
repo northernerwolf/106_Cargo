@@ -39,7 +39,7 @@ class _AboutUsState extends State<AboutUs> {
             title: Center(
               child: Text(
                 'about'.trs,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontFamily: 'Roboto',

@@ -37,7 +37,7 @@ class RegisterRepository {
       );
 
       isLoading = true;
-      print(response.data);
+
       if (response.statusCode == 200) {
         isLoading = false;
         SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -51,18 +51,15 @@ class RegisterRepository {
       }
     } on DioError catch (e) {
       isLoading = false;
-      print('fuckkkkk');
-      print(e.error);
-      if (e.response != null) print("Error= ${e.response!.realUri}");
+
       if (e.response != null) {
         var snackBar = SnackBar(
             backgroundColor: Colors.red,
             content: Text(
               e.response!.data['message'],
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        print(e.response!.data);
       }
     }
     return;
