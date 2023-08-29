@@ -7,6 +7,7 @@ import 'package:kargo_app/src/application/settings_singleton.dart';
 import 'package:kargo_app/src/core/firebase_setup.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/constants.dart';
+import 'package:kargo_app/src/screens/auth/register/repository_register.dart';
 import 'package:kargo_app/src/screens/initial/providers/invoice_providers.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => GetOrderByIdProvider()),
       ChangeNotifierProvider(create: (_) => GetMeProvider()),
       ChangeNotifierProvider(create: (_) => InvoiceProvider()),
-      // ChangeNotifierProvider(create: (_) => SearchRepository()),
+      ChangeNotifierProvider(create: (_) => RegisterRepository()),
     ],
     child: const MyApp(),
   ));

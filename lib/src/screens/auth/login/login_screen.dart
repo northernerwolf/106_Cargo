@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   bool _isHidden = true;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   void validateAndSave() {
     final FormState? form = _formKey.currentState;
@@ -310,70 +311,58 @@ class _LoginScreenState extends State<LoginScreen> {
                                     fontWeight: FontWeight.w500),
                               )),
                         ),
-                        Consumer<LoginRepository>(builder: (_, login, __) {
-                          return InkWell(
-                            onTap: () {
-                              if (passwordController.text.isEmpty) {
-                                setState(() {
-                                  errorText = 'phone_error'.trs;
-                                });
-                              }
-                              if (phoneController.text.isEmpty) {
-                                setState(() {
-                                  errorText2 = 'password_error'.trs;
-                                });
-                              }
-                              if (passwordController.text.isNotEmpty &&
-                                  phoneController.text.isNotEmpty) {
-                                LoginRepository().login(
-                                    context,
-                                    phoneController.text,
-                                    passwordController.text);
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => const CreateId()));
-                                // _onLoginButtonPressed();
-                              } else {}
-
-                              // if (login.errorMessage != null) {
-                              //   var snackBar = SnackBar(
-                              //       content: Text(
-                              //     login.errorMessage ?? "",
-                              //     style: TextStyle(color: Colors.white),
-                              //   ));
-                              //   ScaffoldMessenger.of(context)
-                              //       .showSnackBar(snackBar);
-
-                              //   print(login.errorMessage);
-                              // }
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 40, right: 20, left: 20, bottom: 30),
-                              child: Container(
-                                height: 65,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: AppColors.mainColor,
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Center(
-                                  child: login.isLoading
-                                      ? Text(
-                                          'log_in'.trs,
-                                          style: const TextStyle(
+                        Selector<LoginRepository, bool>(
+                            selector: (context, login) => login.isLoading,
+                            builder: (_, isLoading, __) {
+                              return InkWell(
+                                onTap: () {
+                                  if (passwordController.text.isEmpty) {
+                                    setState(() {
+                                      errorText = 'phone_error'.trs;
+                                    });
+                                  }
+                                  if (phoneController.text.isEmpty) {
+                                    setState(() {
+                                      errorText2 = 'password_error'.trs;
+                                    });
+                                  }
+                                  if (passwordController.text.isNotEmpty &&
+                                      phoneController.text.isNotEmpty) {
+                                    context.read<LoginRepository>().login(
+                                        context,
+                                        phoneController.text,
+                                        passwordController.text);
+                                  } else {}
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 20, left: 20, bottom: 30),
+                                  child: Container(
+                                    height: 55,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.mainColor,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Center(
+                                      child: isLoading == false
+                                          ? Text(
+                                              'log_in'.trs,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                  fontFamily: 'Roboto',
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w700),
+                                            )
+                                          : const CircularProgressIndicator(
                                               color: Colors.white,
-                                              fontSize: 16,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w700),
-                                        )
-                                      : const CircularProgressIndicator(
-                                          color: Colors.white,
-                                        ),
+                                            ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          );
-                        }),
+                              );
+                            }),
                       ],
                     ),
                   ),

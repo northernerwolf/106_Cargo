@@ -1,9 +1,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/send_token.dart';
+import 'package:kargo_app/src/design/app_colors.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print(message.toString());
   // try {
   // if (message.notification != null) {
   //   if (Platform.isAndroid) {
@@ -123,30 +123,94 @@ class FirebaseSetup {
         //     InitEvent(),
         //   );
         // }
+        print(context.mounted);
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            duration: const Duration(seconds: 5),
-            content: GestureDetector(
-              onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   FirebaseScreen.routeName,
-                //   arguments: NotificationModel.fromMap(message.toCustomMap()),
-                // );
-                // Navigator.of(context).pushNamed(NotificationScreen.routeName);
-              },
-              child: Card(
-                color: Colors.grey.shade500,
-                child: ListTile(
-                  title: Text(message.notification?.title ?? ''),
-                  subtitle: Text(message.notification?.body ?? ''),
-                ),
-              ),
+            backgroundColor: Colors.transparent,
+            shape:
+                BeveledRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            duration: const Duration(seconds: 3),
+            padding: const EdgeInsets.all(10),
+            elevation: 0,
+            content: Align(
+              alignment: Alignment.topCenter,
+              child: GestureDetector(
+                  onTap: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const Notifications()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      border:
+                          Border.all(color: AppColors.borderColor, width: 1),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.blueGrey.withOpacity(0.1),
+                          spreadRadius: 3,
+                          blurRadius: 8,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                              height: 60,
+                              width: 60,
+                              child: Image.asset('assets/images/logo.png')),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 5),
+                            child: Container(
+                              color: AppColors.borderColor,
+                              height: 60,
+                              width: 1,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  message.notification?.title ?? '',
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontFamily: 'Rubik',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width - 150,
+                                  child: Text(
+                                    message.notification?.body ?? '',
+                                    maxLines: 4,
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontFamily: 'Rubik',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )),
             ),
-          )
-
-              // duration: const Duration(seconds: 5),
-              );
+          ));
         }
       }
     }).onError((e) {

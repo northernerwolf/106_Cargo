@@ -24,6 +24,7 @@ class _CartMainState extends State<CartMain> {
     // ignore: unused_local_variable
     final pointss = Provider.of<OrdersProvider>(context);
     int t = 0;
+    int l = widget.model.points!.length;
     if (widget.model.points != null) {
       for (var i = 0; i < widget.model.points!.length; i++) {
         if (widget.model.points?[i].isCurrent != 0) {
@@ -235,10 +236,6 @@ class _CartMainState extends State<CartMain> {
                               scrollDirection: Axis.horizontal,
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (con, index) {
-                                // if () {
-                                // t = index;
-                                // }
-
                                 if (widget.model.points != null) {
                                   return Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -310,10 +307,7 @@ class _CartMainState extends State<CartMain> {
                                                       child: CustomIcon(
                                                         title: t == 0
                                                             ? 'assets/icons/home.svg'
-                                                            : t ==
-                                                                    pointss
-                                                                        .orders
-                                                                        .length
+                                                            : t == l - 1
                                                                 ? 'assets/icons/check_circle.svg'
                                                                 : 'assets/icons/truck_delivery.svg',
                                                         height: 10,

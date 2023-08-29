@@ -153,46 +153,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: const EdgeInsets.only(top: 15),
                         child: SizedBox(
                           height: 60,
-                          child: GridView.builder(
-                            shrinkWrap: true,
-                            physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.only(
-                                left: 0, right: 20, top: 0),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              // crossAxisSpacing: 12,
+                          child: meInfo.getMe?.tickets.length != []
+                              ? GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: const BouncingScrollPhysics(),
+                                  padding: const EdgeInsets.only(
+                                      left: 0, right: 20, top: 0),
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    // crossAxisSpacing: 12,
 
-                              mainAxisExtent: 20,
-                            ),
-                            itemCount: meInfo.getMe?.tickets.length,
-                            itemBuilder: (context, index) {
-                              return Row(
-                                children: [
-                                  const Text(
-                                    'ID: ',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600),
+                                    mainAxisExtent: 20,
                                   ),
-                                  Text(
-                                    meInfo.getMe?.tickets[index].code
-                                            .toString() ??
-                                        "",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
+                                  itemCount: meInfo.getMe?.tickets.length ?? 0,
+                                  itemBuilder: (context, index) {
+                                    return Row(
+                                      children: [
+                                        const Text(
+                                          'ID: ',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'Roboto',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        Text(
+                                          meInfo.getMe?.tickets[index].code
+                                                  .toString() ??
+                                              "",
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'Roboto',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                )
+                              : Container(),
                         )
                         //  Row(
                         //   mainAxisAlignment: MainAxisAlignment.start,
@@ -430,6 +432,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       );
                     }),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);

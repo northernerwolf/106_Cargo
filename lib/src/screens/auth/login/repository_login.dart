@@ -10,13 +10,16 @@ import '../../../design/constants.dart';
 
 class LoginRepository with ChangeNotifier {
   String? tokens;
-  bool isLoading = true;
+  bool isLoading = false;
   static Dio dio = Dio();
   String? errorMessage;
 
   Future<void> login(
       BuildContext context, String phone, String password) async {
+    isLoading = true;
     try {
+      notifyListeners();
+      await Future.delayed(const Duration(seconds: 2));
       var response = await dio.post(
         "${Constants.baseUrl}/auth/login",
         data: jsonEncode({"phone": phone, "password": password}),
@@ -24,11 +27,11 @@ class LoginRepository with ChangeNotifier {
           'Content-Type': 'application/json',
         }),
       );
-      isLoading = false;
+
       notifyListeners();
 
       if (response.statusCode == 200) {
-        isLoading = true;
+        isLoading = false;
         SharedPreferences preferences = await SharedPreferences.getInstance();
 
         tokens = response.data!['data']['token'];
@@ -40,7 +43,7 @@ class LoginRepository with ChangeNotifier {
       } else {}
       // ignore: deprecated_member_use
     } on DioError catch (e) {
-      isLoading = true;
+      isLoading = false;
 
       if (e.response != null) {
         var snackBar = SnackBar(

@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../bottom_nav/bottom_nav_screen.dart';
 import '../../../design/constants.dart';
 
-class RegisterRepository {
+class RegisterRepository with ChangeNotifier {
   String? tokens;
   bool isLoading = false;
   static Dio dio = Dio();
@@ -21,6 +21,8 @@ class RegisterRepository {
     String password,
     String passwordConfirmation,
   ) async {
+    isLoading = true;
+    await Future.delayed(const Duration(seconds: 2));
     try {
       var response = await dio.post(
         "${Constants.baseUrl}/auth/register",
@@ -36,7 +38,7 @@ class RegisterRepository {
         }),
       );
 
-      isLoading = true;
+      isLoading = false;
 
       if (response.statusCode == 200) {
         isLoading = false;
@@ -51,17 +53,19 @@ class RegisterRepository {
       }
     } on DioError catch (e) {
       isLoading = false;
-
       if (e.response != null) {
-        var snackBar = SnackBar(
-            backgroundColor: Colors.red,
-            content: Text(
-              e.response!.data['message'],
-              style: const TextStyle(color: Colors.white),
-            ));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        // print(e.response.toString());
+
+        // var snackBar = SnackBar(
+        //     backgroundColor: Colors.red,
+        //     content: Text(
+        //       e.response!.data['message'],
+        //       style: const TextStyle(color: Colors.white),
+        //     ));
+        // ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
+    isLoading = false;
     return;
   }
 }

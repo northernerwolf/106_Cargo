@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
 import 'package:kargo_app/src/core/send_token.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../bottom_nav/bottom_nav_screen.dart';
 import '../../core/firebase_setup.dart';
@@ -34,11 +35,18 @@ class _SpalshScreenState extends State<SpalshScreen>
   }
 
   sendToken() async {
+    SettingsSingleton().checkAuthStatus;
     final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
     String? token = await firebaseMessaging.getToken();
-
-    SettingsSingleton().checkAuthStatus;
-    SendFcmTokenRepository().sendToken(token!);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? tokenAuth = prefs.getString('token');
+    await prefs.setString('tokenFcm', token!);
+    if (tokenAuth != null) {
+      String? tokenFcm = prefs.getString('tokenFcm');
+      if (token != tokenFcm) {
+        SendFcmTokenRepository().sendToken(token);
+      }
+    }
   }
 
   @override

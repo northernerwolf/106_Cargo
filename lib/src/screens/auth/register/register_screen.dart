@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/auth/register/repository_register.dart';
+import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
 import '../components/custom_text_fild.dart';
@@ -359,71 +360,80 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Text(errorText6,
                                 style: TextStyle(
                                     fontSize: 12.0, color: Colors.red[700]))),
-                        InkWell(
-                          onTap: () {
-                            if (lastNameController.text.isEmpty) {
-                              setState(() {
-                                errorText2 = 'last_name_error'.trs;
-                              });
-                            }
-                            if (userNameController.text.isEmpty) {
-                              setState(() {
-                                errorText3 = 'User name is empty.';
-                              });
-                            }
-                            if (phoneNumberntroller.text.isEmpty) {
-                              setState(() {
-                                errorText4 = 'phone_error'.trs;
-                              });
-                            }
-                            if (phoneNumberntroller.text.isEmpty) {
-                              setState(() {
-                                errorText5 = 'password_error'.trs;
-                              });
-                            }
-                            if (passwordConfirmController.text.isEmpty) {
-                              setState(() {
-                                errorText6 = 'password_error'.trs;
-                              });
-                            }
-                            if (nameController.text.isEmpty) {
-                              errorText = 'name_error'.trs;
-                            }
-                            if (passwordController.text.isNotEmpty &&
-                                phoneNumberntroller.text.isNotEmpty) {
-                              RegisterRepository().register(
-                                context,
-                                nameController.text,
-                                lastNameController.text,
-                                phoneNumberntroller.text,
-                                passwordController.text,
-                                passwordConfirmController.text,
-                              );
-                            } else {}
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 40, right: 20, left: 20, bottom: 30),
-                            child: Container(
-                              height: 65,
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                  color: AppColors.mainColor,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Center(
-                                child: Text(
-                                  'log_in'.trs,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontFamily: 'Roboto',
-                                      fontStyle: FontStyle.normal,
-                                      fontWeight: FontWeight.w700),
+                        Selector<RegisterRepository, bool>(
+                            selector: (context, register) => register.isLoading,
+                            builder: (_, isLoading, __) {
+                              return InkWell(
+                                onTap: () {
+                                  if (lastNameController.text.isEmpty) {
+                                    setState(() {
+                                      errorText2 = 'last_name_error'.trs;
+                                    });
+                                  }
+                                  if (userNameController.text.isEmpty) {
+                                    setState(() {
+                                      errorText3 = 'User name is empty.';
+                                    });
+                                  }
+                                  if (phoneNumberntroller.text.isEmpty) {
+                                    setState(() {
+                                      errorText4 = 'phone_error'.trs;
+                                    });
+                                  }
+                                  if (phoneNumberntroller.text.isEmpty) {
+                                    setState(() {
+                                      errorText5 = 'password_error'.trs;
+                                    });
+                                  }
+                                  if (passwordConfirmController.text.isEmpty) {
+                                    setState(() {
+                                      errorText6 = 'password_error'.trs;
+                                    });
+                                  }
+                                  if (nameController.text.isEmpty) {
+                                    errorText = 'name_error'.trs;
+                                  }
+                                  if (passwordController.text.isNotEmpty &&
+                                      phoneNumberntroller.text.isNotEmpty) {
+                                    context.read<RegisterRepository>().register(
+                                          context,
+                                          nameController.text,
+                                          lastNameController.text,
+                                          phoneNumberntroller.text,
+                                          passwordController.text,
+                                          passwordConfirmController.text,
+                                        );
+                                  } else {}
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, right: 20, left: 20, bottom: 30),
+                                  child: Container(
+                                    height: 55,
+                                    width: MediaQuery.of(context).size.width,
+                                    decoration: BoxDecoration(
+                                        color: AppColors.mainColor,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Center(
+                                      child: isLoading == false
+                                          ? Text(
+                                              'log_in'.trs,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                  fontFamily: 'Roboto',
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w700),
+                                            )
+                                          : const CircularProgressIndicator(
+                                              color: Colors.white,
+                                            ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
+                              );
+                            }),
                       ],
                     ),
                   ),

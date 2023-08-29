@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/core/firebase_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/about/about_us.dart';
@@ -26,6 +27,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   @override
   void initState() {
+    FirebaseSetup.init(context);
     super.initState();
     checkUser();
   }
