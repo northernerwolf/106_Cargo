@@ -86,9 +86,8 @@ class _SearchScreenState extends State<SearchScreen> {
             title: Padding(
               padding: const EdgeInsets.only(top: 0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 15,
@@ -97,7 +96,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     child: Container(
                       height: 40,
-                      width: MediaQuery.of(context).size.width - 32,
+                      width: MediaQuery.of(context).size.width - 100,
                       decoration: BoxDecoration(
                           color: AppColors.searchColor,
                           borderRadius: BorderRadius.circular(10)),
@@ -115,7 +114,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             padding: const EdgeInsets.only(left: 15),
                             child: SizedBox(
                                 height: 50,
-                                width: MediaQuery.of(context).size.width - 130,
+                                width: MediaQuery.of(context).size.width - 200,
                                 child: TextFormField(
                                   controller: searchController,
                                   // onChanged: performSearch,
@@ -131,11 +130,27 @@ class _SearchScreenState extends State<SearchScreen> {
                                     disabledBorder: InputBorder.none,
                                   ),
                                 )),
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text('Ýatyr'))
+                  // IconButton(
+                  //     padding: new EdgeInsets.all(0.0),
+                  //     onPressed: () {
+                  //       Navigator.of(context).pop();
+                  //     },
+                  //     icon:
+                  //     Icon(
+                  //       Icons.arrow_back,
+                  //       size: 33,
+                  //       color: AppColors.profilColor,
+                  //     )),
                 ],
               ),
             ),

@@ -33,6 +33,9 @@ class _CartMainState extends State<CartMain> {
       }
     }
 
+    var name = widget.model.ticketCode;
+    name = name.replaceAll('', '\u200B');
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -47,7 +50,7 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: 220,
+      height: 198,
       child: Padding(
         padding: const EdgeInsets.only(),
         child: Column(
@@ -57,81 +60,94 @@ class _CartMainState extends State<CartMain> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  Stack(
                     children: [
-                      Text(
-                        'id'.trs,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400),
+                      Row(
+                        children: [
+                          Text(
+                            'id'.trs,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            width: 140,
+                            child: Text(
+                              name,
+                              // maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        widget.model.ticketCode,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400),
-                      ),
+                      //  Padding(
+                      //     padding: EdgeInsets.only(
+                      //         left: MediaQuery.of(context).size.width / 2.5),
+                      //     child: Row(
+                      //       children: [
+                      //         CustomIcon(
+                      //             title: 'assets/icons/boxh.svg',
+                      //             height: 20,
+                      //             width: 20,
+                      //             color: AppColors.authTextColor),
+                      //         Text(
+                      //           'box'.trs,
+                      //           style: const TextStyle(
+                      //               color: Colors.black,
+                      //               fontSize: 16,
+                      //               fontFamily: 'Roboto',
+                      //                fontStyle: FontStyle.normal,
+                      //               fontWeight: FontWeight.w400),
+                      //         ),
+                      //         Text(
+                      //           widget.model.summarySeats.toString(),
+                      //           style: const TextStyle(
+                      //               color: Colors.black,
+                      //               fontSize: 16,
+                      //               fontFamily: 'Roboto',
+                      //               fontStyle: FontStyle.normal,
+                      //               fontWeight: FontWeight.w400),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      CustomIcon(
-                          title: 'assets/icons/boxh.svg',
-                          height: 20,
-                          width: 20,
-                          color: AppColors.authTextColor),
-                      Text(
-                        'box'.trs,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Text(
-                        widget.model.summarySeats.toString(),
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      CustomIcon(
-                          title: 'assets/icons/gps.svg',
-                          height: 20,
-                          width: 20,
-                          color: AppColors.authTextColor),
-                      const SizedBox(
-                        width: 3,
-                      ),
-                      Text(
-                        'gps'.trs,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     CustomIcon(
+                  //         title: 'assets/icons/gps.svg',
+                  //         height: 20,
+                  //         width: 20,
+                  //         color: AppColors.authTextColor),
+                  //     const SizedBox(
+                  //       width: 3,
+                  //     ),
+                  //     Text(
+                  //       'gps'.trs,
+                  //       style: const TextStyle(
+                  //           color: Colors.black,
+                  //           fontSize: 16,
+                  //           fontFamily: 'Roboto',
+                  //           fontStyle: FontStyle.normal,
+                  //           fontWeight: FontWeight.w400),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
               child: Stack(
                 children: [
                   Row(
@@ -168,9 +184,13 @@ class _CartMainState extends State<CartMain> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 160),
+                                padding: EdgeInsets.only(
+                                    left:
+                                        MediaQuery.of(context).size.width / 2 -
+                                            40),
                                 child: Center(
                                   child: Container(
                                     height: 35,
@@ -222,21 +242,23 @@ class _CartMainState extends State<CartMain> {
             Padding(
               padding:
                   const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
-              child: SizedBox(
-                  height: 60,
-                  width: MediaQuery.of(context).size.width - 60,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Center(
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: widget.model.points?.length,
-                              scrollDirection: Axis.horizontal,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemBuilder: (con, index) {
-                                if (widget.model.points != null) {
+              child: widget.model.points!.isNotEmpty
+                  ? SizedBox(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width - 60,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: Center(
+                                  child: Padding(
+                            padding: const EdgeInsets.only(left: 0, right: 0),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: widget.model.points?.length,
+                                scrollDirection: Axis.horizontal,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (con, index) {
                                   return Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -319,18 +341,208 @@ class _CartMainState extends State<CartMain> {
                                                 ],
                                               )
                                       ]);
-                                } else {
-                                  return SpinKitFadingFour(
-                                    size: 30,
-                                  );
-                                }
-                              }),
+                                }),
+                          )))
+                        ],
+                      ))
+                  : SizedBox(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width - 40,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: Center(
+                                  child: Padding(
+                            padding: const EdgeInsets.only(left: 0, right: 0),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: 6,
+                                scrollDirection: Axis.horizontal,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (con, index) {
+                                  return Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Visibility(
+                                          visible: index == 0 ? false : true,
+                                          child: Row(children: [
+                                            Row(
+                                              children: List.generate(
+                                                1,
+                                                (ii) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 3,
+                                                            right: 3,
+                                                            top: 7,
+                                                            bottom: 5),
+                                                    child: Container(
+                                                      height: 2.5,
+                                                      width: 42,
+                                                      color: index <= t &&
+                                                              t >= 0
+                                                          ? AppColors.mainColor
+                                                          : Colors.grey,
+                                                    )),
+                                              ),
+                                            ),
+                                          ]),
+                                        ),
+                                        index != t
+                                            ? Container(
+                                                height: 12,
+                                                width: 12,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: index <= t && t >= 0
+                                                        ? AppColors.mainColor
+                                                        : Colors.grey),
+                                              )
+                                            : Stack(
+                                                alignment: Alignment.center,
+                                                children: [
+                                                  Center(
+                                                    child: Container(
+                                                      height: 40,
+                                                      width: 40,
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: AppColors
+                                                              .mainColor
+                                                              .withOpacity(
+                                                                  0.1)),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height: 28,
+                                                    width: 28,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: AppColors
+                                                                .mainColor),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              4.0),
+                                                      child: CustomIcon(
+                                                        title: t == 0
+                                                            ? 'assets/icons/home.svg'
+                                                            : t == l - 1
+                                                                ? 'assets/icons/check_circle.svg'
+                                                                : 'assets/icons/truck_delivery.svg',
+                                                        height: 10,
+                                                        width: 10,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                      ]);
+                                }),
+                          )))
+                        ],
+                      )),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 20, right: 20, top: 3, bottom: 7),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4 - 35,
+                    child: Row(
+                      children: [
+                        CustomIcon(
+                            title: 'assets/icons/boxh.svg',
+                            height: 20,
+                            width: 20,
+                            color: Colors.black),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: Text(
+                            widget.model.summarySeats.toString(),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
-                      )
-                    ],
-                  )
-                  // : const Text('Fucking'),
+                      ],
+                    ),
                   ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4 - 25,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                            height: 24,
+                            width: 25,
+                            child: Image.asset('assets/images/kg.png')),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: Text(
+                            widget.model.summaryKg.toString(),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4 - 15,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                            height: 22,
+                            width: 22,
+                            child: Image.asset('assets/images/cube_new.png')),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5),
+                          child: Text(
+                            widget.model.summaryCube.toString(),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 4 - 26,
+                    child: Row(
+                      children: [
+                        const Icon(Icons.attach_money),
+                        Text(
+                          widget.model.summaryPrice.toString(),
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, top: 0),
@@ -339,7 +551,7 @@ class _CartMainState extends State<CartMain> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: AppColors.initialButtonColor,
+                        // color: AppColors.initialButtonColor,
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: const EdgeInsets.only(
@@ -359,7 +571,7 @@ class _CartMainState extends State<CartMain> {
                             widget.model.location,
                             style: const TextStyle(
                                 color: AppColors.mainColor,
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontFamily: 'Roboto',
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w600),
@@ -386,7 +598,7 @@ class _CartMainState extends State<CartMain> {
                           'more_info'.trs,
                           style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 14,
+                              fontSize: 12,
                               fontFamily: 'Roboto',
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w600),

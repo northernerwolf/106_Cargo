@@ -34,12 +34,14 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       TextButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const BottomNavScreen()));
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => BottomNavScreen()),
+                                (route) => false);
                           },
-                          child:  Text(
+                          child: Text(
                             'next'.trs,
-                            style:const TextStyle(
+                            style: const TextStyle(
                                 color: AppColors.mainColor,
                                 fontSize: 18,
                                 fontFamily: 'Roboto',
@@ -122,10 +124,11 @@ class WelcomePage extends StatelessWidget {
                                             const Duration(microseconds: 500),
                                         curve: Curves.ease);
                                   } else {
-                                    Navigator.of(context).push(
+                                    Navigator.of(context).pushAndRemoveUntil(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const BottomNavScreen()));
+                                                const BottomNavScreen()),
+                                        (route) => false);
                                   }
                                 },
                                 child: Container(

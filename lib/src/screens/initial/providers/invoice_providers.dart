@@ -31,6 +31,7 @@ class InvoiceProvider with ChangeNotifier {
               ),
           ));
       isLoading = true;
+      print(response.data);
       if (response.statusCode == 200) {
         if (response.data != null) {
           invoice = Shipment.fromJson(response.data['data']);

@@ -54,15 +54,15 @@ class RegisterRepository with ChangeNotifier {
     } on DioError catch (e) {
       isLoading = false;
       if (e.response != null) {
-        // print(e.response.toString());
+        print(e.response.toString());
 
-        // var snackBar = SnackBar(
-        //     backgroundColor: Colors.red,
-        //     content: Text(
-        //       e.response!.data['message'],
-        //       style: const TextStyle(color: Colors.white),
-        //     ));
-        // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        var snackBar = SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              e.response!.data['message'],
+              style: const TextStyle(color: Colors.white),
+            ));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
     isLoading = false;

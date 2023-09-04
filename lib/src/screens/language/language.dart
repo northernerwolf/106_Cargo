@@ -258,9 +258,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       }),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (_) => WelcomePage(),
-                      ));
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (context) => WelcomePage()),
+                          (route) => false);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(

@@ -19,10 +19,10 @@ class UserData {
         ticketsJson.map((ticketJson) => Ticket.fromJson(ticketJson)).toList();
 
     return UserData(
-      id: json['id'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      phone: json['phone'],
+      id: json['id'] ?? 0,
+      firstName: json['first_name'] ?? "",
+      lastName: json['last_name'] ?? "",
+      phone: json['phone'] ?? "",
       tickets: tickets,
     );
   }

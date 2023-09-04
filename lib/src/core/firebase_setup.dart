@@ -123,7 +123,7 @@ class FirebaseSetup {
         //     InitEvent(),
         //   );
         // }
-        print(context.mounted);
+
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             backgroundColor: Colors.transparent,
@@ -214,7 +214,7 @@ class FirebaseSetup {
         }
       }
     }).onError((e) {
-      print('MerdanDev error was catched $e');
+      // print('MerdanDev error was catched $e');
     });
   }
 

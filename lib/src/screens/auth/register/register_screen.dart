@@ -407,7 +407,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                      top: 40, right: 20, left: 20, bottom: 30),
+                                      top: 40, right: 20, left: 20, bottom: 10),
                                   child: Container(
                                     height: 55,
                                     width: MediaQuery.of(context).size.width,
@@ -418,7 +418,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     child: Center(
                                       child: isLoading == false
                                           ? Text(
-                                              'log_in'.trs,
+                                              'create_account'.trs,
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 16,
@@ -434,6 +434,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               );
                             }),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Center(
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                'login'.trs,
+                                style: const TextStyle(
+                                    color: AppColors.mainColor,
+                                    fontSize: 16,
+                                    fontFamily: 'Roboto',
+                                    fontStyle: FontStyle.normal,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),

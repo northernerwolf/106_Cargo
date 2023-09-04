@@ -5,8 +5,11 @@ class TripModel {
   final String pointTo;
   final String trackCode;
   final int summarySeats;
+  final dynamic summaryPrice;
+  final String summaryKg;
+  final String summaryCube;
   final String ticketCode;
-  // final List<String> images;
+
   final String location;
   final List<Point>? points;
 
@@ -19,7 +22,9 @@ class TripModel {
     required this.summarySeats,
     required this.ticketCode,
     required this.location,
-    // required this.images,
+    required this.summaryKg,
+    required this.summaryCube,
+    required this.summaryPrice,
     this.points,
   });
 
@@ -37,6 +42,9 @@ class TripModel {
       pointTo: json['point_to'] ?? '',
       trackCode: json['track_code'] ?? '',
       summarySeats: json['summary_seats'] ?? 0,
+      summaryKg: json['summary_kg'] ?? '',
+      summaryCube: json['summary_cube'] ?? '',
+      summaryPrice: json['summary_price'] ?? 0,
       // images: List<String>.from(json['images']),
       ticketCode: json['ticket_code'] ?? '',
       location: json['location'] ?? '',

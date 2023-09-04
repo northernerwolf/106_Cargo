@@ -154,18 +154,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: SizedBox(
                           height: 60,
                           child: meInfo.getMe?.tickets.length != []
-                              ? GridView.builder(
+                              ? ListView.builder(
                                   shrinkWrap: true,
                                   physics: const BouncingScrollPhysics(),
                                   padding: const EdgeInsets.only(
                                       left: 0, right: 20, top: 0),
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    // crossAxisSpacing: 12,
-
-                                    mainAxisExtent: 20,
-                                  ),
                                   itemCount: meInfo.getMe?.tickets.length ?? 0,
                                   itemBuilder: (context, index) {
                                     return Row(
@@ -174,10 +167,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           'ID: ',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16,
+                                              fontSize: 14,
                                               fontFamily: 'Roboto',
                                               fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w600),
+                                              fontWeight: FontWeight.w500),
                                         ),
                                         Text(
                                           meInfo.getMe?.tickets[index].code
@@ -185,10 +178,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               "",
                                           style: const TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16,
+                                              fontSize: 14,
                                               fontFamily: 'Roboto',
                                               fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w600),
+                                              fontWeight: FontWeight.w500),
                                         ),
                                       ],
                                     );

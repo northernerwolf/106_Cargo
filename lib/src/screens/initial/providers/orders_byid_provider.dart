@@ -16,6 +16,9 @@ class GetOrderByIdProvider with ChangeNotifier {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
 
+    isLoading = true;
+    notifyListeners();
+
     final headers = {
       'Authorization': 'Bearer $val',
     };
@@ -30,9 +33,9 @@ class GetOrderByIdProvider with ChangeNotifier {
                 },
               ),
           ));
-      isLoading = true;
 
       if (response.statusCode == 200) {
+        print(response.data);
         if (response.data != null) {
           ordersById = TripDataIdModel.fromJson(response.data['data']);
         }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kargo_app/firebase_options.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
-import 'package:kargo_app/src/core/firebase_setup.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/constants.dart';
 import 'package:kargo_app/src/screens/auth/register/repository_register.dart';

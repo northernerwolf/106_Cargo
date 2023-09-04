@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
 import 'package:kargo_app/src/core/firebase_setup.dart';
 import 'package:kargo_app/src/core/l10n.dart';
+import 'package:kargo_app/src/screens/auth/components/login_components.dart';
 import 'package:kargo_app/src/screens/initial/notifications/notifications.dart';
 import 'package:kargo_app/src/screens/initial/pages/search_screen.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
@@ -149,7 +150,7 @@ class _InitialScreenState extends State<InitialScreen> {
                     width: MediaQuery.of(context).size.width,
                     height: 100,
                     child: Image.asset(
-                      'assets/images/anmation.gif',
+                      'assets/images/cargo_anim.gif',
                       fit: BoxFit.fill,
                     )),
               ),
@@ -202,65 +203,89 @@ class _InitialScreenState extends State<InitialScreen> {
                     }
                   });
                 } else {
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 200),
-                    child: Center(
-                        child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 40, right: 40, top: 20, bottom: 20),
-                          child: Text(
-                            'create_account_info'.trs,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                color: AppColors.profilColor,
-                                fontSize: 14,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const LoginScreen()));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'login'.trs,
-                              style: const TextStyle(
-                                  color: AppColors.mainColor,
-                                  fontSize: 16,
-                                  fontFamily: 'Roboto',
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const RegisterScreen()));
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, bottom: 8, right: 8),
-                            child: Text(
-                              'create_account'.trs,
-                              style: const TextStyle(
-                                  color: AppColors.mainColor,
-                                  fontSize: 16,
-                                  fontFamily: 'Roboto',
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
-                  );
+                  return SizedBox(
+                      height: MediaQuery.of(context).size.height - 210,
+                      child: LoginComponents());
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 200),
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.only(left: 10, right: 10),
+                  //     child: Container(
+                  //       decoration: BoxDecoration(
+                  //           color: Colors.white,
+                  //           boxShadow: [
+                  //             BoxShadow(
+                  //               color: Colors.blueGrey.withOpacity(0.1),
+                  //               spreadRadius: 5,
+                  //               blurRadius: 7,
+                  //               offset: const Offset(0, 3),
+                  //             ),
+                  //           ],
+                  //           borderRadius: BorderRadius.circular(15)),
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.only(bottom: 20, top: 20),
+                  //         child: Center(
+                  //             child: Column(
+                  //           children: [
+                  //             Padding(
+                  //               padding: const EdgeInsets.only(
+                  //                   left: 40, right: 40, top: 20, bottom: 20),
+                  //               child: Text(
+                  //                 'create_account_info'.trs,
+                  //                 textAlign: TextAlign.center,
+                  //                 style: const TextStyle(
+                  //                     color: AppColors.profilColor,
+                  //                     fontSize: 14,
+                  //                     fontFamily: 'Roboto',
+                  //                     fontStyle: FontStyle.normal,
+                  //                     fontWeight: FontWeight.w400),
+                  //               ),
+                  //             ),
+                  //             InkWell(
+                  //               onTap: () {
+                  //                 Navigator.of(context).push(MaterialPageRoute(
+                  //                     builder: (context) =>
+                  //                         const LoginScreen()));
+                  //               },
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.only(top: 10),
+                  //                 child: Text(
+                  //                   'login'.trs,
+                  //                   style: const TextStyle(
+                  //                       color: AppColors.mainColor,
+                  //                       fontSize: 16,
+                  //                       fontFamily: 'Roboto',
+                  //                       fontStyle: FontStyle.normal,
+                  //                       fontWeight: FontWeight.w500),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             InkWell(
+                  //               onTap: () {
+                  //                 Navigator.of(context).push(MaterialPageRoute(
+                  //                     builder: (context) =>
+                  //                         const RegisterScreen()));
+                  //               },
+                  //               child: Padding(
+                  //                 padding: const EdgeInsets.only(
+                  //                     top: 10, left: 8, bottom: 8, right: 8),
+                  //                 child: Text(
+                  //                   'create_account'.trs,
+                  //                   style: const TextStyle(
+                  //                       color: AppColors.mainColor,
+                  //                       fontSize: 16,
+                  //                       fontFamily: 'Roboto',
+                  //                       fontStyle: FontStyle.normal,
+                  //                       fontWeight: FontWeight.w500),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         )),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // );
                 }
               })
             ],

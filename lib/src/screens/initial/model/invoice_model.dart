@@ -38,8 +38,8 @@ class Shipment {
 
     return Shipment(
       date: json['date'] ?? '',
-      providerPhone: json['provider_phone'],
-      consumptionName: json['consumption_name'],
+      providerPhone: json['provider_phone'] ?? "",
+      consumptionName: json['consumption_name'] ?? "",
       consumptionPrice: json['consumption_price'],
       summarySeats: json['summary_seats'],
       customersPhone: json['customers_phone'],
@@ -82,14 +82,14 @@ class CargoItem {
 
   factory CargoItem.fromJson(Map<String, dynamic> json) {
     return CargoItem(
-      productName: json['product_name'],
+      productName: json['product_name'] ?? "",
       packingSizeFirst: json['packing_size_first'],
       packingSizeMiddle: json['packing_size_middle'],
       packingSizeLast: json['packing_size_last'],
       numberOfSeats: json['number_of_seats'],
       price: json['price'],
       cube: json['cube'],
-      kg: json['kg'],
+      kg: json['kg'] ?? "",
       totalPrice: json['total_price'],
       typePackagingId: json['type_packaging_id'],
     );
