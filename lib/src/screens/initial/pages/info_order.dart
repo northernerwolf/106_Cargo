@@ -830,68 +830,60 @@ class _InfoOrederState extends State<InfoOreder> {
                                                 height: MediaQuery.of(context)
                                                     .size
                                                     .height,
-                                                child: PhotoView(
-                                                  imageProvider: NetworkImage(
-                                                      orderById.ordersById!
-                                                          .images[indexx]),
+                                                child: PhotoViewGallery.builder(
+                                                  itemCount: orderById
+                                                      .ordersById!
+                                                      .images
+                                                      .length,
+                                                  loadingBuilder:
+                                                      (context, event) {
+                                                    return Center(
+                                                      child: Container(
+                                                        width: 20.0,
+                                                        height: 20.0,
+                                                        child:
+                                                            CircularProgressIndicator(),
+                                                      ),
+                                                    );
+                                                  },
+                                                  builder:
+                                                      (BuildContext context,
+                                                          int index) {
+                                                    return PhotoViewGalleryPageOptions(
+                                                      imageProvider:
+                                                          CachedNetworkImageProvider(
+                                                              orderById
+                                                                  .ordersById!
+                                                                  .images[index]),
+                                                      // imageProvider: NetworkImage(
+                                                      // orderById.ordersById!
+                                                      //     .images[index]),
+                                                      minScale:
+                                                          PhotoViewComputedScale
+                                                                  .contained *
+                                                              0.8,
+                                                      maxScale:
+                                                          PhotoViewComputedScale
+                                                                  .covered *
+                                                              2,
+                                                    );
+                                                  },
+                                                  scrollPhysics:
+                                                      const BouncingScrollPhysics(),
                                                   backgroundDecoration:
                                                       const BoxDecoration(
-                                                          color: Colors.black),
+                                                    color: Colors.black,
+                                                  ),
+                                                  onPageChanged: (int index) {
+                                                    // setState(() {});
+                                                    setState(() {
+                                                      index = indexx;
+                                                    });
+                                                  },
+                                                  pageController:
+                                                      PageController(
+                                                          initialPage: indexx),
                                                 ),
-                                                // PhotoViewGallery.builder(
-                                                //   itemCount: orderById
-                                                //       .ordersById!
-                                                //       .images
-                                                //       .length,
-                                                //   loadingBuilder:
-                                                //       (context, event) {
-                                                //     return Center(
-                                                //       child: Container(
-                                                //         width: 20.0,
-                                                //         height: 20.0,
-                                                //         child:
-                                                //             CircularProgressIndicator(),
-                                                //       ),
-                                                //     );
-                                                //   },
-                                                //   builder:
-                                                //       (BuildContext context,
-                                                //           int index) {
-                                                //     return PhotoViewGalleryPageOptions(
-                                                //       imageProvider:
-                                                //           CachedNetworkImageProvider(
-                                                // orderById
-                                                //     .ordersById!
-                                                //     .images[index]),
-                                                //       // imageProvider: NetworkImage(
-                                                //       // orderById.ordersById!
-                                                //       //     .images[index]),
-                                                //       minScale:
-                                                //           PhotoViewComputedScale
-                                                //                   .contained *
-                                                //               0.8,
-                                                //       maxScale:
-                                                //           PhotoViewComputedScale
-                                                //                   .covered *
-                                                //               2,
-                                                //     );
-                                                //   },
-                                                //   scrollPhysics:
-                                                //       const BouncingScrollPhysics(),
-                                                //   backgroundDecoration:
-                                                //       const BoxDecoration(
-                                                //     color: Colors.black,
-                                                //   ),
-
-                                                //   onPageChanged: (int index) {
-                                                //     // setState(() {});
-                                                //     setState(() {
-                                                //       index = indexx;
-                                                //     });
-                                                //   },
-                                                //   // pageController: PageController(
-                                                //   //     initialPage: index),
-                                                // ),
                                               );
                                             });
                                       },
