@@ -16,6 +16,8 @@ class InvoiceProvider with ChangeNotifier {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
 
+    isLoading = true;
+
     final headers = {
       'Authorization': 'Bearer $val',
     };
@@ -43,7 +45,7 @@ class InvoiceProvider with ChangeNotifier {
         return;
       }
     } on DioError catch (e) {
-      isLoading = true;
+      isLoading = false;
 
       if (e.response != null) print(e.response!.data);
 
