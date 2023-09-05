@@ -23,6 +23,9 @@ void main() async {
 
   var pref = await SharedPreferences.getInstance();
   initScreen = pref.getInt("initScreen");
+  String? val = pref.getString('token');
+
+  print(val);
 
   await pref.setInt("initScreen", 1);
   await Firebase.initializeApp(

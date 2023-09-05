@@ -50,7 +50,7 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: 198,
+      height: 200,
       child: Padding(
         padding: const EdgeInsets.only(),
         child: Column(
@@ -74,7 +74,7 @@ class _CartMainState extends State<CartMain> {
                                 fontWeight: FontWeight.w400),
                           ),
                           SizedBox(
-                            width: 140,
+                            width: MediaQuery.of(context).size.width - 70,
                             child: Text(
                               name,
                               // maxLines: 2,
@@ -195,8 +195,9 @@ class _CartMainState extends State<CartMain> {
                                   child: Container(
                                     height: 35,
                                     width: 35,
-                                    decoration: const BoxDecoration(
-                                      color: AppColors.searchColor,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          AppColors.mainColor.withOpacity(0.1),
                                       shape: BoxShape.circle,
                                     ),
                                     child: Padding(
@@ -205,7 +206,7 @@ class _CartMainState extends State<CartMain> {
                                           title: 'assets/icons/arrow_right.svg',
                                           height: 20,
                                           width: 20,
-                                          color: AppColors.authTextColor),
+                                          color: AppColors.mainColor),
                                     ),
                                   ),
                                 ),
@@ -245,7 +246,7 @@ class _CartMainState extends State<CartMain> {
               child: widget.model.points!.isNotEmpty
                   ? SizedBox(
                       height: 40,
-                      width: MediaQuery.of(context).size.width - 60,
+                      width: MediaQuery.of(context).size.width - 40,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -367,24 +368,27 @@ class _CartMainState extends State<CartMain> {
                                         Visibility(
                                           visible: index == 0 ? false : true,
                                           child: Row(children: [
-                                            Row(
-                                              children: List.generate(
-                                                1,
-                                                (ii) => Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 3,
-                                                            right: 3,
-                                                            top: 7,
-                                                            bottom: 5),
-                                                    child: Container(
-                                                      height: 2.5,
-                                                      width: 42,
-                                                      color: index <= t &&
-                                                              t >= 0
-                                                          ? AppColors.mainColor
-                                                          : Colors.grey,
-                                                    )),
+                                            FittedBox(
+                                              child: Row(
+                                                children: List.generate(
+                                                  1,
+                                                  (ii) => Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 3,
+                                                              right: 3,
+                                                              top: 7,
+                                                              bottom: 5),
+                                                      child: Container(
+                                                        height: 2.5,
+                                                        width: 42,
+                                                        color:
+                                                            index <= t && t >= 0
+                                                                ? AppColors
+                                                                    .mainColor
+                                                                : Colors.grey,
+                                                      )),
+                                                ),
                                               ),
                                             ),
                                           ]),
@@ -450,19 +454,28 @@ class _CartMainState extends State<CartMain> {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(left: 20, right: 20, top: 3, bottom: 7),
+                  const EdgeInsets.only(left: 20, right: 20, top: 7, bottom: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 4 - 35,
+                    width: MediaQuery.of(context).size.width / 4 - 30,
                     child: Row(
                       children: [
-                        CustomIcon(
-                            title: 'assets/icons/boxh.svg',
-                            height: 20,
-                            width: 20,
-                            color: Colors.black),
+                        // CustomIcon(
+                        //     title: 'assets/icons/boxh.svg',
+                        //     height: 20,
+                        //     width: 20,
+                        //     color: Colors.black),
+                        Text(
+                          'Ýer: ',
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: Text(
@@ -478,37 +491,46 @@ class _CartMainState extends State<CartMain> {
                       ],
                     ),
                   ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width / 4 - 25,
+                  //   child: Row(
+                  //     children: [
+                  //       SizedBox(
+                  //           height: 24,
+                  //           width: 25,
+                  //           child: Image.asset('assets/images/kg.png')),
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(left: 5),
+                  //         child: Text(
+                  //           widget.model.summaryKg.toString(),
+                  //           style: const TextStyle(
+                  //               color: Colors.black,
+                  //               fontSize: 16,
+                  //               fontFamily: 'Roboto',
+                  //               fontStyle: FontStyle.normal,
+                  //               fontWeight: FontWeight.w400),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 4 - 25,
+                    width: MediaQuery.of(context).size.width / 4,
                     child: Row(
                       children: [
-                        SizedBox(
-                            height: 24,
-                            width: 25,
-                            child: Image.asset('assets/images/kg.png')),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Text(
-                            widget.model.summaryKg.toString(),
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w400),
-                          ),
+                        // SizedBox(
+                        //     height: 22,
+                        //     width: 22,
+                        //     child: Image.asset('assets/images/cube_new.png')),
+                        Text(
+                          'Kub: ',
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 4 - 15,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                            height: 22,
-                            width: 22,
-                            child: Image.asset('assets/images/cube_new.png')),
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
                           child: Text(
@@ -525,10 +547,19 @@ class _CartMainState extends State<CartMain> {
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 4 - 26,
+                    width: MediaQuery.of(context).size.width / 4,
                     child: Row(
                       children: [
-                        const Icon(Icons.attach_money),
+                        // const Icon(Icons.attach_money, ),
+                        Text(
+                          'Baha: ',
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
+                        ),
                         Text(
                           widget.model.summaryPrice.toString(),
                           style: const TextStyle(

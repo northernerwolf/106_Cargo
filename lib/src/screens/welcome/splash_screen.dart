@@ -27,9 +27,9 @@ class _SpalshScreenState extends State<SpalshScreen>
     ));
 
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const BottomNavScreen(),
-      ));
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const BottomNavScreen()),
+          (route) => false);
     });
     sendToken();
   }

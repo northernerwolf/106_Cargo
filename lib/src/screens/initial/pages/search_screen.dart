@@ -677,6 +677,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       InkWell(
                         onTap: () async {
                           TicketsRepository().tickedId(context, id);
+                          print(id);
                         },
                         child: Container(
                           height: 40,

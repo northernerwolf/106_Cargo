@@ -98,125 +98,142 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        // const Text(
-                        //   'Batyr00',
-                        //   style: TextStyle(
-                        //       color: Colors.black,
-                        //       fontSize: 18,
-                        //       fontFamily: 'Roboto',
-                        //       fontStyle: FontStyle.normal,
-                        //       fontWeight: FontWeight.w600),
-                        // ),
-                        IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => EditProfil(
-                                      model: meInfo.getMe!,
-                                    )));
-                          },
-                          icon: CustomIcon(
-                              title: 'assets/icons/edit.svg',
-                              height: 22,
-                              width: 22,
-                              color: AppColors.profilColor),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        '${meInfo.getMe?.firstName}  ${meInfo.getMe?.lastName}',
-                        style: const TextStyle(
-                            color: AppColors.profilColor,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        '+993 ${meInfo.getMe?.phone}',
-                        style: const TextStyle(
-                            color: AppColors.profilColor,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.only(top: 15),
-                        child: SizedBox(
-                          height: 60,
-                          child: meInfo.getMe?.tickets.length != []
-                              ? ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const BouncingScrollPhysics(),
-                                  padding: const EdgeInsets.only(
-                                      left: 0, right: 20, top: 0),
-                                  itemCount: meInfo.getMe?.tickets.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    return Row(
-                                      children: [
-                                        const Text(
-                                          'ID: ',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        Text(
-                                          meInfo.getMe?.tickets[index].code
-                                                  .toString() ??
-                                              "",
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 14,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                )
-                              : Container(),
-                        )
-                        //  Row(
-                        //   mainAxisAlignment: MainAxisAlignment.start,
-                        //   children: const [
+                    meInfo.getMe != null
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  // const Text(
+                                  //   'Batyr00',
+                                  //   style: TextStyle(
+                                  //       color: Colors.black,
+                                  //       fontSize: 18,
+                                  //       fontFamily: 'Roboto',
+                                  //       fontStyle: FontStyle.normal,
+                                  //       fontWeight: FontWeight.w600),
+                                  // ),
+                                  IconButton(
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: (context) => EditProfil(
+                                                    model: meInfo.getMe!,
+                                                  )));
+                                    },
+                                    icon: CustomIcon(
+                                        title: 'assets/icons/edit.svg',
+                                        height: 22,
+                                        width: 22,
+                                        color: AppColors.profilColor),
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Text(
+                                  '${meInfo.getMe?.firstName}  ${meInfo.getMe?.lastName}',
+                                  style: const TextStyle(
+                                      color: AppColors.profilColor,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Text(
+                                  '+993 ${meInfo.getMe?.phone}',
+                                  style: const TextStyle(
+                                      color: AppColors.profilColor,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.only(top: 15),
+                                  child: SizedBox(
+                                    height: 60,
+                                    child: meInfo.getMe?.tickets.length != []
+                                        ? ListView.builder(
+                                            shrinkWrap: true,
+                                            physics:
+                                                const BouncingScrollPhysics(),
+                                            padding: const EdgeInsets.only(
+                                                left: 0, right: 20, top: 0),
+                                            itemCount:
+                                                meInfo.getMe?.tickets.length ??
+                                                    0,
+                                            itemBuilder: (context, index) {
+                                              return Row(
+                                                children: [
+                                                  const Text(
+                                                    'ID: ',
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontFamily: 'Roboto',
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                  Text(
+                                                    meInfo.getMe?.tickets[index]
+                                                            .code
+                                                            .toString() ??
+                                                        "",
+                                                    style: const TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 14,
+                                                        fontFamily: 'Roboto',
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          )
+                                        : Container(),
+                                  )
+                                  //  Row(
+                                  //   mainAxisAlignment: MainAxisAlignment.start,
+                                  //   children: const [
 
-                        //     Padding(
-                        //       padding: EdgeInsets.only(left: 50),
-                        //       child: Text(
-                        //         'ID: ',
-                        //         style: TextStyle(
-                        //             color: Colors.black,
-                        //             fontSize: 16,
-                        //             fontFamily: 'Roboto',
-                        //             fontStyle: FontStyle.normal,
-                        //             fontWeight: FontWeight.w600),
-                        //       ),
-                        //     ),
-                        //     Text(
-                        //       'D45',
-                        //       style: TextStyle(
-                        //           color: Colors.black,
-                        //           fontSize: 16,
-                        //           fontFamily: 'Roboto',
-                        //           fontStyle: FontStyle.normal,
-                        //           fontWeight: FontWeight.w600),
-                        //     ),
-                        //   ],
-                        // ),
-                        ),
+                                  //     Padding(
+                                  //       padding: EdgeInsets.only(left: 50),
+                                  //       child: Text(
+                                  //         'ID: ',
+                                  //         style: TextStyle(
+                                  //             color: Colors.black,
+                                  //             fontSize: 16,
+                                  //             fontFamily: 'Roboto',
+                                  //             fontStyle: FontStyle.normal,
+                                  //             fontWeight: FontWeight.w600),
+                                  //       ),
+                                  //     ),
+                                  //     Text(
+                                  //       'D45',
+                                  //       style: TextStyle(
+                                  //           color: Colors.black,
+                                  //           fontSize: 16,
+                                  //           fontFamily: 'Roboto',
+                                  //           fontStyle: FontStyle.normal,
+                                  //           fontWeight: FontWeight.w600),
+                                  //     ),
+                                  //   ],
+                                  // ),
+                                  ),
+                            ],
+                          )
+                        : const CircularProgressIndicator(),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 40, bottom: 15, right: 10),

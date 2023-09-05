@@ -134,7 +134,7 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                           ],
                         ),
-                        height: 198,
+                        height: 200,
                         child: Column(
                           children: [
                             Padding(
@@ -312,8 +312,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                         child: Container(
                                           height: 35,
                                           width: 35,
-                                          decoration: const BoxDecoration(
-                                            color: AppColors.searchColor,
+                                          decoration: BoxDecoration(
+                                            color: AppColors.mainColor
+                                                .withOpacity(0.1),
                                             shape: BoxShape.circle,
                                           ),
                                           child: Padding(
@@ -323,7 +324,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                     'assets/icons/arrow_right.svg',
                                                 height: 20,
                                                 width: 20,
-                                                color: AppColors.authTextColor),
+                                                color: AppColors.mainColor),
                                           ),
                                         ),
                                       ),
@@ -617,7 +618,7 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 3, bottom: 7),
+                                  left: 20, right: 20, top: 7, bottom: 8),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -651,34 +652,34 @@ class _InfoOrederState extends State<InfoOreder> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4 -
-                                            25,
-                                    child: Row(
-                                      children: [
-                                        SizedBox(
-                                            height: 24,
-                                            width: 25,
-                                            child: Image.asset(
-                                                'assets/images/kg.png')),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 5),
-                                          child: Text(
-                                            orderById.ordersById?.summaryKg ??
-                                                "",
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16,
-                                                fontFamily: 'Roboto',
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  // SizedBox(
+                                  //   width:
+                                  //       MediaQuery.of(context).size.width / 4 -
+                                  //           25,
+                                  //   child: Row(
+                                  //     children: [
+                                  //       // SizedBox(
+                                  //       //     height: 24,
+                                  //       //     width: 25,
+                                  //       //     child: Image.asset(
+                                  //       //         'assets/images/kg.png')),
+                                  //       Padding(
+                                  //         padding:
+                                  //             const EdgeInsets.only(left: 5),
+                                  //         child: Text(
+                                  //           orderById.ordersById?.summaryKg ??
+                                  //               "",
+                                  //           style: const TextStyle(
+                                  //               color: Colors.black,
+                                  //               fontSize: 16,
+                                  //               fontFamily: 'Roboto',
+                                  //               fontStyle: FontStyle.normal,
+                                  //               fontWeight: FontWeight.w400),
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width / 4 -
@@ -875,7 +876,6 @@ class _InfoOrederState extends State<InfoOreder> {
                                                     color: Colors.black,
                                                   ),
                                                   onPageChanged: (int index) {
-                                                    // setState(() {});
                                                     setState(() {
                                                       index = indexx;
                                                     });
