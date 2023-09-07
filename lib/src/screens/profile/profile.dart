@@ -158,7 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Padding(
                                   padding: const EdgeInsets.only(top: 15),
                                   child: SizedBox(
-                                    height: 60,
+                                    // height: 60,
                                     child: meInfo.getMe?.tickets.length != []
                                         ? ListView.builder(
                                             shrinkWrap: true,

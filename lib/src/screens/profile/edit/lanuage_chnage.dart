@@ -94,7 +94,6 @@ class _LanguageChangeState extends State<LanguageChange> {
                     builder: (_, locale, __) {
                       return InkWell(
                         onTap: () async {
-                          setState(() {});
                           await SettingsSingleton().changeLocale('tk');
                         },
                         child: Padding(

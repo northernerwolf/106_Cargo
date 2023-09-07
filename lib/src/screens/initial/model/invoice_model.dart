@@ -10,6 +10,7 @@ class Shipment {
   final String customersPhone;
   final dynamic summaryPrice;
   final String ticketId;
+  final String trackCode;
   final String pointFrom;
   final String pointTo;
   final List<CargoItem> cargoItems;
@@ -28,6 +29,7 @@ class Shipment {
     required this.ticketId,
     required this.pointFrom,
     required this.pointTo,
+    required this.trackCode,
     required this.cargoItems,
   });
 
@@ -45,6 +47,7 @@ class Shipment {
       customersPhone: json['customers_phone'],
       customersName: json['customers_name'],
       summaryKg: json['summary_kg'],
+      trackCode: json['track_code'] ?? "",
       summaryCube: json['summary_cube'],
       summaryPrice: json['summary_price'],
       ticketId: json['ticket_id'],

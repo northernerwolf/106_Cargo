@@ -16,7 +16,8 @@ import '../repository/search_repository.dart';
 import '../repository/ticket_repository.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+  final FocusNode focusNode;
+  const SearchScreen({required this.focusNode, super.key});
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -25,6 +26,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final SearchRepository apiService = SearchRepository();
   final TextEditingController searchController = TextEditingController();
+
   SearchModel? searchResult;
   bool isLoading = false;
 
@@ -42,6 +44,7 @@ class _SearchScreenState extends State<SearchScreen> {
       setState(() {
         isLoading = false;
         searchResult = results;
+        print(searchResult);
       });
     } catch (error) {
       setState(() {
@@ -52,7 +55,20 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FocusScope.of(context).requestFocus(widget.focusNode);
     int t = 0;
+
+    int? l = searchResult?.points.length;
+    if (searchResult?.points != null) {
+      for (var i = 0; i < searchResult!.points.length; i++) {
+        if (searchResult!.points[i].isCurrent != 0) {
+          t = i;
+        }
+      }
+    }
+
+    // var name = widget.model.ticketCode;
+    // name = name.replaceAll('', '\u200B');
 
     return Scaffold(
       appBar: PreferredSize(
@@ -117,6 +133,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 width: MediaQuery.of(context).size.width - 200,
                                 child: TextFormField(
                                   controller: searchController,
+                                  focusNode: widget.focusNode,
                                   // onChanged: performSearch,
                                   onFieldSubmitted: performSearch,
                                   maxLines: 1,
@@ -178,7 +195,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           ],
                         ),
-                        height: 220,
+                        height: 200,
                         child: Padding(
                           padding: const EdgeInsets.only(),
                           child: Column(
@@ -212,62 +229,62 @@ class _SearchScreenState extends State<SearchScreen> {
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      children: [
-                                        CustomIcon(
-                                            title: 'assets/icons/boxh.svg',
-                                            height: 20,
-                                            width: 20,
-                                            color: AppColors.authTextColor),
-                                        Text(
-                                          'box'.trs,
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          searchResult?.summarySeats
-                                                  .toString() ??
-                                              '',
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        CustomIcon(
-                                            title: 'assets/icons/gps.svg',
-                                            height: 20,
-                                            width: 20,
-                                            color: AppColors.authTextColor),
-                                        const SizedBox(
-                                          width: 3,
-                                        ),
-                                        Text(
-                                          'gps'.trs,
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
+                                    // Row(
+                                    //   children: [
+                                    //     CustomIcon(
+                                    //         title: 'assets/icons/boxh.svg',
+                                    //         height: 20,
+                                    //         width: 20,
+                                    //         color: AppColors.authTextColor),
+                                    //     Text(
+                                    //       'box'.trs,
+                                    //       style: const TextStyle(
+                                    //           color: Colors.black,
+                                    //           fontSize: 16,
+                                    //           fontFamily: 'Roboto',
+                                    //           fontStyle: FontStyle.normal,
+                                    //           fontWeight: FontWeight.w400),
+                                    //     ),
+                                    //     Text(
+                                    //       searchResult?.summarySeats
+                                    //               .toString() ??
+                                    //           '',
+                                    //       style: const TextStyle(
+                                    //           color: Colors.black,
+                                    //           fontSize: 16,
+                                    //           fontFamily: 'Roboto',
+                                    //           fontStyle: FontStyle.normal,
+                                    //           fontWeight: FontWeight.w400),
+                                    //     ),
+                                    //   ],
+                                    // ),
+                                    // Row(
+                                    //   children: [
+                                    //     CustomIcon(
+                                    //         title: 'assets/icons/gps.svg',
+                                    //         height: 20,
+                                    //         width: 20,
+                                    //         color: AppColors.authTextColor),
+                                    //     const SizedBox(
+                                    //       width: 3,
+                                    //     ),
+                                    //     Text(
+                                    //       'gps'.trs,
+                                    //       style: const TextStyle(
+                                    //           color: Colors.black,
+                                    //           fontSize: 16,
+                                    //           fontFamily: 'Roboto',
+                                    //           fontStyle: FontStyle.normal,
+                                    //           fontWeight: FontWeight.w400),
+                                    //     ),
+                                    //   ],
+                                    // ),
                                   ],
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 15, right: 15, top: 10),
+                                    left: 15, right: 15, top: 0),
                                 child: Stack(
                                   children: [
                                     Row(
@@ -315,9 +332,12 @@ class _SearchScreenState extends State<SearchScreen> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 160),
+                                                  padding: EdgeInsets.only(
+                                                      left:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              2.5),
                                                   child: Center(
                                                     child: Container(
                                                       height: 35,
@@ -353,7 +373,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                               height: 22,
                                             ),
                                             SizedBox(
-                                              width: 60,
+                                              width: 80,
                                               child: Text(
                                                 searchResult?.pointTo ?? '',
                                                 overflow: TextOverflow.ellipsis,
@@ -376,31 +396,149 @@ class _SearchScreenState extends State<SearchScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(
                                     left: 0, right: 0, top: 0, bottom: 0),
-                                child: SizedBox(
-                                    height: 60,
-                                    width:
-                                        MediaQuery.of(context).size.width - 60,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: Center(
-                                            child: ListView.builder(
-                                                shrinkWrap: true,
-                                                itemCount:
-                                                    searchResult?.points.length,
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                physics:
-                                                    const NeverScrollableScrollPhysics(),
-                                                itemBuilder: (con, index) {
-                                                  // if () {
-                                                  // t = index;
-                                                  // }
+                                child: searchResult!.points.isNotEmpty
+                                    ? SizedBox(
+                                        height: 40,
+                                        width:
+                                            MediaQuery.of(context).size.width -
+                                                60,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                              child: Center(
+                                                child: ListView.builder(
+                                                    shrinkWrap: true,
+                                                    itemCount: searchResult
+                                                        ?.points.length,
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    physics:
+                                                        const NeverScrollableScrollPhysics(),
+                                                    itemBuilder: (con, index) {
+                                                      // if () {
+                                                      // t = index;
+                                                      // }
 
-                                                  if (searchResult?.points !=
-                                                      null) {
+                                                      if (searchResult
+                                                              ?.points !=
+                                                          null) {
+                                                        return Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              Visibility(
+                                                                visible:
+                                                                    index == 0
+                                                                        ? false
+                                                                        : true,
+                                                                child: Row(
+                                                                    children: [
+                                                                      Row(
+                                                                        children:
+                                                                            List.generate(
+                                                                          1,
+                                                                          (ii) => Padding(
+                                                                              padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
+                                                                              child: Container(
+                                                                                height: 2.5,
+                                                                                width: 42,
+                                                                                color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
+                                                                              )),
+                                                                        ),
+                                                                      ),
+                                                                    ]),
+                                                              ),
+                                                              index != t
+                                                                  ? Container(
+                                                                      height:
+                                                                          12,
+                                                                      width: 12,
+                                                                      decoration: BoxDecoration(
+                                                                          shape: BoxShape
+                                                                              .circle,
+                                                                          color: index <= t && t >= 0
+                                                                              ? AppColors.mainColor
+                                                                              : Colors.grey),
+                                                                    )
+                                                                  : Stack(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Center(
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                40,
+                                                                            width:
+                                                                                40,
+                                                                            decoration:
+                                                                                BoxDecoration(shape: BoxShape.circle, color: AppColors.mainColor.withOpacity(0.1)),
+                                                                          ),
+                                                                        ),
+                                                                        Container(
+                                                                          height:
+                                                                              28,
+                                                                          width:
+                                                                              28,
+                                                                          decoration: const BoxDecoration(
+                                                                              shape: BoxShape.circle,
+                                                                              color: AppColors.mainColor),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(4.0),
+                                                                            child:
+                                                                                CustomIcon(
+                                                                              title: t == 0
+                                                                                  ? 'assets/icons/home.svg'
+                                                                                  : t == searchResult!.points.length
+                                                                                      ? 'assets/icons/check_circle.svg'
+                                                                                      : 'assets/icons/truck_delivery.svg',
+                                                                              height: 10,
+                                                                              width: 10,
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    )
+                                                            ]);
+                                                      } else {
+                                                        return Container();
+                                                      }
+                                                    }),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                        // : const Text('Fucking'),
+                                        )
+                                    : SizedBox(
+                                        height: 40,
+                                        width:
+                                            MediaQuery.of(context).size.width -
+                                                40,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                                child: Center(
+                                                    child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 0, right: 0),
+                                              child: ListView.builder(
+                                                  shrinkWrap: true,
+                                                  itemCount: 6,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  itemBuilder: (con, index) {
                                                     return Row(
                                                         mainAxisSize:
                                                             MainAxisSize.min,
@@ -411,21 +549,19 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                 : true,
                                                             child: Row(
                                                                 children: [
-                                                                  Row(
-                                                                    children: List
-                                                                        .generate(
-                                                                      1,
-                                                                      (ii) => Padding(
-                                                                          padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
-                                                                          child: Container(
-                                                                            height:
-                                                                                2.5,
-                                                                            width:
-                                                                                42,
-                                                                            color: index <= t && t >= 0
-                                                                                ? AppColors.mainColor
-                                                                                : Colors.grey,
-                                                                          )),
+                                                                  FittedBox(
+                                                                    child: Row(
+                                                                      children:
+                                                                          List.generate(
+                                                                        1,
+                                                                        (ii) => Padding(
+                                                                            padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
+                                                                            child: Container(
+                                                                              height: 2.5,
+                                                                              width: 42,
+                                                                              color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
+                                                                            )),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ]),
@@ -480,7 +616,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                             CustomIcon(
                                                                           title: t == 0
                                                                               ? 'assets/icons/home.svg'
-                                                                              : t == searchResult!.points.length
+                                                                              : t == l! - 1
                                                                                   ? 'assets/icons/check_circle.svg'
                                                                                   : 'assets/icons/truck_delivery.svg',
                                                                           height:
@@ -495,16 +631,148 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                   ],
                                                                 )
                                                         ]);
-                                                  } else {
-                                                    return Container();
-                                                  }
-                                                }),
+                                                  }),
+                                            )))
+                                          ],
+                                        )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 20, right: 20, top: 7, bottom: 8),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                              4 -
+                                          30,
+                                      child: Row(
+                                        children: [
+                                          // CustomIcon(
+                                          //     title: 'assets/icons/boxh.svg',
+                                          //     height: 20,
+                                          //     width: 20,
+                                          //     color: Colors.black),
+                                          const Text(
+                                            'Ýer: ',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
                                           ),
-                                        )
-                                      ],
-                                    )
-                                    // : const Text('Fucking'),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 5),
+                                            child: SizedBox(
+                                              // width: MediaQuery.of(context).size.width / 4 - 25,
+                                              child: Text(
+                                                searchResult?.summarySeats
+                                                        .toString() ??
+                                                    "",
+                                                style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 16,
+                                                    fontFamily: 'Roboto',
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
+                                    // SizedBox(
+                                    //   width: MediaQuery.of(context).size.width / 4 - 25,
+                                    //   child: Row(
+                                    //     children: [
+                                    //       SizedBox(
+                                    //           height: 24,
+                                    //           width: 25,
+                                    //           child: Image.asset('assets/images/kg.png')),
+                                    //       Padding(
+                                    //         padding: const EdgeInsets.only(left: 5),
+                                    //         child: Text(
+                                    //           widget.model.summaryKg.toString(),
+                                    //           style: const TextStyle(
+                                    //               color: Colors.black,
+                                    //               fontSize: 16,
+                                    //               fontFamily: 'Roboto',
+                                    //               fontStyle: FontStyle.normal,
+                                    //               fontWeight: FontWeight.w400),
+                                    //         ),
+                                    //       ),
+                                    //     ],
+                                    //   ),
+                                    // ),
+                                    SizedBox(
+                                      // width: MediaQuery.of(context).size.width / 4,
+                                      child: Row(
+                                        children: [
+                                          // SizedBox(
+                                          //     height: 22,
+                                          //     width: 22,
+                                          //     child: Image.asset('assets/images/cube_new.png')),
+                                          const Text(
+                                            'Kub: ',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 5),
+                                            child: Text(
+                                              searchResult?.summaryCube
+                                                      .toString() ??
+                                                  '',
+                                              style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                  fontFamily: 'Roboto',
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      // width: MediaQuery.of(context).size.width / 4,
+                                      child: Row(
+                                        children: [
+                                          // const Icon(Icons.attach_money, ),
+                                          const Text(
+                                            'Baha: ',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Text(
+                                            searchResult?.summaryPrice
+                                                    .toString() ??
+                                                "",
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
@@ -541,7 +809,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                               searchResult?.location ?? '',
                                               style: const TextStyle(
                                                   color: AppColors.mainColor,
-                                                  fontSize: 14,
+                                                  fontSize: 12,
                                                   fontFamily: 'Roboto',
                                                   fontStyle: FontStyle.normal,
                                                   fontWeight: FontWeight.w600),
@@ -570,25 +838,29 @@ class _SearchScreenState extends State<SearchScreen> {
                                         //               model: searchResult,
                                         //             )));
                                       },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10,
-                                              right: 10,
-                                              bottom: 10,
-                                              top: 10),
-                                          child: Text(
-                                            'add_order'.trs,
-                                            style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 14,
-                                                fontFamily: 'Roboto',
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w600),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 10),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10,
+                                                right: 10,
+                                                bottom: 10,
+                                                top: 10),
+                                            child: Text(
+                                              'add_order'.trs,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12,
+                                                  fontFamily: 'Roboto',
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -617,7 +889,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                             'more_info'.trs,
                                             style: const TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: 'Roboto',
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w600),
@@ -677,7 +949,6 @@ class _SearchScreenState extends State<SearchScreen> {
                       InkWell(
                         onTap: () async {
                           TicketsRepository().tickedId(context, id);
-                          print(id);
                         },
                         child: Container(
                           height: 40,
@@ -710,7 +981,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             width: MediaQuery.of(context).size.width / 3 - 20,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: AppColors.mainColor),
+                                color: Colors.red),
                             child: Center(
                               child: Text(
                                 'no'.trs,

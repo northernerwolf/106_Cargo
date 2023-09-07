@@ -65,7 +65,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         return InkWell(
                           onTap: () async {
                             await SettingsSingleton().changeLocale('tk');
-                            setState(() {});
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20, top: 30),
@@ -128,7 +127,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         return InkWell(
                           onTap: () async {
                             await SettingsSingleton().changeLocale('ru');
-                            setState(() {});
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20, top: 10),

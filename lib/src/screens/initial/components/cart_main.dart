@@ -467,9 +467,9 @@ class _CartMainState extends State<CartMain> {
                         //     height: 20,
                         //     width: 20,
                         //     color: Colors.black),
-                        Text(
+                        const Text(
                           'Ýer: ',
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: 'Roboto',
@@ -478,14 +478,17 @@ class _CartMainState extends State<CartMain> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 5),
-                          child: Text(
-                            widget.model.summarySeats.toString(),
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w400),
+                          child: SizedBox(
+                            // width: MediaQuery.of(context).size.width / 4 - 25,
+                            child: Text(
+                              widget.model.summarySeats.toString(),
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
                           ),
                         ),
                       ],
@@ -515,16 +518,16 @@ class _CartMainState extends State<CartMain> {
                   //   ),
                   // ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
+                    // width: MediaQuery.of(context).size.width / 4,
                     child: Row(
                       children: [
                         // SizedBox(
                         //     height: 22,
                         //     width: 22,
                         //     child: Image.asset('assets/images/cube_new.png')),
-                        Text(
+                        const Text(
                           'Kub: ',
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: 'Roboto',
@@ -547,13 +550,13 @@ class _CartMainState extends State<CartMain> {
                     ),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 4,
+                    // width: MediaQuery.of(context).size.width / 4,
                     child: Row(
                       children: [
                         // const Icon(Icons.attach_money, ),
-                        Text(
+                        const Text(
                           'Baha: ',
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: 'Roboto',
@@ -586,7 +589,7 @@ class _CartMainState extends State<CartMain> {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          left: 12, top: 10, bottom: 10, right: 12),
+                          left: 0, top: 10, bottom: 10, right: 12),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

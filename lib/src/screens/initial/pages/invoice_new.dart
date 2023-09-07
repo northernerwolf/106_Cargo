@@ -312,23 +312,46 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          invoice.invoice?.providerPhone ?? "",
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 24,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w700),
+                                        SizedBox(
+                                          width: 250,
+                                          child: Text(
+                                            invoice.invoice?.providerPhone ??
+                                                "",
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          ),
                                         ),
-                                        Text(
-                                          invoice.invoice?.customersName ?? "",
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 24,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w700),
+                                        SizedBox(
+                                          width: 250,
+                                          child: Text(
+                                            invoice.invoice?.trackCode ?? "",
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 0),
+                                          child: Text(
+                                            invoice.invoice?.customersName ??
+                                                "",
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 24,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w700),
+                                          ),
                                         ),
                                         Text(
                                           '+993${invoice.invoice?.customersPhone}',

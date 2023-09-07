@@ -37,10 +37,10 @@ class ExploreScreen extends StatelessWidget {
                 bottom: Radius.circular(15),
               ),
             ),
-            title:  Center(
+            title: Center(
               child: Text(
                 'market'.trs,
-                style:const TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontFamily: 'Roboto',
@@ -61,8 +61,8 @@ class ExploreScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SearchScreen()));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (context) => const SearchScreen()));
                 },
                 child: Container(
                   height: 60,

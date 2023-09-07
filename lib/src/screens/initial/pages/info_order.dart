@@ -629,11 +629,20 @@ class _InfoOrederState extends State<InfoOreder> {
                                             35,
                                     child: Row(
                                       children: [
-                                        CustomIcon(
-                                            title: 'assets/icons/boxh.svg',
-                                            height: 20,
-                                            width: 20,
-                                            color: Colors.black),
+                                        // CustomIcon(
+                                        //     title: 'assets/icons/boxh.svg',
+                                        //     height: 20,
+                                        //     width: 20,
+                                        //     color: Colors.black),
+                                        const Text(
+                                          'Ýer: ',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'Roboto',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w400),
+                                        ),
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 5),
@@ -681,16 +690,24 @@ class _InfoOrederState extends State<InfoOreder> {
                                   //   ),
                                   // ),
                                   SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4 -
-                                            15,
+                                    // width:
+                                    // MediaQuery.of(context).size.width / 4,
                                     child: Row(
                                       children: [
-                                        SizedBox(
-                                            height: 22,
-                                            width: 22,
-                                            child: Image.asset(
-                                                'assets/images/cube_new.png')),
+                                        // SizedBox(
+                                        //     height: 22,
+                                        //     width: 22,
+                                        //     child: Image.asset(
+                                        //         'assets/images/cube_new.png')),
+                                        const Text(
+                                          'Kub: ',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'Roboto',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w400),
+                                        ),
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 5),
@@ -710,12 +727,20 @@ class _InfoOrederState extends State<InfoOreder> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width / 4 -
-                                            26,
+                                    // width:
+                                    //     MediaQuery.of(context).size.width / 4
+
                                     child: Row(
                                       children: [
-                                        const Icon(Icons.attach_money),
+                                        const Text(
+                                          'Baha: ',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 16,
+                                              fontFamily: 'Roboto',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w400),
+                                        ),
                                         Text(
                                           orderById.ordersById?.summaryPrice
                                                   .toString() ??
@@ -746,7 +771,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                             BorderRadius.circular(10)),
                                     child: Padding(
                                       padding: const EdgeInsets.only(
-                                          left: 12,
+                                          left: 0,
                                           top: 10,
                                           bottom: 10,
                                           right: 12),

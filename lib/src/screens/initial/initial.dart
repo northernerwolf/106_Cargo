@@ -25,6 +25,7 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
+  final FocusNode _focusNode = FocusNode();
   @override
   void initState() {
     showNotfi();
@@ -92,7 +93,9 @@ class _InitialScreenState extends State<InitialScreen> {
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const SearchScreen()));
+                            builder: (context) => SearchScreen(
+                                  focusNode: _focusNode,
+                                )));
                       },
                       child: Container(
                         height: 40,

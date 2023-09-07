@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/initial/model/search_model.dart';
+import 'package:kargo_app/src/screens/initial/pages/invoice_new.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 import '../../../design/app_colors.dart';
@@ -27,6 +29,8 @@ class _SearchInfoState extends State<SearchInfo> {
   @override
   Widget build(BuildContext context) {
     int t = 0;
+
+    int? l = widget.model?.points.length;
     if (widget.model?.points != null) {
       for (var i = 0; i < widget.model!.points.length; i++) {
         if (widget.model?.points[i].isCurrent != 0) {
@@ -34,6 +38,7 @@ class _SearchInfoState extends State<SearchInfo> {
         }
       }
     }
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -131,65 +136,65 @@ class _SearchInfoState extends State<SearchInfo> {
                               }),
                             ],
                           ),
-                          Row(
-                            children: [
-                              CustomIcon(
-                                  title: 'assets/icons/boxh.svg',
-                                  height: 20,
-                                  width: 20,
-                                  color: AppColors.authTextColor),
-                              Text(
-                                'box'.trs,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontFamily: 'Roboto',
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              Builder(builder: (context) {
-                                final ordersId = widget.model;
-                                if (ordersId != null) {
-                                  return Text(
-                                    ordersId.summarySeats.toString(),
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400),
-                                  );
-                                }
-                                {
-                                  return const Text('NULL');
-                                }
-                              }),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              CustomIcon(
-                                  title: 'assets/icons/gps.svg',
-                                  height: 20,
-                                  width: 20,
-                                  color: AppColors.authTextColor),
-                              Text(
-                                'gps'.trs,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontFamily: 'Roboto',
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   children: [
+                          //     CustomIcon(
+                          //         title: 'assets/icons/boxh.svg',
+                          //         height: 20,
+                          //         width: 20,
+                          //         color: AppColors.authTextColor),
+                          //     Text(
+                          //       'box'.trs,
+                          //       style: const TextStyle(
+                          //           color: Colors.black,
+                          //           fontSize: 16,
+                          //           fontFamily: 'Roboto',
+                          //           fontStyle: FontStyle.normal,
+                          //           fontWeight: FontWeight.w400),
+                          //     ),
+                          //     Builder(builder: (context) {
+                          //       final ordersId = widget.model;
+                          //       if (ordersId != null) {
+                          //         return Text(
+                          //           ordersId.summarySeats.toString(),
+                          //           style: const TextStyle(
+                          //               color: Colors.black,
+                          //               fontSize: 16,
+                          //               fontFamily: 'Roboto',
+                          //               fontStyle: FontStyle.normal,
+                          //               fontWeight: FontWeight.w400),
+                          //         );
+                          //       }
+                          //       {
+                          //         return const Text('NULL');
+                          //       }
+                          //     }),
+                          //   ],
+                          // ),
+                          // Row(
+                          //   children: [
+                          //     CustomIcon(
+                          //         title: 'assets/icons/gps.svg',
+                          //         height: 20,
+                          //         width: 20,
+                          //         color: AppColors.authTextColor),
+                          //     Text(
+                          //       'gps'.trs,
+                          //       style: const TextStyle(
+                          //           color: Colors.black,
+                          //           fontSize: 16,
+                          //           fontFamily: 'Roboto',
+                          //           fontStyle: FontStyle.normal,
+                          //           fontWeight: FontWeight.w400),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 15, right: 15, top: 10),
+                          const EdgeInsets.only(left: 15, right: 15, top: 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -233,7 +238,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 170),
+                                padding: EdgeInsets.only(
+                                    left: MediaQuery.of(context).size.width /
+                                        2.5),
                                 child: Container(
                                   height: 35,
                                   width: 35,
@@ -259,7 +266,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                 height: 22,
                               ),
                               SizedBox(
-                                width: 60,
+                                width: 80,
                                 child: Builder(builder: (context) {
                                   final pointsTo = widget.model;
                                   if (pointsTo != null) {
@@ -285,35 +292,163 @@ class _SearchInfoState extends State<SearchInfo> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
-                      child: SizedBox(
-                          height: 60,
-                          width: MediaQuery.of(context).size.width - 50,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Center(
-                                  child: Builder(builder: (context) {
-                                    final pointsL = widget.model;
-                                    if (pointsL != null) {
-                                      return ListView.builder(
-                                          shrinkWrap: true,
-                                          itemCount: pointsL.points.length,
-                                          scrollDirection: Axis.horizontal,
-                                          physics:
-                                              const NeverScrollableScrollPhysics(),
-                                          itemBuilder: (con, index) {
-                                            // setState(() {
-                                            //   orderById.loc;
-                                            // });
-                                            return Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Visibility(
-                                                    visible: index == 0
-                                                        ? false
-                                                        : true,
-                                                    child: Row(children: [
-                                                      Row(
+                      child: widget.model!.points.isNotEmpty
+                          ? SizedBox(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width - 50,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Center(
+                                      child: Builder(builder: (context) {
+                                        final pointsL = widget.model;
+                                        if (pointsL != null) {
+                                          return ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount: pointsL.points.length,
+                                              scrollDirection: Axis.horizontal,
+                                              physics:
+                                                  const NeverScrollableScrollPhysics(),
+                                              itemBuilder: (con, index) {
+                                                // setState(() {
+                                                //   orderById.loc;
+                                                // });
+                                                return Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Visibility(
+                                                        visible: index == 0
+                                                            ? false
+                                                            : true,
+                                                        child: Row(children: [
+                                                          Row(
+                                                            children:
+                                                                List.generate(
+                                                              1,
+                                                              (ii) => Padding(
+                                                                  padding: const EdgeInsets
+                                                                          .only(
+                                                                      left: 3,
+                                                                      right: 3,
+                                                                      top: 7,
+                                                                      bottom:
+                                                                          5),
+                                                                  child:
+                                                                      Container(
+                                                                    height: 2.5,
+                                                                    width: 42,
+                                                                    color: index <=
+                                                                            t
+                                                                        ? AppColors
+                                                                            .mainColor
+                                                                        : Colors
+                                                                            .grey,
+                                                                  )),
+                                                            ),
+                                                          ),
+                                                        ]),
+                                                      ),
+                                                      index != t
+                                                          ? Container(
+                                                              height: 12,
+                                                              width: 12,
+                                                              decoration: BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  color: index <
+                                                                          t
+                                                                      ? AppColors
+                                                                          .mainColor
+                                                                      : Colors
+                                                                          .grey),
+                                                            )
+                                                          : Stack(
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              children: [
+                                                                Center(
+                                                                  child:
+                                                                      Container(
+                                                                    height: 40,
+                                                                    width: 40,
+                                                                    decoration: BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                        color: AppColors
+                                                                            .mainColor
+                                                                            .withOpacity(0.1)),
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  height: 28,
+                                                                  width: 28,
+                                                                  decoration: const BoxDecoration(
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                      color: AppColors
+                                                                          .mainColor),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            4.0),
+                                                                    child:
+                                                                        CustomIcon(
+                                                                      title: t ==
+                                                                              0
+                                                                          ? 'assets/icons/home.svg'
+                                                                          : t == pointsL.points.length
+                                                                              ? 'assets/icons/check_circle.svg'
+                                                                              : 'assets/icons/truck_delivery.svg',
+                                                                      height:
+                                                                          10,
+                                                                      width: 10,
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            )
+                                                    ]);
+                                              });
+                                        } else {
+                                          return const CircularProgressIndicator();
+                                        }
+                                      }),
+                                    ),
+                                  ),
+                                ],
+                              ))
+                          : SizedBox(
+                              height: 40,
+                              width: MediaQuery.of(context).size.width - 40,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                      child: Center(
+                                          child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 0, right: 0, top: 3),
+                                    child: ListView.builder(
+                                        shrinkWrap: true,
+                                        itemCount: 6,
+                                        scrollDirection: Axis.horizontal,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemBuilder: (con, index) {
+                                          return Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Visibility(
+                                                  visible:
+                                                      index == 0 ? false : true,
+                                                  child: Row(children: [
+                                                    FittedBox(
+                                                      child: Row(
                                                         children: List.generate(
                                                           1,
                                                           (ii) => Padding(
@@ -329,7 +464,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                 height: 2.5,
                                                                 width: 42,
                                                                 color: index <=
-                                                                        t
+                                                                            t &&
+                                                                        t >= 0
                                                                     ? AppColors
                                                                         .mainColor
                                                                     : Colors
@@ -337,77 +473,198 @@ class _SearchInfoState extends State<SearchInfo> {
                                                               )),
                                                         ),
                                                       ),
-                                                    ]),
-                                                  ),
-                                                  index != t
-                                                      ? Container(
-                                                          height: 12,
-                                                          width: 12,
-                                                          decoration: BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              color: index < t
-                                                                  ? AppColors
-                                                                      .mainColor
-                                                                  : Colors
-                                                                      .grey),
-                                                        )
-                                                      : Stack(
-                                                          alignment:
-                                                              Alignment.center,
-                                                          children: [
-                                                            Center(
-                                                              child: Container(
-                                                                height: 40,
-                                                                width: 40,
-                                                                decoration: BoxDecoration(
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                    color: AppColors
-                                                                        .mainColor
-                                                                        .withOpacity(
-                                                                            0.1)),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              height: 28,
-                                                              width: 28,
-                                                              decoration: const BoxDecoration(
+                                                    ),
+                                                  ]),
+                                                ),
+                                                index != t
+                                                    ? Container(
+                                                        height: 12,
+                                                        width: 12,
+                                                        decoration: BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: index <= t &&
+                                                                    t >= 0
+                                                                ? AppColors
+                                                                    .mainColor
+                                                                : Colors.grey),
+                                                      )
+                                                    : Stack(
+                                                        alignment:
+                                                            Alignment.center,
+                                                        children: [
+                                                          Center(
+                                                            child: Container(
+                                                              height: 40,
+                                                              width: 40,
+                                                              decoration: BoxDecoration(
                                                                   shape: BoxShape
                                                                       .circle,
                                                                   color: AppColors
-                                                                      .mainColor),
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        4.0),
-                                                                child:
-                                                                    CustomIcon(
-                                                                  title: t == 0
-                                                                      ? 'assets/icons/home.svg'
-                                                                      : t == pointsL.points.length
-                                                                          ? 'assets/icons/check_circle.svg'
-                                                                          : 'assets/icons/truck_delivery.svg',
-                                                                  height: 10,
-                                                                  width: 10,
-                                                                  color: Colors
-                                                                      .white,
-                                                                ),
+                                                                      .mainColor
+                                                                      .withOpacity(
+                                                                          0.1)),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 28,
+                                                            width: 28,
+                                                            decoration: const BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                color: AppColors
+                                                                    .mainColor),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(4.0),
+                                                              child: CustomIcon(
+                                                                title: t == 0
+                                                                    ? 'assets/icons/home.svg'
+                                                                    : t == l! - 1
+                                                                        ? 'assets/icons/check_circle.svg'
+                                                                        : 'assets/icons/truck_delivery.svg',
+                                                                height: 10,
+                                                                width: 10,
+                                                                color: Colors
+                                                                    .white,
                                                               ),
                                                             ),
-                                                          ],
-                                                        )
-                                                ]);
-                                          });
-                                    } else {
-                                      return const CircularProgressIndicator();
-                                    }
-                                  }),
+                                                          ),
+                                                        ],
+                                                      )
+                                              ]);
+                                        }),
+                                  )))
+                                ],
+                              )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 20, right: 20, top: 7, bottom: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 4 - 30,
+                            child: Row(
+                              children: [
+                                // CustomIcon(
+                                //     title: 'assets/icons/boxh.svg',
+                                //     height: 20,
+                                //     width: 20,
+                                //     color: Colors.black),
+                                const Text(
+                                  'Ýer: ',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
                                 ),
-                              ),
-                            ],
-                          )),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: SizedBox(
+                                    // width: MediaQuery.of(context).size.width / 4 - 25,
+                                    child: Text(
+                                      widget.model?.summarySeats.toString() ??
+                                          "",
+                                      style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          // SizedBox(
+                          //   width: MediaQuery.of(context).size.width / 4 - 25,
+                          //   child: Row(
+                          //     children: [
+                          //       SizedBox(
+                          //           height: 24,
+                          //           width: 25,
+                          //           child: Image.asset('assets/images/kg.png')),
+                          //       Padding(
+                          //         padding: const EdgeInsets.only(left: 5),
+                          //         child: Text(
+                          //           widget.model.summaryKg.toString(),
+                          //           style: const TextStyle(
+                          //               color: Colors.black,
+                          //               fontSize: 16,
+                          //               fontFamily: 'Roboto',
+                          //               fontStyle: FontStyle.normal,
+                          //               fontWeight: FontWeight.w400),
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          SizedBox(
+                            // width: MediaQuery.of(context).size.width / 4,
+                            child: Row(
+                              children: [
+                                // SizedBox(
+                                //     height: 22,
+                                //     width: 22,
+                                //     child: Image.asset('assets/images/cube_new.png')),
+                                const Text(
+                                  'Kub: ',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    widget.model?.summaryCube.toString() ?? '',
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontFamily: 'Roboto',
+                                        fontStyle: FontStyle.normal,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            // width: MediaQuery.of(context).size.width / 4,
+                            child: Row(
+                              children: [
+                                // const Icon(Icons.attach_money, ),
+                                const Text(
+                                  'Baha: ',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  widget.model?.summaryPrice.toString() ?? "",
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding:
@@ -417,11 +674,11 @@ class _SearchInfoState extends State<SearchInfo> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: AppColors.initialButtonColor,
+                                // color: AppColors.initialButtonColor,
                                 borderRadius: BorderRadius.circular(10)),
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  left: 12, top: 10, bottom: 10, right: 12),
+                                  left: 0, top: 10, bottom: 10, right: 12),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -440,7 +697,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                         locations.location,
                                         style: const TextStyle(
                                             color: AppColors.mainColor,
-                                            fontSize: 14,
+                                            fontSize: 12,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w600),
@@ -464,6 +721,7 @@ class _SearchInfoState extends State<SearchInfo> {
               padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Container(
                 height: 120,
+                width: MediaQuery.of(context).size.width - 20,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -481,48 +739,43 @@ class _SearchInfoState extends State<SearchInfo> {
                   child: Builder(builder: (context) {
                     final imagesL = widget.model;
                     if (imagesL != null) {
-                      return PageView.builder(
-                        itemCount: imagesL.images.length,
-                        controller: PageController(
-                          viewportFraction: 0.3,
-                          initialPage: 0,
-                          keepPage: true,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        reverse: false,
-                        // onPageChanged: (int index) =>
-                        //     setState(() => _index = index),
-                        itemBuilder: (_, i) {
-                          return InkWell(
-                            onTap: () {
-                              showModalBottomSheet(
-                                  context: context,
-                                  isScrollControlled: true,
-                                  builder: (BuildContext context) {
-                                    return SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                      child: PhotoViewGallery.builder(
-                                        itemCount: widget.model?.images.length,
-                                        builder:
-                                            (BuildContext context, int index) {
-                                          final imagess = widget.model;
-
-                                          if (imagess != null) {
-                                            return PhotoViewGalleryPageOptions(
-                                              imageProvider: NetworkImage(
-                                                  imagess.images[index]),
-                                              minScale: PhotoViewComputedScale
-                                                      .contained *
-                                                  0.8,
-                                              maxScale: PhotoViewComputedScale
-                                                      .covered *
-                                                  2,
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          // physics: const BouncingScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: imagesL.images.length,
+                          itemBuilder: (BuildContext context, int indexx) {
+                            return InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (BuildContext context) {
+                                      return SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height,
+                                        child: PhotoViewGallery.builder(
+                                          itemCount:
+                                              widget.model!.images.length,
+                                          loadingBuilder: (context, event) {
+                                            return Center(
+                                              child: Container(
+                                                width: 20.0,
+                                                height: 20.0,
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              ),
                                             );
-                                          } else {
+                                          },
+                                          builder: (BuildContext context,
+                                              int index) {
                                             return PhotoViewGalleryPageOptions(
                                               imageProvider:
-                                                  const NetworkImage(''),
+                                                  CachedNetworkImageProvider(
+                                                      imagesL.images[index]),
+                                              // imageProvider: NetworkImage(
+                                              // orderById.ordersById!
+                                              //     .images[index]),
                                               minScale: PhotoViewComputedScale
                                                       .contained *
                                                   0.8,
@@ -530,53 +783,46 @@ class _SearchInfoState extends State<SearchInfo> {
                                                       .covered *
                                                   2,
                                             );
-                                          }
-                                        },
-                                        scrollPhysics:
-                                            const BouncingScrollPhysics(),
-                                        backgroundDecoration:
-                                            const BoxDecoration(
-                                          color: Colors.black,
+                                          },
+                                          scrollPhysics:
+                                              const BouncingScrollPhysics(),
+                                          backgroundDecoration:
+                                              const BoxDecoration(
+                                            color: Colors.black,
+                                          ),
+                                          onPageChanged: (int index) {
+                                            setState(() {
+                                              index = indexx;
+                                            });
+                                          },
+                                          pageController: PageController(
+                                              initialPage: indexx),
                                         ),
-                                        loadingBuilder:
-                                            (BuildContext context, event) =>
-                                                const Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
-                                        onPageChanged: (int index) {
-                                          setState(() {
-                                            _selectedIndex = i;
-                                          });
-                                        },
-                                        pageController: PageController(
-                                            initialPage: _selectedIndex),
-                                      ),
-                                    );
-                                  });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 8, bottom: 8, right: 5),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: SizedBox(
-                                    height: 100,
-                                    width: 100,
-                                    child: Image.network(
-                                      widget.model?.images[i] ?? '',
-                                      fit: BoxFit.cover,
-                                      // loadingBuilder:
-                                      //     (context, child, loadingProgress) =>
-                                      //         const SpinKitCircle(
-                                      //   color: AppColors.mainColor,
-                                      //   size: 50,
-                                      // ),
-                                    )),
+                                      );
+                                    });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8, bottom: 8, right: 5),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: SizedBox(
+                                      height: 100,
+                                      width: 100,
+                                      child: Image.network(
+                                        imagesL.images[indexx],
+                                        fit: BoxFit.cover,
+                                        // loadingBuilder: (context, child,
+                                        //         loadingProgress) =>
+                                        //     const SpinKitCircle(
+                                        //   color: AppColors.mainColor,
+                                        //   size: 50,
+                                        // ),
+                                      )),
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                      );
+                            );
+                          });
                     } else {
                       return const Text('Null');
                     }
@@ -607,7 +853,7 @@ class _SearchInfoState extends State<SearchInfo> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 15, top: 10, bottom: 0),
+                          const EdgeInsets.only(left: 15, top: 10, bottom: 20),
                       child: Text(
                         'track_order'.trs,
                         style: const TextStyle(
@@ -621,7 +867,6 @@ class _SearchInfoState extends State<SearchInfo> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10, top: 10),
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height - 490,
                         child: Builder(builder: (context) {
                           final poitss = widget.model;
                           if (poitss != null) {
@@ -845,10 +1090,15 @@ class _SearchInfoState extends State<SearchInfo> {
                   padding: const EdgeInsets.only(left: 90),
                   child: InkWell(
                     onTap: () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) => Invoice(
-                      //           id: widget.model,
-                      //         )));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => InvoiceNew(
+                                id: widget.model!.id,
+                              )
+                          // Invoice(
+                          //       id: widget.id,
+                          //     )
+
+                          ));
                     },
                     child: Container(
                       height: 50,

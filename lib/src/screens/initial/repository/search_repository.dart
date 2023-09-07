@@ -18,6 +18,8 @@ class SearchRepository {
       );
       isLoading = true;
 
+      print(response.data);
+
       final cargo = SearchModel.fromJson(response.data['data']);
 
       return cargo;

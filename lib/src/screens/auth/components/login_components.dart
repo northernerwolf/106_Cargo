@@ -58,7 +58,7 @@ class _LoginComponentsState extends State<LoginComponents> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 0, right: 20, left: 20),
               child: Container(
-                height: MediaQuery.of(context).size.height / 2 + 50,
+                height: MediaQuery.of(context).size.height / 2 + 55,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(25),

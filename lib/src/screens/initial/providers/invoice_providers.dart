@@ -15,9 +15,7 @@ class InvoiceProvider with ChangeNotifier {
   Future<void> getInvoice(int id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
-
     isLoading = true;
-
     final headers = {
       'Authorization': 'Bearer $val',
     };
