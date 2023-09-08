@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/initial/pages/search_info.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -138,7 +138,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   onFieldSubmitted: performSearch,
                                   maxLines: 1,
                                   decoration: InputDecoration(
-                                    hintText: 'search'.trs,
+                                    hintText: 'search'.tr(),
                                     hintStyle: const TextStyle(fontSize: 15),
                                     border: InputBorder.none,
                                     focusedBorder: InputBorder.none,
@@ -210,7 +210,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     Row(
                                       children: [
                                         Text(
-                                          'id'.trs,
+                                          'id'.tr(),
                                           style: const TextStyle(
                                               color: Colors.black,
                                               fontSize: 16,
@@ -783,7 +783,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   children: [
                                     Container(
                                       decoration: BoxDecoration(
-                                          color: AppColors.initialButtonColor,
+                                          // color: AppColors.initialButtonColor,
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Padding(
@@ -853,7 +853,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 bottom: 10,
                                                 top: 10),
                                             child: Text(
-                                              'add_order'.trs,
+                                              'add_order'.tr(),
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 12,
@@ -886,7 +886,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                               bottom: 10,
                                               top: 10),
                                           child: Text(
-                                            'more_info'.trs,
+                                            'more_info'.tr(),
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 12,
@@ -931,7 +931,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
-                    'add_order_permision'.trs,
+                    'add_order_permision'.tr(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.black,
@@ -958,7 +958,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               color: Colors.green),
                           child: Center(
                             child: Text(
-                              'yes'.trs,
+                              'yes'.tr(),
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                   color: Colors.white,
@@ -984,7 +984,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 color: Colors.red),
                             child: Center(
                               child: Text(
-                                'no'.trs,
+                                'no'.tr(),
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     color: Colors.white,
@@ -1030,7 +1030,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
-                    'add_order_alart'.trs,
+                    'add_order_alart'.tr(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.red,
@@ -1059,7 +1059,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               color: Colors.green),
                           child: Center(
                             child: Text(
-                              'login'.trs,
+                              'login'.tr(),
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                   color: Colors.white,
@@ -1086,7 +1086,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 color: AppColors.mainColor),
                             child: Center(
                               child: Text(
-                                'create_account'.trs,
+                                'create_account'.tr(),
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                     color: Colors.white,

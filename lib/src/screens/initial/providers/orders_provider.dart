@@ -16,7 +16,7 @@ class OrdersProvider with ChangeNotifier {
 
   Future<void> getOrders() async {
     isLoading = true;
-    notifyListeners();
+    // notifyListeners();
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
 

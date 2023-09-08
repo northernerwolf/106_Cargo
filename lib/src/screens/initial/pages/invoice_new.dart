@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/app_colors.dart';
 import 'package:kargo_app/src/screens/initial/providers/invoice_providers.dart';
 import 'package:provider/provider.dart';
@@ -61,7 +61,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
               ),
             ),
             title: Text(
-              'order_info'.trs,
+              'order_info'.tr(),
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,

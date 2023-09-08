@@ -30,8 +30,9 @@ class TicketsRepository {
       if (response.statusCode == 200) {
         isLoading = false;
 
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const BottomNavScreen()));
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => BottomNavScreen()),
+            (route) => false);
 
         return;
       }

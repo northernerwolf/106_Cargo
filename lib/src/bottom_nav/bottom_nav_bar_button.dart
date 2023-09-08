@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 
 import '../design/app_colors.dart';
 import '../design/custom_icon.dart';
@@ -24,10 +24,10 @@ class BottomNavbarButton extends StatefulWidget {
 
 class _BottomNavbarButtonState extends State<BottomNavbarButton> {
   List<String> title = [
-    'order'.trs,
-    'market'.trs,
-    'about'.trs,
-    'profile'.trs,
+    'order'.tr(),
+    'market'.tr(),
+    'about'.tr(),
+    'profile'.tr(),
   ];
 
   List iconsLight = [

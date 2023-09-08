@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/core/firebase_setup.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/initial/pages/invoice_new.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:provider/provider.dart';
@@ -85,7 +85,7 @@ class _InfoOrederState extends State<InfoOreder> {
               ),
             ),
             title: Text(
-              'order_info'.trs,
+              'order_info'.tr(),
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -149,7 +149,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                       Row(
                                         children: [
                                           Text(
-                                            'id'.trs,
+                                            'id'.tr(),
                                             style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 16,
@@ -1056,7 +1056,7 @@ class _InfoOrederState extends State<InfoOreder> {
                               padding: const EdgeInsets.only(
                                   left: 15, top: 10, bottom: 0),
                               child: Text(
-                                'track_order'.trs,
+                                'track_order'.tr(),
                                 style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
@@ -1334,7 +1334,7 @@ class _InfoOrederState extends State<InfoOreder> {
                           color: AppColors.mainColor),
                       child: Center(
                         child: Text(
-                          'invoice'.trs,
+                          'invoice'.tr(),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                               color: Colors.white,

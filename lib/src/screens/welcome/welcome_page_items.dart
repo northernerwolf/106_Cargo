@@ -1,20 +1,20 @@
-import 'package:kargo_app/src/core/l10n.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Items {
   static List<Map<String, String>> WelcomeData = [
     {
-      'title': 'online_trecking'.trs,
-      'text': 'welcome_text'.trs,
+      'title': 'online_trecking'.tr(),
+      'text': 'welcome_text'.tr(),
       'image': 'assets/images/image1.png',
     },
     {
-      'title': 'online_trecking'.trs,
-      'text': 'welcome_text'.trs,
+      'title': 'online_trecking'.tr(),
+      'text': 'welcome_text'.tr(),
       'image': 'assets/images/image2.png',
     },
     {
-      'title': 'online_trecking'.trs,
-      'text': 'welcome_text'.trs,
+      'title': 'online_trecking'.tr(),
+      'text': 'welcome_text'.tr(),
       'image': 'assets/images/image3.png',
     },
   ];

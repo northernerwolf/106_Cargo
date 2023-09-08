@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/auth/providers/me_provider.dart';
 import 'package:kargo_app/src/screens/profile/edit/contaacts.dart';
 import 'package:kargo_app/src/screens/profile/edit/lanuage_chnage.dart';
@@ -60,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             title: Center(
               child: Text(
-                'profile'.trs,
+                'profile'.tr(),
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -261,7 +261,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Text(
-                                  'laguage'.trs,
+                                  'laguage'.tr(),
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
@@ -310,7 +310,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Text(
-                                  'contacty'.trs,
+                                  'contacty'.tr(),
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
@@ -358,7 +358,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 10),
                                   child: Text(
-                                    'log_out'.trs,
+                                    'log_out'.tr(),
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
@@ -395,7 +395,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  'log_out_info'.trs,
+                  'log_out_info'.tr(),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       color: Colors.black,
@@ -429,7 +429,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.blue[100]),
                           child: Center(
                             child: Text(
-                              'yes'.trs,
+                              'yes'.tr(),
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                   color: AppColors.mainColor,
@@ -457,7 +457,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: AppColors.mainColor),
                         child: Center(
                           child: Text(
-                            'no'.trs,
+                            'no'.tr(),
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                                 color: Colors.white,

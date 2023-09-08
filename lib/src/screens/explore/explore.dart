@@ -1,10 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/explore/components/all_products.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
-import '../initial/pages/search_screen.dart';
 import 'components/market_item.dart';
 
 class ExploreScreen extends StatelessWidget {
@@ -39,7 +38,7 @@ class ExploreScreen extends StatelessWidget {
             ),
             title: Center(
               child: Text(
-                'market'.trs,
+                'market'.tr(),
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,

@@ -36,8 +36,12 @@ class LoginRepository with ChangeNotifier {
 
         tokens = response.data!['data']['token'];
         await preferences.setString('token', tokens!);
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const BottomNavScreen()));
+
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const BottomNavScreen()),
+            (route) => false);
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const BottomNavScreen()));
         notifyListeners();
         return;
       } else {}

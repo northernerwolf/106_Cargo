@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/auth/login/login_screen.dart';
 
 import '../../design/app_colors.dart';
@@ -62,7 +62,7 @@ class AuthScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Text(
-                    'welcome'.trs,
+                    'welcome'.tr(),
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 25,
@@ -74,7 +74,7 @@ class AuthScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
                   child: Text(
-                    'welcome_text'.trs,
+                    'welcome_text'.tr(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: AppColors.authTextColor,
@@ -100,7 +100,7 @@ class AuthScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
-                          'log_in'.trs,
+                          'log_in'.tr(),
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -129,7 +129,7 @@ class AuthScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
-                          'create_account'.trs,
+                          'create_account'.tr(),
                           style: const TextStyle(
                               color: AppColors.mainColor,
                               fontSize: 16,

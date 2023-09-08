@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/screens/auth/register/repository_register.dart';
 import 'package:provider/provider.dart';
 
@@ -78,7 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
             title: Text(
-              'create_account'.trs,
+              'create_account'.tr(),
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -125,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           padding: const EdgeInsets.only(top: 30),
                           child: Center(
                             child: Text(
-                              'create_account'.trs,
+                              'create_account'.tr(),
                               style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 25,
@@ -139,7 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: const EdgeInsets.only(
                                 left: 15, right: 15, top: 20),
                             child: CustomTextFild(
-                                hint: 'name'.trs, controller: nameController)),
+                                hint: 'name'.tr(), controller: nameController)),
                         Padding(
                             padding:
                                 const EdgeInsets.only(left: 20.0, top: 5.0),
@@ -155,7 +155,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               right: 15,
                             ),
                             child: CustomTextFild(
-                                hint: 'last_name'.trs,
+                                hint: 'last_name'.tr(),
                                 controller: lastNameController)),
                         Padding(
                             padding:
@@ -275,7 +275,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       enabledBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
                                       disabledBorder: InputBorder.none,
-                                      hintText: 'key_word'.trs,
+                                      hintText: 'key_word'.tr(),
                                       hintStyle: const TextStyle(
                                           color: AppColors.authTextColor,
                                           fontSize: 18,
@@ -330,7 +330,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       enabledBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
                                       disabledBorder: InputBorder.none,
-                                      hintText: 'confirm_password'.trs,
+                                      hintText: 'confirm_password'.tr(),
                                       hintStyle: const TextStyle(
                                           color: AppColors.authTextColor,
                                           fontSize: 18,
@@ -367,7 +367,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 onTap: () {
                                   if (lastNameController.text.isEmpty) {
                                     setState(() {
-                                      errorText2 = 'last_name_error'.trs;
+                                      errorText2 = 'last_name_error'.tr();
                                     });
                                   }
                                   if (userNameController.text.isEmpty) {
@@ -377,21 +377,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   }
                                   if (phoneNumberntroller.text.isEmpty) {
                                     setState(() {
-                                      errorText4 = 'phone_error'.trs;
+                                      errorText4 = 'phone_error'.tr();
                                     });
                                   }
                                   if (phoneNumberntroller.text.isEmpty) {
                                     setState(() {
-                                      errorText5 = 'password_error'.trs;
+                                      errorText5 = 'password_error'.tr();
                                     });
                                   }
                                   if (passwordConfirmController.text.isEmpty) {
                                     setState(() {
-                                      errorText6 = 'password_error'.trs;
+                                      errorText6 = 'password_error'.tr();
                                     });
                                   }
                                   if (nameController.text.isEmpty) {
-                                    errorText = 'name_error'.trs;
+                                    errorText = 'name_error'.tr();
                                   }
                                   if (passwordController.text.isNotEmpty &&
                                       phoneNumberntroller.text.isNotEmpty) {
@@ -418,7 +418,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     child: Center(
                                       child: isLoading == false
                                           ? Text(
-                                              'create_account'.trs,
+                                              'create_account'.tr(),
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 16,
@@ -442,7 +442,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 Navigator.of(context).pop();
                               },
                               child: Text(
-                                'login'.trs,
+                                'login'.tr(),
                                 style: const TextStyle(
                                     color: AppColors.mainColor,
                                     fontSize: 16,

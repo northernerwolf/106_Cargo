@@ -1,8 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/app_colors.dart';
-
 import 'package:kargo_app/src/screens/auth/login/repository_login.dart';
 import 'package:kargo_app/src/screens/auth/register/register_screen.dart';
 import 'package:provider/provider.dart';
@@ -80,7 +78,7 @@ class _LoginComponentsState extends State<LoginComponents> {
                       padding: const EdgeInsets.only(top: 30),
                       child: Center(
                         child: Text(
-                          'login'.trs,
+                          'login'.tr(),
                           style: const TextStyle(
                               color: Colors.black,
                               fontSize: 25,
@@ -178,7 +176,7 @@ class _LoginComponentsState extends State<LoginComponents> {
                                   enabledBorder: InputBorder.none,
                                   errorBorder: InputBorder.none,
                                   disabledBorder: InputBorder.none,
-                                  hintText: 'key_word'.trs,
+                                  hintText: 'key_word'.tr(),
                                   hintStyle: const TextStyle(
                                       color: AppColors.authTextColor,
                                       fontSize: 18,
@@ -224,7 +222,7 @@ class _LoginComponentsState extends State<LoginComponents> {
                                       Padding(
                                         padding: const EdgeInsets.all(10.0),
                                         child: Text(
-                                          'admestrator_call'.trs,
+                                          'admestrator_call'.tr(),
                                           textAlign: TextAlign.center,
                                           style: const TextStyle(
                                               color: Colors.black,
@@ -258,7 +256,7 @@ class _LoginComponentsState extends State<LoginComponents> {
                             );
                           },
                           child: Text(
-                            'restore_key'.trs,
+                            'restore_key'.tr(),
                             style: const TextStyle(
                                 color: AppColors.authTextColor,
                                 fontSize: 14,
@@ -274,12 +272,12 @@ class _LoginComponentsState extends State<LoginComponents> {
                             onTap: () {
                               if (passwordController.text.isEmpty) {
                                 setState(() {
-                                  errorText = 'phone_error'.trs;
+                                  errorText = 'phone_error'.tr();
                                 });
                               }
                               if (phoneController.text.isEmpty) {
                                 setState(() {
-                                  errorText2 = 'password_error'.trs;
+                                  errorText2 = 'password_error'.tr();
                                 });
                               }
                               if (passwordController.text.isNotEmpty &&
@@ -302,7 +300,7 @@ class _LoginComponentsState extends State<LoginComponents> {
                                 child: Center(
                                   child: isLoading == false
                                       ? Text(
-                                          'log_in'.trs,
+                                          'log_in'.tr(),
                                           style: const TextStyle(
                                               color: Colors.white,
                                               fontSize: 16,
@@ -325,7 +323,7 @@ class _LoginComponentsState extends State<LoginComponents> {
                               builder: (context) => const RegisterScreen()));
                         },
                         child: Text(
-                          'create_account'.trs,
+                          'create_account'.tr(),
                           style: const TextStyle(
                               color: AppColors.mainColor,
                               fontSize: 16,

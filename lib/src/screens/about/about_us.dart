@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 
 class AboutUs extends StatefulWidget {
   const AboutUs({super.key});
@@ -38,7 +38,7 @@ class _AboutUsState extends State<AboutUs> {
             ),
             title: Center(
               child: Text(
-                'about'.trs,
+                'about'.tr(),
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,

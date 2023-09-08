@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 
 import '../../../design/app_colors.dart';
 import '../../auth/components/custom_text_fild.dart';
@@ -87,7 +87,7 @@ class _EditProfilState extends State<EditProfil> {
               ),
             ),
             title: Text(
-              'profile'.trs,
+              'profile'.tr(),
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -259,7 +259,7 @@ class _EditProfilState extends State<EditProfil> {
                                   enabledBorder: InputBorder.none,
                                   errorBorder: InputBorder.none,
                                   disabledBorder: InputBorder.none,
-                                  hintText: 'key_word'.trs,
+                                  hintText: 'key_word'.tr(),
                                   hintStyle: const TextStyle(
                                       color: AppColors.authTextColor,
                                       fontSize: 18,
@@ -312,7 +312,7 @@ class _EditProfilState extends State<EditProfil> {
                                   enabledBorder: InputBorder.none,
                                   errorBorder: InputBorder.none,
                                   disabledBorder: InputBorder.none,
-                                  hintText: 'confirm_password'.trs,
+                                  hintText: 'confirm_password'.tr(),
                                   hintStyle: const TextStyle(
                                       color: AppColors.authTextColor,
                                       fontSize: 18,
@@ -491,7 +491,7 @@ class _EditProfilState extends State<EditProfil> {
                               borderRadius: BorderRadius.circular(20)),
                           child: Center(
                             child: Text(
-                              'save'.trs,
+                              'save'.tr(),
                               style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,

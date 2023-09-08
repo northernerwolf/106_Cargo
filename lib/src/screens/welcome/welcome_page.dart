@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/app_colors.dart';
 import 'package:kargo_app/src/design/custom_icon.dart';
 
@@ -40,7 +40,7 @@ class WelcomePage extends StatelessWidget {
                                 (route) => false);
                           },
                           child: Text(
-                            'next'.trs,
+                            'next'.tr(),
                             style: const TextStyle(
                                 color: AppColors.mainColor,
                                 fontSize: 18,

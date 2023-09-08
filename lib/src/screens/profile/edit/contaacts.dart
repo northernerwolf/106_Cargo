@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 
 import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
@@ -37,7 +37,7 @@ class Contacts extends StatelessWidget {
               ),
             ),
             title: Text(
-              'about'.trs,
+              'about'.tr(),
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -185,7 +185,7 @@ class Contacts extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
-                        'location'.trs,
+                        'location'.tr(),
                         style: const TextStyle(
                             color: Colors.black,
                             fontSize: 16,

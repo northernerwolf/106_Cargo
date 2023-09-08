@@ -1,11 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
-import 'package:kargo_app/src/core/firebase_setup.dart';
-import 'package:kargo_app/src/core/l10n.dart';
+
 import 'package:kargo_app/src/screens/auth/components/login_components.dart';
-import 'package:kargo_app/src/screens/initial/notifications/notifications.dart';
 import 'package:kargo_app/src/screens/initial/pages/search_screen.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
 import 'package:lottie/lottie.dart';
@@ -13,8 +12,6 @@ import 'package:provider/provider.dart';
 
 import '../../design/app_colors.dart';
 import '../../design/custom_icon.dart';
-import '../auth/login/login_screen.dart';
-import '../auth/register/register_screen.dart';
 import 'components/cart_main.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -116,7 +113,7 @@ class _InitialScreenState extends State<InitialScreen> {
                             Padding(
                               padding: const EdgeInsets.only(left: 10),
                               child: Text(
-                                'search'.trs,
+                                'search'.tr(),
                                 style: const TextStyle(
                                     color: AppColors.profilColor,
                                     fontSize: 14,
@@ -198,7 +195,7 @@ class _InitialScreenState extends State<InitialScreen> {
                                     fetchData();
                                     setState(() {});
                                   },
-                                  child: Text('change_data'.trs))
+                                  child: Text('change_data'.tr()))
                             ],
                           ),
                         );

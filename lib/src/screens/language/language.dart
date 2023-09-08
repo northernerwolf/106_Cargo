@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:provider/provider.dart';
 
 import '../../application/settings_singleton.dart';
@@ -49,7 +49,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     padding: const EdgeInsets.only(top: 30),
                     child: Center(
                       child: Text(
-                        'app_title'.trs,
+                        'app_title'.tr(),
                         style: const TextStyle(
                             color: Colors.black,
                             fontSize: 22,
@@ -59,201 +59,187 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       ),
                     ),
                   ),
-                  Selector<SettingsSingleton, String>(
-                      selector: (_, settings) => settings.locale.languageCode,
-                      builder: (_, locale, __) {
-                        return InkWell(
-                          onTap: () async {
-                            await SettingsSingleton().changeLocale('tk');
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 30),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: locale == 'tk'
-                                              ? AppColors.mainColor
-                                              : Colors.grey,
-                                          width: 1.5),
-                                      shape: BoxShape.circle),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Container(
-                                      height: 10,
-                                      width: 10,
-                                      decoration: BoxDecoration(
-                                          color: locale == 'tk'
-                                              ? AppColors.mainColor
-                                              : Colors.white,
-                                          border: Border.all(
-                                              color: locale == 'tk'
-                                                  ? AppColors.mainColor
-                                                  : Colors.grey,
-                                              width: 1.5),
-                                          shape: BoxShape.circle),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child:
-                                      Image.asset('assets/images/turkman.png'),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    'Türkmen',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
-                  Selector<SettingsSingleton, String>(
-                      selector: (_, settings) => settings.locale.languageCode,
-                      builder: (_, locale, __) {
-                        return InkWell(
-                          onTap: () async {
-                            await SettingsSingleton().changeLocale('ru');
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 10),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: locale == 'ru'
-                                              ? AppColors.mainColor
-                                              : Colors.grey,
-                                          width: 1.5),
-                                      shape: BoxShape.circle),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Container(
-                                      height: 10,
-                                      width: 10,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              color: locale == 'ru'
-                                                  ? AppColors.mainColor
-                                                  : Colors.grey,
-                                              width: 1.5),
-                                          color: locale == 'ru'
-                                              ? AppColors.mainColor
-                                              : Colors.white,
-                                          shape: BoxShape.circle),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child:
-                                      Image.asset('assets/images/russian.png'),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    'Русский',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        );
-                      }),
-                  Selector<SettingsSingleton, String>(
-                      selector: (_, settings) => settings.locale.languageCode,
-                      builder: (_, locale, __) {
-                        return Consumer<SettingsSingleton>(
-                            builder: (_, settingss, __) {
-                          return InkWell(
-                            onTap: () async {
-                              await settingss.changeLocale('en');
-
-                              // setState(() {});
-                            },
+                  InkWell(
+                    onTap: () async {
+                      context.setLocale(const Locale('tk'));
+                      final lan = context.locale.languageCode;
+                      print(lan);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20, top: 30),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: context.locale.languageCode == 'tk'
+                                        ? AppColors.mainColor
+                                        : Colors.grey,
+                                    width: 1.5),
+                                shape: BoxShape.circle),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 10),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 20,
-                                    width: 20,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: locale == 'en'
+                              padding: const EdgeInsets.all(2.0),
+                              child: Container(
+                                height: 10,
+                                width: 10,
+                                decoration: BoxDecoration(
+                                    color: context.locale.languageCode == 'tk'
+                                        ? AppColors.mainColor
+                                        : Colors.white,
+                                    border: Border.all(
+                                        color:
+                                            context.locale.languageCode == 'tk'
                                                 ? AppColors.mainColor
                                                 : Colors.grey,
-                                            width: 1.5),
-                                        shape: BoxShape.circle),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(2.0),
-                                      child: Container(
-                                        height: 10,
-                                        width: 10,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: locale == 'en'
-                                                    ? AppColors.mainColor
-                                                    : Colors.grey,
-                                                width: 1.5),
-                                            color: locale == 'en'
-                                                ? AppColors.mainColor
-                                                : Colors.white,
-                                            shape: BoxShape.circle),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 10),
-                                    child: SizedBox(
-                                      height: 30,
-                                      width: 30,
-                                      child: Image.asset(
-                                          'assets/images/united-kingdom.png'),
-                                    ),
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 10),
-                                    child: Text(
-                                      'English',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 18,
-                                          fontFamily: 'Roboto',
-                                          fontStyle: FontStyle.normal,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  )
-                                ],
+                                        width: 1.5),
+                                    shape: BoxShape.circle),
                               ),
                             ),
-                          );
-                        });
-                      }),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Image.asset('assets/images/turkman.png'),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Türkmen',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      context.setLocale(const Locale('ru'));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20, top: 10),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: context.locale.languageCode == 'ru'
+                                        ? AppColors.mainColor
+                                        : Colors.grey,
+                                    width: 1.5),
+                                shape: BoxShape.circle),
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Container(
+                                height: 10,
+                                width: 10,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color:
+                                            context.locale.languageCode == 'ru'
+                                                ? AppColors.mainColor
+                                                : Colors.grey,
+                                        width: 1.5),
+                                    color: context.locale.languageCode == 'ru'
+                                        ? AppColors.mainColor
+                                        : Colors.white,
+                                    shape: BoxShape.circle),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Image.asset('assets/images/russian.png'),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Русский',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      context.setLocale(const Locale('en'));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20, top: 10),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: context.locale.languageCode == 'en'
+                                        ? AppColors.mainColor
+                                        : Colors.grey,
+                                    width: 1.5),
+                                shape: BoxShape.circle),
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Container(
+                                height: 10,
+                                width: 10,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color:
+                                            context.locale.languageCode == 'en'
+                                                ? AppColors.mainColor
+                                                : Colors.grey,
+                                        width: 1.5),
+                                    color: context.locale.languageCode == 'en'
+                                        ? AppColors.mainColor
+                                        : Colors.white,
+                                    shape: BoxShape.circle),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: SizedBox(
+                              height: 30,
+                              width: 30,
+                              child: Image.asset(
+                                  'assets/images/united-kingdom.png'),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text(
+                              'English',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                   InkWell(
                     onTap: () {
                       Navigator.of(context).pushAndRemoveUntil(
@@ -272,7 +258,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                             borderRadius: BorderRadius.circular(15)),
                         child: Center(
                           child: Text(
-                            'next_to'.trs,
+                            'next_to'.tr(),
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

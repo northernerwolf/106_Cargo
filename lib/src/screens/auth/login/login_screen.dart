@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             title: Text(
-              'login'.trs,
+              'login'.tr(),
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: const EdgeInsets.only(top: 30),
                           child: Center(
                             child: Text(
-                              'login'.trs,
+                              'login'.tr(),
                               style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 25,
@@ -217,7 +217,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       enabledBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
                                       disabledBorder: InputBorder.none,
-                                      hintText: 'key_word'.trs,
+                                      hintText: 'key_word'.tr(),
                                       hintStyle: const TextStyle(
                                           color: AppColors.authTextColor,
                                           fontSize: 18,
@@ -266,7 +266,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           Padding(
                                             padding: const EdgeInsets.all(10.0),
                                             child: Text(
-                                              'admestrator_call'.trs,
+                                              'admestrator_call'.tr(),
                                               textAlign: TextAlign.center,
                                               style: const TextStyle(
                                                   color: Colors.black,
@@ -302,7 +302,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 );
                               },
                               child: Text(
-                                'restore_key'.trs,
+                                'restore_key'.tr(),
                                 style: const TextStyle(
                                     color: AppColors.authTextColor,
                                     fontSize: 14,
@@ -318,12 +318,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onTap: () {
                                   if (passwordController.text.isEmpty) {
                                     setState(() {
-                                      errorText = 'phone_error'.trs;
+                                      errorText = 'phone_error'.tr();
                                     });
                                   }
                                   if (phoneController.text.isEmpty) {
                                     setState(() {
-                                      errorText2 = 'password_error'.trs;
+                                      errorText2 = 'password_error'.tr();
                                     });
                                   }
                                   if (passwordController.text.isNotEmpty &&
@@ -347,7 +347,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Center(
                                       child: isLoading == false
                                           ? Text(
-                                              'log_in'.trs,
+                                              'log_in'.tr(),
                                               style: const TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 16,

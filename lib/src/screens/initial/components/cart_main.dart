@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:kargo_app/src/core/l10n.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../../design/app_colors.dart';
@@ -65,7 +65,7 @@ class _CartMainState extends State<CartMain> {
                       Row(
                         children: [
                           Text(
-                            'id'.trs,
+                            'id'.tr(),
                             style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -629,7 +629,7 @@ class _CartMainState extends State<CartMain> {
                         padding: const EdgeInsets.only(
                             left: 10, right: 10, bottom: 10, top: 10),
                         child: Text(
-                          'more_info'.trs,
+                          'more_info'.tr(),
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12,

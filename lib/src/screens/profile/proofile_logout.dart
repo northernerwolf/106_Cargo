@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 import 'package:kargo_app/src/design/app_colors.dart';
 
 import '../auth/login/login_screen.dart';
@@ -42,7 +42,7 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
             ),
             title: Center(
               child: Text(
-                'profile'.trs,
+                'profile'.tr(),
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -64,7 +64,7 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
           ),
           Center(
             child: Text(
-              'my_office'.trs,
+              'my_office'.tr(),
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -76,7 +76,7 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
           Padding(
             padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
             child: Text(
-              'create_account_info'.trs,
+              'create_account_info'.tr(),
               textAlign: TextAlign.center,
               style: const TextStyle(
                   color: AppColors.profilColor,
@@ -104,7 +104,7 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
                   child: Text(
-                    'login'.trs,
+                    'login'.tr(),
                     style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -132,7 +132,7 @@ class _ProfileLogOutState extends State<ProfileLogOut> {
                     borderRadius: BorderRadius.circular(15)),
                 child: Center(
                   child: Text(
-                    'create_account'.trs,
+                    'create_account'.tr(),
                     style: const TextStyle(
                         color: AppColors.mainColor,
                         fontSize: 16,

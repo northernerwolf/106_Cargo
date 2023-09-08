@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/core/l10n.dart';
 
 import '../../../design/app_colors.dart';
 import 'market_item.dart';
@@ -36,9 +36,9 @@ class AllProducts extends StatelessWidget {
                 bottom: Radius.circular(15),
               ),
             ),
-            title:  Text(
-              'all'.trs,
-              style:const TextStyle(
+            title: Text(
+              'all'.tr(),
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontFamily: 'Roboto',
