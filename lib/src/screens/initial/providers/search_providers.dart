@@ -12,7 +12,7 @@ class SearchProvider with ChangeNotifier {
 
   static Dio dio = Dio();
 
-  Future<void> getOrders() async {
+  Future<void> getOrders(BuildContext context) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
     orders = [];
@@ -52,8 +52,6 @@ class SearchProvider with ChangeNotifier {
       }
     } on DioError catch (e) {
       isLoading = true;
-
-      if (e.response != null) print(e.response!.data);
 
       notifyListeners();
     }

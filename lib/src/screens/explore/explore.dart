@@ -92,11 +92,11 @@ class ExploreScreen extends StatelessWidget {
                       //     height: 40,
                       //     width: MediaQuery.of(context).size.width - 120,
                       //     child: TextFormField()),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 22),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 22),
                         child: Text(
-                          'Gözleg',
-                          style: TextStyle(
+                          'search'.tr(),
+                          style: const TextStyle(
                               color: AppColors.profilColor,
                               fontSize: 16,
                               fontFamily: 'Rubik',
@@ -132,9 +132,9 @@ class ExploreScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Kategoriýalar',
-                    style: TextStyle(
+                  Text(
+                    'catigory'.tr(),
+                    style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                         fontFamily: 'Rubik',
@@ -146,9 +146,9 @@ class ExploreScreen extends StatelessWidget {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const AllProducts()));
                     },
-                    child: const Text(
-                      'hemmesi',
-                      style: TextStyle(
+                    child: Text(
+                      'all'.tr(),
+                      style: const TextStyle(
                           color: AppColors.mainColor,
                           fontSize: 14,
                           fontFamily: 'Rubik',
@@ -191,12 +191,12 @@ class ExploreScreen extends StatelessWidget {
                                   child:
                                       Image.asset('assets/images/ayakgap.png')),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 5, bottom: 5),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5, bottom: 5),
                               child: Text(
                                 textAlign: TextAlign.center,
-                                'Aýakgap',
-                                style: TextStyle(
+                                'shoose'.tr(),
+                                style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 14,
                                     fontFamily: 'Montserrat',

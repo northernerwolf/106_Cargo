@@ -33,7 +33,7 @@
     "next": "Next",
     "create_account_info": "Log in or create an account to use the full features of the app",
     "laguage": "Language",
-    "contact": "Contact",
+    "contacty": "Contact",
     "log_out": "Logout",
     "log_out_info": "Do you want to log out?",
     "yes": "Yes",
@@ -44,5 +44,11 @@
     "add_order_permision": "Add to order?",
     "add_order": "Add to order",
     "change_data": "Update data",
-    "next_to": "Continue"
+    "next_to": "Continue",
+    "shoose": "Shoes",
+    "catigory": "Categories",
+    "place": "Place: ",
+    "cub": "Cube: ",
+    "cost": "Price: ",
+    "cancel": "Cancel"
 }

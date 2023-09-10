@@ -58,8 +58,6 @@ class RegisterRepository with ChangeNotifier {
     } on DioError catch (e) {
       isLoading = false;
       if (e.response != null) {
-        print(e.response.toString());
-
         var snackBar = SnackBar(
             backgroundColor: Colors.red,
             content: Text(

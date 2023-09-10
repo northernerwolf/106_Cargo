@@ -24,8 +24,6 @@ class _SearchInfoState extends State<SearchInfo> {
     super.initState();
   }
 
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     int t = 0;
@@ -89,6 +87,7 @@ class _SearchInfoState extends State<SearchInfo> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.borderColor, width: 1),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.blueGrey.withOpacity(0.1),
@@ -337,7 +336,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                   child:
                                                                       Container(
                                                                     height: 2.5,
-                                                                    width: 42,
+                                                                    width: MediaQuery.of(context).size.width /
+                                                                            9 -
+                                                                        5,
                                                                     color: index <=
                                                                             t
                                                                         ? AppColors
@@ -462,7 +463,11 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                           5),
                                                               child: Container(
                                                                 height: 2.5,
-                                                                width: 42,
+                                                                width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width /
+                                                                        9 -
+                                                                    5,
                                                                 color: index <=
                                                                             t &&
                                                                         t >= 0
@@ -546,7 +551,7 @@ class _SearchInfoState extends State<SearchInfo> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width / 4 - 30,
+                            // width: MediaQuery.of(context).size.width / 4 - 30,
                             child: Row(
                               children: [
                                 // CustomIcon(
@@ -554,9 +559,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                 //     height: 20,
                                 //     width: 20,
                                 //     color: Colors.black),
-                                const Text(
-                                  'Ýer: ',
-                                  style: TextStyle(
+                                Text(
+                                  'place'.tr(),
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
@@ -613,9 +618,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                 //     height: 22,
                                 //     width: 22,
                                 //     child: Image.asset('assets/images/cube_new.png')),
-                                const Text(
-                                  'Kub: ',
-                                  style: TextStyle(
+                                Text(
+                                  'cub'.tr(),
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
@@ -642,9 +647,9 @@ class _SearchInfoState extends State<SearchInfo> {
                             child: Row(
                               children: [
                                 // const Icon(Icons.attach_money, ),
-                                const Text(
-                                  'Baha: ',
-                                  style: TextStyle(
+                                Text(
+                                  'cost'.tr(),
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 16,
                                       fontFamily: 'Roboto',
@@ -718,13 +723,14 @@ class _SearchInfoState extends State<SearchInfo> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+              padding: const EdgeInsets.only(top: 10, left: 5, right: 5),
               child: Container(
                 height: 120,
-                width: MediaQuery.of(context).size.width - 20,
+                width: MediaQuery.of(context).size.width - 10,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.borderColor, width: 1),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.blueGrey.withOpacity(0.1),
@@ -758,8 +764,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                           itemCount:
                                               widget.model!.images.length,
                                           loadingBuilder: (context, event) {
-                                            return Center(
-                                              child: Container(
+                                            return const Center(
+                                              child: SizedBox(
                                                 width: 20.0,
                                                 height: 20.0,
                                                 child:
@@ -831,13 +837,14 @@ class _SearchInfoState extends State<SearchInfo> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 15, right: 15, top: 10, bottom: 20),
+              padding:
+                  const EdgeInsets.only(left: 5, right: 5, top: 10, bottom: 20),
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.borderColor, width: 1),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.blueGrey.withOpacity(0.1),

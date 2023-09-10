@@ -24,7 +24,7 @@ class _InvoiceState extends State<Invoice> {
 
   fetchData() async {
     await Provider.of<InvoiceProvider>(context, listen: false)
-        .getInvoice(widget.id);
+        .getInvoice(context, widget.id);
   }
 
   @override

@@ -36,7 +36,8 @@ class WelcomePage extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                    builder: (context) => BottomNavScreen()),
+                                    builder: (context) =>
+                                        const BottomNavScreen()),
                                 (route) => false);
                           },
                           child: Text(

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../application/settings_singleton.dart';
 import '../../../design/constants.dart';
 import '../model/me_model.dart';
 
@@ -12,7 +12,7 @@ class GetMeProvider with ChangeNotifier {
 
   static Dio dio = Dio();
 
-  Future<void> getMeResponse() async {
+  Future<void> getMeResponse(BuildContext context) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
     final headers = {
@@ -25,7 +25,7 @@ class GetMeProvider with ChangeNotifier {
             headers: headers
               ..addAll(
                 {
-                  'Accept-Language': SettingsSingleton().locale.languageCode,
+                  'Accept-Language': context.locale.languageCode,
                 },
               ),
           ));

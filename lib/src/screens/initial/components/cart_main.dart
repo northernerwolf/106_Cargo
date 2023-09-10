@@ -278,7 +278,12 @@ class _CartMainState extends State<CartMain> {
                                                             bottom: 5),
                                                     child: Container(
                                                       height: 2.5,
-                                                      width: 42,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                      .size
+                                                                      .width /
+                                                                  9 -
+                                                              5,
                                                       color: index <= t &&
                                                               t >= 0
                                                           ? AppColors.mainColor
@@ -381,7 +386,12 @@ class _CartMainState extends State<CartMain> {
                                                               bottom: 5),
                                                       child: Container(
                                                         height: 2.5,
-                                                        width: 42,
+                                                        width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                9 -
+                                                            5,
                                                         color:
                                                             index <= t && t >= 0
                                                                 ? AppColors
@@ -459,7 +469,7 @@ class _CartMainState extends State<CartMain> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 4 - 30,
+                    // width: MediaQuery.of(context).size.width / 4 - 30,
                     child: Row(
                       children: [
                         // CustomIcon(
@@ -467,9 +477,9 @@ class _CartMainState extends State<CartMain> {
                         //     height: 20,
                         //     width: 20,
                         //     color: Colors.black),
-                        const Text(
-                          'Ýer: ',
-                          style: TextStyle(
+                        Text(
+                          'place'.tr(),
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: 'Roboto',
@@ -525,9 +535,9 @@ class _CartMainState extends State<CartMain> {
                         //     height: 22,
                         //     width: 22,
                         //     child: Image.asset('assets/images/cube_new.png')),
-                        const Text(
-                          'Kub: ',
-                          style: TextStyle(
+                        Text(
+                          'cub'.tr(),
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: 'Roboto',
@@ -554,9 +564,9 @@ class _CartMainState extends State<CartMain> {
                     child: Row(
                       children: [
                         // const Icon(Icons.attach_money, ),
-                        const Text(
-                          'Baha: ',
-                          style: TextStyle(
+                        Text(
+                          'cost'.tr(),
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: 'Roboto',

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/screens/explore/components/read_more.dart';
 
@@ -35,9 +36,9 @@ class ItemMarket extends StatelessWidget {
                 bottom: Radius.circular(15),
               ),
             ),
-            title: const Text(
-              'Aýakgap',
-              style: TextStyle(
+            title: Text(
+              'shoose'.tr(),
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontFamily: 'Roboto',

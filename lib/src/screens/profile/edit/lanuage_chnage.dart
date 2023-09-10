@@ -1,9 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kargo_app/src/bottom_nav/bottom_nav_screen.dart';
-import 'package:provider/provider.dart';
 
-import '../../../application/settings_singleton.dart';
 import '../../../design/app_colors.dart';
 
 class LanguageChange extends StatefulWidget {

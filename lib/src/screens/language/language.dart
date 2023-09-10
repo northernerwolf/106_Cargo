@@ -1,8 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../application/settings_singleton.dart';
 import '../../design/app_colors.dart';
 import '../welcome/welcome_page.dart';
 
@@ -62,8 +59,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   InkWell(
                     onTap: () async {
                       context.setLocale(const Locale('tk'));
-                      final lan = context.locale.languageCode;
-                      print(lan);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20, top: 30),

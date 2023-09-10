@@ -44,7 +44,7 @@ class _SearchScreenState extends State<SearchScreen> {
       setState(() {
         isLoading = false;
         searchResult = results;
-        print(searchResult);
+        // print(searchResult);
       });
     } catch (error) {
       setState(() {
@@ -112,7 +112,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     child: Container(
                       height: 40,
-                      width: MediaQuery.of(context).size.width - 100,
+                      width: MediaQuery.of(context).size.width - 105,
                       decoration: BoxDecoration(
                           color: AppColors.searchColor,
                           borderRadius: BorderRadius.circular(10)),
@@ -156,7 +156,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text('Ýatyr'))
+                      child: Text('cancel'.tr()))
                   // IconButton(
                   //     padding: new EdgeInsets.all(0.0),
                   //     onPressed: () {
@@ -444,7 +444,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                               padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                               child: Container(
                                                                                 height: 2.5,
-                                                                                width: 42,
+                                                                                width: MediaQuery.of(context).size.width / 9 - 5,
                                                                                 color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
                                                                               )),
                                                                         ),
@@ -558,7 +558,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                             padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                             child: Container(
                                                                               height: 2.5,
-                                                                              width: 42,
+                                                                              width: MediaQuery.of(context).size.width / 9 - 5,
                                                                               color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
                                                                             )),
                                                                       ),
@@ -644,9 +644,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: MediaQuery.of(context).size.width /
-                                              4 -
-                                          30,
+                                      // width: MediaQuery.of(context).size.width /
+                                      //         4 -
+                                      //     30,
                                       child: Row(
                                         children: [
                                           // CustomIcon(
@@ -654,9 +654,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                           //     height: 20,
                                           //     width: 20,
                                           //     color: Colors.black),
-                                          const Text(
-                                            'Ýer: ',
-                                            style: TextStyle(
+                                          Text(
+                                            'place'.tr(),
+                                            style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 16,
                                                 fontFamily: 'Roboto',
@@ -716,9 +716,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                           //     height: 22,
                                           //     width: 22,
                                           //     child: Image.asset('assets/images/cube_new.png')),
-                                          const Text(
-                                            'Kub: ',
-                                            style: TextStyle(
+                                          Text(
+                                            'cub'.tr(),
+                                            style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 16,
                                                 fontFamily: 'Roboto',
@@ -748,9 +748,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                       child: Row(
                                         children: [
                                           // const Icon(Icons.attach_money, ),
-                                          const Text(
-                                            'Baha: ',
-                                            style: TextStyle(
+                                          Text(
+                                            'cost'.tr(),
+                                            style: const TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 16,
                                                 fontFamily: 'Roboto',

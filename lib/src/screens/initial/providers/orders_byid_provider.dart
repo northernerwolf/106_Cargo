@@ -12,7 +12,7 @@ class GetOrderByIdProvider with ChangeNotifier {
 
   static Dio dio = Dio();
 
-  Future<void> getOrdersById(int id) async {
+  Future<void> getOrdersById(BuildContext context, int id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
 
@@ -35,7 +35,6 @@ class GetOrderByIdProvider with ChangeNotifier {
           ));
 
       if (response.statusCode == 200) {
-        print(response.data);
         if (response.data != null) {
           ordersById = TripDataIdModel.fromJson(response.data['data']);
         }
@@ -46,8 +45,6 @@ class GetOrderByIdProvider with ChangeNotifier {
       }
     } on DioError catch (e) {
       isLoading = false;
-
-      if (e.response != null) print(e.response!.data);
 
       notifyListeners();
     }

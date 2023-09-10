@@ -12,7 +12,7 @@ class InvoiceProvider with ChangeNotifier {
 
   static Dio dio = Dio();
 
-  Future<void> getInvoice(int id) async {
+  Future<void> getInvoice(BuildContext context, int id) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String? val = preferences.getString('token');
     isLoading = true;
@@ -31,7 +31,7 @@ class InvoiceProvider with ChangeNotifier {
               ),
           ));
       isLoading = true;
-      print(response.data);
+      // print(response.data);
       if (response.statusCode == 200) {
         if (response.data != null) {
           invoice = Shipment.fromJson(response.data['data']);
@@ -44,8 +44,6 @@ class InvoiceProvider with ChangeNotifier {
       }
     } on DioError catch (e) {
       isLoading = false;
-
-      if (e.response != null) print(e.response!.data);
 
       notifyListeners();
     }

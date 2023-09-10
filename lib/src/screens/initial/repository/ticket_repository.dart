@@ -31,15 +31,13 @@ class TicketsRepository {
         isLoading = false;
 
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => BottomNavScreen()),
+            MaterialPageRoute(builder: (context) => const BottomNavScreen()),
             (route) => false);
 
         return;
       }
     } on DioError catch (e) {
       isLoading = false;
-
-      if (e.response != null) print(e.response!.data);
     }
     return;
   }

@@ -49,16 +49,16 @@ class _SpalshScreenState extends State<SpalshScreen>
     }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    //   statusBarColor: Colors.white,
-    // ));
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  //   statusBarColor: Colors.white,
+  // ));
 
-    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-    //     overlays: SystemUiOverlay.values);
-  }
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+  //     overlays: SystemUiOverlay.values);
+  // }
 
   @override
   Widget build(BuildContext context) {

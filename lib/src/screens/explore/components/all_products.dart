@@ -79,12 +79,12 @@ class AllProducts extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                             child: Image.asset('assets/images/ayakgap.png')),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 5, bottom: 5),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 5),
                         child: Text(
                           textAlign: TextAlign.center,
-                          'Aýakgap',
-                          style: TextStyle(
+                          'shoose'.tr(),
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 14,
                               fontFamily: 'Montserrat',

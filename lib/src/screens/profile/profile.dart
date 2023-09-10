@@ -27,7 +27,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   fetchData() async {
-    await Provider.of<GetMeProvider>(context, listen: false).getMeResponse();
+    await Provider.of<GetMeProvider>(context, listen: false)
+        .getMeResponse(context);
   }
 
   @override

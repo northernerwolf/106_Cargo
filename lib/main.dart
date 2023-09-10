@@ -37,9 +37,9 @@ void main() async {
 
   SingletonSharedPreference(pref);
   runApp(EasyLocalization(
-    supportedLocales: [Locale('en'), Locale('tk'), Locale('ru')],
+    supportedLocales: const [Locale('en'), Locale('tk'), Locale('ru')],
     path: 'assets/languages',
-    fallbackLocale: Locale('tk'),
+    fallbackLocale: const Locale('tk'),
     child: MultiProvider(
       providers: [
         ChangeNotifierProvider(

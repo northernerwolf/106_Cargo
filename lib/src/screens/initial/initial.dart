@@ -32,7 +32,8 @@ class _InitialScreenState extends State<InitialScreen> {
   }
 
   fetchData() async {
-    await Provider.of<OrdersProvider>(context, listen: false).getOrders();
+    await Provider.of<OrdersProvider>(context, listen: false)
+        .getOrders(context);
   }
 
   showNotfi() async {
@@ -205,7 +206,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 } else {
                   return SizedBox(
                       height: MediaQuery.of(context).size.height - 210,
-                      child: LoginComponents());
+                      child: const LoginComponents());
                   // Padding(
                   //   padding: const EdgeInsets.only(top: 200),
                   //   child: Padding(

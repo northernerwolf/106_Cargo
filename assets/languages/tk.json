@@ -44,5 +44,11 @@
     "add_order_permision": "Sargyda goşmalymy?",
     "add_order": "Sargyda goş",
     "change_data": "Maglumady täzele",
-    "next_to": "Dowam et"
+    "next_to": "Dowam et",
+    "shoose": "Aýakgap",
+    "catigory": "Kategoriýalar",
+    "place": "Ýer: ",
+    "cub": "Kub: ",
+    "cost": "Baha: ",
+    "cancel": "Ýatyr"
 }

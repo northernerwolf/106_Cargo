@@ -8,9 +8,9 @@ import 'package:zoom_widget/zoom_widget.dart';
 
 import '../../../design/custom_icon.dart';
 
+// ignore: must_be_immutable
 class InvoiceNew extends StatefulWidget {
   int id;
-
   InvoiceNew({required this.id, super.key});
 
   @override
@@ -26,13 +26,12 @@ class _InvoiceNewState extends State<InvoiceNew> {
 
   fetchData() async {
     await Provider.of<InvoiceProvider>(context, listen: false)
-        .getInvoice(widget.id);
+        .getInvoice(context, widget.id);
   }
 
   @override
   Widget build(BuildContext context) {
     final invoice = Provider.of<InvoiceProvider>(context);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(

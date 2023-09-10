@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kargo_app/src/application/settings_singleton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../design/constants.dart';
 import '../model/orders_model.dart';
 
@@ -14,7 +13,7 @@ class OrdersProvider with ChangeNotifier {
 
   static Dio dio = Dio();
 
-  Future<void> getOrders() async {
+  Future<void> getOrders(BuildContext context) async {
     isLoading = true;
     // notifyListeners();
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -33,13 +32,12 @@ class OrdersProvider with ChangeNotifier {
           headers: headers
             ..addAll(
               {
-                'Accept-Language': SettingsSingleton().locale.languageCode,
+                'Accept-Language': context.locale.languageCode,
               },
             ),
         ),
       );
 
-      print(response.data);
       if (response.statusCode == 200) {
         if (response.data != null) {
           orders = List<TripModel>.from(response.data['data'].map((e) {
@@ -62,8 +60,6 @@ class OrdersProvider with ChangeNotifier {
       }
     } on DioError catch (e) {
       isLoading = false;
-
-      if (e.response != null) print(e.response!.data);
 
       notifyListeners();
     }
