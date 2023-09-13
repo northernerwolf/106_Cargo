@@ -11,6 +11,7 @@ import 'package:kargo_app/src/core/language_delegates.dart';
 import 'package:kargo_app/src/screens/auth/register/repository_register.dart';
 import 'package:kargo_app/src/screens/initial/providers/invoice_providers.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
+import 'package:kargo_app/src/screens/initial/repository/search_repository.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'src/screens/auth/login/repository_login.dart';
@@ -51,6 +52,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => GetMeProvider()),
         ChangeNotifierProvider(create: (_) => InvoiceProvider()),
         ChangeNotifierProvider(create: (_) => RegisterRepository()),
+        ChangeNotifierProvider(create: (_) => SearchRepository()),
       ],
       child: const MyApp(),
     ),

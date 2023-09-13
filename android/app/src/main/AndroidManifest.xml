@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
    <application
-        android:label="106Cargo"
+        android:label="106 Cargo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
