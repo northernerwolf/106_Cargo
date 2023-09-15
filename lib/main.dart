@@ -1,13 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kargo_app/firebase_options.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
-
 import 'package:kargo_app/src/core/language_delegates.dart';
-
 import 'package:kargo_app/src/screens/auth/register/repository_register.dart';
 import 'package:kargo_app/src/screens/initial/providers/invoice_providers.dart';
 import 'package:kargo_app/src/screens/initial/providers/orders_provider.dart';
@@ -24,13 +21,10 @@ int? initScreen;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
   var pref = await SharedPreferences.getInstance();
   initScreen = pref.getInt("initScreen");
   String? val = pref.getString('token');
-
   print(val);
-
   await pref.setInt("initScreen", 1);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -41,6 +35,7 @@ void main() async {
     supportedLocales: const [Locale('en'), Locale('tk'), Locale('ru')],
     path: 'assets/languages',
     fallbackLocale: const Locale('tk'),
+    startLocale: const Locale('tk'),
     child: MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -61,7 +56,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Consumer<SettingsSingleton>(builder: (_, settings, __) {
