@@ -224,6 +224,7 @@ class _CartMainState extends State<CartMain> {
                             width: 80,
                             child: Text(
                               widget.model.pointTo,
+                              textAlign: TextAlign.right,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                   color: Colors.black,
@@ -242,11 +243,11 @@ class _CartMainState extends State<CartMain> {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
+                  const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
               child: widget.model.points!.isNotEmpty
                   ? SizedBox(
                       height: 40,
-                      width: MediaQuery.of(context).size.width - 40,
+                      // width: MediaQuery.of(context).size.width - 40,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -282,8 +283,8 @@ class _CartMainState extends State<CartMain> {
                                                           MediaQuery.of(context)
                                                                       .size
                                                                       .width /
-                                                                  9 -
-                                                              5,
+                                                                  9 +
+                                                              2,
                                                       color: index <= t &&
                                                               t >= 0
                                                           ? AppColors.mainColor
@@ -353,7 +354,7 @@ class _CartMainState extends State<CartMain> {
                       ))
                   : SizedBox(
                       height: 40,
-                      width: MediaQuery.of(context).size.width - 40,
+                      // width: MediaQuery.of(context).size.width - 40,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -390,8 +391,8 @@ class _CartMainState extends State<CartMain> {
                                                                         context)
                                                                     .size
                                                                     .width /
-                                                                9 -
-                                                            5,
+                                                                9 +
+                                                            2,
                                                         color:
                                                             index <= t && t >= 0
                                                                 ? AppColors
@@ -441,7 +442,7 @@ class _CartMainState extends State<CartMain> {
                                                     child: Padding(
                                                       padding:
                                                           const EdgeInsets.all(
-                                                              4.0),
+                                                              5.0),
                                                       child: CustomIcon(
                                                         title: t == 0
                                                             ? 'assets/icons/home.svg'
@@ -464,7 +465,7 @@ class _CartMainState extends State<CartMain> {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(left: 20, right: 20, top: 7, bottom: 8),
+                  const EdgeInsets.only(left: 15, right: 15, top: 7, bottom: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

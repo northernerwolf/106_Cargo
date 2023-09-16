@@ -272,6 +272,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                     return Text(
                                       pointsTo.pointTo,
                                       overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.right,
                                       style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
@@ -290,11 +291,12 @@ class _SearchInfoState extends State<SearchInfo> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
+                      padding:
+                          const EdgeInsets.only(left: 15, right: 15, top: 0),
                       child: widget.model!.points.isNotEmpty
                           ? SizedBox(
                               height: 40,
-                              width: MediaQuery.of(context).size.width - 50,
+                              // width: MediaQuery.of(context).size.width - 50,
                               child: Row(
                                 children: [
                                   Expanded(
@@ -337,8 +339,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                       Container(
                                                                     height: 2.5,
                                                                     width: MediaQuery.of(context).size.width /
-                                                                            9 -
-                                                                        5,
+                                                                            9 +
+                                                                        2,
                                                                     color: index <=
                                                                             t
                                                                         ? AppColors
@@ -425,7 +427,7 @@ class _SearchInfoState extends State<SearchInfo> {
                               ))
                           : SizedBox(
                               height: 40,
-                              width: MediaQuery.of(context).size.width - 40,
+                              // width: MediaQuery.of(context).size.width - 40,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -466,8 +468,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                 width: MediaQuery.of(context)
                                                                             .size
                                                                             .width /
-                                                                        9 -
-                                                                    5,
+                                                                        9 +
+                                                                    2,
                                                                 color: index <=
                                                                             t &&
                                                                         t >= 0
@@ -546,7 +548,7 @@ class _SearchInfoState extends State<SearchInfo> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 20, right: 20, top: 7, bottom: 8),
+                          left: 15, right: 15, top: 7, bottom: 8),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

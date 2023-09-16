@@ -174,8 +174,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 selector: (context, search) => search.isLoading,
                 builder: (_, isLoading, __) {
                   return Padding(
-                    padding:
-                        const EdgeInsets.only(left: 10, right: 10, top: 10),
+                    padding: const EdgeInsets.only(left: 5, right: 5, top: 10),
                     child: isLoading == true
                         ? const CircularProgressIndicator()
                         : Container(
@@ -377,6 +376,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 SizedBox(
                                                   width: 80,
                                                   child: Text(
+                                                    textAlign: TextAlign.right,
                                                     searchResult?.pointTo ?? '',
                                                     overflow:
                                                         TextOverflow.ellipsis,
@@ -399,14 +399,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 0, right: 0, top: 0, bottom: 0),
+                                        left: 15, right: 15, top: 0, bottom: 0),
                                     child: searchResult!.points.isNotEmpty
                                         ? SizedBox(
                                             height: 40,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width -
-                                                60,
+                                            // width: MediaQuery.of(context)
+                                            //         .size
+                                            //         .width -
+                                            //     60,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
@@ -450,7 +450,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                                   padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                                   child: Container(
                                                                                     height: 2.5,
-                                                                                    width: MediaQuery.of(context).size.width / 9 - 5,
+                                                                                    width: MediaQuery.of(context).size.width / 9 + 2,
                                                                                     color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
                                                                                   )),
                                                                             ),
@@ -511,10 +511,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                             )
                                         : SizedBox(
                                             height: 40,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width -
-                                                40,
+                                            // width: MediaQuery.of(context)
+                                            //         .size
+                                            //         .width -
+                                            //     40,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
@@ -556,7 +556,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                                 padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                                 child: Container(
                                                                                   height: 2.5,
-                                                                                  width: MediaQuery.of(context).size.width / 9 - 5,
+                                                                                  width: MediaQuery.of(context).size.width / 9 + 2,
                                                                                   color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
                                                                                 )),
                                                                           ),
@@ -627,7 +627,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 20, right: 20, top: 7, bottom: 8),
+                                        left: 15, right: 15, top: 7, bottom: 8),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -740,6 +740,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                         SizedBox(
                                           // width: MediaQuery.of(context).size.width / 4,
                                           child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
                                             children: [
                                               // const Icon(Icons.attach_money, ),
                                               Text(
@@ -753,6 +755,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                         FontWeight.w400),
                                               ),
                                               Text(
+                                                textAlign: TextAlign.right,
                                                 searchResult?.summaryPrice
                                                         .toString() ??
                                                     "",
@@ -772,7 +775,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 15, right: 15, top: 0),
+                                        left: 15, right: 12, top: 0),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -784,7 +787,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                   BorderRadius.circular(10)),
                                           child: Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 12,
+                                                left: 0,
                                                 top: 10,
                                                 bottom: 10,
                                                 right: 12),

@@ -344,6 +344,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                           if (pointsTo != null) {
                                             return Text(
                                               pointsTo.pointTo,
+                                              textAlign: TextAlign.right,
                                               overflow: TextOverflow.ellipsis,
                                               style: const TextStyle(
                                                   color: Colors.black,
@@ -364,12 +365,12 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 0, right: 0, top: 0),
+                                  left: 15, right: 15, top: 0),
                               child: l != 0
                                   ? SizedBox(
                                       height: 40,
-                                      width: MediaQuery.of(context).size.width -
-                                          50,
+                                      // width: MediaQuery.of(context).size.width -
+                                      //     50,
                                       child: Row(
                                         children: [
                                           Expanded(
@@ -413,7 +414,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                               padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                               child: Container(
                                                                                 height: 2.5,
-                                                                                width: MediaQuery.of(context).size.width / 9 - 5,
+                                                                                width: MediaQuery.of(context).size.width / 9 + 2,
                                                                                 color: index <= t ? AppColors.mainColor : Colors.grey,
                                                                               )),
                                                                         ),
@@ -459,7 +460,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(4.0),
+                                                                                const EdgeInsets.all(5.0),
                                                                             child:
                                                                                 CustomIcon(
                                                                               title: t == 0
@@ -487,8 +488,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                       ))
                                   : SizedBox(
                                       height: 40,
-                                      width: MediaQuery.of(context).size.width -
-                                          40,
+                                      // width: MediaQuery.of(context).size.width -
+                                      //     40,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -533,8 +534,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                       height:
                                                                           2.5,
                                                                       width:
-                                                                          MediaQuery.of(context).size.width / 9 -
-                                                                              5,
+                                                                          MediaQuery.of(context).size.width / 9 +
+                                                                              2,
                                                                       color: index <= t &&
                                                                               t >=
                                                                                   0
@@ -594,7 +595,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                         Padding(
                                                                       padding:
                                                                           const EdgeInsets.all(
-                                                                              4.0),
+                                                                              5.0),
                                                                       child:
                                                                           CustomIcon(
                                                                         title: t ==
@@ -622,7 +623,7 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 7, bottom: 8),
+                                  left: 15, right: 15, top: 7, bottom: 8),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
