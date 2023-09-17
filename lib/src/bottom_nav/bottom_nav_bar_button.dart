@@ -25,7 +25,7 @@ class BottomNavbarButton extends StatefulWidget {
 class _BottomNavbarButtonState extends State<BottomNavbarButton> {
   List<String> title = [
     'order'.tr(),
-    'market'.tr(),
+    // 'market'.tr(),
     'about'.tr(),
     'profile'.tr(),
   ];
@@ -38,13 +38,14 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
         height: 26,
         width: 26,
         color: AppColors.disableColor),
+    // CustomIcon(
+    //     title: 'assets/icons/compass.svg',
+    //     height: 26,
+    //     width: 26,
+    //     color: AppColors.disableColor),
     CustomIcon(
-        title: 'assets/icons/compass.svg',
-        height: 26,
-        width: 26,
-        color: AppColors.disableColor),
-    CustomIcon(
-        title: 'assets/icons/about.svg',
+        // title: 'assets/icons/about.svg',
+        title: 'assets/icons/logo.svg',
         height: 26,
         width: 26,
         color: AppColors.disableColor),
@@ -63,15 +64,16 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
         height: 26,
         width: 26,
         color: AppColors.mainColor),
+    // CustomIcon(
+    //     title: 'assets/icons/compass.svg',
+    //     height: 26,
+    //     width: 26,
+    //     color: AppColors.mainColor),
     CustomIcon(
-        title: 'assets/icons/compass.svg',
-        height: 26,
-        width: 26,
-        color: AppColors.mainColor),
-    CustomIcon(
-        title: 'assets/icons/about.svg',
-        height: 26,
-        width: 26,
+        // title: 'assets/icons/about.svg',
+        title: 'assets/icons/logo.svg',
+        height: 35,
+        width: 35,
         color: AppColors.mainColor),
     CustomIcon(
         title: 'assets/icons/person_cargo.svg',

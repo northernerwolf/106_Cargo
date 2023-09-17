@@ -45,7 +45,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   List page = [
     const InitialScreen(),
-    const ExploreScreen(),
+    // const ExploreScreen(),
     const AboutUs(),
     const ProfileLogOut()
     // const ProfileScreen(),
@@ -53,7 +53,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   List page2 = [
     const InitialScreen(),
-    const ExploreScreen(),
+    // const ExploreScreen(),
     const AboutUs(),
     const ProfileScreen(),
   ];
@@ -88,6 +88,14 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                     onTapp: () {
                       onTapp(0);
                     })),
+            // Expanded(
+            //     child: BottomNavbarButton(
+            //         icon: false,
+            //         index: 1,
+            //         selectedIndex: selectedIndex,
+            //         onTapp: () {
+            //           onTapp(1);
+            //         })),
             Expanded(
                 child: BottomNavbarButton(
                     icon: false,
@@ -103,14 +111,6 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                     selectedIndex: selectedIndex,
                     onTapp: () {
                       onTapp(2);
-                    })),
-            Expanded(
-                child: BottomNavbarButton(
-                    icon: false,
-                    index: 3,
-                    selectedIndex: selectedIndex,
-                    onTapp: () {
-                      onTapp(3);
                     })),
           ],
         ),
