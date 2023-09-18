@@ -338,9 +338,10 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                   child:
                                                                       Container(
                                                                     height: 2.5,
-                                                                    width: MediaQuery.of(context).size.width /
-                                                                            9 +
-                                                                        2,
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width /
+                                                                        9,
                                                                     color: index <=
                                                                             t
                                                                         ? AppColors
@@ -465,11 +466,11 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                           5),
                                                               child: Container(
                                                                 height: 2.5,
-                                                                width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width /
-                                                                        9 +
-                                                                    2,
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width /
+                                                                    9,
                                                                 color: index <=
                                                                             t &&
                                                                         t >= 0

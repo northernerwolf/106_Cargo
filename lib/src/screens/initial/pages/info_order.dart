@@ -414,7 +414,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                               padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                               child: Container(
                                                                                 height: 2.5,
-                                                                                width: MediaQuery.of(context).size.width / 9 + 2,
+                                                                                width: MediaQuery.of(context).size.width / 9,
                                                                                 color: index <= t ? AppColors.mainColor : Colors.grey,
                                                                               )),
                                                                         ),
@@ -533,9 +533,10 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                         Container(
                                                                       height:
                                                                           2.5,
-                                                                      width:
-                                                                          MediaQuery.of(context).size.width / 9 +
-                                                                              2,
+                                                                      width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width /
+                                                                          9,
                                                                       color: index <= t &&
                                                                               t >=
                                                                                   0

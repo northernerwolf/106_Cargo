@@ -50,5 +50,16 @@
     "place": "Place: ",
     "cub": "Cube: ",
     "cost": "Price: ",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "name_product": "Product name",
+    "type_of_box": "Box Type",
+    "scale": "Scale",
+    "land_number": "Number",
+    "kg": "KG",
+    "all_land": "Total land: ",
+    "sum_cub": "Total m³: ",
+    "sum_kg": "Total kg: ",
+    "sum_cost": "Total cost:  ",
+    "cub_in": "Cube",
+    "cost_in": "Price"
 }

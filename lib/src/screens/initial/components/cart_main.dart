@@ -281,10 +281,9 @@ class _CartMainState extends State<CartMain> {
                                                       height: 2.5,
                                                       width:
                                                           MediaQuery.of(context)
-                                                                      .size
-                                                                      .width /
-                                                                  9 +
-                                                              2,
+                                                                  .size
+                                                                  .width /
+                                                              9,
                                                       color: index <= t &&
                                                               t >= 0
                                                           ? AppColors.mainColor
@@ -388,11 +387,10 @@ class _CartMainState extends State<CartMain> {
                                                       child: Container(
                                                         height: 2.5,
                                                         width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width /
-                                                                9 +
-                                                            2,
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            9,
                                                         color:
                                                             index <= t && t >= 0
                                                                 ? AppColors

@@ -450,7 +450,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                                   padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                                   child: Container(
                                                                                     height: 2.5,
-                                                                                    width: MediaQuery.of(context).size.width / 9 + 2,
+                                                                                    width: MediaQuery.of(context).size.width / 9,
                                                                                     color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
                                                                                   )),
                                                                             ),
@@ -556,7 +556,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                                 padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
                                                                                 child: Container(
                                                                                   height: 2.5,
-                                                                                  width: MediaQuery.of(context).size.width / 9 + 2,
+                                                                                  width: MediaQuery.of(context).size.width / 9,
                                                                                   color: index <= t && t >= 0 ? AppColors.mainColor : Colors.grey,
                                                                                 )),
                                                                           ),

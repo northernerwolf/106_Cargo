@@ -50,5 +50,16 @@
     "place": "Ýer: ",
     "cub": "Kub: ",
     "cost": "Baha: ",
-    "cancel": "Ýatyr"
+    "cancel": "Ýatyr",
+    "name_product": "Harydyn ady",
+    "type_of_box": "Gap görnüş",
+    "scale": "Ölçeg",
+    "land_number": "Ýer san",
+    "kg": "KG",
+    "all_land": "Jemi ýer: ",
+    "sum_cub": "Jemi m³: ",
+    "sum_kg": "Jemi kg: ",
+    "sum_cost": "Jemi baha:  ",
+    "cub_in": "Kub",
+    "cost_in": "Baha"
 }
