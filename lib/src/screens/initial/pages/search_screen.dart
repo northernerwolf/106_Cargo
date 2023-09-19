@@ -25,25 +25,38 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final SearchRepository apiService = SearchRepository();
   final TextEditingController searchController = TextEditingController();
 
   SearchModel? searchResult;
+  bool isLoadingg = false;
 
   void performSearch(String query) async {
+    isLoadingg = true;
     if (query.isEmpty) {
       setState(() {
         searchResult = null;
+        isLoadingg = false;
       });
       return;
     }
     try {
-      final results = await apiService.seaching(query);
+      final results = await Provider.of<SearchProvider>(context, listen: false)
+          .seaching(query);
       setState(() {
         searchResult = results;
+        isLoadingg = false;
       });
     } catch (error) {
-      setState(() {});
+      setState(() {
+        var snackBar = const SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              'Failed to perform search',
+              style: TextStyle(color: Colors.white),
+            ));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        isLoadingg = false;
+      });
     }
   }
 
@@ -170,13 +183,13 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: SafeArea(
         child: searchResult != null
-            ? Selector<SearchRepository, bool>(
+            ? Selector<SearchProvider, bool>(
                 selector: (context, search) => search.isLoading,
                 builder: (_, isLoading, __) {
                   return Padding(
                     padding: const EdgeInsets.only(left: 5, right: 5, top: 10),
                     child: isLoading == true
-                        ? const CircularProgressIndicator()
+                        ? const Center(child: CircularProgressIndicator())
                         : Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -879,26 +892,32 @@ class _SearchScreenState extends State<SearchScreen> {
                                                           model: searchResult,
                                                         )));
                                           },
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                color: AppColors.mainColor,
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                  right: 10,
-                                                  bottom: 10,
-                                                  top: 10),
-                                              child: Text(
-                                                'more_info'.tr(),
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 12,
-                                                    fontFamily: 'Roboto',
-                                                    fontStyle: FontStyle.normal,
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 3, bottom: 3),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: AppColors.mainColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10,
+                                                    right: 10,
+                                                    bottom: 10,
+                                                    top: 10),
+                                                child: Text(
+                                                  'more_info'.tr(),
+                                                  style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 12,
+                                                      fontFamily: 'Roboto',
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
                                               ),
                                             ),
                                           ),

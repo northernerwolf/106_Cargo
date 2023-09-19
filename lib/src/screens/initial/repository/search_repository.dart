@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../design/constants.dart';
 import '../model/search_model.dart';
 
-class SearchRepository with ChangeNotifier {
+class SearchProvider with ChangeNotifier {
   bool isLoading = false;
   static Dio dio = Dio();
 
@@ -12,6 +12,7 @@ class SearchRepository with ChangeNotifier {
     try {
       isLoading = true;
       notifyListeners();
+      const Duration(seconds: 3);
       var response = await dio.get(
         "${Constants.baseUrl}/cargo/track-code/search/",
         queryParameters: {'search': query},
@@ -19,7 +20,10 @@ class SearchRepository with ChangeNotifier {
           'Content-Type': 'application/json',
         }),
       );
-      isLoading = false;
+
+      if (response.data != null) {
+        isLoading = false;
+      }
       notifyListeners();
 
       final cargo = SearchModel.fromJson(response.data['data']);

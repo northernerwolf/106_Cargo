@@ -630,21 +630,24 @@ class _CartMainState extends State<CartMain> {
                                 id: widget.model.id,
                               )));
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.mainColor,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 10, right: 10, bottom: 10, top: 10),
-                        child: Text(
-                          'more_info'.tr(),
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w600),
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.mainColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 10, bottom: 10, top: 10),
+                          child: Text(
+                            'more_info'.tr(),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
                     ),

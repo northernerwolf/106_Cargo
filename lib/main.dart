@@ -47,7 +47,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => GetMeProvider()),
         ChangeNotifierProvider(create: (_) => InvoiceProvider()),
         ChangeNotifierProvider(create: (_) => RegisterRepository()),
-        ChangeNotifierProvider(create: (_) => SearchRepository()),
+        ChangeNotifierProvider(create: (_) => SearchProvider()),
       ],
       child: const MyApp(),
     ),
