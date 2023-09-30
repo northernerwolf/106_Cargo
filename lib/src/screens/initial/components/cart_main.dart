@@ -50,7 +50,7 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: 200,
+      height: MediaQuery.of(context).size.height / 4 - 15,
       child: Padding(
         padding: const EdgeInsets.only(),
         child: Column(
@@ -66,9 +66,10 @@ class _CartMainState extends State<CartMain> {
                         children: [
                           Text(
                             'id'.tr(),
-                            style: const TextStyle(
+                            style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16,
+                                fontSize:
+                                    MediaQuery.of(context).size.width / 26,
                                 fontFamily: 'Roboto',
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w400),
@@ -79,9 +80,10 @@ class _CartMainState extends State<CartMain> {
                               name,
                               // maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 14,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width / 29,
                                   fontFamily: 'Roboto',
                                   fontStyle: FontStyle.normal,
                                   fontWeight: FontWeight.w400),
@@ -160,9 +162,10 @@ class _CartMainState extends State<CartMain> {
                             children: [
                               Text(
                                 widget.model.date,
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: AppColors.authTextColor,
-                                    fontSize: 14,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width / 29,
                                     fontFamily: 'Roboto',
                                     fontStyle: FontStyle.normal,
                                     fontWeight: FontWeight.w400),
@@ -172,9 +175,11 @@ class _CartMainState extends State<CartMain> {
                                 child: Text(
                                   widget.model.pointFrom,
                                   maxLines: 2,
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width /
+                                              26,
                                       fontFamily: 'Roboto',
                                       fontStyle: FontStyle.normal,
                                       fontWeight: FontWeight.w600),
@@ -226,9 +231,10 @@ class _CartMainState extends State<CartMain> {
                               widget.model.pointTo,
                               textAlign: TextAlign.right,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
+                              style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 16,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width / 26,
                                   fontFamily: 'Roboto',
                                   fontStyle: FontStyle.normal,
                                   fontWeight: FontWeight.w600),
@@ -246,7 +252,7 @@ class _CartMainState extends State<CartMain> {
                   const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
               child: widget.model.points!.isNotEmpty
                   ? SizedBox(
-                      height: 40,
+                      height: MediaQuery.of(context).size.width / 10,
                       // width: MediaQuery.of(context).size.width - 40,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -352,7 +358,7 @@ class _CartMainState extends State<CartMain> {
                         ],
                       ))
                   : SizedBox(
-                      height: 40,
+                      height: MediaQuery.of(context).size.width / 10,
                       // width: MediaQuery.of(context).size.width - 40,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -478,9 +484,9 @@ class _CartMainState extends State<CartMain> {
                         //     color: Colors.black),
                         Text(
                           'place'.tr(),
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16,
+                              fontSize: MediaQuery.of(context).size.width / 26,
                               fontFamily: 'Roboto',
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w400),
@@ -491,9 +497,10 @@ class _CartMainState extends State<CartMain> {
                             // width: MediaQuery.of(context).size.width / 4 - 25,
                             child: Text(
                               widget.model.summarySeats.toString(),
-                              style: const TextStyle(
+                              style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 16,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width / 26,
                                   fontFamily: 'Roboto',
                                   fontStyle: FontStyle.normal,
                                   fontWeight: FontWeight.w400),
@@ -536,9 +543,9 @@ class _CartMainState extends State<CartMain> {
                         //     child: Image.asset('assets/images/cube_new.png')),
                         Text(
                           'cub'.tr(),
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16,
+                              fontSize: MediaQuery.of(context).size.width / 26,
                               fontFamily: 'Roboto',
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w400),
@@ -547,9 +554,10 @@ class _CartMainState extends State<CartMain> {
                           padding: const EdgeInsets.only(left: 5),
                           child: Text(
                             widget.model.summaryCube.toString(),
-                            style: const TextStyle(
+                            style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16,
+                                fontSize:
+                                    MediaQuery.of(context).size.width / 26,
                                 fontFamily: 'Roboto',
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w400),
@@ -565,18 +573,18 @@ class _CartMainState extends State<CartMain> {
                         // const Icon(Icons.attach_money, ),
                         Text(
                           'cost'.tr(),
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16,
+                              fontSize: MediaQuery.of(context).size.width / 26,
                               fontFamily: 'Roboto',
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
                           widget.model.summaryPrice.toString(),
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16,
+                              fontSize: MediaQuery.of(context).size.width / 26,
                               fontFamily: 'Roboto',
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w400),
@@ -588,7 +596,11 @@ class _CartMainState extends State<CartMain> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 0),
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width / 50,
+                  right: MediaQuery.of(context).size.width / 50,
+                  top: 0,
+                  bottom: MediaQuery.of(context).size.width / 70),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -597,8 +609,11 @@ class _CartMainState extends State<CartMain> {
                         // color: AppColors.initialButtonColor,
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 0, top: 10, bottom: 10, right: 12),
+                      padding: EdgeInsets.only(
+                          left: 0,
+                          top: MediaQuery.of(context).size.width / 60,
+                          bottom: MediaQuery.of(context).size.width / 60,
+                          right: MediaQuery.of(context).size.width / 60),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -612,9 +627,10 @@ class _CartMainState extends State<CartMain> {
                           ),
                           Text(
                             widget.model.location,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 color: AppColors.mainColor,
-                                fontSize: 12,
+                                fontSize:
+                                    MediaQuery.of(context).size.width / 35,
                                 fontFamily: 'Roboto',
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w600),
@@ -630,24 +646,25 @@ class _CartMainState extends State<CartMain> {
                                 id: widget.model.id,
                               )));
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 5),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.mainColor,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, bottom: 10, top: 10),
-                          child: Text(
-                            'more_info'.tr(),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontFamily: 'Roboto',
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.w600),
-                          ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.mainColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width / 60,
+                          right: MediaQuery.of(context).size.width / 60,
+                          bottom: MediaQuery.of(context).size.width / 60,
+                          top: MediaQuery.of(context).size.width / 60,
+                        ),
+                        child: Text(
+                          'more_info'.tr(),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: MediaQuery.of(context).size.width / 33,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),

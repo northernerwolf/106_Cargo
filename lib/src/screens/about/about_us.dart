@@ -77,11 +77,11 @@ class _AboutUsState extends State<AboutUs> {
                       title: 'assets/icons/phone.svg',
                       height: 24,
                       width: 24,
-                      color: AppColors.profilColor),
+                      color: Colors.red),
                   const Padding(
                     padding: EdgeInsets.only(left: 10),
                     child: Text(
-                      '+8617699509372 Batyr',
+                      '+8617699509372 Berdi',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -101,11 +101,11 @@ class _AboutUsState extends State<AboutUs> {
                         title: 'assets/icons/phone.svg',
                         height: 24,
                         width: 24,
-                        color: AppColors.profilColor),
+                        color: Colors.red),
                     const Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: Text(
-                        '+8618690868865 Berdi',
+                        '+8618690868865 Batyr',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
@@ -118,7 +118,7 @@ class _AboutUsState extends State<AboutUs> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 5),
+                padding: const EdgeInsets.only(top: 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -126,7 +126,7 @@ class _AboutUsState extends State<AboutUs> {
                         title: 'assets/icons/phone.svg',
                         height: 24,
                         width: 24,
-                        color: AppColors.profilColor),
+                        color: Colors.green),
                     const Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: Text(
@@ -151,7 +151,7 @@ class _AboutUsState extends State<AboutUs> {
                         title: 'assets/icons/phone.svg',
                         height: 24,
                         width: 24,
-                        color: AppColors.profilColor),
+                        color: Colors.green),
                     const Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: Text(
@@ -176,7 +176,7 @@ class _AboutUsState extends State<AboutUs> {
                         title: 'assets/icons/phone.svg',
                         height: 24,
                         width: 24,
-                        color: AppColors.profilColor),
+                        color: Colors.green),
                     const Padding(
                       padding: EdgeInsets.only(left: 10),
                       child: Text(
