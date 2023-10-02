@@ -1,13 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
-
 import '../../../design/app_colors.dart';
 import '../../../design/custom_icon.dart';
 import '../model/orders_model.dart';
 import '../pages/info_order.dart';
-import '../providers/orders_provider.dart';
 
 class CartMain extends StatefulWidget {
   final TripModel model;
@@ -21,8 +18,6 @@ class CartMain extends StatefulWidget {
 class _CartMainState extends State<CartMain> {
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final pointss = Provider.of<OrdersProvider>(context);
     int t = 0;
     int l = widget.model.points!.length;
     if (widget.model.points != null) {
