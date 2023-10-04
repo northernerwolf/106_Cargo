@@ -31,6 +31,8 @@ class _CartMainState extends State<CartMain> {
     var name = widget.model.ticketCode;
     name = name.replaceAll('', '\u200B');
 
+    double deviceWidth = MediaQuery.of(context).size.width;
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -45,13 +47,16 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: MediaQuery.of(context).size.height / 4 - 15,
+      height: MediaQuery.of(context).size.height / 4 - 20,
       child: Padding(
         padding: const EdgeInsets.only(),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width / 25,
+                  right: MediaQuery.of(context).size.width / 25,
+                  top: MediaQuery.of(context).size.width / 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -144,7 +149,10 @@ class _CartMainState extends State<CartMain> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
+              padding: EdgeInsets.only(
+                  left: deviceWidth / 26 - 1,
+                  right: deviceWidth / 26 - 1,
+                  top: deviceWidth / 50),
               child: Stack(
                 children: [
                   Row(
@@ -217,8 +225,8 @@ class _CartMainState extends State<CartMain> {
                       ),
                       Column(
                         children: [
-                          const SizedBox(
-                            height: 22,
+                          SizedBox(
+                            height: deviceWidth / 22,
                           ),
                           SizedBox(
                             width: 80,
@@ -243,115 +251,106 @@ class _CartMainState extends State<CartMain> {
               ),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
+              padding: EdgeInsets.only(
+                  left: deviceWidth / 26 - 1,
+                  right: deviceWidth / 26 - 1,
+                  top: 0,
+                  bottom: 0),
               child: widget.model.points!.isNotEmpty
                   ? SizedBox(
                       height: MediaQuery.of(context).size.width / 10,
                       // width: MediaQuery.of(context).size.width - 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Center(
-                                  child: Padding(
-                            padding: const EdgeInsets.only(left: 0, right: 0),
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: widget.model.points?.length,
-                                scrollDirection: Axis.horizontal,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (con, index) {
-                                  return Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Visibility(
-                                          visible: index == 0 ? false : true,
-                                          child: Row(children: [
-                                            Row(
-                                              children: List.generate(
-                                                1,
-                                                (ii) => Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 3,
-                                                            right: 3,
-                                                            top: 7,
-                                                            bottom: 5),
-                                                    child: Container(
-                                                      height: 2.5,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              9,
-                                                      color: index <= t &&
-                                                              t >= 0
-                                                          ? AppColors.mainColor
-                                                          : Colors.grey,
-                                                    )),
-                                              ),
-                                            ),
-                                          ]),
-                                        ),
-                                        index != t
-                                            ? Container(
-                                                height: 12,
-                                                width: 12,
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
+                      child: Center(
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: widget.model.points?.length,
+                              scrollDirection: Axis.horizontal,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (con, index) {
+                                return Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Visibility(
+                                        visible: index == 0 ? false : true,
+                                        child: FittedBox(
+                                          child: Row(
+                                            children: List.generate(
+                                              1,
+                                              (ii) => Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 3,
+                                                          right: 3,
+                                                          top: 7,
+                                                          bottom: 5),
+                                                  child: Container(
+                                                    height: 2.5,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            9,
                                                     color: index <= t && t >= 0
                                                         ? AppColors.mainColor
-                                                        : Colors.grey),
-                                              )
-                                            : Stack(
-                                                alignment: Alignment.center,
-                                                children: [
-                                                  Center(
-                                                    child: Container(
-                                                      height: 40,
-                                                      width: 40,
-                                                      decoration: BoxDecoration(
+                                                        : Colors.grey,
+                                                  )),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      index != t
+                                          ? Container(
+                                              height: 12,
+                                              width: 12,
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: index <= t && t >= 0
+                                                      ? AppColors.mainColor
+                                                      : Colors.grey),
+                                            )
+                                          : Stack(
+                                              alignment: Alignment.center,
+                                              children: [
+                                                Center(
+                                                  child: Container(
+                                                    height: 40,
+                                                    width: 40,
+                                                    decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: AppColors
+                                                            .mainColor
+                                                            .withOpacity(0.1)),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 28,
+                                                  width: 28,
+                                                  decoration:
+                                                      const BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                           color: AppColors
-                                                              .mainColor
-                                                              .withOpacity(
-                                                                  0.1)),
+                                                              .mainColor),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            4.0),
+                                                    child: CustomIcon(
+                                                      title: t == 0
+                                                          ? 'assets/icons/home.svg'
+                                                          : t == l - 1
+                                                              ? 'assets/icons/check_circle.svg'
+                                                              : 'assets/icons/truck_delivery.svg',
+                                                      height: 10,
+                                                      width: 10,
+                                                      color: Colors.white,
                                                     ),
                                                   ),
-                                                  Container(
-                                                    height: 28,
-                                                    width: 28,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            color: AppColors
-                                                                .mainColor),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              4.0),
-                                                      child: CustomIcon(
-                                                        title: t == 0
-                                                            ? 'assets/icons/home.svg'
-                                                            : t == l - 1
-                                                                ? 'assets/icons/check_circle.svg'
-                                                                : 'assets/icons/truck_delivery.svg',
-                                                        height: 10,
-                                                        width: 10,
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                      ]);
-                                }),
-                          )))
-                        ],
-                      ))
+                                                ),
+                                              ],
+                                            )
+                                    ]);
+                              })))
                   : SizedBox(
                       height: MediaQuery.of(context).size.width / 10,
                       // width: MediaQuery.of(context).size.width - 40,
@@ -463,8 +462,11 @@ class _CartMainState extends State<CartMain> {
                       )),
             ),
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 15, right: 15, top: 7, bottom: 8),
+              padding: EdgeInsets.only(
+                  left: deviceWidth / 26 - 1,
+                  right: deviceWidth / 26 - 1,
+                  top: 7,
+                  bottom: deviceWidth / 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -595,7 +597,7 @@ class _CartMainState extends State<CartMain> {
                   left: MediaQuery.of(context).size.width / 50,
                   right: MediaQuery.of(context).size.width / 50,
                   top: 0,
-                  bottom: MediaQuery.of(context).size.width / 70),
+                  bottom: MediaQuery.of(context).size.width / 55),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -605,7 +607,7 @@ class _CartMainState extends State<CartMain> {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: 0,
+                          left: MediaQuery.of(context).size.width / 65,
                           top: MediaQuery.of(context).size.width / 60,
                           bottom: MediaQuery.of(context).size.width / 60,
                           right: MediaQuery.of(context).size.width / 60),
@@ -625,7 +627,7 @@ class _CartMainState extends State<CartMain> {
                             style: TextStyle(
                                 color: AppColors.mainColor,
                                 fontSize:
-                                    MediaQuery.of(context).size.width / 35,
+                                    MediaQuery.of(context).size.width / 32,
                                 fontFamily: 'Roboto',
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w600),
@@ -647,10 +649,10 @@ class _CartMainState extends State<CartMain> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
                         padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width / 60,
-                          right: MediaQuery.of(context).size.width / 60,
-                          bottom: MediaQuery.of(context).size.width / 60,
-                          top: MediaQuery.of(context).size.width / 60,
+                          left: MediaQuery.of(context).size.width / 55,
+                          right: MediaQuery.of(context).size.width / 55,
+                          bottom: MediaQuery.of(context).size.width / 55,
+                          top: MediaQuery.of(context).size.width / 55,
                         ),
                         child: Text(
                           'more_info'.tr(),
