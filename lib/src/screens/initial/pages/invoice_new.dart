@@ -532,6 +532,10 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                         var name = invoice.invoice!
                                             .cargoItems[index].productName;
                                         name = name.replaceAll('', '\u200B');
+                                        // print(invoice.invoice?.cargoItems[index]
+                                        //     .packingSizeLast
+                                        //     .toString());
+
                                         return Column(
                                           children: [
                                             Container(

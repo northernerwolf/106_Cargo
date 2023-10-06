@@ -27,7 +27,7 @@ void main() async {
   print(val);
   await pref.setInt("initScreen", 1);
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.ios,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
 
   SingletonSharedPreference(pref);

@@ -47,10 +47,11 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: MediaQuery.of(context).size.height / 4 - 20,
+      height: MediaQuery.of(context).size.height / 4 - 13,
       child: Padding(
         padding: const EdgeInsets.only(),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: EdgeInsets.only(

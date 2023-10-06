@@ -136,8 +136,9 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                           ],
                         ),
-                        height: 200,
+                        height: MediaQuery.of(context).size.height / 4 - 13,
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(
