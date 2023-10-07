@@ -47,7 +47,7 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: MediaQuery.of(context).size.height / 4 - 13,
+      height: MediaQuery.of(context).size.height / 4 - 11,
       child: Padding(
         padding: const EdgeInsets.only(),
         child: Column(
@@ -175,7 +175,7 @@ class _CartMainState extends State<CartMain> {
                                     fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
-                                width: 150,
+                                width: deviceWidth / 6,
                                 child: Text(
                                   widget.model.pointFrom,
                                   maxLines: 2,
@@ -278,19 +278,20 @@ class _CartMainState extends State<CartMain> {
                                             children: List.generate(
                                               1,
                                               (ii) => Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 3,
-                                                          right: 3,
-                                                          top: 7,
-                                                          bottom: 5),
+                                                  padding: EdgeInsets.only(
+                                                      left: deviceWidth / 120,
+                                                      right: deviceWidth / 120,
+                                                      top: deviceWidth / 80,
+                                                      bottom:
+                                                          deviceWidth / 100),
                                                   child: Container(
                                                     height: 2.5,
                                                     width:
                                                         MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            9,
+                                                                    .size
+                                                                    .width /
+                                                                9 +
+                                                            3,
                                                     color: index <= t && t >= 0
                                                         ? AppColors.mainColor
                                                         : Colors.grey,
@@ -301,8 +302,8 @@ class _CartMainState extends State<CartMain> {
                                       ),
                                       index != t
                                           ? Container(
-                                              height: 12,
-                                              width: 12,
+                                              height: deviceWidth / 38,
+                                              width: deviceWidth / 38,
                                               decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   color: index <= t && t >= 0
@@ -314,8 +315,8 @@ class _CartMainState extends State<CartMain> {
                                               children: [
                                                 Center(
                                                   child: Container(
-                                                    height: 40,
-                                                    width: 40,
+                                                    height: deviceWidth / 11,
+                                                    width: deviceWidth / 11,
                                                     decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                         color: AppColors
@@ -324,8 +325,8 @@ class _CartMainState extends State<CartMain> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  height: 28,
-                                                  width: 28,
+                                                  height: deviceWidth / 14.5,
+                                                  width: deviceWidth / 14.5,
                                                   decoration:
                                                       const BoxDecoration(
                                                           shape:
@@ -342,8 +343,8 @@ class _CartMainState extends State<CartMain> {
                                                           : t == l - 1
                                                               ? 'assets/icons/check_circle.svg'
                                                               : 'assets/icons/truck_delivery.svg',
-                                                      height: 10,
-                                                      width: 10,
+                                                      height: deviceWidth / 40,
+                                                      width: deviceWidth / 40,
                                                       color: Colors.white,
                                                     ),
                                                   ),
@@ -379,19 +380,22 @@ class _CartMainState extends State<CartMain> {
                                                 children: List.generate(
                                                   1,
                                                   (ii) => Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 3,
-                                                              right: 3,
-                                                              top: 7,
-                                                              bottom: 5),
+                                                      padding: EdgeInsets.only(
+                                                        left: deviceWidth / 120,
+                                                        right:
+                                                            deviceWidth / 120,
+                                                        top: deviceWidth / 80,
+                                                        bottom:
+                                                            deviceWidth / 100,
+                                                      ),
                                                       child: Container(
                                                         height: 2.5,
                                                         width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width /
-                                                            9,
+                                                                        context)
+                                                                    .size
+                                                                    .width /
+                                                                9 +
+                                                            3,
                                                         color:
                                                             index <= t && t >= 0
                                                                 ? AppColors
@@ -405,8 +409,8 @@ class _CartMainState extends State<CartMain> {
                                         ),
                                         index != t
                                             ? Container(
-                                                height: 12,
-                                                width: 12,
+                                                height: deviceWidth / 38,
+                                                width: deviceWidth / 38,
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: index <= t && t >= 0
@@ -418,8 +422,8 @@ class _CartMainState extends State<CartMain> {
                                                 children: [
                                                   Center(
                                                     child: Container(
-                                                      height: 40,
-                                                      width: 40,
+                                                      height: deviceWidth / 11,
+                                                      width: deviceWidth / 11,
                                                       decoration: BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
@@ -430,8 +434,8 @@ class _CartMainState extends State<CartMain> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    height: 28,
-                                                    width: 28,
+                                                    height: deviceWidth / 14.5,
+                                                    width: deviceWidth / 14.5,
                                                     decoration:
                                                         const BoxDecoration(
                                                             shape:
@@ -448,8 +452,9 @@ class _CartMainState extends State<CartMain> {
                                                             : t == l - 1
                                                                 ? 'assets/icons/check_circle.svg'
                                                                 : 'assets/icons/truck_delivery.svg',
-                                                        height: 10,
-                                                        width: 10,
+                                                        height:
+                                                            deviceWidth / 40,
+                                                        width: deviceWidth / 40,
                                                         color: Colors.white,
                                                       ),
                                                     ),
@@ -464,10 +469,11 @@ class _CartMainState extends State<CartMain> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: deviceWidth / 26 - 1,
-                  right: deviceWidth / 26 - 1,
-                  top: 7,
-                  bottom: deviceWidth / 40),
+                left: deviceWidth / 26 - 1,
+                right: deviceWidth / 26 - 1,
+                top: 7,
+                bottom: deviceWidth / 40,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -608,10 +614,11 @@ class _CartMainState extends State<CartMain> {
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width / 65,
-                          top: MediaQuery.of(context).size.width / 60,
-                          bottom: MediaQuery.of(context).size.width / 60,
-                          right: MediaQuery.of(context).size.width / 60),
+                        left: MediaQuery.of(context).size.width / 65,
+                        top: MediaQuery.of(context).size.width / 60,
+                        bottom: MediaQuery.of(context).size.width / 60,
+                        right: MediaQuery.of(context).size.width / 60,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

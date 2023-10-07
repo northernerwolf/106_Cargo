@@ -37,6 +37,8 @@ class _SearchInfoState extends State<SearchInfo> {
       }
     }
 
+    double deviceWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -97,12 +99,14 @@ class _SearchInfoState extends State<SearchInfo> {
                     ),
                   ],
                 ),
-                height: 200,
+                height: MediaQuery.of(context).size.height / 4 - 11,
                 child: Column(
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsets.only(left: 15, right: 15, top: 10),
+                      padding: EdgeInsets.only(
+                          left: deviceWidth / 25,
+                          right: deviceWidth / 25,
+                          top: deviceWidth / 30),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -110,9 +114,9 @@ class _SearchInfoState extends State<SearchInfo> {
                             children: [
                               Text(
                                 'id'.tr(),
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 16,
+                                    fontSize: deviceWidth / 26,
                                     fontFamily: 'Roboto',
                                     fontStyle: FontStyle.normal,
                                     fontWeight: FontWeight.w400),
@@ -122,9 +126,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                 if (tripData != null) {
                                   return Text(
                                     tripData.pointTo,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 14,
+                                        fontSize: deviceWidth / 29,
                                         fontFamily: 'Roboto',
                                         fontStyle: FontStyle.normal,
                                         fontWeight: FontWeight.w400),
@@ -192,8 +196,10 @@ class _SearchInfoState extends State<SearchInfo> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.only(left: 15, right: 15, top: 0),
+                      padding: EdgeInsets.only(
+                          left: deviceWidth / 26 - 1,
+                          right: deviceWidth / 26 - 1,
+                          top: deviceWidth / 50),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -207,9 +213,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                     if (ordersDate != null) {
                                       return Text(
                                         ordersDate.date,
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                             color: AppColors.authTextColor,
-                                            fontSize: 14,
+                                            fontSize: deviceWidth / 26,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w400),
@@ -223,9 +229,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                     if (ponitForms != null) {
                                       return Text(
                                         ponitForms.pointFrom,
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                             color: Colors.black,
-                                            fontSize: 16,
+                                            fontSize: deviceWidth / 26,
                                             fontFamily: 'Roboto',
                                             fontStyle: FontStyle.normal,
                                             fontWeight: FontWeight.w600),
@@ -261,8 +267,8 @@ class _SearchInfoState extends State<SearchInfo> {
                           ),
                           Column(
                             children: [
-                              const SizedBox(
-                                height: 22,
+                              SizedBox(
+                                height: deviceWidth / 22,
                               ),
                               SizedBox(
                                 width: 80,
@@ -291,8 +297,10 @@ class _SearchInfoState extends State<SearchInfo> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.only(left: 15, right: 15, top: 0),
+                      padding: EdgeInsets.only(
+                          left: deviceWidth / 26 - 1,
+                          right: deviceWidth / 26 - 1,
+                          top: 0),
                       child: widget.model!.points.isNotEmpty
                           ? SizedBox(
                               height: 40,
@@ -328,13 +336,22 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                 List.generate(
                                                               1,
                                                               (ii) => Padding(
-                                                                  padding: const EdgeInsets
+                                                                  padding:
+                                                                      EdgeInsets
                                                                           .only(
-                                                                      left: 3,
-                                                                      right: 3,
-                                                                      top: 7,
-                                                                      bottom:
-                                                                          5),
+                                                                    left:
+                                                                        deviceWidth /
+                                                                            120,
+                                                                    right:
+                                                                        deviceWidth /
+                                                                            120,
+                                                                    top:
+                                                                        deviceWidth /
+                                                                            80,
+                                                                    bottom:
+                                                                        deviceWidth /
+                                                                            100,
+                                                                  ),
                                                                   child:
                                                                       Container(
                                                                     height: 2.5,
@@ -355,8 +372,12 @@ class _SearchInfoState extends State<SearchInfo> {
                                                       ),
                                                       index != t
                                                           ? Container(
-                                                              height: 12,
-                                                              width: 12,
+                                                              height:
+                                                                  deviceWidth /
+                                                                      38,
+                                                              width:
+                                                                  deviceWidth /
+                                                                      38,
                                                               decoration: BoxDecoration(
                                                                   shape: BoxShape
                                                                       .circle,
@@ -375,8 +396,12 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                 Center(
                                                                   child:
                                                                       Container(
-                                                                    height: 40,
-                                                                    width: 40,
+                                                                    height:
+                                                                        deviceWidth /
+                                                                            11,
+                                                                    width:
+                                                                        deviceWidth /
+                                                                            11,
                                                                     decoration: BoxDecoration(
                                                                         shape: BoxShape
                                                                             .circle,
@@ -386,8 +411,12 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                   ),
                                                                 ),
                                                                 Container(
-                                                                  height: 28,
-                                                                  width: 28,
+                                                                  height:
+                                                                      deviceWidth /
+                                                                          14.5,
+                                                                  width:
+                                                                      deviceWidth /
+                                                                          14.5,
                                                                   decoration: const BoxDecoration(
                                                                       shape: BoxShape
                                                                           .circle,
@@ -407,8 +436,11 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                               ? 'assets/icons/check_circle.svg'
                                                                               : 'assets/icons/truck_delivery.svg',
                                                                       height:
-                                                                          10,
-                                                                      width: 10,
+                                                                          deviceWidth /
+                                                                              40,
+                                                                      width:
+                                                                          deviceWidth /
+                                                                              40,
                                                                       color: Colors
                                                                           .white,
                                                                     ),
@@ -427,7 +459,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                 ],
                               ))
                           : SizedBox(
-                              height: 40,
+                              height: deviceWidth / 10,
                               // width: MediaQuery.of(context).size.width - 40,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -456,14 +488,19 @@ class _SearchInfoState extends State<SearchInfo> {
                                                         children: List.generate(
                                                           1,
                                                           (ii) => Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                          .only(
-                                                                      left: 3,
-                                                                      right: 3,
-                                                                      top: 7,
-                                                                      bottom:
-                                                                          5),
+                                                              padding: EdgeInsets.only(
+                                                                  left:
+                                                                      deviceWidth /
+                                                                          120,
+                                                                  right:
+                                                                      deviceWidth /
+                                                                          120,
+                                                                  top:
+                                                                      deviceWidth /
+                                                                          80,
+                                                                  bottom:
+                                                                      deviceWidth /
+                                                                          100),
                                                               child: Container(
                                                                 height: 2.5,
                                                                 width: MediaQuery.of(
@@ -486,8 +523,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                                 ),
                                                 index != t
                                                     ? Container(
-                                                        height: 12,
-                                                        width: 12,
+                                                        height:
+                                                            deviceWidth / 38,
+                                                        width: deviceWidth / 38,
                                                         decoration: BoxDecoration(
                                                             shape:
                                                                 BoxShape.circle,
@@ -503,8 +541,12 @@ class _SearchInfoState extends State<SearchInfo> {
                                                         children: [
                                                           Center(
                                                             child: Container(
-                                                              height: 40,
-                                                              width: 40,
+                                                              height:
+                                                                  deviceWidth /
+                                                                      11,
+                                                              width:
+                                                                  deviceWidth /
+                                                                      11,
                                                               decoration: BoxDecoration(
                                                                   shape: BoxShape
                                                                       .circle,
@@ -515,8 +557,11 @@ class _SearchInfoState extends State<SearchInfo> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            height: 28,
-                                                            width: 28,
+                                                            height:
+                                                                deviceWidth /
+                                                                    14.5,
+                                                            width: deviceWidth /
+                                                                14.5,
                                                             decoration: const BoxDecoration(
                                                                 shape: BoxShape
                                                                     .circle,
@@ -532,8 +577,12 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                     : t == l! - 1
                                                                         ? 'assets/icons/check_circle.svg'
                                                                         : 'assets/icons/truck_delivery.svg',
-                                                                height: 10,
-                                                                width: 10,
+                                                                height:
+                                                                    deviceWidth /
+                                                                        40,
+                                                                width:
+                                                                    deviceWidth /
+                                                                        40,
                                                                 color: Colors
                                                                     .white,
                                                               ),
@@ -548,8 +597,11 @@ class _SearchInfoState extends State<SearchInfo> {
                               )),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          left: 15, right: 15, top: 7, bottom: 8),
+                      padding: EdgeInsets.only(
+                          left: deviceWidth / 26 - 1,
+                          right: deviceWidth / 26 - 1,
+                          top: 7,
+                          bottom: deviceWidth / 40),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -564,9 +616,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                 //     color: Colors.black),
                                 Text(
                                   'place'.tr(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: deviceWidth / 26,
                                       fontFamily: 'Roboto',
                                       fontStyle: FontStyle.normal,
                                       fontWeight: FontWeight.w400),
@@ -578,9 +630,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                     child: Text(
                                       widget.model?.summarySeats.toString() ??
                                           "",
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 16,
+                                          fontSize: deviceWidth / 26,
                                           fontFamily: 'Roboto',
                                           fontStyle: FontStyle.normal,
                                           fontWeight: FontWeight.w400),
@@ -623,9 +675,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                 //     child: Image.asset('assets/images/cube_new.png')),
                                 Text(
                                   'cub'.tr(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: deviceWidth / 26,
                                       fontFamily: 'Roboto',
                                       fontStyle: FontStyle.normal,
                                       fontWeight: FontWeight.w400),
@@ -634,9 +686,9 @@ class _SearchInfoState extends State<SearchInfo> {
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Text(
                                     widget.model?.summaryCube.toString() ?? '',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 16,
+                                        fontSize: deviceWidth / 26,
                                         fontFamily: 'Roboto',
                                         fontStyle: FontStyle.normal,
                                         fontWeight: FontWeight.w400),
@@ -652,18 +704,18 @@ class _SearchInfoState extends State<SearchInfo> {
                                 // const Icon(Icons.attach_money, ),
                                 Text(
                                   'cost'.tr(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: deviceWidth / 26,
                                       fontFamily: 'Roboto',
                                       fontStyle: FontStyle.normal,
                                       fontWeight: FontWeight.w400),
                                 ),
                                 Text(
                                   widget.model?.summaryPrice.toString() ?? "",
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 16,
+                                      fontSize: deviceWidth / 26,
                                       fontFamily: 'Roboto',
                                       fontStyle: FontStyle.normal,
                                       fontWeight: FontWeight.w400),
@@ -675,8 +727,10 @@ class _SearchInfoState extends State<SearchInfo> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.only(left: 15, right: 15, top: 0),
+                      padding: EdgeInsets.only(
+                          left: deviceWidth / 50,
+                          right: deviceWidth / 50,
+                          top: 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -685,8 +739,13 @@ class _SearchInfoState extends State<SearchInfo> {
                                 // color: AppColors.initialButtonColor,
                                 borderRadius: BorderRadius.circular(10)),
                             child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 0, top: 10, bottom: 10, right: 12),
+                              padding: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.width / 65,
+                                  top: MediaQuery.of(context).size.width / 60,
+                                  bottom:
+                                      MediaQuery.of(context).size.width / 40,
+                                  right:
+                                      MediaQuery.of(context).size.width / 60),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

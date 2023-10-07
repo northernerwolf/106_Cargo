@@ -32,6 +32,8 @@ class _InvoiceNewState extends State<InvoiceNew> {
   @override
   Widget build(BuildContext context) {
     final invoice = Provider.of<InvoiceProvider>(context);
+    double deviceWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -373,21 +375,21 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                     padding: const EdgeInsets.only(
                                         top: 12,
                                         bottom: 12,
-                                        right: 0,
-                                        left: 12),
+                                        left: 12,
+                                        right: 10),
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
-                                          width: 210,
+                                          width: deviceWidth / 2,
                                           child: Text(
                                             'name_product'.tr(),
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 24,
+                                                fontSize: deviceWidth / 17,
                                                 fontFamily: 'Roboto',
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w700),
@@ -397,12 +399,13 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           padding:
                                               const EdgeInsets.only(left: 80),
                                           child: SizedBox(
-                                            width: 140,
+                                            width: deviceWidth / 3,
                                             child: Text(
                                               'type_of_box'.tr(),
-                                              style: const TextStyle(
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 24,
+                                                  fontSize: deviceWidth / 17,
                                                   fontFamily: 'Roboto',
                                                   fontStyle: FontStyle.normal,
                                                   fontWeight: FontWeight.w700),
@@ -410,15 +413,15 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 195),
+                                          padding: EdgeInsets.only(
+                                              left: deviceWidth / 2),
                                           child: Center(
                                             child: SizedBox(
                                               child: Text(
                                                 'scale'.tr(),
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: 24,
+                                                    fontSize: deviceWidth / 17,
                                                     fontFamily: 'Roboto',
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
@@ -428,10 +431,11 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 185),
+                                          padding: EdgeInsets.only(
+                                            left: deviceWidth / 2 - 20,
+                                          ),
                                           child: SizedBox(
-                                            width: 540,
+                                            width: deviceWidth + 124,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
@@ -442,12 +446,13 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       const EdgeInsets.only(
                                                           left: 0),
                                                   child: SizedBox(
-                                                    // width: 110,
+                                                    width: deviceWidth / 4,
                                                     child: Text(
                                                       'land_number'.tr(),
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
                                                           color: Colors.black,
-                                                          fontSize: 24,
+                                                          fontSize:
+                                                              deviceWidth / 17,
                                                           fontFamily: 'Roboto',
                                                           fontStyle:
                                                               FontStyle.normal,
@@ -461,12 +466,13 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       const EdgeInsets.only(
                                                           left: 0),
                                                   child: SizedBox(
-                                                    // width: 110,
+                                                    width: deviceWidth / 4 - 50,
                                                     child: Text(
                                                       'cub_in'.tr(),
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
                                                           color: Colors.black,
-                                                          fontSize: 24,
+                                                          fontSize:
+                                                              deviceWidth / 17,
                                                           fontFamily: 'Roboto',
                                                           fontStyle:
                                                               FontStyle.normal,
@@ -480,16 +486,20 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       const EdgeInsets.only(
                                                     left: 0,
                                                   ),
-                                                  child: Text(
-                                                    'kg'.tr(),
-                                                    style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 24,
-                                                        fontFamily: 'Roboto',
-                                                        fontStyle:
-                                                            FontStyle.normal,
-                                                        fontWeight:
-                                                            FontWeight.w700),
+                                                  child: SizedBox(
+                                                    width: deviceWidth / 4 - 40,
+                                                    child: Text(
+                                                      'kg'.tr(),
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize:
+                                                              deviceWidth / 17,
+                                                          fontFamily: 'Roboto',
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                          fontWeight:
+                                                              FontWeight.w700),
+                                                    ),
                                                   ),
                                                 ),
                                                 Padding(
@@ -497,14 +507,14 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       const EdgeInsets.only(
                                                           left: 0),
                                                   child: SizedBox(
-                                                    width: 60,
+                                                    width: deviceWidth / 5 - 15,
                                                     child: Text(
-                                                      textAlign:
-                                                          TextAlign.right,
+                                                      textAlign: TextAlign.end,
                                                       'cost_in'.tr(),
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
                                                           color: Colors.black,
-                                                          fontSize: 24,
+                                                          fontSize:
+                                                              deviceWidth / 17,
                                                           fontFamily: 'Roboto',
                                                           fontStyle:
                                                               FontStyle.normal,
@@ -529,12 +539,9 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           invoice.invoice!.cargoItems.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        var name = invoice.invoice!
-                                            .cargoItems[index].productName;
-                                        name = name.replaceAll('', '\u200B');
-                                        // print(invoice.invoice?.cargoItems[index]
-                                        //     .packingSizeLast
-                                        //     .toString());
+                                        double name = invoice.invoice!
+                                            .cargoItems[index].packingSizeLast;
+                                        String last = name.toStringAsFixed(3);
 
                                         return Column(
                                           children: [
@@ -551,23 +558,35 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                   bottom: 12),
                                               child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Builder(builder: (context) {
+                                                    var name = invoice
+                                                        .invoice
+                                                        ?.cargoItems[index]
+                                                        .packingSizeLast
+                                                        .toString();
+                                                    name = name!.replaceAll(
+                                                        '', '\u200B');
+
                                                     return SizedBox(
-                                                      width: 210,
+                                                      width:
+                                                          deviceWidth / 2 + 5,
                                                       child: Text(
-                                                        // invoice
-                                                        //         .invoice
-                                                        //         ?.cargoItems[index]
-                                                        //         .productName ??
-                                                        //     "",
-                                                        name,
+                                                        invoice
+                                                                .invoice
+                                                                ?.cargoItems[
+                                                                    index]
+                                                                .productName ??
+                                                            "",
                                                         overflow: TextOverflow
                                                             .ellipsis,
-                                                        style: const TextStyle(
+                                                        style: TextStyle(
                                                             color: Colors.black,
-                                                            fontSize: 24,
+                                                            fontSize:
+                                                                deviceWidth /
+                                                                    17,
                                                             fontFamily:
                                                                 'Roboto',
                                                             fontStyle: FontStyle
@@ -579,11 +598,12 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                     );
                                                   }),
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 80),
+                                                    padding: EdgeInsets.only(
+                                                        left: deviceWidth / 4 -
+                                                            40),
                                                     child: SizedBox(
-                                                      width: 200,
+                                                      width:
+                                                          deviceWidth / 2 - 5,
                                                       child: Text(
                                                         invoice
                                                                 .invoice
@@ -593,9 +613,11 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                             "",
                                                         overflow: TextOverflow
                                                             .ellipsis,
-                                                        style: const TextStyle(
+                                                        style: TextStyle(
                                                             color: Colors.black,
-                                                            fontSize: 24,
+                                                            fontSize:
+                                                                deviceWidth /
+                                                                    17,
                                                             fontFamily:
                                                                 'Roboto',
                                                             fontStyle: FontStyle
@@ -606,11 +628,12 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       ),
                                                     ),
                                                   ),
-                                                  const SizedBox(
-                                                    width: 35,
+                                                  SizedBox(
+                                                    width:
+                                                        deviceWidth / 11 - 30,
                                                   ),
                                                   SizedBox(
-                                                    width: 110,
+                                                    width: deviceWidth / 4 + 5,
                                                     child: Text(
                                                       invoice
                                                               .invoice
@@ -619,9 +642,11 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                               .packingSizeFirst
                                                               .toString() ??
                                                           "",
-                                                      style: const TextStyle(
+                                                      textAlign: TextAlign.left,
+                                                      style: TextStyle(
                                                           color: Colors.black,
-                                                          fontSize: 24,
+                                                          fontSize:
+                                                              deviceWidth / 17,
                                                           fontFamily: 'Roboto',
                                                           fontStyle:
                                                               FontStyle.normal,
@@ -630,7 +655,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    width: 110,
+                                                    width: deviceWidth / 4 + 5,
                                                     child: Text(
                                                       invoice
                                                               .invoice
@@ -639,9 +664,10 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                               .packingSizeMiddle
                                                               .toString() ??
                                                           "",
-                                                      style: const TextStyle(
+                                                      style: TextStyle(
                                                           color: Colors.black,
-                                                          fontSize: 24,
+                                                          fontSize:
+                                                              deviceWidth / 17,
                                                           fontFamily: 'Roboto',
                                                           fontStyle:
                                                               FontStyle.normal,
@@ -650,18 +676,21 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    width: 110,
+                                                    width: deviceWidth / 4 + 5,
                                                     child: Text(
-                                                      invoice
-                                                              .invoice
-                                                              ?.cargoItems[
-                                                                  index]
-                                                              .packingSizeLast
-                                                              .toString() ??
-                                                          "",
-                                                      style: const TextStyle(
+                                                      // invoice
+                                                      //         .invoice
+                                                      //         ?.cargoItems[
+                                                      //             index]
+                                                      //         .packingSizeLast
+                                                      //         .toString() ??
+                                                      //     "",
+                                                      last,
+
+                                                      style: TextStyle(
                                                           color: Colors.black,
-                                                          fontSize: 24,
+                                                          fontSize:
+                                                              deviceWidth / 17,
                                                           fontFamily: 'Roboto',
                                                           fontStyle:
                                                               FontStyle.normal,
@@ -670,11 +699,11 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 65),
+                                                    padding: EdgeInsets.only(
+                                                        left: deviceWidth / 8 -
+                                                            5),
                                                     child: SizedBox(
-                                                      width: 510,
+                                                      width: deviceWidth + 105,
                                                       child: Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -686,8 +715,13 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                                         .only(
                                                                     left: 0),
                                                             child: SizedBox(
-                                                              // width: 100,
+                                                              width:
+                                                                  deviceWidth /
+                                                                      12,
                                                               child: Text(
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
                                                                 invoice
                                                                         .invoice
                                                                         ?.cargoItems[
@@ -695,11 +729,12 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                                         .numberOfSeats
                                                                         .toString() ??
                                                                     "",
-                                                                style: const TextStyle(
+                                                                style: TextStyle(
                                                                     color: Colors
                                                                         .black,
                                                                     fontSize:
-                                                                        24,
+                                                                        deviceWidth /
+                                                                            17,
                                                                     fontFamily:
                                                                         'Roboto',
                                                                     fontStyle:
@@ -712,12 +747,15 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                             ),
                                                           ),
                                                           Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 70),
+                                                            padding: EdgeInsets.only(
+                                                                left:
+                                                                    deviceWidth /
+                                                                            5 -
+                                                                        20),
                                                             child: SizedBox(
-                                                              width: 90,
+                                                              width:
+                                                                  deviceWidth /
+                                                                      6,
                                                               child: Text(
                                                                 textAlign:
                                                                     TextAlign
@@ -729,11 +767,12 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                                         .cube
                                                                         .toString() ??
                                                                     "",
-                                                                style: const TextStyle(
+                                                                style: TextStyle(
                                                                     color: Colors
                                                                         .black,
                                                                     fontSize:
-                                                                        24,
+                                                                        deviceWidth /
+                                                                            17,
                                                                     fontFamily:
                                                                         'Roboto',
                                                                     fontStyle:
@@ -747,11 +786,16 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 40),
+                                                                EdgeInsets.only(
+                                                              left:
+                                                                  deviceWidth /
+                                                                          10 -
+                                                                      20,
+                                                            ),
                                                             child: SizedBox(
-                                                              width: 90,
+                                                              width:
+                                                                  deviceWidth /
+                                                                      5,
                                                               child: Text(
                                                                 invoice
                                                                         .invoice
@@ -760,11 +804,12 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                                         .kg
                                                                         .toString() ??
                                                                     "",
-                                                                style: const TextStyle(
+                                                                style: TextStyle(
                                                                     color: Colors
                                                                         .black,
                                                                     fontSize:
-                                                                        24,
+                                                                        deviceWidth /
+                                                                            17,
                                                                     fontFamily:
                                                                         'Roboto',
                                                                     fontStyle:
@@ -782,7 +827,10 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                                         .only(
                                                                     left: 0),
                                                             child: SizedBox(
-                                                              width: 90,
+                                                              width:
+                                                                  deviceWidth /
+                                                                          5 +
+                                                                      5,
                                                               child: Text(
                                                                 textAlign:
                                                                     TextAlign
@@ -794,11 +842,12 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                                         .totalPrice
                                                                         .toString() ??
                                                                     "",
-                                                                style: const TextStyle(
+                                                                style: TextStyle(
                                                                     color: Colors
                                                                         .black,
                                                                     fontSize:
-                                                                        24,
+                                                                        deviceWidth /
+                                                                            17,
                                                                     fontFamily:
                                                                         'Roboto',
                                                                     fontStyle:
@@ -832,26 +881,22 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(12.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          invoice.invoice?.consumptionName
-                                                  .toString() ??
-                                              "",
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 24,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        invoice.invoice?.consumptionPrice !=
-                                                null
-                                            ? Text(
-                                                invoice.invoice
-                                                        ?.consumptionPrice
+                                    child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        scrollDirection: Axis.vertical,
+                                        itemCount:
+                                            invoice.invoice!.expenses.length,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                invoice.invoice?.expenses[index]
+                                                        .name
                                                         .toString() ??
                                                     "",
                                                 style: const TextStyle(
@@ -861,10 +906,30 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
                                                         FontWeight.w700),
-                                              )
-                                            : const Text(''),
-                                      ],
-                                    ),
+                                              ),
+                                              invoice.invoice?.expenses[index]
+                                                          .price !=
+                                                      null
+                                                  ? Text(
+                                                      invoice
+                                                              .invoice
+                                                              ?.expenses[index]
+                                                              .price
+                                                              .toString() ??
+                                                          "",
+                                                      style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 24,
+                                                          fontFamily: 'Roboto',
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                          fontWeight:
+                                                              FontWeight.w700),
+                                                    )
+                                                  : const Text(''),
+                                            ],
+                                          );
+                                        }),
                                   ),
                                   Container(
                                     height: 1.5,

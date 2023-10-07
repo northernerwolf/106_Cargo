@@ -13,6 +13,7 @@ class Shipment {
   final String trackCode;
   final String pointFrom;
   final String pointTo;
+  final List<ExpensesItem> expenses;
   final List<CargoItem> cargoItems;
 
   Shipment({
@@ -30,6 +31,7 @@ class Shipment {
     required this.pointFrom,
     required this.pointTo,
     required this.trackCode,
+    required this.expenses,
     required this.cargoItems,
   });
 
@@ -37,6 +39,10 @@ class Shipment {
     List<dynamic> cargoJson = json['cargo-items'];
     List<CargoItem> cargoItems =
         cargoJson.map((item) => CargoItem.fromJson(item)).toList();
+
+    List<dynamic> expensesJson = json['expenses'];
+    List<ExpensesItem> expensesItems =
+        expensesJson.map((item) => ExpensesItem.fromJson(item)).toList();
 
     return Shipment(
       date: json['date'] ?? '',
@@ -53,6 +59,7 @@ class Shipment {
       ticketId: json['ticket_id'],
       pointFrom: json['point_from'],
       pointTo: json['point_to'],
+      expenses: expensesItems,
       cargoItems: cargoItems,
     );
   }
@@ -95,6 +102,26 @@ class CargoItem {
       kg: json['kg'] ?? "",
       totalPrice: json['total_price'],
       typePackagingId: json['type_packaging_id'],
+    );
+  }
+}
+
+class ExpensesItem {
+  final int id;
+  final String name;
+  final dynamic price;
+
+  ExpensesItem({
+    required this.id,
+    required this.name,
+    required this.price,
+  });
+
+  factory ExpensesItem.fromJson(Map<String, dynamic> json) {
+    return ExpensesItem(
+      id: json['id'] ?? "",
+      name: json['name'] ?? "",
+      price: json['price'],
     );
   }
 }

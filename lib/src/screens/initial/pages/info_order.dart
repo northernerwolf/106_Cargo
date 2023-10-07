@@ -57,6 +57,8 @@ class _InfoOrederState extends State<InfoOreder> {
       }
     }
 
+    double deviceWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -136,13 +138,15 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                           ],
                         ),
-                        height: MediaQuery.of(context).size.height / 4 - 13,
+                        height: MediaQuery.of(context).size.height / 4 - 11,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
+                              padding: EdgeInsets.only(
+                                  left: deviceWidth / 25,
+                                  right: deviceWidth / 25,
+                                  top: deviceWidth / 30),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -153,9 +157,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                         children: [
                                           Text(
                                             'id'.tr(),
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 16,
+                                                fontSize: deviceWidth / 26,
                                                 fontFamily: 'Roboto',
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w400),
@@ -168,14 +172,15 @@ class _InfoOrederState extends State<InfoOreder> {
                                               name =
                                                   name.replaceAll('', '\u200B');
                                               return SizedBox(
-                                                width: 140,
+                                                width: deviceWidth - 70,
                                                 child: Text(
                                                   name,
                                                   overflow:
                                                       TextOverflow.ellipsis,
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                       color: Colors.black,
-                                                      fontSize: 14,
+                                                      fontSize:
+                                                          deviceWidth / 29,
                                                       fontFamily: 'Roboto',
                                                       fontStyle:
                                                           FontStyle.normal,
@@ -254,8 +259,10 @@ class _InfoOrederState extends State<InfoOreder> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 5),
+                              padding: EdgeInsets.only(
+                                  left: deviceWidth / 26 - 1,
+                                  right: deviceWidth / 26 - 1,
+                                  top: deviceWidth / 50),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -272,10 +279,10 @@ class _InfoOrederState extends State<InfoOreder> {
                                             if (ordersDate != null) {
                                               return Text(
                                                 ordersDate.date,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                     color:
                                                         AppColors.authTextColor,
-                                                    fontSize: 14,
+                                                    fontSize: deviceWidth / 26,
                                                     fontFamily: 'Roboto',
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
@@ -291,9 +298,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                             if (ponitForms != null) {
                                               return Text(
                                                 ponitForms.pointFrom,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: 16,
+                                                    fontSize: deviceWidth / 26,
                                                     fontFamily: 'Roboto',
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
@@ -335,8 +342,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                   ),
                                   Column(
                                     children: [
-                                      const SizedBox(
-                                        height: 22,
+                                      SizedBox(
+                                        height: deviceWidth / 22,
                                       ),
                                       SizedBox(
                                         width: 80,
@@ -347,9 +354,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                               pointsTo.pointTo,
                                               textAlign: TextAlign.right,
                                               overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 16,
+                                                  fontSize: deviceWidth / 26,
                                                   fontFamily: 'Roboto',
                                                   fontStyle: FontStyle.normal,
                                                   fontWeight: FontWeight.w600),
@@ -365,11 +372,13 @@ class _InfoOrederState extends State<InfoOreder> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 0),
+                              padding: EdgeInsets.only(
+                                  left: deviceWidth / 26 - 1,
+                                  right: deviceWidth / 26 - 1,
+                                  top: 0),
                               child: l != 0
                                   ? SizedBox(
-                                      height: 40,
+                                      height: deviceWidth / 10,
                                       // width: MediaQuery.of(context).size.width -
                                       //     50,
                                       child: Row(
@@ -412,7 +421,12 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                             List.generate(
                                                                           1,
                                                                           (ii) => Padding(
-                                                                              padding: const EdgeInsets.only(left: 3, right: 3, top: 7, bottom: 5),
+                                                                              padding: EdgeInsets.only(
+                                                                                left: deviceWidth / 120,
+                                                                                right: deviceWidth / 120,
+                                                                                top: deviceWidth / 80,
+                                                                                bottom: deviceWidth / 100,
+                                                                              ),
                                                                               child: Container(
                                                                                 height: 2.5,
                                                                                 width: MediaQuery.of(context).size.width / 9,
@@ -425,8 +439,11 @@ class _InfoOrederState extends State<InfoOreder> {
                                                               index != t
                                                                   ? Container(
                                                                       height:
-                                                                          12,
-                                                                      width: 12,
+                                                                          deviceWidth /
+                                                                              38,
+                                                                      width:
+                                                                          deviceWidth /
+                                                                              38,
                                                                       decoration: BoxDecoration(
                                                                           shape: BoxShape
                                                                               .circle,
@@ -443,18 +460,18 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                           child:
                                                                               Container(
                                                                             height:
-                                                                                40,
+                                                                                deviceWidth / 11,
                                                                             width:
-                                                                                40,
+                                                                                deviceWidth / 11,
                                                                             decoration:
                                                                                 BoxDecoration(shape: BoxShape.circle, color: AppColors.mainColor.withOpacity(0.1)),
                                                                           ),
                                                                         ),
                                                                         Container(
                                                                           height:
-                                                                              28,
+                                                                              deviceWidth / 14.5,
                                                                           width:
-                                                                              28,
+                                                                              deviceWidth / 14.5,
                                                                           decoration: const BoxDecoration(
                                                                               shape: BoxShape.circle,
                                                                               color: AppColors.mainColor),
@@ -469,8 +486,8 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                                   : t == l - 1
                                                                                       ? 'assets/icons/check_circle.svg'
                                                                                       : 'assets/icons/truck_delivery.svg',
-                                                                              height: 10,
-                                                                              width: 10,
+                                                                              height: deviceWidth / 40,
+                                                                              width: deviceWidth / 40,
                                                                               color: Colors.white,
                                                                             ),
                                                                           ),
@@ -488,7 +505,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                         ],
                                       ))
                                   : SizedBox(
-                                      height: 40,
+                                      height: deviceWidth / 10,
                                       // width: MediaQuery.of(context).size.width -
                                       //     40,
                                       child: Row(
@@ -522,14 +539,15 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                   List.generate(
                                                                 1,
                                                                 (ii) => Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .only(
-                                                                        left: 3,
-                                                                        right:
-                                                                            3,
-                                                                        top: 7,
-                                                                        bottom:
-                                                                            5),
+                                                                    padding: EdgeInsets.only(
+                                                                        left: deviceWidth /
+                                                                            120,
+                                                                        right: deviceWidth /
+                                                                            120,
+                                                                        top: deviceWidth /
+                                                                            80,
+                                                                        bottom: deviceWidth /
+                                                                            100),
                                                                     child:
                                                                         Container(
                                                                       height:
@@ -552,8 +570,12 @@ class _InfoOrederState extends State<InfoOreder> {
                                                         ),
                                                         index != t
                                                             ? Container(
-                                                                height: 12,
-                                                                width: 12,
+                                                                height:
+                                                                    deviceWidth /
+                                                                        38,
+                                                                width:
+                                                                    deviceWidth /
+                                                                        38,
                                                                 decoration: BoxDecoration(
                                                                     shape: BoxShape
                                                                         .circle,
@@ -575,8 +597,11 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                     child:
                                                                         Container(
                                                                       height:
-                                                                          40,
-                                                                      width: 40,
+                                                                          deviceWidth /
+                                                                              11,
+                                                                      width:
+                                                                          deviceWidth /
+                                                                              11,
                                                                       decoration: BoxDecoration(
                                                                           shape: BoxShape
                                                                               .circle,
@@ -586,8 +611,12 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                     ),
                                                                   ),
                                                                   Container(
-                                                                    height: 28,
-                                                                    width: 28,
+                                                                    height:
+                                                                        deviceWidth /
+                                                                            14.5,
+                                                                    width:
+                                                                        deviceWidth /
+                                                                            14.5,
                                                                     decoration: const BoxDecoration(
                                                                         shape: BoxShape
                                                                             .circle,
@@ -607,9 +636,10 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                                 ? 'assets/icons/check_circle.svg'
                                                                                 : 'assets/icons/truck_delivery.svg',
                                                                         height:
-                                                                            10,
-                                                                        width:
-                                                                            10,
+                                                                            deviceWidth /
+                                                                                40,
+                                                                        width: deviceWidth /
+                                                                            40,
                                                                         color: Colors
                                                                             .white,
                                                                       ),
@@ -624,8 +654,11 @@ class _InfoOrederState extends State<InfoOreder> {
                                       )),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 7, bottom: 8),
+                              padding: EdgeInsets.only(
+                                  left: deviceWidth / 26 - 1,
+                                  right: deviceWidth / 26 - 1,
+                                  top: 7,
+                                  bottom: deviceWidth / 40),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -643,9 +676,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                         //     color: Colors.black),
                                         Text(
                                           'place'.tr(),
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16,
+                                              fontSize: deviceWidth / 26,
                                               fontFamily: 'Roboto',
                                               fontStyle: FontStyle.normal,
                                               fontWeight: FontWeight.w400),
@@ -657,9 +690,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                             orderById.ordersById?.summarySeats
                                                     .toString() ??
                                                 "",
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 16,
+                                                fontSize: deviceWidth / 26,
                                                 fontFamily: 'Roboto',
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w400),
@@ -708,9 +741,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                         //         'assets/images/cube_new.png')),
                                         Text(
                                           'cub'.tr(),
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16,
+                                              fontSize: deviceWidth / 26,
                                               fontFamily: 'Roboto',
                                               fontStyle: FontStyle.normal,
                                               fontWeight: FontWeight.w400),
@@ -722,9 +755,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                             orderById.ordersById?.summaryCube
                                                     .toString() ??
                                                 "",
-                                            style: const TextStyle(
+                                            style: TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 16,
+                                                fontSize: deviceWidth / 26,
                                                 fontFamily: 'Roboto',
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w400),
@@ -741,9 +774,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                       children: [
                                         Text(
                                           'cost'.tr(),
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16,
+                                              fontSize: deviceWidth / 26,
                                               fontFamily: 'Roboto',
                                               fontStyle: FontStyle.normal,
                                               fontWeight: FontWeight.w400),
@@ -752,9 +785,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                           orderById.ordersById?.summaryPrice
                                                   .toString() ??
                                               "",
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 16,
+                                              fontSize: deviceWidth / 26,
                                               fontFamily: 'Roboto',
                                               fontStyle: FontStyle.normal,
                                               fontWeight: FontWeight.w400),
@@ -766,8 +799,10 @@ class _InfoOrederState extends State<InfoOreder> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 0),
+                              padding: EdgeInsets.only(
+                                  left: deviceWidth / 50,
+                                  right: deviceWidth / 50,
+                                  top: 0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -777,11 +812,24 @@ class _InfoOrederState extends State<InfoOreder> {
                                         borderRadius:
                                             BorderRadius.circular(10)),
                                     child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 0,
-                                          top: 10,
-                                          bottom: 10,
-                                          right: 12),
+                                      padding: EdgeInsets.only(
+                                          left: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              65,
+                                          top:
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  60,
+                                          bottom: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              40,
+                                          right: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              60),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -800,9 +848,13 @@ class _InfoOrederState extends State<InfoOreder> {
                                             if (locations != null) {
                                               return Text(
                                                 locations.location,
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                     color: AppColors.mainColor,
-                                                    fontSize: 14,
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            32,
                                                     fontFamily: 'Roboto',
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
