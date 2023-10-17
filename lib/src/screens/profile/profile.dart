@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
 import 'package:kargo_app/src/screens/auth/providers/me_provider.dart';
 import 'package:kargo_app/src/screens/profile/edit/contaacts.dart';
@@ -234,7 +235,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ),
                             ],
                           )
-                        : const CircularProgressIndicator(),
+                        : const SpinKitFadingCircle(
+                            color: Colors.grey,
+                            size: 50.0,
+                          ),
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 40, bottom: 15, right: 10),

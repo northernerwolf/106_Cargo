@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kargo_app/src/core/firebase_setup.dart';
 import 'package:kargo_app/src/screens/initial/pages/invoice_new.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -101,7 +102,10 @@ class _InfoOrederState extends State<InfoOreder> {
       body: Consumer<GetOrderByIdProvider>(builder: (_, orderInfo, __) {
         if (orderInfo.isLoading == true) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: SpinKitFadingCircle(
+              color: Colors.grey,
+              size: 50.0,
+            ),
           );
         } else {
           return SafeArea(

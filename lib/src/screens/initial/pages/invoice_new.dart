@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:kargo_app/src/design/app_colors.dart';
 import 'package:kargo_app/src/screens/initial/providers/invoice_providers.dart';
@@ -1061,10 +1062,20 @@ class _InvoiceNewState extends State<InvoiceNew> {
                       ),
                     );
                   } else {
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(
+                      child: SpinKitFadingCircle(
+                        color: Colors.grey,
+                        size: 50.0,
+                      ),
+                    );
                   }
                 })
-              : const Center(child: CircularProgressIndicator())),
+              : const Center(
+                  child: SpinKitFadingCircle(
+                    color: Colors.grey,
+                    size: 50.0,
+                  ),
+                )),
     );
   }
 }

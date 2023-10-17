@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kargo_app/src/screens/initial/model/search_model.dart';
 import 'package:kargo_app/src/screens/initial/pages/invoice_new.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -451,7 +452,10 @@ class _SearchInfoState extends State<SearchInfo> {
                                                     ]);
                                               });
                                         } else {
-                                          return const CircularProgressIndicator();
+                                          return const SpinKitFadingCircle(
+                                            color: Colors.grey,
+                                            size: 50.0,
+                                          );
                                         }
                                       }),
                                     ),
@@ -830,8 +834,10 @@ class _SearchInfoState extends State<SearchInfo> {
                                               child: SizedBox(
                                                 width: 20.0,
                                                 height: 20.0,
-                                                child:
-                                                    CircularProgressIndicator(),
+                                                child: SpinKitFadingCircle(
+                                                  color: Colors.grey,
+                                                  size: 50.0,
+                                                ),
                                               ),
                                             );
                                           },
@@ -1079,7 +1085,11 @@ class _SearchInfoState extends State<SearchInfo> {
                                 });
                           } else {
                             return const Center(
-                                child: CircularProgressIndicator());
+                              child: SpinKitFadingCircle(
+                                color: Colors.grey,
+                                size: 50.0,
+                              ),
+                            );
                           }
                         }),
                       ),

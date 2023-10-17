@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
 
 import 'package:kargo_app/src/screens/auth/components/login_components.dart';
@@ -162,7 +163,11 @@ class _InitialScreenState extends State<InitialScreen> {
                     if (order.isLoading == true) {
                       return const Padding(
                         padding: EdgeInsets.only(top: 100),
-                        child: Center(child: CircularProgressIndicator()),
+                        child: Center(
+                            child: SpinKitFadingCircle(
+                          color: Colors.grey,
+                          size: 50.0,
+                        )),
                       );
                     } else {
                       if (order.orders.isNotEmpty) {

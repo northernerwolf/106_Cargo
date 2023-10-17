@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kargo_app/src/design/app_colors.dart';
 import 'package:kargo_app/src/screens/auth/login/repository_login.dart';
 import 'package:kargo_app/src/screens/auth/register/register_screen.dart';
@@ -302,20 +303,20 @@ class _LoginComponentsState extends State<LoginComponents> {
                                       color: AppColors.mainColor,
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Center(
-                                    child: isLoading == false
-                                        ? Text(
-                                            'log_in'.tr(),
-                                            style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16,
-                                                fontFamily: 'Roboto',
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w700),
-                                          )
-                                        : const CircularProgressIndicator(
-                                            color: Colors.white,
-                                          ),
-                                  ),
+                                      child: isLoading == false
+                                          ? Text(
+                                              'log_in'.tr(),
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                  fontFamily: 'Roboto',
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w700),
+                                            )
+                                          : const SpinKitFadingCircle(
+                                              color: Colors.grey,
+                                              size: 50.0,
+                                            )),
                                 ),
                               ),
                             );

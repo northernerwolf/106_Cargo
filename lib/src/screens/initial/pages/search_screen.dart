@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:kargo_app/src/screens/initial/pages/search_info.dart';
 import 'package:lottie/lottie.dart';
@@ -190,7 +191,12 @@ class _SearchScreenState extends State<SearchScreen> {
                   return Padding(
                     padding: const EdgeInsets.only(left: 5, right: 5, top: 10),
                     child: isLoading == true
-                        ? const Center(child: CircularProgressIndicator())
+                        ? const Center(
+                            child: SpinKitFadingCircle(
+                              color: Colors.grey,
+                              size: 50.0,
+                            ),
+                          )
                         : Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
