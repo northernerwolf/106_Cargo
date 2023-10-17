@@ -384,7 +384,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
-                                          width: deviceWidth / 2,
+                                          width: deviceWidth / 2 - 15,
                                           child: Text(
                                             'name_product'.tr(),
                                             style: TextStyle(
@@ -399,7 +399,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           padding:
                                               const EdgeInsets.only(left: 80),
                                           child: SizedBox(
-                                            width: deviceWidth / 3,
+                                            width: deviceWidth / 3 + 10,
                                             child: Text(
                                               'type_of_box'.tr(),
                                               textAlign: TextAlign.center,

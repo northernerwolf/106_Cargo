@@ -3,7 +3,7 @@ import 'package:kargo_app/src/core/firebase_setup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/about/about_us.dart';
-import '../screens/explore/explore.dart';
+
 import '../screens/initial/initial.dart';
 import '../screens/profile/profile.dart';
 import '../screens/profile/proofile_logout.dart';

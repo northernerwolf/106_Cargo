@@ -138,7 +138,7 @@ class _InfoOrederState extends State<InfoOreder> {
                             ),
                           ],
                         ),
-                        height: MediaQuery.of(context).size.height / 4 - 11,
+                        // height: MediaQuery.of(context).size.height / 4 - 11,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -172,7 +172,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                               name =
                                                   name.replaceAll('', '\u200B');
                                               return SizedBox(
-                                                width: deviceWidth - 70,
+                                                width: deviceWidth - 75,
                                                 child: Text(
                                                   name,
                                                   overflow:

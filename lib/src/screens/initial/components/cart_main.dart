@@ -47,7 +47,7 @@ class _CartMainState extends State<CartMain> {
           ),
         ],
       ),
-      height: MediaQuery.of(context).size.height / 4 - 11,
+      // height: MediaQuery.of(context).size.height / 4 - 11,
       child: Padding(
         padding: const EdgeInsets.only(),
         child: Column(
@@ -76,7 +76,7 @@ class _CartMainState extends State<CartMain> {
                                 fontWeight: FontWeight.w400),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width - 70,
+                            width: MediaQuery.of(context).size.width - 75,
                             child: Text(
                               name,
                               // maxLines: 2,

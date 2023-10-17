@@ -75,7 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
     }
 
     var name = searchResult?.ticketCode;
-    name = name!.replaceAll('', '\u200B');
+    name = name?.replaceAll('', '\u200B');
     double deviceWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -206,7 +206,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 ),
                               ],
                             ),
-                            height: MediaQuery.of(context).size.height / 4 - 11,
+                            // height: MediaQuery.of(context).size.height / 4 - 11,
                             child: Padding(
                               padding: const EdgeInsets.only(),
                               child: Column(
@@ -244,7 +244,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width -
-                                                  70,
+                                                  75,
                                               child: Text(
                                                 name ?? '',
                                                 // maxLines: 2,

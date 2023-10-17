@@ -159,7 +159,7 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
                               ? FontWeight.w600
                               : FontWeight.w400,
                           fontStyle: FontStyle.normal,
-                          fontFamily: 'Rubik',
+                          fontFamily: 'Roboto',
                           fontSize: 12),
                     ),
                   )
