@@ -100,7 +100,7 @@ class _SearchInfoState extends State<SearchInfo> {
                     ),
                   ],
                 ),
-                height: MediaQuery.of(context).size.height / 4 - 11,
+                height: MediaQuery.of(context).size.height / 4 - 8,
                 child: Column(
                   children: [
                     Padding(
