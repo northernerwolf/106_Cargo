@@ -4,6 +4,7 @@ class TripDataIdModel {
   final String pointFrom;
   final String pointTo;
   final String trackCode;
+  final String transport_number;
   final int summarySeats;
   final List<String> images;
   final String ticketCode;
@@ -22,6 +23,7 @@ class TripDataIdModel {
     required this.trackCode,
     required this.summarySeats,
     required this.ticketCode,
+    required this.transport_number,
     required this.location,
     required this.points,
     required this.images,
@@ -41,6 +43,7 @@ class TripDataIdModel {
       pointFrom: json['point_from'] ?? '',
       pointTo: json['point_to'],
       trackCode: json['track_code'] ?? '',
+      transport_number: json['transport_number'] ?? '',
       summarySeats: json['summary_seats'] ?? 0,
       images: List<String>.from(json['images']),
       ticketCode: json['ticket_code'] ?? '',

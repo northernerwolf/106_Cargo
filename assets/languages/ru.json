@@ -59,5 +59,6 @@
     "all_land": "Всего земель: ",
     "sum_cub": "Всего м³: ",
     "sum_kg": "Всего кг: ",
-    "sum_cost": "Общая цена: "
+    "sum_cost": "Общая цена: ",
+    "transport_number": "Maşyn №: "
 }

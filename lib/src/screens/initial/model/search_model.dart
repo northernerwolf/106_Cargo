@@ -9,6 +9,7 @@ class SearchModel {
   final String summaryKg;
   final String summaryCube;
   final String ticketCode;
+  final String transport_number;
   final List<String> images;
   final String location;
   final List<PointSS> points;
@@ -22,6 +23,7 @@ class SearchModel {
     required this.summarySeats,
     required this.ticketCode,
     required this.location,
+    required this.transport_number,
     required this.points,
     required this.images,
     required this.summaryPrice,
@@ -42,6 +44,7 @@ class SearchModel {
       trackCode: json['track_code'],
       summarySeats: json['summary_seats'] ?? 0,
       ticketCode: json['ticket_code'] ?? '',
+      transport_number: json['transport_number'] ?? '',
       summaryPrice: json['summary_price'],
       summaryKg: json['summary_kg'] ?? 0,
       summaryCube: json['summary_cube'] ?? '',

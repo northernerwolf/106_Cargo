@@ -29,7 +29,9 @@ class _CartMainState extends State<CartMain> {
     }
 
     var name = widget.model.ticketCode;
+    var tr_number2 = widget.model.transport_number;
     name = name.replaceAll('', '\u200B');
+    tr_number2 = tr_number2.replaceAll('', '\u200B');
 
     double deviceWidth = MediaQuery.of(context).size.width;
 
@@ -61,91 +63,90 @@ class _CartMainState extends State<CartMain> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Stack(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'id'.tr(),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2 - 40,
+                    child: Row(
+                      children: [
+                        Text(
+                          'id'.tr(),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width / 26,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 2 - 70,
+                          child: Text(
+                            name,
+
+                            // maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize:
-                                    MediaQuery.of(context).size.width / 26,
+                                    MediaQuery.of(context).size.width / 29,
                                 fontFamily: 'Roboto',
                                 fontStyle: FontStyle.normal,
                                 fontWeight: FontWeight.w400),
                           ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width - 75,
-                            child: Text(
-                              name,
-                              // maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize:
-                                      MediaQuery.of(context).size.width / 29,
-                                  fontFamily: 'Roboto',
-                                  fontStyle: FontStyle.normal,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                          ),
-                        ],
-                      ),
-                      //  Padding(
-                      //     padding: EdgeInsets.only(
-                      //         left: MediaQuery.of(context).size.width / 2.5),
-                      //     child: Row(
-                      //       children: [
-                      //         CustomIcon(
-                      //             title: 'assets/icons/boxh.svg',
-                      //             height: 20,
-                      //             width: 20,
-                      //             color: AppColors.authTextColor),
-                      //         Text(
-                      //           'box'.trs,
-                      //           style: const TextStyle(
-                      //               color: Colors.black,
-                      //               fontSize: 16,
-                      //               fontFamily: 'Roboto',
-                      //                fontStyle: FontStyle.normal,
-                      //               fontWeight: FontWeight.w400),
-                      //         ),
-                      //         Text(
-                      //           widget.model.summarySeats.toString(),
-                      //           style: const TextStyle(
-                      //               color: Colors.black,
-                      //               fontSize: 16,
-                      //               fontFamily: 'Roboto',
-                      //               fontStyle: FontStyle.normal,
-                      //               fontWeight: FontWeight.w400),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                  // Row(
-                  //   children: [
-                  //     CustomIcon(
-                  //         title: 'assets/icons/gps.svg',
-                  //         height: 20,
-                  //         width: 20,
-                  //         color: AppColors.authTextColor),
-                  //     const SizedBox(
-                  //       width: 3,
-                  //     ),
-                  //     Text(
-                  //       'gps'.trs,
-                  //       style: const TextStyle(
-                  //           color: Colors.black,
-                  //           fontSize: 16,
-                  //           fontFamily: 'Roboto',
-                  //           fontStyle: FontStyle.normal,
-                  //           fontWeight: FontWeight.w400),
-                  //     ),
-                  //   ],
-                  // ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2 - 10,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // Text(
+                        //   'transport_number'.tr(),
+                        //   // 'Maşyn №: ',
+                        //   style: TextStyle(
+                        //       color: Colors.black,
+                        //       fontSize: MediaQuery.of(context).size.width / 26,
+                        //       fontFamily: 'Roboto',
+                        //       fontStyle: FontStyle.normal,
+                        //       fontWeight: FontWeight.w400),
+                        // ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 2 - 10,
+                          child: Text(
+                            'transport_number'.tr() + tr_number2,
+                            // maxLines: 2,
+                            softWrap: false,
+                            textAlign: TextAlign.end,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize:
+                                    MediaQuery.of(context).size.width / 29,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                        // CustomIcon(
+                        //     title: 'assets/icons/gps.svg',
+                        //     height: 20,
+                        //     width: 20,
+                        //     color: AppColors.authTextColor),
+                        // const SizedBox(
+                        //   width: 3,
+                        // ),
+                        // Text(
+                        //   'gps'.tr(),
+                        //   style: const TextStyle(
+                        //       color: Colors.black,
+                        //       fontSize: 16,
+                        //       fontFamily: 'Roboto',
+                        //       fontStyle: FontStyle.normal,
+                        //       fontWeight: FontWeight.w400),
+                        // ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

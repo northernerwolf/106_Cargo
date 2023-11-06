@@ -39,6 +39,8 @@ class _SearchInfoState extends State<SearchInfo> {
     }
 
     double deviceWidth = MediaQuery.of(context).size.width;
+    var name = widget.model?.ticketCode;
+    name = name?.replaceAll('', '\u200B');
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -111,35 +113,79 @@ class _SearchInfoState extends State<SearchInfo> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                'id'.tr(),
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: deviceWidth / 26,
-                                    fontFamily: 'Roboto',
-                                    fontStyle: FontStyle.normal,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              Builder(builder: (context) {
-                                final tripData = widget.model;
-                                if (tripData != null) {
-                                  return Text(
-                                    tripData.pointTo,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: deviceWidth / 29,
-                                        fontFamily: 'Roboto',
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.w400),
-                                  );
-                                } else {
-                                  return const Text("Null");
-                                }
-                              }),
-                            ],
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 2 - 40,
+                            child: Row(
+                              children: [
+                                Text(
+                                  'id'.tr(),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: deviceWidth / 26,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Builder(builder: (context) {
+                                  final tripData = widget.model;
+                                  if (tripData != null) {
+                                    return SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                              2 -
+                                          70,
+                                      child: Text(
+                                        name.toString(),
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: deviceWidth / 29,
+                                            fontFamily: 'Roboto',
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    );
+                                  } else {
+                                    return const Text("Null");
+                                  }
+                                }),
+                              ],
+                            ),
                           ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 2 - 10,
+                            child: Row(
+                              children: [
+                                Builder(builder: (context) {
+                                  final tripData = widget.model;
+                                  if (tripData != null) {
+                                    var tr_number = tripData.transport_number;
+                                    tr_number =
+                                        tr_number.replaceAll('', '\u200B');
+                                    return SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                              2 -
+                                          10,
+                                      child: Text(
+                                        'transport_number'.tr() + tr_number,
+                                        softWrap: false,
+                                        textAlign: TextAlign.end,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: deviceWidth / 29,
+                                            fontFamily: 'Roboto',
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    );
+                                  } else {
+                                    return const Text("Null");
+                                  }
+                                }),
+                              ],
+                            ),
+                          )
+
                           // Row(
                           //   children: [
                           //     CustomIcon(

@@ -309,27 +309,53 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 12, bottom: 12, right: 8),
+                                        top: 12, bottom: 12, right: 9, left: 8),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         SizedBox(
-                                          width: 250,
-                                          child: Text(
-                                            invoice.invoice?.providerPhone ??
-                                                "",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 24,
-                                                fontFamily: 'Roboto',
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.w700),
-                                          ),
+                                          // width: deviceWidth / ,
+                                          child: Builder(builder: (context) {
+                                            final tripData = invoice.invoice;
+                                            if (tripData != null) {
+                                              var tr_number =
+                                                  tripData.transport_number;
+                                              // tr_number = tr_number.replaceAll(
+                                              //     '', '\u200B');
+                                              return Text(
+                                                'transport_number'.tr() +
+                                                    tr_number,
+                                                // overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 24,
+                                                    fontFamily: 'Roboto',
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              );
+                                            } else {
+                                              return Text('');
+                                            }
+                                          }),
                                         ),
+                                        // SizedBox(
+                                        //   width: 250,
+                                        //   child: Text(
+                                        //     invoice.invoice?.providerPhone ??
+                                        //         "",
+                                        //     overflow: TextOverflow.ellipsis,
+                                        //     style: const TextStyle(
+                                        //         color: Colors.black,
+                                        //         fontSize: 24,
+                                        //         fontFamily: 'Roboto',
+                                        //         fontStyle: FontStyle.normal,
+                                        //         fontWeight: FontWeight.w700),
+                                        //   ),
+                                        // ),
                                         SizedBox(
-                                          width: 250,
+                                          width: deviceWidth / 2 - 50,
                                           child: Text(
                                             invoice.invoice?.trackCode ?? "",
                                             overflow: TextOverflow.ellipsis,
@@ -467,7 +493,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       const EdgeInsets.only(
                                                           left: 0),
                                                   child: SizedBox(
-                                                    width: deviceWidth / 4 - 50,
+                                                    width: deviceWidth / 4 - 45,
                                                     child: Text(
                                                       'cub_in'.tr(),
                                                       style: TextStyle(
@@ -542,7 +568,21 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           (BuildContext context, int index) {
                                         double name = invoice.invoice!
                                             .cargoItems[index].packingSizeLast;
+                                        double first1 = invoice
+                                            .invoice
+                                            ?.cargoItems[index]
+                                            .packingSizeMiddle;
+
+                                        double second = invoice
+                                            .invoice
+                                            ?.cargoItems[index]
+                                            .packingSizeMiddle;
+
                                         String last = name.toStringAsFixed(3);
+                                        String first2 =
+                                            first1.toStringAsFixed(3);
+                                        String second2 =
+                                            second.toStringAsFixed(3);
 
                                         return Column(
                                           children: [
@@ -555,7 +595,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                               padding: const EdgeInsets.only(
                                                   left: 10,
                                                   top: 12,
-                                                  right: 0,
+                                                  right: 10,
                                                   bottom: 12),
                                               child: Row(
                                                 mainAxisAlignment:
@@ -636,13 +676,14 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                   SizedBox(
                                                     width: deviceWidth / 4 + 5,
                                                     child: Text(
-                                                      invoice
-                                                              .invoice
-                                                              ?.cargoItems[
-                                                                  index]
-                                                              .packingSizeFirst
-                                                              .toString() ??
-                                                          "",
+                                                      // invoice
+                                                      //         .invoice
+                                                      //         ?.cargoItems[
+                                                      //             index]
+                                                      //         .packingSizeFirst
+                                                      //         .toString() ??
+                                                      //     "",
+                                                      first2,
                                                       textAlign: TextAlign.left,
                                                       style: TextStyle(
                                                           color: Colors.black,
@@ -658,13 +699,14 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                   SizedBox(
                                                     width: deviceWidth / 4 + 5,
                                                     child: Text(
-                                                      invoice
-                                                              .invoice
-                                                              ?.cargoItems[
-                                                                  index]
-                                                              .packingSizeMiddle
-                                                              .toString() ??
-                                                          "",
+                                                      // invoice
+                                                      //         .invoice
+                                                      //         ?.cargoItems[
+                                                      //             index]
+                                                      //         .packingSizeMiddle
+                                                      //         .toString() ??
+                                                      //     "",
+                                                      second2,
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize:

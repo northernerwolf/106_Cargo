@@ -234,44 +234,134 @@ class _SearchScreenState extends State<SearchScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'id'.tr(),
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width /
-                                                          26,
-                                                  fontFamily: 'Roboto',
-                                                  fontStyle: FontStyle.normal,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            SizedBox(
-                                              width: MediaQuery.of(context)
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
                                                       .size
-                                                      .width -
-                                                  75,
-                                              child: Text(
-                                                name ?? '',
-                                                // maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
+                                                      .width /
+                                                  2 -
+                                              40,
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                'id'.tr(),
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize:
                                                         MediaQuery.of(context)
                                                                 .size
                                                                 .width /
-                                                            29,
+                                                            26,
                                                     fontFamily: 'Roboto',
                                                     fontStyle: FontStyle.normal,
                                                     fontWeight:
                                                         FontWeight.w400),
                                               ),
-                                            ),
-                                          ],
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                            .size
+                                                            .width /
+                                                        2 -
+                                                    70,
+                                                child: Text(
+                                                  name ?? '',
+                                                  // maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              29,
+                                                      fontFamily: 'Roboto',
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  2 -
+                                              10,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              // Text(
+                                              //   'transport_number'.tr(),
+                                              //   // 'Maşyn №: ',
+                                              //   style: TextStyle(
+                                              //       color: Colors.black,
+                                              //       fontSize: MediaQuery.of(context).size.width / 26,
+                                              //       fontFamily: 'Roboto',
+                                              //       fontStyle: FontStyle.normal,
+                                              //       fontWeight: FontWeight.w400),
+                                              // ),
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                            .size
+                                                            .width /
+                                                        2 -
+                                                    10,
+                                                child:
+                                                    Builder(builder: (context) {
+                                                  final tripData = searchResult;
+                                                  if (tripData != null) {
+                                                    var tr_number = tripData
+                                                        .transport_number;
+                                                    return Text(
+                                                      'transport_number'.tr() +
+                                                          tr_number,
+                                                      // maxLines: 2,
+                                                      softWrap: false,
+                                                      textAlign: TextAlign.end,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width /
+                                                              29,
+                                                          fontFamily: 'Roboto',
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                    );
+                                                  } else {
+                                                    return Text('');
+                                                  }
+                                                }),
+                                              ),
+                                              // CustomIcon(
+                                              //     title: 'assets/icons/gps.svg',
+                                              //     height: 20,
+                                              //     width: 20,
+                                              //     color: AppColors.authTextColor),
+                                              // const SizedBox(
+                                              //   width: 3,
+                                              // ),
+                                              // Text(
+                                              //   'gps'.tr(),
+                                              //   style: const TextStyle(
+                                              //       color: Colors.black,
+                                              //       fontSize: 16,
+                                              //       fontFamily: 'Roboto',
+                                              //       fontStyle: FontStyle.normal,
+                                              //       fontWeight: FontWeight.w400),
+                                              // ),
+                                            ],
+                                          ),
                                         ),
                                         // Row(
                                         //   children: [
@@ -936,21 +1026,27 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 const SizedBox(
                                                   width: 5,
                                                 ),
-                                                Text(
-                                                  searchResult?.location ?? '',
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppColors.mainColor,
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              32,
-                                                      fontFamily: 'Roboto',
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                      fontWeight:
-                                                          FontWeight.w600),
+                                                SizedBox(
+                                                  width: deviceWidth / 4,
+                                                  child: Text(
+                                                    searchResult?.location ??
+                                                        '',
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppColors.mainColor,
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            32,
+                                                        fontFamily: 'Roboto',
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
                                                 ),
                                               ],
                                             ),

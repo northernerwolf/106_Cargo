@@ -61,5 +61,6 @@
     "sum_kg": "Total kg: ",
     "sum_cost": "Total cost:  ",
     "cub_in": "Cube",
-    "cost_in": "Price"
+    "cost_in": "Price",
+    "transport_number": "Car №: "
 }

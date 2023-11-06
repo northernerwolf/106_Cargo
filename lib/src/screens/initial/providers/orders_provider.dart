@@ -43,6 +43,7 @@ class OrdersProvider with ChangeNotifier {
           orders = List<TripModel>.from(response.data['data'].map((e) {
             return TripModel.fromJson(e);
           }));
+          // print(response.data);
           isLoading = false;
           for (var item in orders) {
             if (item.points != null) {
