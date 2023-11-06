@@ -315,11 +315,11 @@ class _SearchScreenState extends State<SearchScreen> {
                                                     Builder(builder: (context) {
                                                   final tripData = searchResult;
                                                   if (tripData != null) {
-                                                    var tr_number = tripData
+                                                    var trNumber = tripData
                                                         .transport_number;
                                                     return Text(
                                                       'transport_number'.tr() +
-                                                          tr_number,
+                                                          trNumber,
                                                       // maxLines: 2,
                                                       softWrap: false,
                                                       textAlign: TextAlign.end,
@@ -339,7 +339,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                               FontWeight.w400),
                                                     );
                                                   } else {
-                                                    return Text('');
+                                                    return const Text('');
                                                   }
                                                 }),
                                               ),

@@ -223,9 +223,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                         Builder(builder: (context) {
                                           final tripData = orderById.ordersById;
                                           if (tripData != null) {
-                                            var tr_number =
+                                            var trNumber =
                                                 tripData.transport_number;
-                                            tr_number = tr_number.replaceAll(
+                                            trNumber = trNumber.replaceAll(
                                                 '', '\u200B');
                                             return SizedBox(
                                               width: MediaQuery.of(context)
@@ -235,7 +235,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                   10,
                                               child: Text(
                                                 'transport_number'.tr() +
-                                                    tr_number,
+                                                    trNumber,
                                                 softWrap: false,
                                                 textAlign: TextAlign.end,
                                                 overflow: TextOverflow.ellipsis,

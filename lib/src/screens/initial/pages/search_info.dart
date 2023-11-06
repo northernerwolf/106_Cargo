@@ -158,15 +158,15 @@ class _SearchInfoState extends State<SearchInfo> {
                                 Builder(builder: (context) {
                                   final tripData = widget.model;
                                   if (tripData != null) {
-                                    var tr_number = tripData.transport_number;
-                                    tr_number =
-                                        tr_number.replaceAll('', '\u200B');
+                                    var trNumber = tripData.transport_number;
+                                    trNumber =
+                                        trNumber.replaceAll('', '\u200B');
                                     return SizedBox(
                                       width: MediaQuery.of(context).size.width /
                                               2 -
                                           10,
                                       child: Text(
-                                        'transport_number'.tr() + tr_number,
+                                        'transport_number'.tr() + trNumber,
                                         softWrap: false,
                                         textAlign: TextAlign.end,
                                         overflow: TextOverflow.ellipsis,

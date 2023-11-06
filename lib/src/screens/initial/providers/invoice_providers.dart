@@ -31,7 +31,7 @@ class InvoiceProvider with ChangeNotifier {
               ),
           ));
       isLoading = true;
-      print(response.data);
+      // print(response.data);
       if (response.statusCode == 200) {
         if (response.data != null) {
           invoice = Shipment.fromJson(response.data['data']);
@@ -43,7 +43,8 @@ class InvoiceProvider with ChangeNotifier {
 
         return;
       }
-    } on DioError catch (e) {
+      // ignore: deprecated_member_use
+    } on DioError {
       isLoading = false;
 
       notifyListeners();

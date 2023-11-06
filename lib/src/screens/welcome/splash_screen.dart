@@ -38,8 +38,8 @@ class _SpalshScreenState extends State<SpalshScreen>
     SettingsSingleton().checkAuthStatus;
     final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
     String? token = await firebaseMessaging.getToken();
-    print('fffffffcccmm');
-    print(token);
+    // print('fffffffcccmm');
+    // print(token);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? tokenAuth = prefs.getString('token');
     await prefs.setString('tokenFcm', token!);
