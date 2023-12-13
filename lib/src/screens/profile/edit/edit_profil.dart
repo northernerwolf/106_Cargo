@@ -1,5 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kargo_app/src/application/settings_singleton.dart';
+import 'package:kargo_app/src/screens/auth/login/repository_login.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../design/app_colors.dart';
 import '../../auth/components/custom_text_fild.dart';
@@ -503,6 +507,17 @@ class _EditProfilState extends State<EditProfil> {
                         ),
                       ),
                     ),
+
+                    Center(
+                      child: TextButton(
+                          onPressed: () {
+                            showDalogdExit();
+                          },
+                          child: Text(
+                            'delet_ac'.tr(),
+                            style: TextStyle(color: Colors.red),
+                          )),
+                    )
                   ],
                 ),
               ),
@@ -618,6 +633,104 @@ class _EditProfilState extends State<EditProfil> {
                               fontFamily: 'Roboto',
                               fontStyle: FontStyle.normal,
                               fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future showDalogdExit() async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  'delet_acccount'.tr(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Roboto',
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Consumer<SettingsSingleton>(builder: (_, settings, __) {
+                      return InkWell(
+                        onTap: () async {
+                          SharedPreferences preferences =
+                              await SharedPreferences.getInstance();
+                          String? val = preferences.getString('token');
+                          preferences.remove('token');
+
+                          settings.logout();
+                          LogOutRepository().logOut(context, val!);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: MediaQuery.of(context).size.width / 3 - 20,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.blue[100]),
+                          child: Center(
+                            child: Text(
+                              'yes'.tr(),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: AppColors.mainColor,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: MediaQuery.of(context).size.width / 3 - 20,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColors.mainColor),
+                        child: Center(
+                          child: Text(
+                            'no'.tr(),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
                       ),
                     ),

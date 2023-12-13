@@ -62,5 +62,7 @@
     "sum_cost": "Total cost:  ",
     "cub_in": "Cube",
     "cost_in": "Price",
-    "transport_number": "Car №: "
+    "transport_number": "Car №: ",
+    "delet_acccount": "Do you want to delet account?",
+    "delet_ac":"Delet account"
 }
