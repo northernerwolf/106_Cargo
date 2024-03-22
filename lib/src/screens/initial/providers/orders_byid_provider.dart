@@ -43,7 +43,8 @@ class GetOrderByIdProvider with ChangeNotifier {
         notifyListeners();
         return;
       }
-    } on DioError catch (e) {
+    // ignore: deprecated_member_use
+    } on DioError {
       isLoading = false;
 
       notifyListeners();

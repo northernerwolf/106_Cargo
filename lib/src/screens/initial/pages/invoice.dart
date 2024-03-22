@@ -7,6 +7,7 @@ import 'package:zoom_widget/zoom_widget.dart';
 import '../../../design/app_colors.dart';
 import '../providers/invoice_providers.dart';
 
+// ignore: must_be_immutable
 class Invoice extends StatefulWidget {
   int id;
   Invoice({required this.id, super.key});

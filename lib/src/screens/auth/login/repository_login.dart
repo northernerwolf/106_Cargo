@@ -92,10 +92,8 @@ class LogOutRepository {
         return;
       }
       // ignore: deprecated_member_use
-    } on DioError catch (e) {
+    } on DioError {
       isLoading = false;
-
-      if (e.response != null) print(e.response!.data);
     }
     return;
   }

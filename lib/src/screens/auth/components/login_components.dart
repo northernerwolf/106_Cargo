@@ -5,6 +5,7 @@ import 'package:kargo_app/src/design/app_colors.dart';
 import 'package:kargo_app/src/screens/auth/login/repository_login.dart';
 import 'package:kargo_app/src/screens/auth/register/register_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginComponents extends StatefulWidget {
   const LoginComponents({super.key});
@@ -24,6 +25,14 @@ class _LoginComponentsState extends State<LoginComponents> {
     final FormState? form = _formKey.currentState;
     if (form!.validate()) {
     } else {}
+  }
+
+  void _makePhoneCall(String phoneNumber) async {
+    if (await canLaunch(phoneNumber)) {
+      await launch(phoneNumber);
+    } else {
+      
+    }
   }
 
   String errorText = '';
@@ -236,23 +245,42 @@ class _LoginComponentsState extends State<LoginComponents> {
                                                 fontWeight: FontWeight.w400),
                                           ),
                                         ),
-                                        Row(
-                                          children: const [
-                                            Padding(
-                                              padding: EdgeInsets.all(10.0),
-                                              child: Text(
-                                                '+993 64 42 23 12',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 20,
-                                                    fontFamily: 'Roboto',
-                                                    fontStyle: FontStyle.normal,
-                                                    fontWeight:
-                                                        FontWeight.w700),
+                                        InkWell(
+                                          onTap: () {
+                                            _makePhoneCall(
+                                                'tel:+993 71 35 33 75');
+                                          },
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets.all(10.0),
+                                                child: Text(
+                                                  '+993 71 35 33 75',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 20,
+                                                      fontFamily: 'Roboto',
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: SizedBox(
+                                                  height: 35,
+                                                  width: 35,
+                                                  child: Image.asset(
+                                                      'assets/images/green_phone.png'),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),

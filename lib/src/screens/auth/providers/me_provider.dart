@@ -41,7 +41,7 @@ class GetMeProvider with ChangeNotifier {
         return;
       }
       // ignore: deprecated_member_use
-    } on DioError catch (e) {
+    } on DioError {
       isLoading = false;
 
       notifyListeners();

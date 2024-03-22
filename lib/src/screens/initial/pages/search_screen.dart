@@ -147,6 +147,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   onFieldSubmitted: performSearch,
                                   maxLines: 1,
                                   decoration: InputDecoration(
+                                    
                                     hintText: 'search'.tr(),
                                     hintStyle: const TextStyle(fontSize: 15),
                                     border: InputBorder.none,

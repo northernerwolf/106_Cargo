@@ -277,11 +277,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                             ),
                                           ),
                                           Row(
-                                            children: const [
-                                              Padding(
+                                            children: [
+                                              const Padding(
                                                 padding: EdgeInsets.all(10.0),
                                                 child: Text(
-                                                  '+993 64 42 23 12',
+                                                  '+993 71 35 33 75',
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       color: Colors.black,
@@ -293,6 +293,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                                           FontWeight.w700),
                                                 ),
                                               ),
+                                              Image.asset(
+                                                  'assets/images/green_phone.png')
                                             ],
                                           )
                                         ],

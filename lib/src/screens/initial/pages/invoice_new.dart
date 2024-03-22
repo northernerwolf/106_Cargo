@@ -209,11 +209,11 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           ],
                                         ),
                                       ),
-                                      Padding(
+                                      const Padding(
                                         padding:
-                                            const EdgeInsets.only(right: 60),
+                                            EdgeInsets.only(right: 60),
                                         child: Column(
-                                          children: const [
+                                          children: [
                                             SizedBox(
                                               child: Text(
                                                 textAlign: TextAlign.center,
@@ -402,7 +402,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                     padding: const EdgeInsets.only(
                                         top: 12,
                                         bottom: 12,
-                                        left: 12,
+                                        left: 10,
                                         right: 10),
                                     child: Row(
                                       mainAxisAlignment:
@@ -534,7 +534,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       const EdgeInsets.only(
                                                           left: 0),
                                                   child: SizedBox(
-                                                    width: deviceWidth / 5 - 15,
+                                                    width: deviceWidth / 4 - 15,
                                                     child: Text(
                                                       textAlign: TextAlign.end,
                                                       'cost_in'.tr(),
@@ -566,14 +566,14 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           invoice.invoice!.cargoItems.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        double name = invoice.invoice!
+                                        var name = invoice.invoice!
                                             .cargoItems[index].packingSizeLast;
-                                        double first1 = invoice
+                                        var first1 = invoice
                                             .invoice
                                             ?.cargoItems[index]
                                             .packingSizeMiddle;
 
-                                        double second = invoice
+                                        var second = invoice
                                             .invoice
                                             ?.cargoItems[index]
                                             .packingSizeMiddle;
@@ -755,7 +755,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                           Padding(
                                                             padding:
                                                                 const EdgeInsets
-                                                                        .only(
+                                                                    .only(
                                                                     left: 0),
                                                             child: SizedBox(
                                                               width:
@@ -867,7 +867,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                           Padding(
                                                             padding:
                                                                 const EdgeInsets
-                                                                        .only(
+                                                                    .only(
                                                                     left: 0),
                                                             child: SizedBox(
                                                               width:

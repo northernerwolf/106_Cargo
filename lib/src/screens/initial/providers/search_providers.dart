@@ -50,7 +50,8 @@ class SearchProvider with ChangeNotifier {
 
         return;
       }
-    } on DioError catch (e) {
+    // ignore: deprecated_member_use
+    } on DioError {
       isLoading = true;
 
       notifyListeners();

@@ -515,7 +515,7 @@ class _EditProfilState extends State<EditProfil> {
                           },
                           child: Text(
                             'delet_ac'.tr(),
-                            style: TextStyle(color: Colors.red),
+                            style: const TextStyle(color: Colors.red),
                           )),
                     )
                   ],
@@ -536,9 +536,9 @@ class _EditProfilState extends State<EditProfil> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25.0),
           ),
-          title: Column(
+          title: const Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 'ID',
                 textAlign: TextAlign.center,

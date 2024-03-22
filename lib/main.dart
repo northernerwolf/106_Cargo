@@ -29,6 +29,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  
+
   SingletonSharedPreference(pref);
   runApp(EasyLocalization(
     supportedLocales: const [Locale('en'), Locale('tk'), Locale('ru')],
