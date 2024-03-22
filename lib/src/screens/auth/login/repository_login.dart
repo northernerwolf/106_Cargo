@@ -86,8 +86,13 @@ class LogOutRepository {
         isLoading = false;
         SharedPreferences preferences = await SharedPreferences.getInstance();
         preferences.remove('token');
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const BottomNavScreen()));
+         Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const BottomNavScreen()),
+                                (route) => false);
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const BottomNavScreen()));
 
         return;
       }
