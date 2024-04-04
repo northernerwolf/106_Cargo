@@ -210,8 +210,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                         ),
                                       ),
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.only(right: 60),
+                                        padding: EdgeInsets.only(right: 60),
                                         child: Column(
                                           children: [
                                             SizedBox(
@@ -566,23 +565,24 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                           invoice.invoice!.cargoItems.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        var name = invoice.invoice!
+                                        var packingSizeLast = invoice.invoice!
                                             .cargoItems[index].packingSizeLast;
-                                        var first1 = invoice
+                                        var packingSizeMiddle = invoice
                                             .invoice
                                             ?.cargoItems[index]
                                             .packingSizeMiddle;
 
-                                        var second = invoice
+                                        var packingSizeFirst = invoice
                                             .invoice
                                             ?.cargoItems[index]
-                                            .packingSizeMiddle;
+                                            .packingSizeFirst;
 
-                                        String last = name.toStringAsFixed(3);
-                                        String first2 =
-                                            first1.toStringAsFixed(3);
-                                        String second2 =
-                                            second.toStringAsFixed(3);
+                                        String cargoItems1 =
+                                            packingSizeFirst.toStringAsFixed(3);
+                                        String cargoItems2 = packingSizeMiddle
+                                            .toStringAsFixed(3);
+                                        String cargoItems3 =
+                                            packingSizeLast.toStringAsFixed(3);
 
                                         return Column(
                                           children: [
@@ -683,7 +683,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       //         .packingSizeFirst
                                                       //         .toString() ??
                                                       //     "",
-                                                      first2,
+                                                      cargoItems1,
                                                       textAlign: TextAlign.left,
                                                       style: TextStyle(
                                                           color: Colors.black,
@@ -706,7 +706,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       //         .packingSizeMiddle
                                                       //         .toString() ??
                                                       //     "",
-                                                      second2,
+                                                      cargoItems2,
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize:
@@ -728,8 +728,7 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                                       //         .packingSizeLast
                                                       //         .toString() ??
                                                       //     "",
-                                                      last,
-
+                                                      cargoItems3,
                                                       style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize:

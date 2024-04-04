@@ -638,9 +638,9 @@ class _InfoOrederState extends State<InfoOreder> {
                                                                             .mainColor),
                                                                     child:
                                                                         Padding(
-                                                                      padding:
-                                                                          const EdgeInsets.all(
-                                                                              5.0),
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          5.0),
                                                                       child:
                                                                           CustomIcon(
                                                                         title: t ==
@@ -671,8 +671,8 @@ class _InfoOrederState extends State<InfoOreder> {
                               padding: EdgeInsets.only(
                                   left: deviceWidth / 26 - 1,
                                   right: deviceWidth / 26 - 1,
-                                  top: 7,
-                                  bottom: deviceWidth / 40),
+                                  top: 2,
+                                  bottom: deviceWidth / 60),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -810,6 +810,56 @@ class _InfoOrederState extends State<InfoOreder> {
                                     ),
                                   ),
                                 ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: deviceWidth / 26 - 1,
+                                right: deviceWidth / 26 - 1,
+                                bottom: deviceWidth / 100,
+                              ),
+                              child: SizedBox(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      orderById.ordersById?.trackCode
+                                              .toString() ??
+                                          "",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: deviceWidth / 26,
+                                          fontFamily: 'Roboto',
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Getiriji kod: ',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: deviceWidth / 26,
+                                              fontFamily: 'Roboto',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        Text(
+                                          orderById.ordersById?.danhaoCode
+                                                  .toString() ??
+                                              "",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: deviceWidth / 26,
+                                              fontFamily: 'Roboto',
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Padding(
@@ -1211,7 +1261,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                               Padding(
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .only(
+                                                                        .only(
                                                                         left:
                                                                             5),
                                                                 child: Text(
@@ -1279,7 +1329,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                                             (ii) => Padding(
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .only(
+                                                                        .only(
                                                                         left: 4,
                                                                         right:
                                                                             5,

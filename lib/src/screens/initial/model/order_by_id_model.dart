@@ -9,6 +9,7 @@ class TripDataIdModel {
   final List<String> images;
   final String ticketCode;
   final String location;
+  final String danhaoCode;
   final List<PointSS> points;
 
   final dynamic summaryPrice;
@@ -30,6 +31,7 @@ class TripDataIdModel {
     required this.summaryKg,
     required this.summaryCube,
     required this.summaryPrice,
+    required this.danhaoCode,
   });
 
   factory TripDataIdModel.fromJson(Map<String, dynamic> json) {
@@ -51,6 +53,7 @@ class TripDataIdModel {
       summaryKg: json['summary_kg'] ?? '',
       summaryCube: json['summary_cube'] ?? '',
       summaryPrice: json['summary_price'] ?? 0,
+      danhaoCode: json['danhao_code'] ?? '',
       points: points,
     );
   }

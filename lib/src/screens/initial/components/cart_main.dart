@@ -29,7 +29,7 @@ class _CartMainState extends State<CartMain> {
     }
 
     var name = widget.model.ticketCode;
-    var tr_number2 = widget.model.transport_number;
+    var tr_number2 = widget.model.transportNumber;
     name = name.replaceAll('', '\u200B');
     tr_number2 = tr_number2.replaceAll('', '\u200B');
 
@@ -59,7 +59,7 @@ class _CartMainState extends State<CartMain> {
               padding: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width / 25,
                   right: MediaQuery.of(context).size.width / 25,
-                  top: MediaQuery.of(context).size.width / 30),
+                  top: MediaQuery.of(context).size.width / 30 - 6),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -154,7 +154,7 @@ class _CartMainState extends State<CartMain> {
               padding: EdgeInsets.only(
                   left: deviceWidth / 26 - 1,
                   right: deviceWidth / 26 - 1,
-                  top: deviceWidth / 50),
+                  top: deviceWidth / 250),
               child: Stack(
                 children: [
                   Row(
@@ -470,8 +470,8 @@ class _CartMainState extends State<CartMain> {
               padding: EdgeInsets.only(
                 left: deviceWidth / 26 - 1,
                 right: deviceWidth / 26 - 1,
-                top: 7,
-                bottom: deviceWidth / 40,
+                top: 2,
+                bottom: deviceWidth / 200 - 1,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -596,6 +596,54 @@ class _CartMainState extends State<CartMain> {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: deviceWidth / 26 - 1,
+                right: deviceWidth / 26 - 1,
+                bottom: deviceWidth / 100,
+              ),
+              child: SizedBox(
+                // width: MediaQuery.of(context).size.width / 4,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.model.danhaoCode.toString(),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: MediaQuery.of(context).size.width / 26,
+                          fontFamily: 'Roboto',
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // const Icon(Icons.attach_money, ),
+                        // Text(
+                        //   'Getiriji kod: ',
+                        //   style: TextStyle(
+                        //       color: Colors.black,
+                        //       fontSize: MediaQuery.of(context).size.width / 26,
+                        //       fontFamily: 'Roboto',
+                        //       fontStyle: FontStyle.normal,
+                        //       fontWeight: FontWeight.w400),
+                        // ),
+                        Text(
+                          widget.model.trackCode.toString(),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: MediaQuery.of(context).size.width / 26,
+                              fontFamily: 'Roboto',
+                              fontStyle: FontStyle.normal,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(
