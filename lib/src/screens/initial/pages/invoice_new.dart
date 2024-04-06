@@ -576,7 +576,6 @@ class _InvoiceNewState extends State<InvoiceNew> {
                                             .invoice
                                             ?.cargoItems[index]
                                             .packingSizeFirst;
-
                                         String cargoItems1 =
                                             packingSizeFirst.toStringAsFixed(3);
                                         String cargoItems2 = packingSizeMiddle

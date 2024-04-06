@@ -27,6 +27,7 @@ class SearchProvider with ChangeNotifier {
       notifyListeners();
 
       final cargo = SearchModel.fromJson(response.data['data']);
+      print(cargo);
 
       return cargo;
     } catch (e) {

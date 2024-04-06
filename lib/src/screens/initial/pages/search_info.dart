@@ -102,7 +102,7 @@ class _SearchInfoState extends State<SearchInfo> {
                     ),
                   ],
                 ),
-                height: MediaQuery.of(context).size.height / 4 - 8,
+                height: MediaQuery.of(context).size.height / 3.4,
                 child: Column(
                   children: [
                     Padding(
@@ -158,7 +158,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                 Builder(builder: (context) {
                                   final tripData = widget.model;
                                   if (tripData != null) {
-                                    var trNumber = tripData.transport_number;
+                                    var trNumber = tripData.transportNumber;
                                     trNumber =
                                         trNumber.replaceAll('', '\u200B');
                                     return SizedBox(
@@ -472,7 +472,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        const EdgeInsets
+                                                                            .all(
                                                                             4.0),
                                                                     child:
                                                                         CustomIcon(
@@ -778,6 +779,57 @@ class _SearchInfoState extends State<SearchInfo> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
+                        left: deviceWidth / 26 - 1,
+                        right: deviceWidth / 26 - 1,
+                        bottom: deviceWidth / 100,
+                      ),
+                      child: SizedBox(
+                        // width: MediaQuery.of(context).size.width / 4,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.model?.danhaoCode.toString() ?? "",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width / 26,
+                                  fontFamily: 'Roboto',
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // const Icon(Icons.attach_money, ),
+                                // Text(
+                                //   'Getiriji kod: ',
+                                //   style: TextStyle(
+                                //       color: Colors.black,
+                                //       fontSize: MediaQuery.of(context).size.width / 26,
+                                //       fontFamily: 'Roboto',
+                                //       fontStyle: FontStyle.normal,
+                                //       fontWeight: FontWeight.w400),
+                                // ),
+                                Text(
+                                  widget.model?.trackCode.toString() ?? "",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width /
+                                              26,
+                                      fontFamily: 'Roboto',
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
                           left: deviceWidth / 50,
                           right: deviceWidth / 50,
                           top: 0),
@@ -835,7 +887,11 @@ class _SearchInfoState extends State<SearchInfo> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10, left: 5, right: 5),
+              padding: const EdgeInsets.only(
+                top: 10,
+                left: 5,
+                right: 5,
+              ),
               child: Container(
                 height: 120,
                 width: MediaQuery.of(context).size.width - 10,
@@ -853,7 +909,10 @@ class _SearchInfoState extends State<SearchInfo> {
                   ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 5, right: 5),
+                  padding: const EdgeInsets.only(
+                    left: 5,
+                    right: 5,
+                  ),
                   child: Builder(builder: (context) {
                     final imagesL = widget.model;
                     if (imagesL != null) {
@@ -986,7 +1045,8 @@ class _SearchInfoState extends State<SearchInfo> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
+                      padding:
+                          const EdgeInsets.only(left: 10, top: 10, bottom: 10),
                       child: SizedBox(
                         child: Builder(builder: (context) {
                           final poitss = widget.model;
@@ -1106,7 +1166,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                                     (ii) => Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                    .only(
+                                                                .only(
                                                                 left: 4,
                                                                 right: 5,
                                                                 top: 0,

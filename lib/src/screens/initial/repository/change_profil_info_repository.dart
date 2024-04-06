@@ -53,6 +53,7 @@ class ChangePInfoRepositorys {
 
         return;
       }
+      // ignore: deprecated_member_use
     } on DioError catch (e) {
       isLoading = false;
 

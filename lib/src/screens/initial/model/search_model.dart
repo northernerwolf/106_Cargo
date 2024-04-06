@@ -6,11 +6,15 @@ class SearchModel {
   final String trackCode;
   final int summarySeats;
   final dynamic summaryPrice;
+  final dynamic summaryPaid;
+  final dynamic totalPayments;
   final String summaryKg;
   final String summaryCube;
   final String ticketCode;
-  final String transport_number;
+  final String transportNumber;
+  final String danhaoCode;
   final List<String> images;
+  final List<String> transportImages;
   final String location;
   final List<PointSS> points;
 
@@ -23,12 +27,16 @@ class SearchModel {
     required this.summarySeats,
     required this.ticketCode,
     required this.location,
-    required this.transport_number,
+    required this.transportNumber,
     required this.points,
     required this.images,
     required this.summaryPrice,
     required this.summaryKg,
     required this.summaryCube,
+    required this.danhaoCode,
+    required this.summaryPaid,
+    required this.totalPayments,
+    required this.transportImages,
   });
 
   factory SearchModel.fromJson(Map<String, dynamic> json) {
@@ -41,16 +49,20 @@ class SearchModel {
       date: json['date'] ?? '',
       pointFrom: json['point_from'] ?? '',
       pointTo: json['point_to'] ?? '',
-      trackCode: json['track_code'],
+      trackCode: json['track_code'] ?? '',
       summarySeats: json['summary_seats'] ?? 0,
       ticketCode: json['ticket_code'] ?? '',
-      transport_number: json['transport_number'] ?? '',
-      summaryPrice: json['summary_price'],
+      transportNumber: json['transport_number'] ?? '',
+      summaryPrice: json['summary_price'] ?? 0,
       summaryKg: json['summary_kg'] ?? 0,
       summaryCube: json['summary_cube'] ?? '',
-      images: List<String>.from(json['images']),
+      images: List<String>.from(json['images']) ?? [],
       location: json['location'] ?? '',
       points: points,
+      transportImages: List<String>.from(json['transport_images']) ?? [],
+      totalPayments: json['total_payments'] ?? 0,
+      summaryPaid: json['summary_paid'] ?? 0,
+      danhaoCode: json['danhao_code'] ?? '',
     );
   }
 }

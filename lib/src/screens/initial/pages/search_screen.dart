@@ -63,7 +63,10 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    FocusScope.of(context).requestFocus(widget.focusNode);
+    if (searchController.text.isEmpty) {
+      FocusScope.of(context).requestFocus(widget.focusNode);
+    }
+
     int t = 0;
 
     int? l = searchResult?.points.length;
@@ -147,7 +150,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                   onFieldSubmitted: performSearch,
                                   maxLines: 1,
                                   decoration: InputDecoration(
-                                    
                                     hintText: 'search'.tr(),
                                     hintStyle: const TextStyle(fontSize: 15),
                                     border: InputBorder.none,
@@ -213,7 +215,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 ),
                               ],
                             ),
-                            height: MediaQuery.of(context).size.height / 4 + 4,
+                            height: MediaQuery.of(context).size.height / 3.3,
                             child: Padding(
                               padding: const EdgeInsets.only(),
                               child: Column(
@@ -230,7 +232,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                             MediaQuery.of(context).size.width /
                                                 25,
                                         top: MediaQuery.of(context).size.width /
-                                            30),
+                                            40),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -317,7 +319,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                   final tripData = searchResult;
                                                   if (tripData != null) {
                                                     var trNumber = tripData
-                                                        .transport_number;
+                                                        .transportNumber;
                                                     return Text(
                                                       'transport_number'.tr() +
                                                           trNumber,
@@ -973,6 +975,68 @@ class _SearchScreenState extends State<SearchScreen> {
                                           ),
                                         ),
                                       ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      left: deviceWidth / 26 - 1,
+                                      right: deviceWidth / 26 - 1,
+                                      bottom: deviceWidth / 100,
+                                    ),
+                                    child: SizedBox(
+                                      // width: MediaQuery.of(context).size.width / 4,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            searchResult?.danhaoCode
+                                                    .toString() ??
+                                                "",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    26,
+                                                fontFamily: 'Roboto',
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              // const Icon(Icons.attach_money, ),
+                                              // Text(
+                                              //   'Getiriji kod: ',
+                                              //   style: TextStyle(
+                                              //       color: Colors.black,
+                                              //       fontSize: MediaQuery.of(context).size.width / 26,
+                                              //       fontFamily: 'Roboto',
+                                              //       fontStyle: FontStyle.normal,
+                                              //       fontWeight: FontWeight.w400),
+                                              // ),
+                                              Text(
+                                                searchResult?.trackCode
+                                                        .toString() ??
+                                                    "",
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            26,
+                                                    fontFamily: 'Roboto',
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Padding(

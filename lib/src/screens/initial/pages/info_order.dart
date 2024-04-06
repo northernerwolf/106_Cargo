@@ -824,7 +824,7 @@ class _InfoOrederState extends State<InfoOreder> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      orderById.ordersById?.trackCode
+                                      orderById.ordersById?.danhaoCode
                                               .toString() ??
                                           "",
                                       style: TextStyle(
@@ -836,17 +836,17 @@ class _InfoOrederState extends State<InfoOreder> {
                                     ),
                                     Row(
                                       children: [
+                                        // Text(
+                                        //   'Getiriji kod: ',
+                                        //   style: TextStyle(
+                                        //       color: Colors.black,
+                                        //       fontSize: deviceWidth / 26,
+                                        //       fontFamily: 'Roboto',
+                                        //       fontStyle: FontStyle.normal,
+                                        //       fontWeight: FontWeight.w400),
+                                        // ),
                                         Text(
-                                          'Getiriji kod: ',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: deviceWidth / 26,
-                                              fontFamily: 'Roboto',
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          orderById.ordersById?.danhaoCode
+                                          orderById.ordersById?.trackCode
                                                   .toString() ??
                                               "",
                                           style: TextStyle(
