@@ -1117,73 +1117,85 @@ class _SearchScreenState extends State<SearchScreen> {
                                             ),
                                           ),
                                         ),
-                                        GestureDetector(
-                                          onTap: () async {
-                                            SharedPreferences preferences =
-                                                await SharedPreferences
-                                                    .getInstance();
-                                            String? val =
-                                                preferences.getString('token');
+                                        searchResult?.isOwned == true
+                                            ? GestureDetector(
+                                                onTap: () async {
+                                                  SharedPreferences
+                                                      preferences =
+                                                      await SharedPreferences
+                                                          .getInstance();
+                                                  String? val = preferences
+                                                      .getString('token');
 
-                                            if (val != null) {
-                                              showDalogdOrder(searchResult!.id);
-                                            } else {
-                                              showDalogdLogin();
-                                            }
+                                                  if (val != null) {
+                                                    showDalogdOrder(
+                                                        searchResult!.id);
+                                                  } else {
+                                                    showDalogdLogin();
+                                                  }
 
-                                            // Navigator.of(context)
-                                            //     .push(MaterialPageRoute(
-                                            //         builder: (context) => SearchInfo(
-                                            //               model: searchResult,
-                                            //             )));
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10, right: 10),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.green,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: Padding(
-                                                padding: EdgeInsets.only(
-                                                  left: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      55,
-                                                  right: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      55,
-                                                  bottom: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      55,
-                                                  top: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      55,
+                                                  // Navigator.of(context)
+                                                  //     .push(MaterialPageRoute(
+                                                  //         builder: (context) => SearchInfo(
+                                                  //               model: searchResult,
+                                                  //             )));
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 10, right: 10),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.green,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                        left: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            55,
+                                                        right: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            55,
+                                                        bottom: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            55,
+                                                        top: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            55,
+                                                      ),
+                                                      child: Text(
+                                                        'add_order'.tr(),
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize:
+                                                                MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width /
+                                                                    33,
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            fontStyle: FontStyle
+                                                                .normal,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
-                                                child: Text(
-                                                  'add_order'.tr(),
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              33,
-                                                      fontFamily: 'Roboto',
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                              )
+                                            : Container(),
                                         GestureDetector(
                                           onTap: () {
                                             Navigator.of(context).push(
