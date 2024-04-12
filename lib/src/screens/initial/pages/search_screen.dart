@@ -215,7 +215,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 ),
                               ],
                             ),
-                            height: MediaQuery.of(context).size.height / 3.3,
+                            height: MediaQuery.of(context).size.height / 3,
                             child: Padding(
                               padding: const EdgeInsets.only(),
                               child: Column(

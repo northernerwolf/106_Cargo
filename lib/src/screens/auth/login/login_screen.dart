@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../design/app_colors.dart';
 import 'repository_login.dart';
@@ -27,6 +28,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String errorText = '';
   String errorText2 = '';
+  void _makePhoneCall(String phoneNumber) async {
+    if (await canLaunch(phoneNumber)) {
+      await launch(phoneNumber);
+    } else {}
+  }
 
   @override
   void initState() {
@@ -276,26 +282,42 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   fontWeight: FontWeight.w400),
                                             ),
                                           ),
-                                          Row(
-                                            children: [
-                                              const Padding(
-                                                padding: EdgeInsets.all(10.0),
-                                                child: Text(
-                                                  '+993 71 35 33 75',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 20,
-                                                      fontFamily: 'Roboto',
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                      fontWeight:
-                                                          FontWeight.w700),
+                                          InkWell(
+                                            onTap: () {
+                                              _makePhoneCall(
+                                                  'tel:+993 71 35 33 75');
+                                            },
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Padding(
+                                                  padding: EdgeInsets.all(10.0),
+                                                  child: Text(
+                                                    '+993 71 35 33 75',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 20,
+                                                        fontFamily: 'Roboto',
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        fontWeight:
+                                                            FontWeight.w700),
+                                                  ),
                                                 ),
-                                              ),
-                                              Image.asset(
-                                                  'assets/images/green_phone.png')
-                                            ],
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: SizedBox(
+                                                    height: 35,
+                                                    width: 35,
+                                                    child: Image.asset(
+                                                        'assets/images/green_phone.png'),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           )
                                         ],
                                       ),

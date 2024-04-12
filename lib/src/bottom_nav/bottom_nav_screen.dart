@@ -52,24 +52,24 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   Future<void> checkForUpdates() async {
     final remoteConfig = FirebaseRemoteConfig.instance;
-    await remoteConfig.setConfigSettings(RemoteConfigSettings(
-      fetchTimeout: const Duration(minutes: 1),
-      minimumFetchInterval: const Duration(hours: 1),
-    ));
-
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     remoteConfig.fetchAndActivate();
     remoteConfig.onConfigUpdated.listen((event) async {
       await remoteConfig.activate();
     });
+    await remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(minutes: 1),
+      minimumFetchInterval: const Duration(seconds: 1),
+    ));
+
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     String getUpdateVersion() => remoteConfig.getString('update');
 
     String getMustUpdateVersion() => remoteConfig.getString('must_update');
+    print(getMustUpdateVersion());
 
     if (Constants.mustUpdate != getMustUpdateVersion()) {
-      // ignore: use_build_context_synchronously
       showUpdateVersionMustDialog(context);
     }
 
@@ -78,7 +78,6 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
     if (isSkippable == false) {
       if (packageInfo.version != getUpdateVersion()) {
-        // ignore: use_build_context_synchronously
         showUpdateVersionDialog(context, isSkippable!);
       }
     }
@@ -106,6 +105,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   List page = [
     const InitialScreen(),
     // const ExploreScreen(),
+    // const EmployerScreen(),
     const AboutUs(),
     const ProfileLogOut()
   ];
@@ -113,6 +113,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   List page2 = [
     const InitialScreen(),
     // const ExploreScreen(),
+    // const EmployerScreen(),
     const AboutUs(),
     const ProfileScreen(),
   ];
@@ -178,6 +179,14 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                     onTapp: () {
                       onTapp(2);
                     })),
+            // Expanded(
+            //     child: BottomNavbarButton(
+            //         icon: false,
+            //         index: 3,
+            //         selectedIndex: selectedIndex,
+            //         onTapp: () {s
+            //           onTapp(3);
+            //         })),
           ],
         ),
       ),

@@ -103,7 +103,7 @@ class _SearchInfoState extends State<SearchInfo> {
                     ),
                   ],
                 ),
-                height: MediaQuery.of(context).size.height / 3.4,
+                height: MediaQuery.of(context).size.height / 3.2,
                 child: Column(
                   children: [
                     Padding(
@@ -921,7 +921,7 @@ class _SearchInfoState extends State<SearchInfo> {
                           shrinkWrap: true,
                           // physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
-                          itemCount: imagesL.images.length,
+                          itemCount: imagesL.images?.length,
                           itemBuilder: (BuildContext context, int indexx) {
                             return InkWell(
                               onTap: () {
@@ -934,7 +934,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                             MediaQuery.of(context).size.height,
                                         child: PhotoViewGallery.builder(
                                           itemCount:
-                                              widget.model!.images.length,
+                                              widget.model!.images?.length,
                                           loadingBuilder: (context, event) {
                                             return const Center(
                                               child: SizedBox(
@@ -952,7 +952,8 @@ class _SearchInfoState extends State<SearchInfo> {
                                             return PhotoViewGalleryPageOptions(
                                               imageProvider:
                                                   CachedNetworkImageProvider(
-                                                      imagesL.images[index]),
+                                                      imagesL.images?[index] ??
+                                                          ''),
                                               // imageProvider: NetworkImage(
                                               // orderById.ordersById!
                                               //     .images[index]),
@@ -990,7 +991,7 @@ class _SearchInfoState extends State<SearchInfo> {
                                       height: 100,
                                       width: 100,
                                       child: Image.network(
-                                        imagesL.images[indexx],
+                                        imagesL.images?[indexx] ?? '',
                                         fit: BoxFit.cover,
                                         // loadingBuilder: (context, child,
                                         //         loadingProgress) =>

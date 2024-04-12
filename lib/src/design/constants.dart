@@ -8,7 +8,7 @@ class SharedPrefKeys {
 
 class Constants {
   static const baseUrl = "https://106cargo.com.tm/api";
-  static const mustUpdate = '2.1.4';
+  static const mustUpdate = '2.1.5';
 }
 
 class AppConstants {

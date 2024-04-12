@@ -25,6 +25,7 @@ class BottomNavbarButton extends StatefulWidget {
 class _BottomNavbarButtonState extends State<BottomNavbarButton> {
   List<String> title = [
     'order'.tr(),
+    // 'Employer',
     // 'market'.tr(),
     'about'.tr(),
     'profile'.tr(),
@@ -126,25 +127,13 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
                             : Container(
                                 child: iconsLight[widget.index],
                               )
-                        // Icon(
-                        //     iconsLight[index],
-                        //     size: 18,
-                        //     color: Colors.black,
-                        //   )
                         : widget.icon
                             ? const Icon(Icons.add)
                             : Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Container(
                                   child: iconsBold[widget.index],
-                                )
-
-                                // Icon(
-                                //   iconsBold[index],
-                                //   size: 18,
-                                //   color: Colors.amber,
-                                // ),
-                                ),
+                                )),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kargo_app/firebase_options.dart';
@@ -29,6 +30,17 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  final remoteConfig = FirebaseRemoteConfig.instance;
+
+  remoteConfig.fetchAndActivate();
+  remoteConfig.onConfigUpdated.listen((event) async {
+    await remoteConfig.activate();
+  });
+  await remoteConfig.setConfigSettings(RemoteConfigSettings(
+    fetchTimeout: const Duration(minutes: 1),
+    minimumFetchInterval: const Duration(seconds: 1),
+  ));
 
   SingletonSharedPreference(pref);
   runApp(EasyLocalization(

@@ -13,8 +13,8 @@ class SearchModel {
   final String ticketCode;
   final String transportNumber;
   final String danhaoCode;
-  final List<String> images;
-  final List<String> transportImages;
+  final List<String>? images;
+  final List<String>? transportImages;
   final String location;
   final List<PointSS> points;
   final bool isOwned;
@@ -47,25 +47,26 @@ class SearchModel {
         pointsList.map((pointsList) => PointSS.fromJson(pointsList)).toList();
 
     return SearchModel(
-        id: json['id'] ?? 0,
-        date: json['date'] ?? '',
-        pointFrom: json['point_from'] ?? '',
-        pointTo: json['point_to'] ?? '',
-        trackCode: json['track_code'] ?? '',
-        summarySeats: json['summary_seats'] ?? 0,
-        ticketCode: json['ticket_code'] ?? '',
-        transportNumber: json['transport_number'] ?? '',
-        summaryPrice: json['summary_price'] ?? 0,
-        summaryKg: json['summary_kg'] ?? 0,
-        summaryCube: json['summary_cube'] ?? '',
-        images: List<String>.from(json['images']),
-        location: json['location'] ?? '',
-        points: points,
-        transportImages: List<String>.from(json['transport_images']),
-        totalPayments: json['total_payments'] ?? 0,
-        summaryPaid: json['summary_paid'] ?? 0,
-        danhaoCode: json['danhao_code'] ?? '',
-        isOwned: json['is_owned']);
+      id: json['id'] ?? 0,
+      date: json['date'] ?? '',
+      pointFrom: json['point_from'] ?? '',
+      pointTo: json['point_to'] ?? '',
+      trackCode: json['track_code'] ?? '',
+      summarySeats: json['summary_seats'] ?? 0,
+      ticketCode: json['ticket_code'] ?? '',
+      transportNumber: json['transport_number'] ?? '',
+      summaryPrice: json['summary_price'] ?? 0,
+      summaryKg: json['summary_kg'] ?? 0,
+      summaryCube: json['summary_cube'] ?? '',
+      images: List<String>.from(json['images'] ?? []),
+      location: json['location'] ?? '',
+      points: points,
+      transportImages: List<String>.from(json['transport_images'] ?? []),
+      totalPayments: json['total_payments'] ?? 0,
+      summaryPaid: json['summary_paid'] ?? 0,
+      danhaoCode: json['danhao_code'] ?? '',
+      isOwned: json['is_owned'] ?? false,
+    );
   }
 }
 

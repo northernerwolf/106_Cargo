@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kargo_app/src/application/settings_singleton.dart';
@@ -20,6 +21,8 @@ class _SpalshScreenState extends State<SpalshScreen>
   @override
   void initState() {
     super.initState();
+    fetchRemote();
+
     FirebaseSetup.init(context);
 
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -32,6 +35,19 @@ class _SpalshScreenState extends State<SpalshScreen>
           (route) => false);
     });
     sendToken();
+  }
+
+  fetchRemote() async {
+    final remoteConfig = FirebaseRemoteConfig.instance;
+
+    remoteConfig.fetchAndActivate();
+    remoteConfig.onConfigUpdated.listen((event) async {
+      await remoteConfig.activate();
+    });
+    await remoteConfig.setConfigSettings(RemoteConfigSettings(
+      fetchTimeout: const Duration(minutes: 1),
+      minimumFetchInterval: const Duration(seconds: 1),
+    ));
   }
 
   sendToken() async {
