@@ -176,7 +176,7 @@ class _CartMainState extends State<CartMain> {
                                     fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
-                                width: deviceWidth / 6,
+                                width: deviceWidth / 5.9,
                                 child: Text(
                                   widget.model.pointFrom,
                                   maxLines: 2,
@@ -604,13 +604,27 @@ class _CartMainState extends State<CartMain> {
                 right: deviceWidth / 26 - 1,
                 bottom: deviceWidth / 100,
               ),
-              child: SizedBox(
-                // width: MediaQuery.of(context).size.width / 4,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.model.danhaoCode.toString(),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      // width: MediaQuery.of(context).size.width / 2,
+                      child: Text(
+                        widget.model.danhaoCode.toString(),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: MediaQuery.of(context).size.width / 26,
+                            fontFamily: 'Roboto',
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    // width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      widget.model.trackCode.toString(),
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: MediaQuery.of(context).size.width / 26,
@@ -618,32 +632,8 @@ class _CartMainState extends State<CartMain> {
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w400),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // const Icon(Icons.attach_money, ),
-                        // Text(
-                        //   'Getiriji kod: ',
-                        //   style: TextStyle(
-                        //       color: Colors.black,
-                        //       fontSize: MediaQuery.of(context).size.width / 26,
-                        //       fontFamily: 'Roboto',
-                        //       fontStyle: FontStyle.normal,
-                        //       fontWeight: FontWeight.w400),
-                        // ),
-                        Text(
-                          widget.model.trackCode.toString(),
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: MediaQuery.of(context).size.width / 26,
-                              fontFamily: 'Roboto',
-                              fontStyle: FontStyle.normal,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Padding(

@@ -11,6 +11,7 @@ import '../../auth/model/me_model.dart';
 
 import '../../initial/repository/change_profil_info_repository.dart';
 
+// ignore: must_be_immutable
 class EditProfil extends StatefulWidget {
   UserData model;
   EditProfil({required this.model, super.key});

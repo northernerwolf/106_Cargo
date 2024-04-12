@@ -11,6 +11,7 @@ import '../../../design/custom_icon.dart';
 
 import 'package:photo_view/photo_view.dart';
 
+// ignore: must_be_immutable
 class SearchInfo extends StatefulWidget {
   SearchModel? model;
   SearchInfo({required this.model, super.key});

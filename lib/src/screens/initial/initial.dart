@@ -46,9 +46,32 @@ class _InitialScreenState extends State<InitialScreen> {
     });
   }
 
+  // AppUpdateInfo? _updateInfo;
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  // Future<void> checkForUpdate() async {
+  //   InAppUpdate.checkForUpdate().then((info) {
+  //     setState(() {
+  //       _updateInfo = info;
+  //     });
+  //   }).catchError((e) {
+  //     showSnack(e.toString());
+  //   });
+  // }
+
+  // void showSnack(String text) {
+  //   if (_scaffoldKey.currentContext != null) {
+  //     ScaffoldMessenger.of(_scaffoldKey.currentContext!)
+  //         .showSnackBar(SnackBar(content: Text(text)));
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(55),

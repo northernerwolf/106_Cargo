@@ -21,6 +21,7 @@ int? initScreen;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
   var pref = await SharedPreferences.getInstance();
   initScreen = pref.getInt("initScreen");
 
@@ -29,14 +30,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  
-
   SingletonSharedPreference(pref);
   runApp(EasyLocalization(
     supportedLocales: const [Locale('en'), Locale('tk'), Locale('ru')],
     path: 'assets/languages',
     fallbackLocale: const Locale('tk'),
-    startLocale: const Locale('tk'),
     child: MultiProvider(
       providers: [
         ChangeNotifierProvider(

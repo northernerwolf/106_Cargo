@@ -36,7 +36,8 @@ class TicketsRepository {
 
         return;
       }
-    } on DioError catch (e) {
+      // ignore: deprecated_member_use
+    } on DioError {
       isLoading = false;
     }
     return;

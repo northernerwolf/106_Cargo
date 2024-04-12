@@ -424,6 +424,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           preferences.remove('token');
 
                           settings.logout();
+                          // ignore: use_build_context_synchronously
                           LogOutRepository().logOut(context, val!);
                         },
                         child: Container(
